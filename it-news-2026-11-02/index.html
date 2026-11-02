@@ -62,7 +62,7 @@ a:hover{border-bottom-color:var(--sky); background:var(--sky3)}
 }
 
 .wrap{
-  max-width:1000px; margin:1.25rem clamp(1rem,5vw,3rem) 2.5rem; padding:1.35rem clamp(1.75rem,7vw,3.75rem) 2.5rem;
+  max-width:1000px; margin:1.25rem auto 2.5rem; padding:1.35rem clamp(1.75rem,7vw,3.75rem) 2.5rem;
   background:var(--paper);
   border:3px solid var(--navy);
   position:relative;
@@ -325,7 +325,7 @@ a:hover{border-bottom-color:var(--sky); background:var(--sky3)}
 }
 
 @media (max-width:720px){
-  .wrap{margin:.6rem .5rem 1.5rem; padding:1rem .85rem 1.75rem; box-shadow:3px 3px 0 0 var(--navy), 6px 6px 0 0 var(--sky)}
+  .wrap{margin:.6rem auto 1.5rem; padding:1rem .85rem 1.75rem; box-shadow:3px 3px 0 0 var(--navy), 6px 6px 0 0 var(--sky); max-width:calc(100% - 1rem)}
   .grid{grid-template-columns:1fr}
   .flag{writing-mode:horizontal-tb; min-width:auto; padding:.35rem .7rem; letter-spacing:.15em}
   .sec-head{flex-direction:column; gap:.4rem}

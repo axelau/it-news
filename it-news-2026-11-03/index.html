@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>每日 IT 報｜2026年11月3日 · Pixel Trial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --cream:#F5F5EC;
+  --paper:#FFFEF7;
+  --navy:#0A2558;
+  --navy2:#14356e;
+  --sky:#A3C1DA;
+  --sky2:#C5D9EA;
+  --sky3:#E8F1F8;
+  --ink:#0A2558;
+  --ink2:#1e3a66;
+  --muted:#5a6f8a;
+  --link:#0A2558;
+  --white:#fffef9;
+  --heat-a:#0A2558;
+  --heat-b:#3d5a80;
+  --heat-c:#7a8fa8;
+  --px:4px;
+}
+*{box-sizing:border-box}
+html{font-size:16.5px}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(163,193,218,.35) 0 2px, transparent 3px),
+    radial-gradient(circle at 88% 18%, rgba(10,37,88,.12) 0 2px, transparent 3px),
+    radial-gradient(circle at 70% 92%, rgba(163,193,218,.28) 0 2px, transparent 3px),
+    var(--cream);
+  background-size:28px 28px, 36px 36px, 24px 24px, auto;
+  color:var(--ink);
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  line-height:1.55;
+  image-rendering:auto;
+}
+a{color:var(--link); text-decoration:none; border-bottom:2px solid transparent}
+a:hover{border-bottom-color:var(--sky); background:var(--sky3)}
+
+/* pixel border helper — stepped corners via box-shadow */
+.pixel-border{
+  border:3px solid var(--navy);
+  box-shadow:
+    3px 0 0 0 var(--navy),
+    -3px 0 0 0 var(--navy),
+    0 3px 0 0 var(--navy),
+    0 -3px 0 0 var(--navy),
+    6px 6px 0 0 rgba(10,37,88,.18);
+  clip-path: polygon(
+    0 8px, 8px 8px, 8px 0,
+    calc(100% - 8px) 0, calc(100% - 8px) 8px, 100% 8px,
+    100% calc(100% - 8px), calc(100% - 8px) calc(100% - 8px), calc(100% - 8px) 100%,
+    8px 100%, 8px calc(100% - 8px), 0 calc(100% - 8px)
+  );
+}
+
+.wrap{
+  max-width:1000px; margin:1.25rem auto 2.5rem; padding:1.35rem clamp(1.75rem,7vw,3.75rem) 2.5rem;
+  background:var(--paper);
+  border:3px solid var(--navy);
+  position:relative;
+  box-shadow:
+    4px 4px 0 0 var(--navy),
+    8px 8px 0 0 var(--sky);
+}
+/* dither + decorations around wrap */
+.wrap::before,.wrap::after{
+  content:"+"; position:absolute; color:var(--sky); font-family:"Press Start 2P",monospace;
+  font-size:.55rem; line-height:1; pointer-events:none; opacity:.85;
+}
+.wrap::before{top:.55rem; left:.7rem}
+.wrap::after{bottom:.55rem; right:.7rem}
+
+/* ===== MASTHEAD ===== */
+.masthead{
+  text-align:center;
+  padding:1.6rem 1rem 1.25rem;
+  margin:0 0 1.15rem;
+  background:linear-gradient(180deg, var(--sky3) 0%, var(--paper) 70%);
+  border:3px solid var(--navy);
+  position:relative;
+  box-shadow:4px 4px 0 0 var(--navy);
+}
+.masthead::before{
+  content:"PLAY · WORK · CREATE · CONNECT";
+  position:absolute; left:.5rem; top:50%; transform:translateY(-50%) rotate(-90deg);
+  transform-origin:center; font-family:"Press Start 2P",monospace; font-size:.42rem;
+  letter-spacing:.08em; color:var(--sky); white-space:nowrap; opacity:.7;
+  display:none;
+}
+@media (min-width:860px){
+  .masthead::before{display:block}
+}
+.masthead .kicker{
+  font-family:"Press Start 2P",monospace;
+  font-size:.55rem; letter-spacing:.12em; color:var(--navy);
+  margin-bottom:.85rem;
+  display:inline-block;
+  background:var(--navy); color:#fff;
+  padding:.45rem .7rem;
+  box-shadow:3px 3px 0 0 var(--sky);
+}
+.masthead h1{
+  font-family:"Press Start 2P",monospace;
+  font-size:clamp(1.15rem, 4.2vw, 1.85rem);
+  margin:.35rem 0 .7rem; font-weight:400; letter-spacing:.06em;
+  color:var(--navy);
+  text-shadow: 3px 3px 0 var(--sky), 6px 6px 0 rgba(10,37,88,.15);
+  line-height:1.45;
+}
+.masthead .date{
+  font-family:"VT323",monospace;
+  font-size:1.35rem; color:var(--navy2); margin-top:.15rem; letter-spacing:.04em;
+}
+.masthead .tagline{
+  font-size:.8rem; color:var(--muted); margin:.55rem auto 0; max-width:46rem; line-height:1.5;
+}
+
+/* floating pluses in masthead */
+.masthead .date::before{content:"+  "; color:var(--sky); font-family:"Press Start 2P",monospace; font-size:.5rem}
+.masthead .date::after{content:"  +"; color:var(--sky); font-family:"Press Start 2P",monospace; font-size:.5rem}
+
+/* ===== TOC ===== */
+.toc{
+  display:flex; flex-wrap:wrap; gap:.45rem .55rem; justify-content:center;
+  margin:0 0 1.5rem; padding:.85rem .6rem;
+  border:3px solid var(--navy); background:var(--sky3);
+  box-shadow:3px 3px 0 0 var(--navy);
+  font-size:.82rem;
+}
+.toc a{
+  color:#fff; background:var(--navy); border:2px solid var(--navy);
+  padding:.28rem .55rem; font-weight:700; letter-spacing:.02em;
+  box-shadow:2px 2px 0 0 var(--sky);
+  border-bottom:2px solid var(--navy);
+}
+.toc a:hover{
+  background:var(--sky); color:var(--navy); border-bottom-color:var(--navy);
+}
+
+/* ===== REGIONS / SECTION HEADS ===== */
+.region{
+  margin:0 0 4.2rem; padding-bottom:2.7rem;
+  border-bottom:3px dashed var(--navy);
+}
+.region:last-of-type{border-bottom:none}
+.sec-head{display:flex; align-items:stretch; gap:.85rem; margin-bottom:.95rem}
+.flag{
+  background:var(--navy); color:#fff;
+  writing-mode:vertical-rl; text-orientation:mixed;
+  letter-spacing:.2em; font-weight:700; font-size:.88rem;
+  padding:.65rem .4rem; min-width:2.15rem;
+  display:flex; align-items:center; justify-content:center;
+  border:3px solid var(--navy);
+  box-shadow:3px 3px 0 0 var(--sky);
+  font-family:"Noto Sans TC",sans-serif;
+  position:relative;
+}
+.flag::after{
+  content:""; position:absolute; inset:-3px;
+  border:1px solid var(--sky); pointer-events:none; opacity:.6;
+}
+.sec-head h2{
+  margin:0; font-size:1.35rem; letter-spacing:.04em; line-height:1.35;
+  color:var(--navy); font-weight:700;
+}
+.sec-sub{margin:.2rem 0 0; color:var(--muted); font-size:.8rem}
+
+/* ===== FEATURE BOX ===== */
+.feature-box{
+  max-width:100%; margin:0 0 2rem; padding:0; overflow:hidden;
+  background:var(--white);
+  border:3px solid var(--navy);
+  box-shadow:4px 4px 0 0 var(--navy);
+  display:grid; grid-template-columns:minmax(220px,34%) 1fr; gap:0;
+  position:relative;
+}
+.feature-box::before{
+  content:"+"; position:absolute; top:.35rem; right:.5rem; z-index:2;
+  font-family:"Press Start 2P",monospace; font-size:.5rem; color:var(--sky); opacity:.9;
+}
+.feature-box .feature-media{
+  margin:0; background:var(--sky2); border-right:3px solid var(--navy); min-height:12rem; line-height:0;
+}
+.feature-box .feature-media a{display:block; line-height:0; height:100%; border:0}
+.feature-box .feature-media a:hover{background:transparent}
+.feature-box .feature-media img{width:100%; height:100%; min-height:12rem; object-fit:cover; display:block}
+.feature-box .feature-body{padding:1.1rem 1.2rem 1rem}
+.feature-box p{margin:0 0 .95rem; color:var(--ink2); font-size:.98rem; text-align:justify}
+.feature-box p.lead{font-size:1.05rem; color:var(--ink)}
+.feature-box p:last-child{margin-bottom:0}
+.feature-meta-row{display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; margin:0 0 .75rem}
+.drop::first-letter{
+  float:left; font-family:"Press Start 2P",monospace;
+  font-size:1.55rem; line-height:1.1; padding:.15rem .25rem 0 0;
+  font-weight:400; color:var(--navy);
+}
+
+/* satire accent */
+.feature-box.satire{
+  border-color:var(--navy);
+  background:linear-gradient(135deg, #fff9f0 0%, var(--white) 55%);
+  box-shadow:4px 4px 0 0 var(--sky), 8px 8px 0 0 var(--navy);
+}
+.feature-box.satire .sec-note{font-size:.76rem; color:var(--muted); margin:0 0 .75rem; font-style:italic}
+
+/* ===== STORY GRID ===== */
+.grid{display:grid; grid-template-columns:1fr 1fr; gap:2rem 1.15rem}
+.story{
+  padding:0; overflow:hidden;
+  background:var(--white);
+  border:3px solid var(--navy);
+  box-shadow:3px 3px 0 0 var(--sky);
+  display:flex; flex-direction:column;
+  position:relative;
+}
+.story::after{
+  content:"+"; position:absolute; bottom:.3rem; right:.4rem;
+  font-family:"Press Start 2P",monospace; font-size:.4rem; color:var(--sky); opacity:.75;
+  pointer-events:none;
+}
+.story.lead{grid-column:1 / -1; box-shadow:4px 4px 0 0 var(--navy)}
+.story.lead .story-media img{max-height:280px}
+.story-media{margin:0; background:var(--sky2); border-bottom:3px solid var(--navy); line-height:0}
+.story-media a{display:block; line-height:0; border:0}
+.story-media a:hover{background:transparent}
+.story-media img{width:100%; height:160px; object-fit:cover; display:block}
+.story.lead .story-media img{height:240px}
+.story-body{padding:.8rem .95rem .95rem; min-width:0; flex:1; display:flex; flex-direction:column}
+.story h3{margin:0 0 .35rem; font-size:1.02rem; line-height:1.35; font-weight:700; color:var(--navy)}
+.story.lead h3{font-size:1.28rem}
+.story h3 a{border:0; color:var(--navy)}
+.story h3 a:hover{background:var(--sky3); border:0}
+.story .dek{margin:0 0 .5rem; color:var(--ink2); font-size:.9rem; flex:1}
+.story.lead .dek{font-size:.98rem}
+.meta{margin:0; font-size:.72rem; color:var(--muted); font-family:"VT323",monospace; font-size:.95rem}
+.outlet{font-weight:700; color:var(--navy2); font-family:"Noto Sans TC",sans-serif; font-size:.72rem}
+.src{margin-left:.15rem}
+
+/* ===== HEAT BADGES — 90s window pop ===== */
+.heat{
+  display:inline-flex; align-items:stretch; gap:0;
+  padding:0; font-size:.68rem; font-weight:700; letter-spacing:.04em; line-height:1.2;
+  border:2px solid var(--navy);
+  background:var(--paper);
+  box-shadow:2px 2px 0 0 var(--navy);
+  overflow:hidden;
+  font-family:"Press Start 2P",monospace;
+  font-size:.48rem;
+  position:relative;
+}
+.heat::before{
+  content:"■";
+  background:var(--navy); color:#fff;
+  padding:.32rem .4rem;
+  display:inline-flex; align-items:center;
+  font-size:.42rem; letter-spacing:0;
+}
+/* put label text next to title bar */
+.heat{
+  color:var(--navy);
+  padding-right:.55rem;
+  align-items:center;
+}
+.heat::after{
+  content:"×";
+  margin-left:.35rem;
+  color:var(--navy);
+  font-size:.55rem;
+  line-height:1;
+  opacity:.7;
+}
+
+/* ===== THUMB CREDIT ===== */
+.thumb-credit{
+  margin:.1rem 0 .5rem; font-size:.65rem; color:var(--muted); line-height:1.35;
+  word-break:break-word;
+  padding:.35rem .5rem;
+  background:var(--sky3);
+  border-left:4px solid var(--sky);
+}
+.thumb-credit a{color:var(--muted); border-bottom:1px dotted var(--sky)}
+
+/* ===== RANK BOX — sky promo banner ===== */
+.rank-box{
+  margin:1.15rem 0 2rem; padding:1.1rem 1.2rem 1rem;
+  border:3px solid var(--navy);
+  background:var(--sky);
+  box-shadow:4px 4px 0 0 var(--navy);
+  position:relative;
+}
+.rank-box::before{
+  content:"LEVEL UP";
+  position:absolute; top:-.55rem; right:1rem;
+  font-family:"Press Start 2P",monospace; font-size:.42rem;
+  background:var(--navy); color:#fff; padding:.3rem .45rem;
+  box-shadow:2px 2px 0 0 var(--paper);
+}
+.rank-box h2{
+  margin:0 0 .3rem; font-size:1.15rem; letter-spacing:.04em; color:var(--navy);
+  font-family:"Press Start 2P",monospace; font-size:.72rem; line-height:1.55;
+}
+.rank-box .rank-sub{margin:0 0 .75rem; color:var(--navy2); font-size:.78rem}
+.rank-box ol{margin:0; padding-left:1.4rem; background:var(--paper); border:2px solid var(--navy); padding:.75rem 1rem .75rem 1.85rem}
+.rank-box li{margin:0 0 .45rem; font-size:.9rem; line-height:1.4; color:var(--navy)}
+.rank-box li a{font-weight:700; color:var(--navy); border-bottom:2px solid transparent}
+.rank-box li a:hover{border-bottom-color:var(--navy); background:var(--sky3)}
+
+/* ===== FOOTER ===== */
+.footer{
+  margin-top:1.4rem; padding:1rem 1rem .2rem;
+  border:3px solid var(--navy); background:var(--sky3);
+  box-shadow:3px 3px 0 0 var(--navy);
+  font-size:.76rem; color:var(--muted); line-height:1.6;
+}
+.footer p:first-child{
+  font-family:"VT323",monospace; font-size:1.05rem; color:var(--navy);
+}
+
+@media (max-width:720px){
+  .wrap{margin:.6rem auto 1.5rem; padding:1rem .85rem 1.75rem; box-shadow:3px 3px 0 0 var(--navy), 6px 6px 0 0 var(--sky); max-width:calc(100% - 1rem)}
+  .grid{grid-template-columns:1fr}
+  .flag{writing-mode:horizontal-tb; min-width:auto; padding:.35rem .7rem; letter-spacing:.15em}
+  .sec-head{flex-direction:column; gap:.4rem}
+  .drop::first-letter{font-size:1.25rem}
+  .feature-box{grid-template-columns:1fr}
+  .feature-box .feature-media{border-right:none; border-bottom:3px solid var(--navy); min-height:10rem}
+  .feature-box .feature-media img{min-height:10rem; max-height:200px}
+  .story.lead .story-media img,.story-media img{height:180px}
+  .masthead h1{font-size:1.05rem}
+  .rank-box h2{font-size:.58rem}
+  .toc a{font-size:.75rem}
+}
+@media print{
+  body{background:#fff}
+  .wrap{box-shadow:none; max-width:none}
+  a{color:inherit; text-decoration:none}
+  .region{break-inside:avoid-page}
+}
+</style>
+</head>
+<body>
+
+
+<main class="wrap">
+  <header class="masthead">
+    <div class="kicker">GROK BOT · IT DIGEST</div>
+    <h1>每日 IT 報</h1>
+    <div class="date">二零二六年十一月三日　星期二　香港時間</div>
+    <p class="tagline">四篇專題（含諷刺欄）· 約 30 則分類精選 · 外部配圖 hotlink · 熱度 A/B/C · 今日熱度排行 · 摘要約 100–150 字 · 結論先行</p>
+  </header>
+  <nav class="toc" aria-label="章節">
+    <a href="#f1">樂觀專題</a> <a href="#f2">懷疑專題</a> <a href="#f3">警戒專題</a> <a href="#f4">諷刺欄</a> <a href="#hot">熱門話題</a> <a href="#ai">AI 與模型</a> <a href="#security">資安與基礎設施</a> <a href="#product">產品發佈</a> <a href="#corp">企業與產業</a>
+  </nav>
+
+<section class="region" id="f1">
+  <header class="sec-head"><div class="flag">樂觀</div><div><h2>光層才是下一場溢價：Marvell×Lumentum 把 AI 競賽拉到連線</h2><p class="sec-sub">立場：偏樂觀 · AI 瓶頸與溢價正從 GPU 下沉到光學互連；跟供應鏈與監管進度，比跟再一個 LLM 更重要。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://techcrunch.com/2026/11/02/in-one-of-the-largest-deals-in-tech-history-marvell-buys-lumentum-for-115b/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/06/Chip-chips-dollar-signs-money.png?resize=1200,960" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/02/in-one-of-the-largest-deals-in-tech-history-marvell-buys-lumentum-for-115b/" target="_blank" rel="noopener">TechCrunch／ChatGPI（AI-generated）</a>（外部連結）</p>
+<p class="lead drop">結論先講清楚：AI 競賽已離開「再堆一張加速卡」的舒適區，溢價與瓶頸正下沉到光與連線層。Marvell 以全股票收購 Lumentum，企業價值約 1150 億美元（含債）、股權約 800 億，換股比例為每股 Lumentum 換 4.5 股 Marvell，預計 2028 年上半年才可能交割——這筆交易本身，就是市場對「算力要先連得通」的定價投票。</p>
+<p>支撐這句結論的，是三條咬住因果的事實。其一，交易規模已擠入科技史最大收購梯隊，邏輯不是消費品牌整合，而是把光學元件、雷射與資料中心連線做成一條可打包賣的 AI connectivity 產品線。其二，Nvidia 今年三月先後各投約二十億美元進兩邊：一邊撐 Lumentum 先進雷射與產能，一邊加碼 Marvell 光學網路與晶片組合——共同大股東的出現，說明下游算力買家已用真金白銀預支光層供給。其三，交割窗口拉到 2028 上半年，且綁死股東與監管雙重核准：市場現在買的是敘事與選擇權，真正產能與毛利要等核准節奏說話。</p>
+<p>對照昨日主線，OpenAI 削額、配額合併與運算校園仍在吸睛，但那些是模型公司帳本與產品 UI 的故事；今日這筆光層併購，則把戰場從「誰的模型更大」轉到「誰能把機櫃之間的頻寬與功耗做成可交貨資產」。兩者並非互斥，而是同一條 AI 基建曲線的不同深度：模型敘事還在改 UI，供應鏈已在改物理層。</p>
+<p>之後兩周只盯兩個可驗證位：各國反壟斷與國家安全審查有沒有開條件清單；Lumentum 雷射與光模組的產能指引有沒有上修。採購與基建團隊適合把光學互連、光模組交期寫進與 GPU 同一張風險表——誰先鎖到光層供給，誰才有資格繼續談下一波訓練集群。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="f2">
+  <header class="sec-head"><div class="flag">懷疑</div><div><h2>「即將」過線：Anthropic 把 RSI 寫進 S-1，風險披露還是 IPO 敘事？</h2><p class="sec-sub">立場：偏懷疑 · RSP／RSI「即將」達標是風險因素與募資修辭的雙重用途；要可驗證里程碑，不要空口時間表。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://techcrunch.com/2026/11/02/anthropic-warns-that-its-very-close-to-rsi-capability-aka-self-building-ai/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/11/Recursive-Neural-Spiral-in-Circuitry.png?resize=1200,600" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/02/anthropic-warns-that-its-very-close-to-rsi-capability-aka-self-building-ai/" target="_blank" rel="noopener">TechCrunch</a>（外部連結）</p>
+<p class="lead drop">讀 Anthropic 修訂 S-1／A 的正確姿勢，不是被「即將達到 Responsible Scaling Policy 對 AI 顯著加速研發的門檻」嚇到，而是先問：這句話在招股書裡同時服務兩種讀者——監管與保險端要風險清單，投資人要成長敘事。現有模型尚未被標為過線；公司又承認已用 AI 加速自家 R&amp;D，且過去加速往往事後才發現。這種「未過線／即將／事後才知」的三連結構，本身就是懷疑對象。</p>
+<p>所謂 RSI 式門檻，指的是能力進步可歸因於 AI 自動化、並接近把基準年進步壓縮進更短曆時的劇烈加速。把它寫進註冊文件，法律上是風險因素；傳播上卻很容易被讀成「我們離自我加速很近了」的估值糖衣。TechCrunch 等報導同時盯財報數字，正是因為敘事熱度若不配可審計指標，市場只會把「即將」當期權故事來回炒——修辭可以提前兌現預期，里程碑卻不能用副詞代替。</p>
+<p>跨日對照：昨日焦點是 OpenAI 融資削額與配額合併，證明頭部模型公司正被現金流與算力現實擠壓；今日 Anthropic 則用安全政策語言重新定義「我們可能很快變得更快」。兩條線都在講規模化成本與能力曲線，但一個交出削額數字，一個交出尚未過線的修辭——讀者應要求同等嚴格的可驗證性，而不是用安全感包裝成長故事。</p>
+<p>之後只收兩類訊號才值得升級信念：對外公布可復現的評測門檻與觸發後強制措施；以及獨立第三方能否在固定窗口覆核「加速是否真的發生」。在那之前，把 S-1 這段當合規披露即可，別把它當產品發表會，更別讓「即將」兩個字替代交割日。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="f3">
+  <header class="sec-head"><div class="flag">警戒</div><div><h2>議員 iPhone 與超市冷凍櫃同日示警：高價值目標與 EOL 設備一起爆</h2><p class="sec-sub">立場：偏警戒 · 政治人物手機與商用冷鏈 OT／IoT 同周示警；假設已 compromised，EOL 聯網設備等於實體損失入口。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://techcrunch.com/2026/11/02/germany-says-lawmakers-iphones-may-have-been-hacked-with-spyware/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/08/ios-notification-threat-apple-hero.jpg?resize=1200,814" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/02/germany-says-lawmakers-iphones-may-have-been-hacked-with-spyware/" target="_blank" rel="noopener">TechCrunch</a>（外部連結）</p>
+<p class="lead drop">今日警戒不來自單一漏洞公告，而來自同一週兩種完全不同的資產同時亮紅燈：德國 BSI 證實多名議員與公眾人物自約 10 月 29 日起收到 Apple 傭兵間諜軟件威脅通知；歐洲多國超市冷凍櫃則再現疑似遠程竄改，溫度被拉去除霜甚至高溫，食物直接報廢。一端是高價值人物的端點信任崩壞，一端是被遺忘的 OT／IoT 變成實體損失——兩者都要求同一條操作假設：先當已經 compromised。</p>
+<p>德國線上，Apple 通知本身不能證明入侵成功，但 BSI 的公開建議是更新、開 Lockdown Mode，並認真考慮換機與重置帳號。這等於官方承認「通知＝高風險狀態」，不是公關安慰。冷凍櫃線上，Verge 點名比利時、瑞典、盧森堡、愛沙尼亞；TechCrunch 另提愛爾蘭。Ahold Delhaize、Colruyt、瑞典 Ica 等傳受影響，Ica 甚至出現遠程拉至約 50°C 的個案；嫌疑落在聯網冷櫃控制鏈（外界指向 Danfoss 相關系統缺更新）與早前法國同類手法的延續。沒有炫技勒索信，卻有腐壞庫存與暫時下架——攻擊面在貨架後面。</p>
+<p>這不是兩則無關資安花邊。手機線提醒：國家級與傭兵級能力仍優先打決策者端點；冷鏈線提醒：EOL、缺補丁、可遠程改設定的商用 IoT，會把資安事件直接換成食品與營運損失。昨日 Cursor 市集後門屬於開發工具供應鏈；今日則把光譜拉到「人」與「冷凍櫃」兩極——中間那一大段沒人修的 OT，才是真正的長期敞口。</p>
+<p>之後 72 小時可驗證動作很具體：收到 Apple 威脅通知的機關有沒有強制換機與憑證輪替；零售商有沒有把冷櫃管理網段隔離並關閉不明遠程寫入。資安與營運負責人應假設通知對象與同型冷櫃都已不可信，先斷遠程寫入再談取證——實體溫度計比儀表板誠實。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="f4">
+  <header class="sec-head"><div class="flag">諷刺</div><div><h2>互聯網識改 UI 唔識改命：合併配額、RAM 充公、冷凍櫃開戰</h2><p class="sec-sub">連登風諷刺欄 · 搞笑針對當日熱門造題 · 唔係投資建議</p></div></header>
+  <div class="feature-box satire">
+  <div class="feature-media">
+    <a href="https://techcrunch.com/2026/11/02/openai-is-finally-merging-chatgpts-chat-and-work-tabs/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/09/openai-getty.jpg?resize=1200,800" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 C</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/02/openai-is-finally-merging-chatgpts-chat-and-work-tabs/" target="_blank" rel="noopener">Getty／TechCrunch</a>（外部連結）</p>
+<p class="sec-note">本欄語氣學連登仔嘲諷熱門話題，屬玩笑專欄，事實仍以各則新聞原文為準。</p>
+<p class="lead drop">各位尊貴嘅 Pro／Team／Enterprise 用戶，恭喜你哋見證歷史：Chat 同 Work 終於合併，ChatGPT 同 Codex 仲要共用 token 配額。以前叫「工作區升級」，而家叫「一條喉食兩家茶樓」——你問多兩句、Agent 跑多兩步，月底一看，額度比你人格更早清算。互聯網最叻就係改 UI：分頁合咗、按鈕圓咗，命數配額就係唔肯加。</p>
+<p>另一邊，Marvell 同 Lumentum 談千億級光通訊愛情故事，證明 AI 競賽已經打到「光線夠唔夠粗」；你部機 RAM 貴到「unprecedented」，Apple 庫存同比飆升、毛利率指引被記憶體成本按住——即係話，記憶體要唔係充公上雲，要唔係等你為一粒 DRAM 供奉。中期選舉前夕（美國投票敘事已上趨勢），AI 股又傳對沖基金去槓桿、Nasdaq 校正劇本上桌；Anthropic 就喺 S-1 寫「即將」碰到 RSI 門檻，未過線但好想你信好近。風險披露定預告片？睇你買定沽。</p>
+<p>最 internethorror 係歐洲超市冷凍櫃被人遠程開除霜：牛肉變溫泉蛋，雪糕變哲學。議員 iPhone 收 Apple 間諜通知，假設 compromised；你買餸嗰陣冷凍櫃都假設 compromised。高價值目標同 EOL 物聯網一齊爆，證明黑客唔使攻破你大腦，攻破你雪糕就夠上新聞。</p>
+<p>總結今日文明進度：識合併配額、識寫「即將」過安全門檻、識把光纖同冷凍櫃一齊變成戰場；就係唔識俾夠 token、唔識俾夠 RAM、唔識俾冷凍櫃一個唔使連網嘅開關。明日投票、後日又一個模型發布會——記得帶雪糕袋同額度計算機出門。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="hot">
+  <header class="sec-head"><div class="flag">熱門</div><div><h2>熱門話題</h2><p class="sec-sub">光連線併購、RSI 披露、間諜通知與冷凍櫃 · 6則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/02/in-one-of-the-largest-deals-in-tech-history-marvell-buys-lumentum-for-115b/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/06/Chip-chips-dollar-signs-money.png?resize=1200,960" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/02/in-one-of-the-largest-deals-in-tech-history-marvell-buys-lumentum-for-115b/" target="_blank" rel="noopener">TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/02/in-one-of-the-largest-deals-in-tech-history-marvell-buys-lumentum-for-115b/" target="_blank" rel="noopener">Marvell 全股票收購 Lumentum，企業價值約 1150 億美元押注 AI 光連線</a></h3>
+    <p class="dek">Marvell 以全股票收購光學與網路設備商 Lumentum，企業價值約 1150 億美元（含債）、股權約 800 億，每股換 4.5 股 Marvell。Nvidia 今年三月曾各投約二十億美元進兩邊。交易押注 AI connectivity，預計 2028 上半年完成，仍待股東與監管核准。</p>
+    <p class="meta"><span class="outlet">TechCrunch</span><span class="src"> · <a href="https://techcrunch.com/2026/11/02/in-one-of-the-largest-deals-in-tech-history-marvell-buys-lumentum-for-115b/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/02/anthropic-warns-that-its-very-close-to-rsi-capability-aka-self-building-ai/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/11/Recursive-Neural-Spiral-in-Circuitry.png?resize=1200,600" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/02/anthropic-warns-that-its-very-close-to-rsi-capability-aka-self-building-ai/" target="_blank" rel="noopener">TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/02/anthropic-warns-that-its-very-close-to-rsi-capability-aka-self-building-ai/" target="_blank" rel="noopener">Anthropic 修訂 S-1：警告或「即將」觸及 AI 加速研發（RSI）門檻</a></h3>
+    <p class="dek">Anthropic 在修訂 S-1／A 中警告，未來模型可能即將達到 Responsible Scaling Policy 對「可歸因於 AI 的劇烈加速進步」門檻；現有模型尚未過線，但公司已用 AI 加速 R&amp;D，且過去加速常事後才發現。披露同時牽動 IPO 敘事與風險閱讀。</p>
+    <p class="meta"><span class="outlet">TechCrunch</span><span class="src"> · <a href="https://techcrunch.com/2026/11/02/anthropic-warns-that-its-very-close-to-rsi-capability-aka-self-building-ai/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/02/germany-says-lawmakers-iphones-may-have-been-hacked-with-spyware/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/08/ios-notification-threat-apple-hero.jpg?resize=1200,814" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/02/germany-says-lawmakers-iphones-may-have-been-hacked-with-spyware/" target="_blank" rel="noopener">TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/02/germany-says-lawmakers-iphones-may-have-been-hacked-with-spyware/" target="_blank" rel="noopener">德國議員接 Apple 間諜軟件威脅通知，BSI 籲假設可能已中招</a></h3>
+    <p class="dek">德國 BSI 表示多名議員與公眾人物自約 10 月 29 日起收到 Apple 傭兵間諜軟件威脅通知；通知本身未證明入侵成功，但當局建議更新、啟用 Lockdown Mode，並考慮換機與重置帳號。Apple 同類通知亦涵蓋多國高風險目標。</p>
+    <p class="meta"><span class="outlet">TechCrunch</span><span class="src"> · <a href="https://techcrunch.com/2026/11/02/germany-says-lawmakers-iphones-may-have-been-hacked-with-spyware/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/tech/1024300/europe-freezer-fridge-hack-cyberattack" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/11/gettyimages-2302707314.jpg?quality=90&amp;strip=all&amp;crop=0%2C11.034963327406%2C100%2C77.930073345187&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/tech/1024300/europe-freezer-fridge-hack-cyberattack" target="_blank" rel="noopener">Getty／The Verge</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/tech/1024300/europe-freezer-fridge-hack-cyberattack" target="_blank" rel="noopener">歐洲多國超市冷凍櫃再遭疑似駭侵，溫度被遠程拉高</a></h3>
+    <p class="dek">Verge 報道比利時、瑞典、盧森堡、愛沙尼亞等地超市冷櫃／雪櫃疑再遭遠程竄改，設定被改為除霜，瑞典 Ica 傳出現約 50°C 個案。Ahold Delhaize、Colruyt、Coop 等確認或受影響；外界指向聯網冷櫃控制鏈缺更新，手法似延續早前法國事件。</p>
+    <p class="meta"><span class="outlet">The Verge</span><span class="src"> · <a href="https://www.theverge.com/tech/1024300/europe-freezer-fridge-hack-cyberattack" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/02/openai-is-finally-merging-chatgpts-chat-and-work-tabs/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/09/openai-getty.jpg?resize=1200,800" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/02/openai-is-finally-merging-chatgpts-chat-and-work-tabs/" target="_blank" rel="noopener">Getty／TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/02/openai-is-finally-merging-chatgpts-chat-and-work-tabs/" target="_blank" rel="noopener">OpenAI 合併 ChatGPT Chat 與 Work，並與 Codex 共用 token 配額</a></h3>
+    <p class="dek">OpenAI 開始向部分用戶合併 ChatGPT 的 Chat 與 Work 體驗，讓對話與多步驟工作流同屏進行。另宣布 Plus／Pro／Business 等方案將與 Codex 共用以 token 計量的用量上限，延續近期削額與配額重整敘事，即時聊天是否計入則另有規則。</p>
+    <p class="meta"><span class="outlet">TechCrunch</span><span class="src"> · <a href="https://techcrunch.com/2026/11/02/openai-is-finally-merging-chatgpts-chat-and-work-tabs/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://finance.yahoo.com/markets/stocks/articles/us-hedge-funds-just-sold-113114644.html" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/06/Chip-chips-dollar-signs-money.png?resize=1200,960" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://finance.yahoo.com/markets/stocks/articles/us-hedge-funds-just-sold-113114644.html" target="_blank" rel="noopener">TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://finance.yahoo.com/markets/stocks/articles/us-hedge-funds-just-sold-113114644.html" target="_blank" rel="noopener">對沖基金逆向撤出 AI 倉，Nasdaq 校正敘事升溫</a></h3>
+    <p class="dek">市場傳美國對沖基金連續多日淨賣出 AI 相關持股，部分統計指短時間內抹去自 2025 年以來累積淨買入；科技股槓桿同步收斂，Nasdaq 進入 correction 的討論升溫。這更像估值與槓桿回撤，未必等於算力需求本身折斷，但融資窗口敘事已轉冷。</p>
+    <p class="meta"><span class="outlet">Yahoo Finance／綜述</span><span class="src"> · <a href="https://finance.yahoo.com/markets/stocks/articles/us-hedge-funds-just-sold-113114644.html" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="hot-rank">
+    <h2>熱門話題 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://techcrunch.com/2026/11/02/in-one-of-the-largest-deals-in-tech-history-marvell-buys-lumentum-for-115b/" target="_blank" rel="noopener">Marvell 全股票收購 Lumentum，企業價值約 1150 億美元押注 AI 光連線</a></li>
+    <li><a href="https://techcrunch.com/2026/11/02/anthropic-warns-that-its-very-close-to-rsi-capability-aka-self-building-ai/" target="_blank" rel="noopener">Anthropic 修訂 S-1：警告或「即將」觸及 AI 加速研發（RSI）門檻</a></li>
+    <li><a href="https://techcrunch.com/2026/11/02/germany-says-lawmakers-iphones-may-have-been-hacked-with-spyware/" target="_blank" rel="noopener">德國議員接 Apple 間諜軟件威脅通知，BSI 籲假設可能已中招</a></li>
+    <li><a href="https://www.theverge.com/tech/1024300/europe-freezer-fridge-hack-cyberattack" target="_blank" rel="noopener">歐洲多國超市冷凍櫃再遭疑似駭侵，溫度被遠程拉高</a></li>
+    <li><a href="https://techcrunch.com/2026/11/02/openai-is-finally-merging-chatgpts-chat-and-work-tabs/" target="_blank" rel="noopener">OpenAI 合併 ChatGPT Chat 與 Work，並與 Codex 共用 token 配額</a></li>
+    <li><a href="https://finance.yahoo.com/markets/stocks/articles/us-hedge-funds-just-sold-113114644.html" target="_blank" rel="noopener">對沖基金逆向撤出 AI 倉，Nasdaq 校正敘事升溫</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="ai">
+  <header class="sec-head"><div class="flag">AI</div><div><h2>AI 與模型</h2><p class="sec-sub">Claude 護欄、S-1 數字、Frontier 能源部署 · 6則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://arstechnica.com/ai/2026/11/claudes-new-rules-against-game-cloning-wont-stop-the-ai-copying-boom/" target="_blank" rel="noopener"><img src="https://cdn.arstechnica.net/wp-content/uploads/2026/11/GettyImages-1180626096-1152x648.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://arstechnica.com/ai/2026/11/claudes-new-rules-against-game-cloning-wont-stop-the-ai-copying-boom/" target="_blank" rel="noopener">Getty／Ars Technica</a>（外部連結）</p>
+    <h3><a href="https://arstechnica.com/ai/2026/11/claudes-new-rules-against-game-cloning-wont-stop-the-ai-copying-boom/" target="_blank" rel="noopener">Claude 新規則禁止「重製特定現有遊戲」，Ars：擋不住複製潮</a></h3>
+    <p class="dek">Anthropic 在 Claude Code 系統提示加入規則（外界標記 tengu_heron_brook），禁止重製特定現有遊戲即使改名包裝。Ars 認為提示層護欄擋不住更廣義的 AI 複製與移植潮；原創遊戲與自有素材專案仍被允許，執法力取決於繞過成本。</p>
+    <p class="meta"><span class="outlet">Ars Technica</span><span class="src"> · <a href="https://arstechnica.com/ai/2026/11/claudes-new-rules-against-game-cloning-wont-stop-the-ai-copying-boom/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.thenationalnews.com/business/energy/2026/11/02/adnoc-signs-agreement-with-openai-and-g42-to-deploy-frontier-ai/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/09/openai-getty.jpg?resize=1200,800" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.thenationalnews.com/business/energy/2026/11/02/adnoc-signs-agreement-with-openai-and-g42-to-deploy-frontier-ai/" target="_blank" rel="noopener">Getty／TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://www.thenationalnews.com/business/energy/2026/11/02/adnoc-signs-agreement-with-openai-and-g42-to-deploy-frontier-ai/" target="_blank" rel="noopener">ADNOC 聯手 OpenAI 與 G42，成首家部署 Frontier 的能源企業</a></h3>
+    <p class="dek">在 ADIPEC 2026，ADNOC 與 OpenAI、G42 簽署協議，成為首家部署 OpenAI Frontier 的能源公司，計劃以代理人協調油田規劃與價值鏈決策，模型跑在阿聯酋本地 G42 基建，重大決策仍由人類把關。屬中東主權算力與能源 AI 敘事的新錨點。</p>
+    <p class="meta"><span class="outlet">The National</span><span class="src"> · <a href="https://www.thenationalnews.com/business/energy/2026/11/02/adnoc-signs-agreement-with-openai-and-g42-to-deploy-frontier-ai/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/ai-artificial-intelligence/1024420/anthropics-updated-s-1-has-even-more-eye-popping-numbers" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/11/Recursive-Neural-Spiral-in-Circuitry.png?resize=1200,600" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/ai-artificial-intelligence/1024420/anthropics-updated-s-1-has-even-more-eye-popping-numbers" target="_blank" rel="noopener">TechCrunch／The Verge</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/ai-artificial-intelligence/1024420/anthropics-updated-s-1-has-even-more-eye-popping-numbers" target="_blank" rel="noopener">Anthropic 更新 S-1：第三季營收傳約 170 億美元量級，算力承諾同步膨脹</a></h3>
+    <p class="dek">The Verge 報道 Anthropic 修訂招股文件披露更高營收與龐大算力採購承諾，數字與風險因素（含 RSI 門檻）同日曝光。成長曲線吸睛的同時，支出與供應綁定也同步放大；讀招股書要把「會賺」與「會燒」放在同一頁，勿只截樂觀段。</p>
+    <p class="meta"><span class="outlet">The Verge</span><span class="src"> · <a href="https://www.theverge.com/ai-artificial-intelligence/1024420/anthropics-updated-s-1-has-even-more-eye-popping-numbers" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/ai-artificial-intelligence/1024254/openai-says-its-tightening-chatgpt-controls-around-violence" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/09/openai-getty.jpg?resize=1200,800" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/ai-artificial-intelligence/1024254/openai-says-its-tightening-chatgpt-controls-around-violence" target="_blank" rel="noopener">Getty／TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/ai-artificial-intelligence/1024254/openai-says-its-tightening-chatgpt-controls-around-violence" target="_blank" rel="noopener">OpenAI 收緊 ChatGPT 暴力相關控管，並公布社群安全報告</a></h3>
+    <p class="dek">OpenAI 表示將加強 ChatGPT 在暴力相關對話的控管，並公開社群安全報告與青少年武器等防護更新。此舉回應外界對模型濫用與安全事件的壓力，屬於產品安全迭代而非新模型發布；實際攔截率與誤殺率仍需後續獨立觀測。</p>
+    <p class="meta"><span class="outlet">The Verge／OpenAI</span><span class="src"> · <a href="https://www.theverge.com/ai-artificial-intelligence/1024254/openai-says-its-tightening-chatgpt-controls-around-violence" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/tech/1023763/openai-google-microsoft-ai-scraping-standard-opt-out" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2024/08/brave-browser.jpg?resize=1200,800" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/tech/1023763/openai-google-microsoft-ai-scraping-standard-opt-out" target="_blank" rel="noopener">TechCrunch／The Verge</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/tech/1023763/openai-google-microsoft-ai-scraping-standard-opt-out" target="_blank" rel="noopener">頭部 AI 實驗室支持共享 robots.txt 拒訓標記</a></h3>
+    <p class="dek">OpenAI、Google、Microsoft 等據報支持以共享 robots.txt 標記（如 `__usage_ai-training`）讓網站選擇退出訓練用途爬取。標準簡化出版商控制面，但仍屬自願遵守；與同日 NYT 等控告 Brave 的訴訟並列，顯示「技術約定」與「法庭強制」兩條平行路徑。</p>
+    <p class="meta"><span class="outlet">The Verge</span><span class="src"> · <a href="https://www.theverge.com/tech/1023763/openai-google-microsoft-ai-scraping-standard-opt-out" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/02/elon-musk-throttles-grok-bot-limits-due-to-unsustainably-high-costs/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/09/openai-getty.jpg?resize=1200,800" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/02/elon-musk-throttles-grok-bot-limits-due-to-unsustainably-high-costs/" target="_blank" rel="noopener">TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/02/elon-musk-throttles-grok-bot-limits-due-to-unsustainably-high-costs/" target="_blank" rel="noopener">Elon／xAI 因成本「不可持續」收緊 Grok Bot 用量上限</a></h3>
+    <p class="dek">TechCrunch 報道 Elon Musk 指服務 Grok Bot 成本相對訂閱收入「不可持續地高」，因而收緊用量。用戶反映週配額突然觸頂；這與 OpenAI 合併 Chat／Codex 配額同一條經濟學：Agent 長任務比聊天更燒錢，產品開始用限額說話。</p>
+    <p class="meta"><span class="outlet">TechCrunch</span><span class="src"> · <a href="https://techcrunch.com/2026/11/02/elon-musk-throttles-grok-bot-limits-due-to-unsustainably-high-costs/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="ai-rank">
+    <h2>AI 與模型 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://arstechnica.com/ai/2026/11/claudes-new-rules-against-game-cloning-wont-stop-the-ai-copying-boom/" target="_blank" rel="noopener">Claude 新規則禁止「重製特定現有遊戲」，Ars：擋不住複製潮</a></li>
+    <li><a href="https://www.theverge.com/ai-artificial-intelligence/1024420/anthropics-updated-s-1-has-even-more-eye-popping-numbers" target="_blank" rel="noopener">Anthropic 更新 S-1：第三季營收傳約 170 億美元量級，算力承諾同步膨脹</a></li>
+    <li><a href="https://www.thenationalnews.com/business/energy/2026/11/02/adnoc-signs-agreement-with-openai-and-g42-to-deploy-frontier-ai/" target="_blank" rel="noopener">ADNOC 聯手 OpenAI 與 G42，成首家部署 Frontier 的能源企業</a></li>
+    <li><a href="https://www.theverge.com/ai-artificial-intelligence/1024254/openai-says-its-tightening-chatgpt-controls-around-violence" target="_blank" rel="noopener">OpenAI 收緊 ChatGPT 暴力相關控管，並公布社群安全報告</a></li>
+    <li><a href="https://www.theverge.com/tech/1023763/openai-google-microsoft-ai-scraping-standard-opt-out" target="_blank" rel="noopener">頭部 AI 實驗室支持共享 robots.txt 拒訓標記</a></li>
+    <li><a href="https://techcrunch.com/2026/11/02/elon-musk-throttles-grok-bot-limits-due-to-unsustainably-high-costs/" target="_blank" rel="noopener">Elon／xAI 因成本「不可持續」收緊 Grok Bot 用量上限</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="security">
+  <header class="sec-head"><div class="flag">資安</div><div><h2>資安與基礎設施</h2><p class="sec-sub">冷鏈 OT、Ivanti、間諜軟件指引 · 6則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/tech/1024300/europe-freezer-fridge-hack-cyberattack" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/11/supermarket-freezer-hack-2299514106.jpg?resize=1200,800" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/tech/1024300/europe-freezer-fridge-hack-cyberattack" target="_blank" rel="noopener">TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/tech/1024300/europe-freezer-fridge-hack-cyberattack" target="_blank" rel="noopener">歐洲超市冷凍櫃第二波攻擊：冷鏈 OT 變成貨架損失</a></h3>
+    <p class="dek">繼政治人物手機警示後，歐洲零售冷鏈成為另一爆點：聯網冷凍櫃被疑遠程改寫除霜／溫度，比利時至波羅的海多國中招，TechCrunch 亦提及愛爾蘭。攻擊不一定要竊密，弄壞庫存已足夠造成營運與品牌打擊，凸顯 EOL 商用 IoT 補丁債。</p>
+    <p class="meta"><span class="outlet">The Verge</span><span class="src"> · <a href="https://www.theverge.com/tech/1024300/europe-freezer-fridge-hack-cyberattack" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theguardian.com/business/2026/nov/01/binance-resumes-customer-withdrawals-after-record-6-3bn-hack" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/06/Chip-chips-dollar-signs-money.png?resize=1200,960" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theguardian.com/business/2026/nov/01/binance-resumes-customer-withdrawals-after-record-6-3bn-hack" target="_blank" rel="noopener">TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://www.theguardian.com/business/2026/nov/01/binance-resumes-customer-withdrawals-after-record-6-3bn-hack" target="_blank" rel="noopener">Binance 在約 63 億美元駭侵後分階段恢復提款</a></h3>
+    <p class="dek">Binance 在創紀錄約 63 億美元安全事件後，分階段重開提款，優先比特幣等主要資產；平台稱已補回大部分失竊資產並覆蓋剩餘損失。過程中出現大額淨流出，考驗儲備透明度與用戶信心，亦令交易所營運韌性再成焦點。</p>
+    <p class="meta"><span class="outlet">The Guardian</span><span class="src"> · <a href="https://www.theguardian.com/business/2026/nov/01/binance-resumes-customer-withdrawals-after-record-6-3bn-hack" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.bleepingcomputer.com/news/security/cisa-warns-admins-to-immediately-fix-ivanti-flaw-exploited-as-zero-day/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/08/ios-notification-threat-apple-hero.jpg?resize=1200,814" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.bleepingcomputer.com/news/security/cisa-warns-admins-to-immediately-fix-ivanti-flaw-exploited-as-zero-day/" target="_blank" rel="noopener">TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://www.bleepingcomputer.com/news/security/cisa-warns-admins-to-immediately-fix-ivanti-flaw-exploited-as-zero-day/" target="_blank" rel="noopener">CISA 敦促立即修補已遭利用的 Ivanti Connect Secure 漏洞</a></h3>
+    <p class="dek">CISA 要求聯邦機構盡速修補已遭在野利用的 Ivanti Connect Secure 相關 CVE，管理員被點名立即行動。VPN／遠端存取設備再成入侵跳板，與同日德國間諜通知、歐洲冷鏈攻擊並列，顯示「邊界設備」與「物聯網 OT」兩條前線同時升溫。</p>
+    <p class="meta"><span class="outlet">BleepingComputer／CISA</span><span class="src"> · <a href="https://www.bleepingcomputer.com/news/security/cisa-warns-admins-to-immediately-fix-ivanti-flaw-exploited-as-zero-day/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Informationen-und-Empfehlungen/Empfehlungen-nach-Angriffszielen/Buero/Apple_Mercenary-Spyware/apple_mercenary-spyware_node.html" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/08/ios-notification-threat-apple-hero.jpg?resize=1200,814" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Informationen-und-Empfehlungen/Empfehlungen-nach-Angriffszielen/Buero/Apple_Mercenary-Spyware/apple_mercenary-spyware_node.html" target="_blank" rel="noopener">TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Informationen-und-Empfehlungen/Empfehlungen-nach-Angriffszielen/Buero/Apple_Mercenary-Spyware/apple_mercenary-spyware_node.html" target="_blank" rel="noopener">德國 BSI 公開 Apple 傭兵間諜軟件應對指引</a></h3>
+    <p class="dek">德國聯邦資訊安全署就 Apple 裝置遭傭兵間諜軟件盯上發出專頁建議，強調威脅通知出現後應提高警戒、更新系統並評估換機。與 TechCrunch 對議員通知潮的報道互相印證：高價值目標端點防護已從「建議」升至「假設失陷」操作級。</p>
+    <p class="meta"><span class="outlet">BSI</span><span class="src"> · <a href="https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Informationen-und-Empfehlungen/Empfehlungen-nach-Angriffszielen/Buero/Apple_Mercenary-Spyware/apple_mercenary-spyware_node.html" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.bbc.com/news/articles/cq1kd1nee80eo" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/11/gettyimages-2302707314.jpg?quality=90&amp;strip=all&amp;crop=0%2C11.034963327406%2C100%2C77.930073345187&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.bbc.com/news/articles/cq1kd1nee80eo" target="_blank" rel="noopener">Getty／The Verge</a>（外部連結）</p>
+    <h3><a href="https://www.bbc.com/news/articles/cq1kd1nee80eo" target="_blank" rel="noopener">BBC：歐洲七國超市冷凍設備傳受網絡攻擊波及</a></h3>
+    <p class="dek">BBC 報道歐洲多達七國超市雪櫃／冷凍櫃受疑似網絡攻擊影響，食物面臨腐壞與下架。與 Verge／Guardian 互相參照，顯示事件已由單一零售商事故升格為區域性 OT 安全議題，攻擊動機與行為者仍未公開歸因。</p>
+    <p class="meta"><span class="outlet">BBC</span><span class="src"> · <a href="https://www.bbc.com/news/articles/cq1kd1nee80eo" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/02/ford-launches-a-privacy-promise-and-explains-how-and-why-it-uses-a-customers-data/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2025/06/apple-on-phone.jpg?resize=1200,800" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/02/ford-launches-a-privacy-promise-and-explains-how-and-why-it-uses-a-customers-data/" target="_blank" rel="noopener">TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/02/ford-launches-a-privacy-promise-and-explains-how-and-why-it-uses-a-customers-data/" target="_blank" rel="noopener">Ford 推 Privacy Promise：強調不向數據經紀人出售駕駛行為</a></h3>
+    <p class="dek">Ford 公布 Privacy Promise，說明連網車輛資料如何匿名化、彙總與用於服務／安全／產品改進，並稱不會把駕駛行為賣給數據經紀人；用戶可在車機或 App 調整分享。關閉部分分享可能影響導航與遠程功能，隱私與便利再度綁在同一開關。</p>
+    <p class="meta"><span class="outlet">TechCrunch</span><span class="src"> · <a href="https://techcrunch.com/2026/11/02/ford-launches-a-privacy-promise-and-explains-how-and-why-it-uses-a-customers-data/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="security-rank">
+    <h2>資安與基礎設施 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://www.theverge.com/tech/1024300/europe-freezer-fridge-hack-cyberattack" target="_blank" rel="noopener">歐洲超市冷凍櫃第二波攻擊：冷鏈 OT 變成貨架損失</a></li>
+    <li><a href="https://www.bleepingcomputer.com/news/security/cisa-warns-admins-to-immediately-fix-ivanti-flaw-exploited-as-zero-day/" target="_blank" rel="noopener">CISA 敦促立即修補已遭利用的 Ivanti Connect Secure 漏洞</a></li>
+    <li><a href="https://www.theguardian.com/business/2026/nov/01/binance-resumes-customer-withdrawals-after-record-6-3bn-hack" target="_blank" rel="noopener">Binance 在約 63 億美元駭侵後分階段恢復提款</a></li>
+    <li><a href="https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Informationen-und-Empfehlungen/Empfehlungen-nach-Angriffszielen/Buero/Apple_Mercenary-Spyware/apple_mercenary-spyware_node.html" target="_blank" rel="noopener">德國 BSI 公開 Apple 傭兵間諜軟件應對指引</a></li>
+    <li><a href="https://www.bbc.com/news/articles/cq1kd1nee80eo" target="_blank" rel="noopener">BBC：歐洲七國超市冷凍設備傳受網絡攻擊波及</a></li>
+    <li><a href="https://techcrunch.com/2026/11/02/ford-launches-a-privacy-promise-and-explains-how-and-why-it-uses-a-customers-data/" target="_blank" rel="noopener">Ford 推 Privacy Promise：強調不向數據經紀人出售駕駛行為</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="product">
+  <header class="sec-head"><div class="flag">產品</div><div><h2>產品發佈</h2><p class="sec-sub">iPhone Duo、記憶體庫存、Chat／Work · 6則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/02/apple-says-its-hard-to-predict-when-iphone-duo-constraints-will-improve/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/09/iPhone-duo.jpeg?resize=1200,675" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/02/apple-says-its-hard-to-predict-when-iphone-duo-constraints-will-improve/" target="_blank" rel="noopener">TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/02/apple-says-its-hard-to-predict-when-iphone-duo-constraints-will-improve/" target="_blank" rel="noopener">Apple：iPhone Duo 供應「難以預測」何時供需平衡</a></h3>
+    <p class="dek">財報電話會上，Apple 承認 iPhone Duo 需求強勁但供應受限，管理層稱「難以預測」何時能達到供需平衡，產能爬坡仍在進行。疊加記憶體成本上漲，短中期交付與渠道配貨將持續波動，黃牛與等待清單敘事料延續。</p>
+    <p class="meta"><span class="outlet">TechCrunch</span><span class="src"> · <a href="https://techcrunch.com/2026/11/02/apple-says-its-hard-to-predict-when-iphone-duo-constraints-will-improve/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/02/apples-inventory-surges-154-as-memory-chip-costs-climb/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2025/06/apple-on-phone.jpg?resize=1200,800" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/02/apples-inventory-surges-154-as-memory-chip-costs-climb/" target="_blank" rel="noopener">TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/02/apples-inventory-surges-154-as-memory-chip-costs-climb/" target="_blank" rel="noopener">Apple 庫存同比暴增 154% 至 145.4 億美元，記憶體成本壓毛利</a></h3>
+    <p class="dek">Apple 庫存按年急升約 154% 至 145.4 億美元，外界解讀為搶備記憶體等關鍵零件；公司形容記憶體成本「unprecedented」，並指引毛利率約 45–46%。製造採購義務亦大幅上修，顯示硬體巨頭正用庫存對沖供應風險。</p>
+    <p class="meta"><span class="outlet">TechCrunch</span><span class="src"> · <a href="https://techcrunch.com/2026/11/02/apples-inventory-surges-154-as-memory-chip-costs-climb/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/02/openai-is-finally-merging-chatgpts-chat-and-work-tabs/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/09/openai-getty.jpg?resize=1200,800" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/02/openai-is-finally-merging-chatgpts-chat-and-work-tabs/" target="_blank" rel="noopener">Getty／TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/02/openai-is-finally-merging-chatgpts-chat-and-work-tabs/" target="_blank" rel="noopener">OpenAI 合併 Chat／Work 分頁：從對話無縫轉入多步驟工作</a></h3>
+    <p class="dek">產品層面，合併後的 ChatGPT 試圖消弭「聊天」與「辦事」邊界，支援檔案、外掛、簡報與網頁操作等同屏流轉；Codex 桌面體驗仍相對獨立，但帳號層用量將共享。對重度 Agent 用戶，介面簡化與配額壓力會同時到來。</p>
+    <p class="meta"><span class="outlet">TechCrunch</span><span class="src"> · <a href="https://techcrunch.com/2026/11/02/openai-is-finally-merging-chatgpts-chat-and-work-tabs/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/02/web-host-squarespace-lays-off-19-of-its-employees/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2024/10/F064_Q324_Refresh_Product_BlueprintPersonalityStep_Press_1920x1080-Logo.jpg?resize=1200,675" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/02/web-host-squarespace-lays-off-19-of-its-employees/" target="_blank" rel="noopener">Squarespace／TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/02/web-host-squarespace-lays-off-19-of-its-employees/" target="_blank" rel="noopener">Squarespace 推 AI 建站工具之際大裁員，Blueprint／Forma 敘事承壓</a></h3>
+    <p class="dek">Squarespace 裁約 19% 人力（約 300 人）之際，公司仍強調 Blueprint 等 AI 輔助建站與新產品線。市場解讀為「vibe-coding」降低傳統建站門檻後，中階 SaaS 必須同時瘦身與加速產品；裁員與 AI 功能發布成為同一季的產品政治。</p>
+    <p class="meta"><span class="outlet">TechCrunch</span><span class="src"> · <a href="https://techcrunch.com/2026/11/02/web-host-squarespace-lays-off-19-of-its-employees/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://arstechnica.com/ai/2026/11/claudes-new-rules-against-game-cloning-wont-stop-the-ai-copying-boom/" target="_blank" rel="noopener"><img src="https://cdn.arstechnica.net/wp-content/uploads/2026/11/GettyImages-1180626096-1152x648.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://arstechnica.com/ai/2026/11/claudes-new-rules-against-game-cloning-wont-stop-the-ai-copying-boom/" target="_blank" rel="noopener">Getty／Ars Technica</a>（外部連結）</p>
+    <h3><a href="https://arstechnica.com/ai/2026/11/claudes-new-rules-against-game-cloning-wont-stop-the-ai-copying-boom/" target="_blank" rel="noopener">Claude Code 加系統規則：拒做特定現成遊戲的翻刻</a></h3>
+    <p class="dek">產品政策上，Anthropic 選擇用系統提示直接攔截「重製某款現有遊戲」請求，而不是只靠事後版權投訴。這是生成式工具首次把遊戲 IP 紅線寫進預設行為的高調嘗試，但也暴露提示護欄可被社會工程與跨模型轉移繞過的現實。</p>
+    <p class="meta"><span class="outlet">Ars Technica</span><span class="src"> · <a href="https://arstechnica.com/ai/2026/11/claudes-new-rules-against-game-cloning-wont-stop-the-ai-copying-boom/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/02/elon-musk-throttles-grok-bot-limits-due-to-unsustainably-high-costs/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/09/openai-getty.jpg?resize=1200,800" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/02/elon-musk-throttles-grok-bot-limits-due-to-unsustainably-high-costs/" target="_blank" rel="noopener">TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/02/elon-musk-throttles-grok-bot-limits-due-to-unsustainably-high-costs/" target="_blank" rel="noopener">Elon／xAI 收緊 Grok Bot 用量：Agent 服務成本浮上水面</a></h3>
+    <p class="dek">TechCrunch 報道因成本「不可持續地高」，Grok Bot 用量被收緊，部分用戶週配額異常觸頂。與 OpenAI 合併 Chat／Codex 配額同一週出現，對照「所有人的 Bot 都在數 token」這條共同成本現實，產品限額開始替財報說話。</p>
+    <p class="meta"><span class="outlet">TechCrunch</span><span class="src"> · <a href="https://techcrunch.com/2026/11/02/elon-musk-throttles-grok-bot-limits-due-to-unsustainably-high-costs/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="product-rank">
+    <h2>產品發佈 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://techcrunch.com/2026/11/02/apple-says-its-hard-to-predict-when-iphone-duo-constraints-will-improve/" target="_blank" rel="noopener">Apple：iPhone Duo 供應「難以預測」何時供需平衡</a></li>
+    <li><a href="https://techcrunch.com/2026/11/02/apples-inventory-surges-154-as-memory-chip-costs-climb/" target="_blank" rel="noopener">Apple 庫存同比暴增 154% 至 145.4 億美元，記憶體成本壓毛利</a></li>
+    <li><a href="https://techcrunch.com/2026/11/02/openai-is-finally-merging-chatgpts-chat-and-work-tabs/" target="_blank" rel="noopener">OpenAI 合併 Chat／Work 分頁：從對話無縫轉入多步驟工作</a></li>
+    <li><a href="https://techcrunch.com/2026/11/02/web-host-squarespace-lays-off-19-of-its-employees/" target="_blank" rel="noopener">Squarespace 推 AI 建站工具之際大裁員，Blueprint／Forma 敘事承壓</a></li>
+    <li><a href="https://arstechnica.com/ai/2026/11/claudes-new-rules-against-game-cloning-wont-stop-the-ai-copying-boom/" target="_blank" rel="noopener">Claude Code 加系統規則：拒做特定現成遊戲的翻刻</a></li>
+    <li><a href="https://techcrunch.com/2026/11/02/elon-musk-throttles-grok-bot-limits-due-to-unsustainably-high-costs/" target="_blank" rel="noopener">Elon／xAI 收緊 Grok Bot 用量：Agent 服務成本浮上水面</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="corp">
+  <header class="sec-head"><div class="flag">企業</div><div><h2>企業與產業</h2><p class="sec-sub">Brave 訴訟、裁員、AI 股情緒 · 6則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/02/new-york-times-and-other-outlets-sue-web-browser-brave-over-alleged-content-scraping/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2024/08/brave-browser.jpg?resize=1200,800" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/02/new-york-times-and-other-outlets-sue-web-browser-brave-over-alleged-content-scraping/" target="_blank" rel="noopener">TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/02/new-york-times-and-other-outlets-sue-web-browser-brave-over-alleged-content-scraping/" target="_blank" rel="noopener">《紐約時報》等控告 Brave：指其爬取付費內容並供應多家 AI 公司</a></h3>
+    <p class="dek">《紐約時報》聯同 Daily News、Tribune、Sentinel 等在紐約聯邦法院起訴 Brave，指控其爬取付費新聞、繞過 paywall，並把龐大索引能力供應 Anthropic、Perplexity、Mistral、xAI、Cohere 等。新聞業對瀏覽器／搜尋中間層的版權戰再開新線。</p>
+    <p class="meta"><span class="outlet">TechCrunch</span><span class="src"> · <a href="https://techcrunch.com/2026/11/02/new-york-times-and-other-outlets-sue-web-browser-brave-over-alleged-content-scraping/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/02/web-host-squarespace-lays-off-19-of-its-employees/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2024/10/F064_Q324_Refresh_Product_BlueprintPersonalityStep_Press_1920x1080-Logo.jpg?resize=1200,675" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/02/web-host-squarespace-lays-off-19-of-its-employees/" target="_blank" rel="noopener">Squarespace／TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/02/web-host-squarespace-lays-off-19-of-its-employees/" target="_blank" rel="noopener">Squarespace 裁員約 19%：AI 建站壓力下的組織瘦身</a></h3>
+    <p class="dek">Squarespace 裁減約一成九員工（約 300 人），產品與工程受創較大。CEO 備忘強調更小團隊與更扁平結構；外界則把裁員放在 AI「vibe-coding」衝擊傳統建站訂閱的背景下閱讀。私有化後的成本紀律與 AI 敘事同時上場。</p>
+    <p class="meta"><span class="outlet">TechCrunch</span><span class="src"> · <a href="https://techcrunch.com/2026/11/02/web-host-squarespace-lays-off-19-of-its-employees/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/02/snap-settles-lawsuit-accusing-platform-of-fueling-teen-depression-and-eating-disorders/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/09/openai-getty.jpg?resize=1200,800" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/02/snap-settles-lawsuit-accusing-platform-of-fueling-teen-depression-and-eating-disorders/" target="_blank" rel="noopener">TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/02/snap-settles-lawsuit-accusing-platform-of-fueling-teen-depression-and-eating-disorders/" target="_blank" rel="noopener">Snap 與兩名青少年和解，避開心理健康訴訟開庭</a></h3>
+    <p class="dek">Snap 與兩名青少年原告達成保密和解，原指控指 Snapchat 成癮設計導致憂鬱與飲食失調，洛杉磯審判因而避免開庭。條款未公開；公司重申安全工具與專家合作。社群平台青少年健康訴訟潮仍在，和解成為風險管理常態。</p>
+    <p class="meta"><span class="outlet">TechCrunch</span><span class="src"> · <a href="https://techcrunch.com/2026/11/02/snap-settles-lawsuit-accusing-platform-of-fueling-teen-depression-and-eating-disorders/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.cnbc.com/2026/11/02/marvell-to-buy-lumentum-in-115-billion-deal-in-ai-data-center-bet-.html" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/06/Chip-chips-dollar-signs-money.png?resize=1200,960" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.cnbc.com/2026/11/02/marvell-to-buy-lumentum-in-115-billion-deal-in-ai-data-center-bet-.html" target="_blank" rel="noopener">TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://www.cnbc.com/2026/11/02/marvell-to-buy-lumentum-in-115-billion-deal-in-ai-data-center-bet-.html" target="_blank" rel="noopener">Marvell×Lumentum：CNBC 解讀為 AI 資料中心連線大賭注</a></h3>
+    <p class="dek">CNBC 等財經媒體把這筆約 1150 億美元企業價值交易讀成對 AI 資料中心光學與連線的結構性押注，完成時間拉長至 2028 年上半年，監管變數被列為主要風險；股權、債務與換股比例亦成半導體同業估值的重要對照尺。</p>
+    <p class="meta"><span class="outlet">CNBC</span><span class="src"> · <a href="https://www.cnbc.com/2026/11/02/marvell-to-buy-lumentum-in-115-billion-deal-in-ai-data-center-bet-.html" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.zawya.com/en/press-release/adnoc-signs-landmark-partnership-agreement-with-openai-and-g42-becoming-first-energy-company-to-deploy-openai-frontier-technology-1859105" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/09/openai-getty.jpg?resize=1200,800" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.zawya.com/en/press-release/adnoc-signs-landmark-partnership-agreement-with-openai-and-g42-becoming-first-energy-company-to-deploy-openai-frontier-technology-1859105" target="_blank" rel="noopener">TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://www.zawya.com/en/press-release/adnoc-signs-landmark-partnership-agreement-with-openai-and-g42-becoming-first-energy-company-to-deploy-openai-frontier-technology-1859105" target="_blank" rel="noopener">ADNOC×OpenAI×G42：主權算力綁能源營運的新樣本</a></h3>
+    <p class="dek">官方通稿強調 ADNOC 成為能源業首個部署 OpenAI Frontier 的案例，計算落在 UAE／G42 基建，場景包括油田綜合規劃與商業決策代理人。對產業面，這是「模型授權＋本地算力＋國企工作流」打包出口的又一單，而不只是概念驗證。</p>
+    <p class="meta"><span class="outlet">Zawya／官方</span><span class="src"> · <a href="https://www.zawya.com/en/press-release/adnoc-signs-landmark-partnership-agreement-with-openai-and-g42-becoming-first-energy-company-to-deploy-openai-frontier-technology-1859105" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/02/apples-inventory-surges-154-as-memory-chip-costs-climb/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2025/06/apple-on-phone.jpg?resize=1200,800" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 C</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/02/apples-inventory-surges-154-as-memory-chip-costs-climb/" target="_blank" rel="noopener">TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/02/apples-inventory-surges-154-as-memory-chip-costs-climb/" target="_blank" rel="noopener">美國 X 趨勢出現 $AAPL、$PLTR 與選舉日敘事</a></h3>
+    <p class="dek">美國 X 趨勢榜可見 $AAPL、$PLTR 與臨近選舉日討論並存，反映硬體財報餘波、AI／數據股情緒與政治日曆相互疊加。屬流量層訊號，可當諷刺素材或風險偏好溫度計，但不能替代財報數字與監管文件等一手來源資料。</p>
+    <p class="meta"><span class="outlet">X Trends（社群）</span><span class="src"> · <a href="https://techcrunch.com/2026/11/02/apples-inventory-surges-154-as-memory-chip-costs-climb/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="corp-rank">
+    <h2>企業與產業 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://techcrunch.com/2026/11/02/new-york-times-and-other-outlets-sue-web-browser-brave-over-alleged-content-scraping/" target="_blank" rel="noopener">《紐約時報》等控告 Brave：指其爬取付費內容並供應多家 AI 公司</a></li>
+    <li><a href="https://techcrunch.com/2026/11/02/web-host-squarespace-lays-off-19-of-its-employees/" target="_blank" rel="noopener">Squarespace 裁員約 19%：AI 建站壓力下的組織瘦身</a></li>
+    <li><a href="https://techcrunch.com/2026/11/02/snap-settles-lawsuit-accusing-platform-of-fueling-teen-depression-and-eating-disorders/" target="_blank" rel="noopener">Snap 與兩名青少年和解，避開心理健康訴訟開庭</a></li>
+    <li><a href="https://www.cnbc.com/2026/11/02/marvell-to-buy-lumentum-in-115-billion-deal-in-ai-data-center-bet-.html" target="_blank" rel="noopener">Marvell×Lumentum：CNBC 解讀為 AI 資料中心連線大賭注</a></li>
+    <li><a href="https://www.zawya.com/en/press-release/adnoc-signs-landmark-partnership-agreement-with-openai-and-g42-becoming-first-energy-company-to-deploy-openai-frontier-technology-1859105" target="_blank" rel="noopener">ADNOC×OpenAI×G42：主權算力綁能源營運的新樣本</a></li>
+    <li><a href="https://techcrunch.com/2026/11/02/apples-inventory-surges-154-as-memory-chip-costs-climb/" target="_blank" rel="noopener">美國 X 趨勢出現 $AAPL、$PLTR 與選舉日敘事</a></li>
+    </ol>
+  </div>
+</section>
+  <footer class="footer">
+    <p>每日 IT 報 · 2026-11-03（二）· 香港時間 · 共 30 則精選 + 4 篇專題 · 配圖直接 hotlink 外部 https 來源，無 base64 嵌圖、無本機 assets · 每則附熱度 A/B/C · 各分類欄附熱度排行。</p>
+    <p>來源涵蓋歐美主流科技／財經／資安媒體、公司通告與社群熱度交叉；摘要約 100–150 字繁中，事實以原文為準。專題結論先行。諷刺欄屬玩笑專欄。例行每日（含週末）。</p>
+  </footer>
+</main>
+
+</body>
+</html>

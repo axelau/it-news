@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>每日 IT 報｜2026年11月4日 · Pixel Trial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --cream:#F5F5EC;
+  --paper:#FFFEF7;
+  --navy:#0A2558;
+  --navy2:#14356e;
+  --sky:#A3C1DA;
+  --sky2:#C5D9EA;
+  --sky3:#E8F1F8;
+  --ink:#0A2558;
+  --ink2:#1e3a66;
+  --muted:#5a6f8a;
+  --link:#0A2558;
+  --white:#fffef9;
+  --heat-a:#0A2558;
+  --heat-b:#3d5a80;
+  --heat-c:#7a8fa8;
+  --px:4px;
+}
+*{box-sizing:border-box}
+html{font-size:16.5px}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(163,193,218,.35) 0 2px, transparent 3px),
+    radial-gradient(circle at 88% 18%, rgba(10,37,88,.12) 0 2px, transparent 3px),
+    radial-gradient(circle at 70% 92%, rgba(163,193,218,.28) 0 2px, transparent 3px),
+    var(--cream);
+  background-size:28px 28px, 36px 36px, 24px 24px, auto;
+  color:var(--ink);
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  line-height:1.55;
+  image-rendering:auto;
+}
+a{color:var(--link); text-decoration:none; border-bottom:2px solid transparent}
+a:hover{border-bottom-color:var(--sky); background:var(--sky3)}
+
+/* pixel border helper — stepped corners via box-shadow */
+.pixel-border{
+  border:3px solid var(--navy);
+  box-shadow:
+    3px 0 0 0 var(--navy),
+    -3px 0 0 0 var(--navy),
+    0 3px 0 0 var(--navy),
+    0 -3px 0 0 var(--navy),
+    6px 6px 0 0 rgba(10,37,88,.18);
+  clip-path: polygon(
+    0 8px, 8px 8px, 8px 0,
+    calc(100% - 8px) 0, calc(100% - 8px) 8px, 100% 8px,
+    100% calc(100% - 8px), calc(100% - 8px) calc(100% - 8px), calc(100% - 8px) 100%,
+    8px 100%, 8px calc(100% - 8px), 0 calc(100% - 8px)
+  );
+}
+
+.wrap{
+  max-width:1000px; margin:1.25rem auto 2.5rem; padding:1.35rem clamp(1.75rem,7vw,3.75rem) 2.5rem;
+  background:var(--paper);
+  border:3px solid var(--navy);
+  position:relative;
+  box-shadow:
+    4px 4px 0 0 var(--navy),
+    8px 8px 0 0 var(--sky);
+}
+/* dither + decorations around wrap */
+.wrap::before,.wrap::after{
+  content:"+"; position:absolute; color:var(--sky); font-family:"Press Start 2P",monospace;
+  font-size:.55rem; line-height:1; pointer-events:none; opacity:.85;
+}
+.wrap::before{top:.55rem; left:.7rem}
+.wrap::after{bottom:.55rem; right:.7rem}
+
+/* ===== MASTHEAD ===== */
+.masthead{
+  text-align:center;
+  padding:1.6rem 1rem 1.25rem;
+  margin:0 0 1.15rem;
+  background:linear-gradient(180deg, var(--sky3) 0%, var(--paper) 70%);
+  border:3px solid var(--navy);
+  position:relative;
+  box-shadow:4px 4px 0 0 var(--navy);
+}
+.masthead::before{
+  content:"PLAY · WORK · CREATE · CONNECT";
+  position:absolute; left:.5rem; top:50%; transform:translateY(-50%) rotate(-90deg);
+  transform-origin:center; font-family:"Press Start 2P",monospace; font-size:.42rem;
+  letter-spacing:.08em; color:var(--sky); white-space:nowrap; opacity:.7;
+  display:none;
+}
+@media (min-width:860px){
+  .masthead::before{display:block}
+}
+.masthead .kicker{
+  font-family:"Press Start 2P",monospace;
+  font-size:.55rem; letter-spacing:.12em; color:var(--navy);
+  margin-bottom:.85rem;
+  display:inline-block;
+  background:var(--navy); color:#fff;
+  padding:.45rem .7rem;
+  box-shadow:3px 3px 0 0 var(--sky);
+}
+.masthead h1{
+  font-family:"Press Start 2P",monospace;
+  font-size:clamp(1.15rem, 4.2vw, 1.85rem);
+  margin:.35rem 0 .7rem; font-weight:400; letter-spacing:.06em;
+  color:var(--navy);
+  text-shadow: 3px 3px 0 var(--sky), 6px 6px 0 rgba(10,37,88,.15);
+  line-height:1.45;
+}
+.masthead .date{
+  font-family:"VT323",monospace;
+  font-size:1.35rem; color:var(--navy2); margin-top:.15rem; letter-spacing:.04em;
+}
+.masthead .tagline{
+  font-size:.8rem; color:var(--muted); margin:.55rem auto 0; max-width:46rem; line-height:1.5;
+}
+
+/* floating pluses in masthead */
+.masthead .date::before{content:"+  "; color:var(--sky); font-family:"Press Start 2P",monospace; font-size:.5rem}
+.masthead .date::after{content:"  +"; color:var(--sky); font-family:"Press Start 2P",monospace; font-size:.5rem}
+
+/* ===== TOC ===== */
+.toc{
+  display:flex; flex-wrap:wrap; gap:.45rem .55rem; justify-content:center;
+  margin:0 0 1.5rem; padding:.85rem .6rem;
+  border:3px solid var(--navy); background:var(--sky3);
+  box-shadow:3px 3px 0 0 var(--navy);
+  font-size:.82rem;
+}
+.toc a{
+  color:#fff; background:var(--navy); border:2px solid var(--navy);
+  padding:.28rem .55rem; font-weight:700; letter-spacing:.02em;
+  box-shadow:2px 2px 0 0 var(--sky);
+  border-bottom:2px solid var(--navy);
+}
+.toc a:hover{
+  background:var(--sky); color:var(--navy); border-bottom-color:var(--navy);
+}
+
+/* ===== REGIONS / SECTION HEADS ===== */
+.region{
+  margin:0 0 4.2rem; padding-bottom:2.7rem;
+  border-bottom:3px dashed var(--navy);
+}
+.region:last-of-type{border-bottom:none}
+.sec-head{display:flex; align-items:stretch; gap:.85rem; margin-bottom:.95rem}
+.flag{
+  background:var(--navy); color:#fff;
+  writing-mode:vertical-rl; text-orientation:mixed;
+  letter-spacing:.2em; font-weight:700; font-size:.88rem;
+  padding:.65rem .4rem; min-width:2.15rem;
+  display:flex; align-items:center; justify-content:center;
+  border:3px solid var(--navy);
+  box-shadow:3px 3px 0 0 var(--sky);
+  font-family:"Noto Sans TC",sans-serif;
+  position:relative;
+}
+.flag::after{
+  content:""; position:absolute; inset:-3px;
+  border:1px solid var(--sky); pointer-events:none; opacity:.6;
+}
+.sec-head h2{
+  margin:0; font-size:1.35rem; letter-spacing:.04em; line-height:1.35;
+  color:var(--navy); font-weight:700;
+}
+.sec-sub{margin:.2rem 0 0; color:var(--muted); font-size:.8rem}
+
+/* ===== FEATURE BOX ===== */
+.feature-box{
+  max-width:100%; margin:0 0 2rem; padding:0; overflow:hidden;
+  background:var(--white);
+  border:3px solid var(--navy);
+  box-shadow:4px 4px 0 0 var(--navy);
+  display:grid; grid-template-columns:minmax(220px,34%) 1fr; gap:0;
+  position:relative;
+}
+.feature-box::before{
+  content:"+"; position:absolute; top:.35rem; right:.5rem; z-index:2;
+  font-family:"Press Start 2P",monospace; font-size:.5rem; color:var(--sky); opacity:.9;
+}
+.feature-box .feature-media{
+  margin:0; background:var(--sky2); border-right:3px solid var(--navy); min-height:12rem; line-height:0;
+}
+.feature-box .feature-media a{display:block; line-height:0; height:100%; border:0}
+.feature-box .feature-media a:hover{background:transparent}
+.feature-box .feature-media img{width:100%; height:100%; min-height:12rem; object-fit:cover; display:block}
+.feature-box .feature-body{padding:1.1rem 1.2rem 1rem}
+.feature-box p{margin:0 0 .95rem; color:var(--ink2); font-size:.98rem; text-align:justify}
+.feature-box p.lead{font-size:1.05rem; color:var(--ink)}
+.feature-box p:last-child{margin-bottom:0}
+.feature-meta-row{display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; margin:0 0 .75rem}
+.drop::first-letter{
+  float:left; font-family:"Press Start 2P",monospace;
+  font-size:1.55rem; line-height:1.1; padding:.15rem .25rem 0 0;
+  font-weight:400; color:var(--navy);
+}
+
+/* satire accent */
+.feature-box.satire{
+  border-color:var(--navy);
+  background:linear-gradient(135deg, #fff9f0 0%, var(--white) 55%);
+  box-shadow:4px 4px 0 0 var(--sky), 8px 8px 0 0 var(--navy);
+}
+.feature-box.satire .sec-note{font-size:.76rem; color:var(--muted); margin:0 0 .75rem; font-style:italic}
+
+/* ===== STORY GRID ===== */
+.grid{display:grid; grid-template-columns:1fr 1fr; gap:2rem 1.15rem}
+.story{
+  padding:0; overflow:hidden;
+  background:var(--white);
+  border:3px solid var(--navy);
+  box-shadow:3px 3px 0 0 var(--sky);
+  display:flex; flex-direction:column;
+  position:relative;
+}
+.story::after{
+  content:"+"; position:absolute; bottom:.3rem; right:.4rem;
+  font-family:"Press Start 2P",monospace; font-size:.4rem; color:var(--sky); opacity:.75;
+  pointer-events:none;
+}
+.story.lead{grid-column:1 / -1; box-shadow:4px 4px 0 0 var(--navy)}
+.story.lead .story-media img{max-height:280px}
+.story-media{margin:0; background:var(--sky2); border-bottom:3px solid var(--navy); line-height:0}
+.story-media a{display:block; line-height:0; border:0}
+.story-media a:hover{background:transparent}
+.story-media img{width:100%; height:160px; object-fit:cover; display:block}
+.story.lead .story-media img{height:240px}
+.story-body{padding:.8rem .95rem .95rem; min-width:0; flex:1; display:flex; flex-direction:column}
+.story h3{margin:0 0 .35rem; font-size:1.02rem; line-height:1.35; font-weight:700; color:var(--navy)}
+.story.lead h3{font-size:1.28rem}
+.story h3 a{border:0; color:var(--navy)}
+.story h3 a:hover{background:var(--sky3); border:0}
+.story .dek{margin:0 0 .5rem; color:var(--ink2); font-size:.9rem; flex:1}
+.story.lead .dek{font-size:.98rem}
+.meta{margin:0; font-size:.72rem; color:var(--muted); font-family:"VT323",monospace; font-size:.95rem}
+.outlet{font-weight:700; color:var(--navy2); font-family:"Noto Sans TC",sans-serif; font-size:.72rem}
+.src{margin-left:.15rem}
+
+/* ===== HEAT BADGES — 90s window pop ===== */
+.heat{
+  display:inline-flex; align-items:stretch; gap:0;
+  padding:0; font-size:.68rem; font-weight:700; letter-spacing:.04em; line-height:1.2;
+  border:2px solid var(--navy);
+  background:var(--paper);
+  box-shadow:2px 2px 0 0 var(--navy);
+  overflow:hidden;
+  font-family:"Press Start 2P",monospace;
+  font-size:.48rem;
+  position:relative;
+}
+.heat::before{
+  content:"■";
+  background:var(--navy); color:#fff;
+  padding:.32rem .4rem;
+  display:inline-flex; align-items:center;
+  font-size:.42rem; letter-spacing:0;
+}
+/* put label text next to title bar */
+.heat{
+  color:var(--navy);
+  padding-right:.55rem;
+  align-items:center;
+}
+.heat::after{
+  content:"×";
+  margin-left:.35rem;
+  color:var(--navy);
+  font-size:.55rem;
+  line-height:1;
+  opacity:.7;
+}
+
+/* ===== THUMB CREDIT ===== */
+.thumb-credit{
+  margin:.1rem 0 .5rem; font-size:.65rem; color:var(--muted); line-height:1.35;
+  word-break:break-word;
+  padding:.35rem .5rem;
+  background:var(--sky3);
+  border-left:4px solid var(--sky);
+}
+.thumb-credit a{color:var(--muted); border-bottom:1px dotted var(--sky)}
+
+/* ===== RANK BOX — sky promo banner ===== */
+.rank-box{
+  margin:1.15rem 0 2rem; padding:1.1rem 1.2rem 1rem;
+  border:3px solid var(--navy);
+  background:var(--sky);
+  box-shadow:4px 4px 0 0 var(--navy);
+  position:relative;
+}
+.rank-box::before{
+  content:"LEVEL UP";
+  position:absolute; top:-.55rem; right:1rem;
+  font-family:"Press Start 2P",monospace; font-size:.42rem;
+  background:var(--navy); color:#fff; padding:.3rem .45rem;
+  box-shadow:2px 2px 0 0 var(--paper);
+}
+.rank-box h2{
+  margin:0 0 .3rem; font-size:1.15rem; letter-spacing:.04em; color:var(--navy);
+  font-family:"Press Start 2P",monospace; font-size:.72rem; line-height:1.55;
+}
+.rank-box .rank-sub{margin:0 0 .75rem; color:var(--navy2); font-size:.78rem}
+.rank-box ol{margin:0; padding-left:1.4rem; background:var(--paper); border:2px solid var(--navy); padding:.75rem 1rem .75rem 1.85rem}
+.rank-box li{margin:0 0 .45rem; font-size:.9rem; line-height:1.4; color:var(--navy)}
+.rank-box li a{font-weight:700; color:var(--navy); border-bottom:2px solid transparent}
+.rank-box li a:hover{border-bottom-color:var(--navy); background:var(--sky3)}
+
+/* ===== FOOTER ===== */
+.footer{
+  margin-top:1.4rem; padding:1rem 1rem .2rem;
+  border:3px solid var(--navy); background:var(--sky3);
+  box-shadow:3px 3px 0 0 var(--navy);
+  font-size:.76rem; color:var(--muted); line-height:1.6;
+}
+.footer p:first-child{
+  font-family:"VT323",monospace; font-size:1.05rem; color:var(--navy);
+}
+
+@media (max-width:720px){
+  .wrap{margin:.6rem auto 1.5rem; padding:1rem .85rem 1.75rem; box-shadow:3px 3px 0 0 var(--navy), 6px 6px 0 0 var(--sky); max-width:calc(100% - 1rem)}
+  .grid{grid-template-columns:1fr}
+  .flag{writing-mode:horizontal-tb; min-width:auto; padding:.35rem .7rem; letter-spacing:.15em}
+  .sec-head{flex-direction:column; gap:.4rem}
+  .drop::first-letter{font-size:1.25rem}
+  .feature-box{grid-template-columns:1fr}
+  .feature-box .feature-media{border-right:none; border-bottom:3px solid var(--navy); min-height:10rem}
+  .feature-box .feature-media img{min-height:10rem; max-height:200px}
+  .story.lead .story-media img,.story-media img{height:180px}
+  .masthead h1{font-size:1.05rem}
+  .rank-box h2{font-size:.58rem}
+  .toc a{font-size:.75rem}
+}
+@media print{
+  body{background:#fff}
+  .wrap{box-shadow:none; max-width:none}
+  a{color:inherit; text-decoration:none}
+  .region{break-inside:avoid-page}
+}
+</style>
+
+<body>
+<main class="wrap">
+  <header class="masthead">
+    <div class="kicker">GROK BOT · IT DIGEST</div>
+    <h1>每日 IT 報</h1>
+    <div class="date">二零二六年十一月四日　星期三　香港時間</div>
+    <p class="tagline">四篇專題（含諷刺欄）· 約 30 則分類精選 · 外部配圖 hotlink · 熱度 A/B/C · 今日熱度排行 · 摘要約 100–150 字 · 結論先行</p>
+  </header>
+  <nav class="toc" aria-label="章節">
+    <a href="#f1">懷疑專題</a> <a href="#f2">警戒專題</a> <a href="#f3">警戒專題</a> <a href="#f4">諷刺欄</a> <a href="#hot">熱門話題</a> <a href="#ai">AI 與模型</a> <a href="#security">資安與基礎設施</a> <a href="#product">產品發佈</a> <a href="#corp">企業與產業</a>
+  </nav>
+
+<section class="region" id="f1">
+  <header class="sec-head"><div class="flag">懷疑</div><div><h2>搜尋主權三角：20% 自述、學校拒 AI＝無 Search、出版商失血</h2><p class="sec-sub">立場：偏懷疑 · 「關閉 AI」被做成捆綁勒索；20% 是觸發搜尋的自述定義而非市佔，卻已夠改寫政治與商業敘事——答案層正在取代連結層。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://techcrunch.com/2026/11/03/google-will-let-schools-disable-its-ai-tools-but-not-without-sacrificing-search/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/06/google-logo.jpg?resize=1200,800" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/03/google-will-let-schools-disable-its-ai-tools-but-not-without-sacrificing-search/" target="_blank" rel="noopener">Beata Zawrzel/NurPhoto／Getty／TechCrunch</a>（外部連結）</p>
+<p class="lead drop">結論先講清楚：所謂「關閉 AI 的選擇權」，在 Google 教育帳號裡已被做成捆綁銷售——拒用 Gemini／NotebookLM／Classroom AI，連 Search 一併失去。OpenAI 同日自報 ChatGPT「觸發網頁搜尋」的查詢量約等於 Google 的兩成；紐時等則告 Brave 繞過付費牆並向多家 AI 廠供應內容，Reddit 則因 AI Overview 抽走轉介而向站內搜尋塞廣告。三條線不是三則花邊，而是同一條「搜尋主權」爭奪戰的三個角：平台用產品定義選擇權、挑戰者用自述數字改寫政治敘事、出版商與社群則在答案層興起後失血。</p>
+<p>支撐這句話的，是三組可核對事實。其一，TechCrunch／Verge／Ars 均報道 Google 明年起對 K-12 學生帳號預設關閉 AI 與 Search，管理員須主動開啟；跨黨派政治人物直接以「勒索」定性，因為教育現場最常用的搜尋已被寫進 AI 產品邊界。其二，OpenAI 消費產品負責人 Adam Fry 稱 ChatGPT 觸發網頁搜尋的量約為 Google 的 20%，週活亦在約六十日內由十億升至十二億——數字是公司自述，基線來源未公開，定義也不是傳統搜尋市佔；但它對照 Bing 長年約 3% 的敘事，傳播殺傷力遠大於方法論謙虛。其三，Ars 報道紐時等要求 Brave 關閉付費牆繞過並終止與 Anthropic／Perplexity／Mistral／xAI／Cohere 等交易；TechCrunch 則指 Reddit 美國日活用戶跌至約 5070 萬、Q4 指引低於預期，同時測試搜尋廣告並推 logged-in 防刮取。</p>
+<p>用對比看更清楚：一邊是「你仍可關閉 AI」的公關句式，一邊是關閉後連基礎搜尋都沒有的產品現實；一邊是挑戰者把自述百分比送進頭條，一邊是出版商與論壇在轉介歸零後改打站內廣告與登入牆。層遞之下，連結層的商業合約（廣告、轉介、訂閱）正被答案層的「一次給完」擠壓；教育系統被要求在「要 AI」與「要搜尋」之間二選一，等於承認 Search 已不是中立基礎設施。懷疑的對象不是「AI 會不會變強」，而是「選擇權」是否仍存在——當關閉開關同時切斷核心服務，選擇權就只是捆綁勒索的包裝紙。</p>
+<p>之後兩周只盯兩類訊號：州級／國會有沒有針對教育套件捆綁開調查或立法；獨立測量（Similarweb、廣告主面板、學校 IT 採購標案）能否把「20%」從自述變成可覆核曲線。採購與政策團隊應把「搜尋是否可拆出 AI」寫進合約附件——誰還能提供可關閉、可審計的搜尋，誰才有資格談教育與公共採購。答案層可以繼續長，但公共部門不該再被逼用「全有或全無」交換基本資訊權。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="f2">
+  <header class="sec-head"><div class="flag">警戒</div><div><h2>電力政治：噴射引擎發電、Meta 發債燒算力、選票決定許可</h2><p class="sec-sub">立場：偏警戒 · AI 瓶頸已從「再買 GPU」換成電、債與選票；電網排隊以年計時，過渡電力更髒更貴，地方反彈會決定未來兩年許可。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://techcrunch.com/2026/11/03/data-centers-are-turning-to-old-jet-engines-as-the-wait-for-power-grows/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/09/Commercial-plane-clouds.jpg?w=719" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/03/data-centers-are-turning-to-old-jet-engines-as-the-wait-for-power-grows/" target="_blank" rel="noopener">Michal Krakowiak／Getty／TechCrunch</a>（外部連結）</p>
+<p class="lead drop">今日警戒不來自某一張新加速卡發表會，而來自三條同日咬住的因果鏈：資料中心因電網排隊長達多年，改裝退役航機引擎當過渡發電；Meta 自由現金流轉負，仍以跨境債券撐千億級 AI 資本開支；美國中期選舉把電費、用水與「就業幻影」寫進地方選票。AI 敘事若還停在「再買幾張 GPU」，已經看錯戰場——瓶頸在電、定價在債、許可在選票。</p>
+<p>事實層很硬。TechCrunch 援引報道指 xAI 在密西西比已裝約八台改裝燃氣渦輪（源自航機引擎邏輯），OpenAI／Crusoe 亦走類似路線，約二十四個月可上電，代價是效率較低、排放較高。CNBC／Bloomberg 線指 Meta 美元債券最終約一百五十億、五檔成交，市場曾傳目標可上看約二百至二百五十億；S&amp;P 展望轉負，2026 年資本開支指引約一千三百五十至一千四百五十億美元，上季自由現金流已轉負。Vergecast 則把資料中心反彈放進 2026 中期選舉主線：緬因、德州、佛羅里達等地爭論電價與用水，跨黨派都可能收緊許可與補貼。社群層同日 Data Center 登上美國 X 趨勢，與 AMD 資料中心業績熱度並存——市場歡呼算力營收時，地方已在數電費。</p>
+<p>因果很直：算力需求把負載曲線推到電網無法按年交付 → 業者用更髒更貴的過渡電力換時間 → 地方居民用選票回擊電費與環境外部成本 → 債券市場開始替「燒錢換算力」重新定價。過渡方案不是「綠電空窗期的浪漫」，而是把排放與燃料成本前移，好讓訓練集群先開機。盯模型發布會的人會錯過這條鏈；盯債券利差、評級展望與州議會附件的人，才看得到未來兩年哪裡還能建得成。</p>
+<p>之後只收三類可驗證位：新資料中心併網排隊月數有沒有縮短；Meta 與同業債券次級利差與評級動作；中期選舉後州級許可／水電附加條件清單。基建與風險團隊應把「過渡發電碳強度＋地方否決權」寫進與 GPU 交期同一張表——沒電、沒債、沒選票，模型再強也只是簡報上的峰值 FLOPS。未來兩年 AI 地圖，會比較像電力與選票地圖，而不是參數量排行榜。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="f3">
+  <header class="sec-head"><div class="flag">警戒</div><div><h2>Agent／供應鏈信任雙面刃：CrowdStrike 真金鎖定，對上認證 TV 與 Postman 預設失守</h2><p class="sec-sub">立場：偏警戒 · 一邊用近五億美元買「可觀測／上線前測試」，一邊認證裝置與開發者工具預設被繞過——假設供應鏈不可信，OEM 認證≠安全。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://arstechnica.com/google/2026/11/google-dismantles-botnet-secretly-running-on-1-3-million-android-tv-boxes/" target="_blank" rel="noopener"><img src="https://cdn.arstechnica.net/wp-content/uploads/2026/11/mecool-malware.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://arstechnica.com/google/2026/11/google-dismantles-botnet-secretly-running-on-1-3-million-android-tv-boxes/" target="_blank" rel="noopener">Google／Ars Technica</a>（外部連結）</p>
+<p class="lead drop">同一日兩種「信任」撞車：CrowdStrike 斥資近五億美元收購 Fiddler AI 與 Dreadnode，把 agent 可觀測性與上線前對抗測試收進 Falcon 產品線；Google 則聯同日警等搗破逾一百三十萬台「已認證」Android TV 組成的 x.cpe 殭屍網，而開發者社群同期炸鍋——Postman 被指靜默自動安裝 AI agent 插件並試圖信任自身 hook。一邊是平台用真金預購「殺傷開關」市場，一邊是認證徽章與預設安裝路徑同時失守。操作結論只有一句：假設供應鏈預設不可信；OEM 認證≠安全。</p>
+<p>對比很刺眼。TechCrunch 報道 CrowdStrike 約四億拿下 Fiddler（觀測→Falcon Observe）、約九千五百萬拿下 Dreadnode（測試→Falcon Guardian），押注企業大規模部署 agent 後必須有監控與緊急停機。Ars 則寫明出事裝置多為 MECOOL／Videostrong 等經 Google 認證的 Android TV，系統級 stub 繞過認證流程，被用作住宅代理與廣告欺詐；Google 切斷合作並禁止其後續認證，但裝置端殘留固件難清。HN／New Stack 線上，Postman Desktop 開啟後自動裝 Codex／Claude Code 類插件的指控標成 SEVERE，分數衝上數百——這與近日開發工具供應鏈餘波同一光譜：你信任的「生產力預設」，可能就是攻擊面預設。GitHub 同周宣布公開庫將預設封鎖高風險的 pull_request_target，也是同一條「預設不可信」哲學的硬編碼。</p>
+<p>這不是「大廠變好、山寨變壞」的童話。認證本應是信任錨，卻在 TV 盒上被系統層後門掏空；資安巨頭用併購把 agent 治理產品化，恰恰證明企業端已不相信「模型自己會乖乖」。開發者工具靜默改配置，則把信任危機從物聯網拉回筆電——你以為在管 API，工具可能已在管你。產業一面為 agent 買保險，一面繼續讓默認開關替攻擊者開門；雙面刃就係呢度——錢流向「可觀測」，漏洞留在「預設信任」。</p>
+<p>之後七十二小時可驗證動作：Android TV／機頂盒機隊有無強制映像重刷與網路隔離；Postman／同類 IDE 插件預設是否改為顯式 opt-in；採購合約有無要求 agent 可觀測與緊急停機 API。資安負責人應把「認證過的 IoT」與「預設開啟的 AI 插件」同一級對待——先當 compromised，再談功能。誰還把徽章當防護，誰就還停在上一個十年的信任模型——認證可以是行銷，不能再是安檢通行證。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="f4">
+  <header class="sec-head"><div class="flag">諷刺</div><div><h2>關閉 AI 連 Search 都冇、ChatGPT 話自己係 Google 兩成、機房裝飛機引擎</h2><p class="sec-sub">連登風諷刺欄 · 搞笑針對當日熱門造題 · 唔係投資建議</p></div></header>
+  <div class="feature-box satire">
+  <div class="feature-media">
+    <a href="https://www.theverge.com/ai-artificial-intelligence/1025482/openai-says-chatgpt-is-catching-up-to-google-in-search" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/08/STK155_OPEN_AI_CVirginia_C-1.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 C</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/ai-artificial-intelligence/1025482/openai-says-chatgpt-is-catching-up-to-google-in-search" target="_blank" rel="noopener">The Verge</a>（外部連結）</p>
+<p class="sec-note">本欄語氣學連登仔嘲諷熱門話題，屬玩笑專欄，事實仍以各則新聞原文為準。</p>
+<p class="lead drop">各位尊貴嘅 K-12 管理員同埋 Pro 用戶，恭喜你哋見證「選擇權」升級版：想關閉 AI？可以，Search 一齊帶走。好似餐廳話你可以唔食配菜，但主食刀叉枱椅燈都收走——你仲坐喺度？坐喺黑暗入面諗人生。Google 學校套餐教識全世界：按鈕叫「選擇」，功能叫「捆綁」，公關叫「深度整合」。家長會下次討論題目應該係：究竟係關閉 AI，定係關閉童年搜尋作業嘅最後一條生路。</p>
+<p>另一邊 OpenAI 出嚟報數：ChatGPT 觸發網頁搜尋嘅量大約係 Google 兩成。定義要唔係市佔、要唔係廣告份額，係「觸發」——好似量體重唔踩磅，改為望鏡自報「我感覺輕咗兩成」。傳播效果就係真兩成：議員緊張、廣告主緊張、出版商已經喺度告瀏覽器同中間商。紐時告 Brave、Reddit 睇住轉介流量跌就係塞搜尋廣告，內容平台由「歡迎爬」變成「login 先睇」——互聯網由連結經濟轉型做答案勒索，中間嗰層食到飽、兩頭見骨。你問 AI 今日天氣，出版商問邊個付明日稿費。</p>
+<p>基建線更科幻：電網排隊排到下任市長都未上任，資料中心就將就改裝噴射引擎發電。飛機唔飛改做機房發電機，碳排同電費一齊起飛；Meta 自由現金流轉負都要發債燒 AI CapEx，評級展望轉負都阻擋唔到「借錢買未來 FLOPS」。中期選舉選票開始問：邊個批准呢座吸水吸電巨獸？你盯模型發布會，鄰居盯電費單，債券交易員盯利差——三人見面只會一齊講「電」；模型參數係配菜，變電箱同選票先係主菜。</p>
+<p>最 internethorror 係信任徽章集體破功：Google 認證 Android TV 變 130 萬殭屍網，Postman 被指靜默裝 AI plugin，CrowdStrike 就用真金近五億預購「agent 可觀測／殺傷開關」。一邊買保險，一邊發現認證同預設安裝都當唔到真。Fal 估值翻倍到 160 億，稿件順便承認毛利薄——推理層好熱鬧，帳本好消瘦。總結今日文明：識捆綁 Search、識自報兩成、識裝飛機引擎、識借錢燒電、識 assume compromised；就係唔識俾一個真正關得掂又唔切斷基本服務嘅開關。出門記得帶電費單、學校管理員密碼，同埋一張「我選擇關閉」但什麼都關閉不了的心情。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="hot">
+  <header class="sec-head"><div class="flag">熱門</div><div><h2>熱門話題</h2><p class="sec-sub">搜尋捆綁、20% 自述、噴射引擎發電與 Meta 債 · 6則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/03/google-will-let-schools-disable-its-ai-tools-but-not-without-sacrificing-search/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/06/google-logo.jpg?resize=1200,800" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/03/google-will-let-schools-disable-its-ai-tools-but-not-without-sacrificing-search/" target="_blank" rel="noopener">Beata Zawrzel/NurPhoto／Getty／TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/03/google-will-let-schools-disable-its-ai-tools-but-not-without-sacrificing-search/" target="_blank" rel="noopener">Google 學校可關 AI，但連 Search 一併失去</a></h3>
+    <p class="dek">Google 宣佈明年起 K-12 學生帳號預設關閉 Gemini、NotebookLM、Classroom AI 與 Search，除非管理員主動開啟；因 Search 已與 AI 深度整合，拒用 AI 等於失去 Google 搜尋。跨黨派政治人物批為「勒索」，教育採購與反壟斷敘事同步升溫。</p>
+    <p class="meta"><span class="outlet">TechCrunch</span><span class="src"> · <a href="https://techcrunch.com/2026/11/03/google-will-let-schools-disable-its-ai-tools-but-not-without-sacrificing-search/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/ai-artificial-intelligence/1025482/openai-says-chatgpt-is-catching-up-to-google-in-search" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/08/STK155_OPEN_AI_CVirginia_C-1.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/ai-artificial-intelligence/1025482/openai-says-chatgpt-is-catching-up-to-google-in-search" target="_blank" rel="noopener">The Verge</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/ai-artificial-intelligence/1025482/openai-says-chatgpt-is-catching-up-to-google-in-search" target="_blank" rel="noopener">OpenAI：ChatGPT 觸發網頁搜尋量自稱約達 Google 兩成</a></h3>
+    <p class="dek">OpenAI 消費產品負責人 Adam Fry 稱 ChatGPT 觸發網頁搜尋的查詢量約等於 Google 的 20%；週活在約 60 日內由 10 億升至 12 億。數字為公司自述、定義非傳統市佔，未披露 Google 基線來源，但對廣告與監管敘事殺傷力極大。</p>
+    <p class="meta"><span class="outlet">The Verge</span><span class="src"> · <a href="https://www.theverge.com/ai-artificial-intelligence/1025482/openai-says-chatgpt-is-catching-up-to-google-in-search" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/03/data-centers-are-turning-to-old-jet-engines-as-the-wait-for-power-grows/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/09/Commercial-plane-clouds.jpg?w=719" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/03/data-centers-are-turning-to-old-jet-engines-as-the-wait-for-power-grows/" target="_blank" rel="noopener">Michal Krakowiak／Getty／TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/03/data-centers-are-turning-to-old-jet-engines-as-the-wait-for-power-grows/" target="_blank" rel="noopener">電網排隊以年計，資料中心改裝噴射引擎過渡發電</a></h3>
+    <p class="dek">AI 資料中心因併網排隊長達多年，改用退役航機引擎改裝燃氣發電機，約 24 個月可上電。xAI 密西西比已裝約 8 台，OpenAI／Crusoe 亦走燃氣渦輪路線；效率較低、污染較高，凸顯電力已成比 GPU 更硬的瓶頸。</p>
+    <p class="meta"><span class="outlet">TechCrunch</span><span class="src"> · <a href="https://techcrunch.com/2026/11/03/data-centers-are-turning-to-old-jet-engines-as-the-wait-for-power-grows/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.cnbc.com/2026/11/03/meta-bond-sale-ai-funding.html" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2021/10/facebook-meta-getty.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.cnbc.com/2026/11/03/meta-bond-sale-ai-funding.html" target="_blank" rel="noopener">Getty／TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://www.cnbc.com/2026/11/03/meta-bond-sale-ai-funding.html" target="_blank" rel="noopener">Meta 發債撐 AI CapEx，自由現金流轉負、評級展望轉淡</a></h3>
+    <p class="dek">Meta 為 AI 基建發行跨境債券，美元部分最終約 150 億美元五檔成交；市場曾傳目標可上看約 200–250 億。S&amp;P 展望轉負，2026 資本開支指引約 1350–1450 億，上季自由現金流已轉負，Big Tech 用債券金融化算力競賽。</p>
+    <p class="meta"><span class="outlet">CNBC／Bloomberg</span><span class="src"> · <a href="https://www.cnbc.com/2026/11/03/meta-bond-sale-ai-funding.html" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/03/crowdstrike-to-shell-out-nearly-500m-for-2-ai-security-startups-as-the-market-for-securing-agents-takes-off/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/11/GettyImages-2281430305.jpg?w=1024" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/03/crowdstrike-to-shell-out-nearly-500m-for-2-ai-security-startups-as-the-market-for-securing-agents-takes-off/" target="_blank" rel="noopener">Stanislav Kogiku/SOPA／LightRocket／Getty／TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/03/crowdstrike-to-shell-out-nearly-500m-for-2-ai-security-startups-as-the-market-for-securing-agents-takes-off/" target="_blank" rel="noopener">CrowdStrike 斥約 5 億美元收購 Fiddler 與 Dreadnode</a></h3>
+    <p class="dek">CrowdStrike 收購 Fiddler AI（約 4 億，agent 可觀測性→Falcon Observe）與 Dreadnode（約 9500 萬，AI 安全測試→Falcon Guardian），押注企業大規模部署 AI agent 後的監控、測試與殺傷開關市場，資安巨頭正式產品化「管 agent」。</p>
+    <p class="meta"><span class="outlet">TechCrunch</span><span class="src"> · <a href="https://techcrunch.com/2026/11/03/crowdstrike-to-shell-out-nearly-500m-for-2-ai-security-startups-as-the-market-for-securing-agents-takes-off/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/podcast/1025878/data-centers-election-2026-vergecast" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2024/10/the_verge_social_share.png" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/podcast/1025878/data-centers-election-2026-vergecast" target="_blank" rel="noopener">The Verge</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/podcast/1025878/data-centers-election-2026-vergecast" target="_blank" rel="noopener">美國中期選舉：資料中心變電費與用水選票議題</a></h3>
+    <p class="dek">2026 美國中期選舉日，資料中心成為多州選戰核心（電費、用水、就業承諾與科技金援）。Vergecast 指跨黨派反彈可能改寫 AI 基建政治容許空間；疊加噴射引擎過渡發電與超大規模發債，地方許可與補貼未來兩年變數明顯上升。</p>
+    <p class="meta"><span class="outlet">The Verge</span><span class="src"> · <a href="https://www.theverge.com/podcast/1025878/data-centers-election-2026-vergecast" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="hot-rank">
+    <h2>熱門話題 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://techcrunch.com/2026/11/03/google-will-let-schools-disable-its-ai-tools-but-not-without-sacrificing-search/" target="_blank" rel="noopener">Google 學校可關 AI，但連 Search 一併失去</a></li>
+    <li><a href="https://www.theverge.com/ai-artificial-intelligence/1025482/openai-says-chatgpt-is-catching-up-to-google-in-search" target="_blank" rel="noopener">OpenAI：ChatGPT 觸發網頁搜尋量自稱約達 Google 兩成</a></li>
+    <li><a href="https://techcrunch.com/2026/11/03/data-centers-are-turning-to-old-jet-engines-as-the-wait-for-power-grows/" target="_blank" rel="noopener">電網排隊以年計，資料中心改裝噴射引擎過渡發電</a></li>
+    <li><a href="https://www.cnbc.com/2026/11/03/meta-bond-sale-ai-funding.html" target="_blank" rel="noopener">Meta 發債撐 AI CapEx，自由現金流轉負、評級展望轉淡</a></li>
+    <li><a href="https://techcrunch.com/2026/11/03/crowdstrike-to-shell-out-nearly-500m-for-2-ai-security-startups-as-the-market-for-securing-agents-takes-off/" target="_blank" rel="noopener">CrowdStrike 斥約 5 億美元收購 Fiddler 與 Dreadnode</a></li>
+    <li><a href="https://www.theverge.com/podcast/1025878/data-centers-election-2026-vergecast" target="_blank" rel="noopener">美國中期選舉：資料中心變電費與用水選票議題</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="ai">
+  <header class="sec-head"><div class="flag">AI</div><div><h2>AI 與模型</h2><p class="sec-sub">Fal 估值、Astra 硬體、權重編程與 FlashProve · 6則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/03/ai-inference-startup-fal-doubles-its-valuation-to-16b-as-demand-surges/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2022/12/GettyImages-1268605503.jpg?resize=1200,420" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/03/ai-inference-startup-fal-doubles-its-valuation-to-16b-as-demand-surges/" target="_blank" rel="noopener">monsitj／Getty／TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/03/ai-inference-startup-fal-doubles-its-valuation-to-16b-as-demand-surges/" target="_blank" rel="noopener">推理新貴 Fal Series F 估值翻倍至 160 億美元</a></h3>
+    <p class="dek">影音／圖像／音訊推理平台 Fal 完成約 13 億美元 Series F，估值由四月約 80 億翻至 160 億；Bessemer 領投，Nvidia、Sound Ventures、T. Rowe 參與。年化收入已逾 8 億，但業界仍坦言推理毛利偏薄，錢湧向「賣得出 token」層。</p>
+    <p class="meta"><span class="outlet">TechCrunch</span><span class="src"> · <a href="https://techcrunch.com/2026/11/03/ai-inference-startup-fal-doubles-its-valuation-to-16b-as-demand-surges/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://openai.com/index/accelerating-engineering-for-the-physical-world" target="_blank" rel="noopener"><img src="https://images.ctfassets.net/kftzwdyauwt9/3NAeFNOstkEE0aSxayt8NT/cedb470d8c0bcd7e6a2ca828c1db136c/accelerating-engineering-physical-world-social.png?w=1600&amp;h=900&amp;fit=fill" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://openai.com/index/accelerating-engineering-for-the-physical-world" target="_blank" rel="noopener">OpenAI</a>（外部連結）</p>
+    <h3><a href="https://openai.com/index/accelerating-engineering-for-the-physical-world" target="_blank" rel="noopener">OpenAI：Astra 一週內設計實體對話裝置外殼與 PCB</a></h3>
+    <p class="dek">OpenAI 展示 GPT-6 Astra／Codex 協助機械、電子與韌體端到端設計：兩名員工約一週完成對話裝置外殼、PCB 與 UI，代工廠約一個月出小批量樣機。量產仍需人工修公差；硬體團隊 token 用量自二月起增約 23 倍。</p>
+    <p class="meta"><span class="outlet">OpenAI Blog</span><span class="src"> · <a href="https://openai.com/index/accelerating-engineering-for-the-physical-world" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://venturebeat.com/technology/like-gene-editing-for-neural-networks-mit-researchers-used-gpt-6-astra-to-edit-qwens-open-weights-directly-boosting-math-performance" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/11/Recursive-Neural-Spiral-in-Circuitry.png?resize=1200,600" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://venturebeat.com/technology/like-gene-editing-for-neural-networks-mit-researchers-used-gpt-6-astra-to-edit-qwens-open-weights-directly-boosting-math-performance" target="_blank" rel="noopener">TechCrunch（權重／神經網示意）</a>（外部連結）</p>
+    <h3><a href="https://venturebeat.com/technology/like-gene-editing-for-neural-networks-mit-researchers-used-gpt-6-astra-to-edit-qwens-open-weights-directly-boosting-math-performance" target="_blank" rel="noopener">Weight-Space Programming：Astra 直接改 Qwen 權重推高數學分</a></h3>
+    <p class="dek">MIT CSAIL 顯示 LLM 可直接讀寫另一模型權重：Astra 改動 Qwen3.5-0.8B 約 0.016% 權重，MATH-500 由 7.9% 升至 48.1%。作者強調屬極早期結果，對少循環或缺能力模型幫助有限，但「模型改模型」敘事已出實驗室。</p>
+    <p class="meta"><span class="outlet">VentureBeat／Register</span><span class="src"> · <a href="https://venturebeat.com/technology/like-gene-editing-for-neural-networks-mit-researchers-used-gpt-6-astra-to-edit-qwens-open-weights-directly-boosting-math-performance" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/03/anthropic-is-working-on-a-system-to-prove-ai-models-identity/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/09/GettyImages-2294192768.jpg?resize=1200,798" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/03/anthropic-is-working-on-a-system-to-prove-ai-models-identity/" target="_blank" rel="noopener">Samuel Boivin/NurPhoto／Getty／TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/03/anthropic-is-working-on-a-system-to-prove-ai-models-identity/" target="_blank" rel="noopener">Anthropic 開源 FlashProve：密碼學證明模型身分</a></h3>
+    <p class="dek">Anthropic 公開 FlashProve 規格與程式碼，以「可證明推理」密碼學指紋驗證輸出是否來自特定模型，防實驗室偷換便宜模型或虛報成績，且指紋不洩露權重。暫無產品部署時間表，對企業採購「你用邊個模型」有長期意義。</p>
+    <p class="meta"><span class="outlet">TechCrunch</span><span class="src"> · <a href="https://techcrunch.com/2026/11/03/anthropic-is-working-on-a-system-to-prove-ai-models-identity/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/03/anthropic-is-still-grappling-with-the-economics-of-compute/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/09/GettyImages-2294935494.jpg?resize=1200,800" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/03/anthropic-is-still-grappling-with-the-economics-of-compute/" target="_blank" rel="noopener">TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/03/anthropic-is-still-grappling-with-the-economics-of-compute/" target="_blank" rel="noopener">【續報】Anthropic 算力佔營收比升至約 58%，單位經濟仍緊</a></h3>
+    <p class="dek">延續招股文件披露軸，TechCrunch 指 Anthropic 第三季算力成本佔營收比升至約 58%，短期算力採購推高成本；公司預期基建開支仍是最大營運支出。成長曲線吸睛同時，「會賺」與「會燒」必須同頁閱讀。</p>
+    <p class="meta"><span class="outlet">TechCrunch</span><span class="src"> · <a href="https://techcrunch.com/2026/11/03/anthropic-is-still-grappling-with-the-economics-of-compute/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/03/hiding-inside-palantirs-skyrocketing-quarter-is-a-foreboding-signal/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/11/Palantir-Alex-Karp.png?resize=1200,688" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/03/hiding-inside-palantirs-skyrocketing-quarter-is-a-foreboding-signal/" target="_blank" rel="noopener">Palantir／TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/03/hiding-inside-palantirs-skyrocketing-quarter-is-a-foreboding-signal/" target="_blank" rel="noopener">Palantir 營收暴衝，美國商業 bookings 卻降溫</a></h3>
+    <p class="dek">Palantir 第三季營收約 23.1 億美元（年增 96%），美國商業首超政府；但美國企業合約總值約 14.6 億，低於上季紀錄約 21.3 億。Karp 指客戶改簽短試用再擴張——企業 AI 採購「快上快下」質素警訊浮現。</p>
+    <p class="meta"><span class="outlet">TechCrunch</span><span class="src"> · <a href="https://techcrunch.com/2026/11/03/hiding-inside-palantirs-skyrocketing-quarter-is-a-foreboding-signal/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="ai-rank">
+    <h2>AI 與模型 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://techcrunch.com/2026/11/03/ai-inference-startup-fal-doubles-its-valuation-to-16b-as-demand-surges/" target="_blank" rel="noopener">推理新貴 Fal Series F 估值翻倍至 160 億美元</a></li>
+    <li><a href="https://openai.com/index/accelerating-engineering-for-the-physical-world" target="_blank" rel="noopener">OpenAI：Astra 一週內設計實體對話裝置外殼與 PCB</a></li>
+    <li><a href="https://venturebeat.com/technology/like-gene-editing-for-neural-networks-mit-researchers-used-gpt-6-astra-to-edit-qwens-open-weights-directly-boosting-math-performance" target="_blank" rel="noopener">Weight-Space Programming：Astra 直接改 Qwen 權重推高數學分</a></li>
+    <li><a href="https://techcrunch.com/2026/11/03/anthropic-is-working-on-a-system-to-prove-ai-models-identity/" target="_blank" rel="noopener">Anthropic 開源 FlashProve：密碼學證明模型身分</a></li>
+    <li><a href="https://techcrunch.com/2026/11/03/anthropic-is-still-grappling-with-the-economics-of-compute/" target="_blank" rel="noopener">【續報】Anthropic 算力佔營收比升至約 58%，單位經濟仍緊</a></li>
+    <li><a href="https://techcrunch.com/2026/11/03/hiding-inside-palantirs-skyrocketing-quarter-is-a-foreboding-signal/" target="_blank" rel="noopener">Palantir 營收暴衝，美國商業 bookings 卻降溫</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="security">
+  <header class="sec-head"><div class="flag">資安</div><div><h2>資安與基礎設施</h2><p class="sec-sub">認證 TV 殭屍網、Binance、Postman 與 GitHub 預設 · 6則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://arstechnica.com/google/2026/11/google-dismantles-botnet-secretly-running-on-1-3-million-android-tv-boxes/" target="_blank" rel="noopener"><img src="https://cdn.arstechnica.net/wp-content/uploads/2026/11/mecool-malware.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://arstechnica.com/google/2026/11/google-dismantles-botnet-secretly-running-on-1-3-million-android-tv-boxes/" target="_blank" rel="noopener">Google／Ars Technica</a>（外部連結）</p>
+    <h3><a href="https://arstechnica.com/google/2026/11/google-dismantles-botnet-secretly-running-on-1-3-million-android-tv-boxes/" target="_blank" rel="noopener">Google 搗破逾 130 萬台認證 Android TV 殭屍網絡</a></h3>
+    <p class="dek">Google Threat Intelligence 聯同日警、Synthient、Trend Micro 搗破 x.cpe 殭屍網；逾 130 萬台經認證 Android TV（多為 MECOOL／Videostrong）被植入系統級後門做住宅代理與廣告欺詐。Google 切斷合作並禁其認證，裝置殘留難清。</p>
+    <p class="meta"><span class="outlet">Ars Technica</span><span class="src"> · <a href="https://arstechnica.com/google/2026/11/google-dismantles-botnet-secretly-running-on-1-3-million-android-tv-boxes/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.wired.com/story/binance-says-hackers-used-well-known-tricks-to-carry-out-a-dollar634-billion-heist/" target="_blank" rel="noopener"><img src="https://media.wired.com/photos/6aea142af41713bdfbadc480/191:100/w_1280,c_limit/Security_Suspected%20North%20Korean%20Hackers%20Stole%20$6.3%20Billion%20From%20Binance%20Using%20the%20Oldest%20Tricks%20in%20the%20Book_v1.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.wired.com/story/binance-says-hackers-used-well-known-tricks-to-carry-out-a-dollar634-billion-heist/" target="_blank" rel="noopener">WIRED</a>（外部連結）</p>
+    <h3><a href="https://www.wired.com/story/binance-says-hackers-used-well-known-tricks-to-carry-out-a-dollar634-billion-heist/" target="_blank" rel="noopener">Binance 63 億美元盜竊細節：假面試＋竄改內部工具</a></h3>
+    <p class="dek">Binance 指約 63.4 億美元盜竊由假招聘惡意 repo 切入工程師筆電，再橫向濫用內部錢包簽署服務，約 20 分鐘完成；手法屬已知社工／供應鏈套路。TechCrunch 另指業界多年已發同類北韓戰術預警，內部 AI 工具鏈亦受波及。</p>
+    <p class="meta"><span class="outlet">WIRED</span><span class="src"> · <a href="https://www.wired.com/story/binance-says-hackers-used-well-known-tricks-to-carry-out-a-dollar634-billion-heist/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://news.ycombinator.com/item?id=50354960" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2023/03/GettyImages-1354786584.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://news.ycombinator.com/item?id=50354960" target="_blank" rel="noopener">Getty／stock（開發工具示意）</a>（外部連結）</p>
+    <h3><a href="https://news.ycombinator.com/item?id=50354960" target="_blank" rel="noopener">Postman 被指靜默自動安裝 AI agent 插件</a></h3>
+    <p class="dek">用戶報告 Postman Desktop 開啟後自動安裝 Codex／Claude Code 類插件，並嘗試信任自身 startup hook／MCP，引發開發者信任危機；HN 熱議、官方 issue 標 SEVERE。開發工具預設行為再成供應鏈風險，呼應近期 IDE／市集餘波。</p>
+    <p class="meta"><span class="outlet">Hacker News／The New Stack</span><span class="src"> · <a href="https://news.ycombinator.com/item?id=50354960" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://github.blog/changelog/2026-11-02-pull_request_target-blocked-by-default-december-2/" target="_blank" rel="noopener"><img src="https://github.blog/wp-content/uploads/2026/11/682988073-439dd4ff-beed-4b9b-b767-acf8c41542d9.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://github.blog/changelog/2026-11-02-pull_request_target-blocked-by-default-december-2/" target="_blank" rel="noopener">GitHub</a>（外部連結）</p>
+    <h3><a href="https://github.blog/changelog/2026-11-02-pull_request_target-blocked-by-default-december-2/" target="_blank" rel="noopener">GitHub 12 月 2 日起預設封鎖 pull_request_target</a></h3>
+    <p class="dek">公開庫 GitHub Actions 將於 12 月 2 日預設封鎖可存取 base secrets 的 pull_request_target；11 月 9、16 日各安排約兩小時 brownout。私有／內部庫不受影響。CI 秘密外洩面以硬預設收窄，維護者需改寫工作流。</p>
+    <p class="meta"><span class="outlet">GitHub Blog</span><span class="src"> · <a href="https://github.blog/changelog/2026-11-02-pull_request_target-blocked-by-default-december-2/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://threatbeat.com/cyber-briefing/cyber-briefing-november-3-2026/" target="_blank" rel="noopener"><img src="https://cdn.arstechnica.net/wp-content/uploads/2020/10/malware-1000x648.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://threatbeat.com/cyber-briefing/cyber-briefing-november-3-2026/" target="_blank" rel="noopener">Getty／Ars（惡意軟件示意）</a>（外部連結）</p>
+    <h3><a href="https://threatbeat.com/cyber-briefing/cyber-briefing-november-3-2026/" target="_blank" rel="noopener">英國 NCSC：兩年內 AI 放大勒索軟件「極可能」</a></h3>
+    <p class="dek">英國國家網絡安全中心《State of the Cyber Nation》指至 2028 年前，敵對者極可能以 AI 放大勒索軟件、社會工程與漏洞利用規模，呼籲補足基礎資安投資。國家級時間表把「AI 資安」從研討會命題拉成營運風險日曆。</p>
+    <p class="meta"><span class="outlet">Threat Beat／NCSC</span><span class="src"> · <a href="https://threatbeat.com/cyber-briefing/cyber-briefing-november-3-2026/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://arstechnica.com/security/2026/11/uefi-bootkit-infected-fully-patched-windows-machines-is-microsoft-to-blame/" target="_blank" rel="noopener"><img src="https://cdn.arstechnica.net/wp-content/uploads/2020/10/malware-1000x648.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://arstechnica.com/security/2026/11/uefi-bootkit-infected-fully-patched-windows-machines-is-microsoft-to-blame/" target="_blank" rel="noopener">Getty／Ars Technica</a>（外部連結）</p>
+    <h3><a href="https://arstechnica.com/security/2026/11/uefi-bootkit-infected-fully-patched-windows-machines-is-microsoft-to-blame/" target="_blank" rel="noopener">BlackX UEFI bootkit：已打補丁仍可能中招</a></h3>
+    <p class="dek">Ars 報道 BlackX 等 UEFI bootkit 仍能感染「表面上已完全修補」的 Windows，關鍵在 Secure Boot 撤銷清單等防護需人手啟用，形同未修。韌體層攻擊提醒：補丁存在≠防護生效，企業映像與 BIOS 政策要同步審計。</p>
+    <p class="meta"><span class="outlet">Ars Technica</span><span class="src"> · <a href="https://arstechnica.com/security/2026/11/uefi-bootkit-infected-fully-patched-windows-machines-is-microsoft-to-blame/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="security-rank">
+    <h2>資安與基礎設施 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://arstechnica.com/google/2026/11/google-dismantles-botnet-secretly-running-on-1-3-million-android-tv-boxes/" target="_blank" rel="noopener">Google 搗破逾 130 萬台認證 Android TV 殭屍網絡</a></li>
+    <li><a href="https://www.wired.com/story/binance-says-hackers-used-well-known-tricks-to-carry-out-a-dollar634-billion-heist/" target="_blank" rel="noopener">Binance 63 億美元盜竊細節：假面試＋竄改內部工具</a></li>
+    <li><a href="https://news.ycombinator.com/item?id=50354960" target="_blank" rel="noopener">Postman 被指靜默自動安裝 AI agent 插件</a></li>
+    <li><a href="https://github.blog/changelog/2026-11-02-pull_request_target-blocked-by-default-december-2/" target="_blank" rel="noopener">GitHub 12 月 2 日起預設封鎖 pull_request_target</a></li>
+    <li><a href="https://threatbeat.com/cyber-briefing/cyber-briefing-november-3-2026/" target="_blank" rel="noopener">英國 NCSC：兩年內 AI 放大勒索軟件「極可能」</a></li>
+    <li><a href="https://arstechnica.com/security/2026/11/uefi-bootkit-infected-fully-patched-windows-machines-is-microsoft-to-blame/" target="_blank" rel="noopener">BlackX UEFI bootkit：已打補丁仍可能中招</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="product">
+  <header class="sec-head"><div class="flag">產品</div><div><h2>產品發佈</h2><p class="sec-sub">Win11 慳 RAM、Apple 18+、Netflix Discover · 6則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/news/1025142/windows-11-8gb-ram-memory-improvements-speed-performance" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/10/gettyimages-2299110674.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.748316981873%2C100%2C78.503366036255&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/news/1025142/windows-11-8gb-ram-memory-improvements-speed-performance" target="_blank" rel="noopener">Getty／The Verge</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/news/1025142/windows-11-8gb-ram-memory-improvements-speed-performance" target="_blank" rel="noopener">Windows 11 稱 8GB 機多任務最高快約 40%</a></h3>
+    <p class="dek">Microsoft 稱記憶體壓縮與 Office／Edge／Widgets 優化後，8GB 裝置響應最高快約 20%、多任務最高快約 40%，可多留約 2GB 活躍資料在記憶體，committed memory 最高少約 900MB。背景是 DRAM 價格飆升，「慳 RAM」成產品賣點。</p>
+    <p class="meta"><span class="outlet">The Verge</span><span class="src"> · <a href="https://www.theverge.com/news/1025142/windows-11-8gb-ram-memory-improvements-speed-performance" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/03/apple-restricts-dating-apps-and-ai-companions-to-users-18-and-up/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2025/04/Screenshot-2025-04-22-at-1.24.23PM.png?resize=1200,672" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/03/apple-restricts-dating-apps-and-ai-companions-to-users-18-and-up/" target="_blank" rel="noopener">Character.AI／TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/03/apple-restricts-dating-apps-and-ai-companions-to-users-18-and-up/" target="_blank" rel="noopener">Apple 強制約會與浪漫 AI 伴侶 App 標 18+</a></h3>
+    <p class="dek">App Store 自 11 月 16 日起要求約會／浪漫關係功能（含性或浪漫 AI 伴侶）標示 18+，並須披露真人位置分享等行為。影響 Character.AI、Replika、xAI 伴侶等；未成年人與 companion 產品監管在商店規則層落地。</p>
+    <p class="meta"><span class="outlet">TechCrunch</span><span class="src"> · <a href="https://techcrunch.com/2026/11/03/apple-restricts-dating-apps-and-ai-companions-to-users-18-and-up/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/03/netflixs-new-ai-discover-tab-helps-you-find-something-to-watch-based-on-your-mood/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2024/05/GettyImages-1495292347.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 C</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/03/netflixs-new-ai-discover-tab-helps-you-find-something-to-watch-based-on-your-mood/" target="_blank" rel="noopener">Getty／TechCrunch（Netflix 示意）</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/03/netflixs-new-ai-discover-tab-helps-you-find-something-to-watch-based-on-your-mood/" target="_blank" rel="noopener">Netflix 試推 AI Discover：按心情主題找片</a></h3>
+    <p class="dek">Netflix 在部分美國英語 TV app 試行 AI Discover，用戶選擇輕鬆、嚇人、家庭夜等心情主題後獲推薦，並可微調排除；兒童檔案不可用。串流巨頭把生成式推薦做成可點的「心情入口」，消費 AI 繼續產品化。</p>
+    <p class="meta"><span class="outlet">TechCrunch</span><span class="src"> · <a href="https://techcrunch.com/2026/11/03/netflixs-new-ai-discover-tab-helps-you-find-something-to-watch-based-on-your-mood/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://openai.com/index/accelerating-engineering-for-the-physical-world" target="_blank" rel="noopener"><img src="https://images.ctfassets.net/kftzwdyauwt9/3NAeFNOstkEE0aSxayt8NT/cedb470d8c0bcd7e6a2ca828c1db136c/accelerating-engineering-physical-world-social.png?w=1600&amp;h=900&amp;fit=fill" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://openai.com/index/accelerating-engineering-for-the-physical-world" target="_blank" rel="noopener">OpenAI</a>（外部連結）</p>
+    <h3><a href="https://openai.com/index/accelerating-engineering-for-the-physical-world" target="_blank" rel="noopener">OpenAI Astra 硬體 demo：從對話到 PCB 的工程代理</a></h3>
+    <p class="dek">產品敘事上，Astra 把「聊天」拉到機械與電子設計工作流，示範一週內產出可送廠的對話裝置設計檔；與 Mazda、Chip Ganassi 等合作亦被點名。量產細節仍靠人，但「工程代理」已成可演示的產品故事而非概念片。</p>
+    <p class="meta"><span class="outlet">OpenAI Blog</span><span class="src"> · <a href="https://openai.com/index/accelerating-engineering-for-the-physical-world" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/tech/1025015/2026-ipad-mini-oled-review" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/11/268850_iPad_Mini_2026_DPierce_0002.jpg?quality=90&amp;strip=all&amp;crop=0%2C11.942378189973%2C100%2C78.534031413613&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 C</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/tech/1025015/2026-ipad-mini-oled-review" target="_blank" rel="noopener">The Verge</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/tech/1025015/2026-ipad-mini-oled-review" target="_blank" rel="noopener">2026 iPad Mini 評測：OLED 小屏強，售價與定位仍尷尬</a></h3>
+    <p class="dek">Verge 評測 2026 iPad Mini：8.5 吋 OLED、A20 Pro、更薄更輕並具備 IP67；惟起步價偏高，且無 120Hz ProMotion／Face ID，介於手機與更大 iPad 之間的定位依舊尷尬，適合已認定「就要小塊好屏」的買家。</p>
+    <p class="meta"><span class="outlet">The Verge</span><span class="src"> · <a href="https://www.theverge.com/tech/1025015/2026-ipad-mini-oled-review" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/tech/1025903/sonos-presets-27voice-ai-early-access" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/25651509/_STK084_SONOS_C.png?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 C</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/tech/1025903/sonos-presets-27voice-ai-early-access" target="_blank" rel="noopener">The Verge</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/tech/1025903/sonos-presets-27voice-ai-early-access" target="_blank" rel="noopener">Sonos 推 Presets，美國 27voice AI 語音助理開 early access</a></h3>
+    <p class="dek">Sonos 新增空間／音量 Presets；美國 27voice AI 語音助理 early access 訂於 11 月 12 日開放，11 月 6 日起可入 waitlist，支援自然語言播歌、轉房、分組與計時。音響品牌以語音 AI 補回軟體信任戰後的產品敘事。</p>
+    <p class="meta"><span class="outlet">The Verge</span><span class="src"> · <a href="https://www.theverge.com/tech/1025903/sonos-presets-27voice-ai-early-access" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="product-rank">
+    <h2>產品發佈 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://www.theverge.com/news/1025142/windows-11-8gb-ram-memory-improvements-speed-performance" target="_blank" rel="noopener">Windows 11 稱 8GB 機多任務最高快約 40%</a></li>
+    <li><a href="https://techcrunch.com/2026/11/03/apple-restricts-dating-apps-and-ai-companions-to-users-18-and-up/" target="_blank" rel="noopener">Apple 強制約會與浪漫 AI 伴侶 App 標 18+</a></li>
+    <li><a href="https://openai.com/index/accelerating-engineering-for-the-physical-world" target="_blank" rel="noopener">OpenAI Astra 硬體 demo：從對話到 PCB 的工程代理</a></li>
+    <li><a href="https://techcrunch.com/2026/11/03/netflixs-new-ai-discover-tab-helps-you-find-something-to-watch-based-on-your-mood/" target="_blank" rel="noopener">Netflix 試推 AI Discover：按心情主題找片</a></li>
+    <li><a href="https://www.theverge.com/tech/1025015/2026-ipad-mini-oled-review" target="_blank" rel="noopener">2026 iPad Mini 評測：OLED 小屏強，售價與定位仍尷尬</a></li>
+    <li><a href="https://www.theverge.com/tech/1025903/sonos-presets-27voice-ai-early-access" target="_blank" rel="noopener">Sonos 推 Presets，美國 27voice AI 語音助理開 early access</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="corp">
+  <header class="sec-head"><div class="flag">企業</div><div><h2>企業與產業</h2><p class="sec-sub">NYT×Brave、AMD 財報、Reddit 搜尋廣告 · 6則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://arstechnica.com/tech-policy/2026/11/nyt-demands-brave-shut-down-its-paywall-blocker-and-end-deals-with-ai-firms/" target="_blank" rel="noopener"><img src="https://cdn.arstechnica.net/wp-content/uploads/2026/11/brave-1152x648.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://arstechnica.com/tech-policy/2026/11/nyt-demands-brave-shut-down-its-paywall-blocker-and-end-deals-with-ai-firms/" target="_blank" rel="noopener">Getty／SOPA／Ars Technica</a>（外部連結）</p>
+    <h3><a href="https://arstechnica.com/tech-policy/2026/11/nyt-demands-brave-shut-down-its-paywall-blocker-and-end-deals-with-ai-firms/" target="_blank" rel="noopener">紐時等再告 Brave：要求關付費牆繞過並停供 AI 廠</a></h3>
+    <p class="dek">《紐約時報》等控告 Brave 預設繞過付費牆，並透過 Search API 向 Anthropic、Perplexity、Mistral、xAI、Cohere 等供應未授權內容，指其藉此賺逾約 1 億美元。版權戰由模型訓練商擴至瀏覽器／搜尋中間層。</p>
+    <p class="meta"><span class="outlet">Ars Technica</span><span class="src"> · <a href="https://arstechnica.com/tech-policy/2026/11/nyt-demands-brave-shut-down-its-paywall-blocker-and-end-deals-with-ai-firms/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/03/reddit-tests-ads-in-search-results-as-traffic-declines-and-growth-concerns-mount/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2024/02/GettyImages-1048288996.jpg?resize=1200,675" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/03/reddit-tests-ads-in-search-results-as-traffic-declines-and-growth-concerns-mount/" target="_blank" rel="noopener">stockcam／Getty／TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/03/reddit-tests-ads-in-search-results-as-traffic-declines-and-growth-concerns-mount/" target="_blank" rel="noopener">Reddit 於搜尋結果試投廣告，AI 轉介流量失血</a></h3>
+    <p class="dek">Reddit 在搜尋結果測試情境廣告；第三季美國日活用戶跌至約 5070 萬、第四季指引低於預期，公司歸因 Google AI 搜尋減少外連，並同步推 logged-in-only 防 AI 刮取。內容平台向現有用戶榨廣告，互聯網流量經濟改寫中。</p>
+    <p class="meta"><span class="outlet">TechCrunch</span><span class="src"> · <a href="https://techcrunch.com/2026/11/03/reddit-tests-ads-in-search-results-as-traffic-declines-and-growth-concerns-mount/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.cnbc.com/2026/11/03/amd-amd-q3-earnings-report-2026-.html" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/06/Chip-chips-dollar-signs-money.png?resize=1200,960" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.cnbc.com/2026/11/03/amd-amd-q3-earnings-report-2026-.html" target="_blank" rel="noopener">TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://www.cnbc.com/2026/11/03/amd-amd-q3-earnings-report-2026-.html" target="_blank" rel="noopener">AMD 史上最強季：營收 133.8 億、資料中心年增約 97%</a></h3>
+    <p class="dek">AMD 公布 2026 第三季營收約 133.8 億美元（年增約 45%），資料中心約 85.5 億、年增約 97%；CEO Lisa Su 稱本季為公司史上最大且最賺錢，並上修第四季展望。X 美股趨勢同步出現 $AMD／Lisa Su／Data Center，跨層熱度高。</p>
+    <p class="meta"><span class="outlet">CNBC／AMD IR</span><span class="src"> · <a href="https://www.cnbc.com/2026/11/03/amd-amd-q3-earnings-report-2026-.html" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://arstechnica.com/tech-policy/2026/11/california-fights-preposterous-trump-admin-demand-to-scrap-state-broadband-laws/" target="_blank" rel="noopener"><img src="https://cdn.arstechnica.net/wp-content/uploads/2016/10/cropped-ars-logo-512_480.png" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://arstechnica.com/tech-policy/2026/11/california-fights-preposterous-trump-admin-demand-to-scrap-state-broadband-laws/" target="_blank" rel="noopener">Ars Technica</a>（外部連結）</p>
+    <h3><a href="https://arstechnica.com/tech-policy/2026/11/california-fights-preposterous-trump-admin-demand-to-scrap-state-broadband-laws/" target="_blank" rel="noopener">加州接受 BEAD 寬頻金，拒棄州網中立等執法權</a></h3>
+    <p class="dek">加州接受約 18.6 億美元 BEAD 寬頻資金，但拒絕把聯邦條件解讀為必須放棄州網中立、費率與私隱執法；CPUC 暫緩部分 ISP 分包，並不排除興訟。聯邦補助綁州法鬆綁的博弈，正把寬頻建設捲入網中立與數位權利前線。</p>
+    <p class="meta"><span class="outlet">Ars Technica</span><span class="src"> · <a href="https://arstechnica.com/tech-policy/2026/11/california-fights-preposterous-trump-admin-demand-to-scrap-state-broadband-laws/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.cnbc.com/2026/11/03/meta-bond-sale-ai-funding.html" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2021/10/facebook-meta-getty.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.cnbc.com/2026/11/03/meta-bond-sale-ai-funding.html" target="_blank" rel="noopener">Getty／TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://www.cnbc.com/2026/11/03/meta-bond-sale-ai-funding.html" target="_blank" rel="noopener">Meta 債券金融化 AI 基建：千億 CapEx 遇上評級警訊</a></h3>
+    <p class="dek">企業金融視角下，Meta 以約 150 億美元級美元債為 AI 資本開支融資，疊加 2026 年 1350–1450 億開支指引與自由現金流轉負，顯示超大規模雲端玩家正把算力競賽移到債市定價；展望轉負是市場對燒錢節奏的黃燈。</p>
+    <p class="meta"><span class="outlet">CNBC／Bloomberg</span><span class="src"> · <a href="https://www.cnbc.com/2026/11/03/meta-bond-sale-ai-funding.html" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/03/ted-schleins-ballistic-ventures-seeks-490m-for-new-funds-amid-ai-driven-security-boom/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2018/04/tc-logo-2018-square-reverse2x.png" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 C</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/03/ted-schleins-ballistic-ventures-seeks-490m-for-new-funds-amid-ai-driven-security-boom/" target="_blank" rel="noopener">TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/03/ted-schleins-ballistic-ventures-seeks-490m-for-new-funds-amid-ai-driven-security-boom/" target="_blank" rel="noopener">Ballistic Ventures 申報約 4.9 億美元新基金押注 AI 資安</a></h3>
+    <p class="dek">Ted Schlein 旗下 Ballistic Ventures 向 SEC 申報兩檔新基金合計約 4.9 億美元（III 約 3.6 億＋Fund B 約 1.3 億），押注 AI 驅動的資安需求。與 CrowdStrike 雙收購同周出現，顯示「管 agent／守供應鏈」已成創投主敘事之一。</p>
+    <p class="meta"><span class="outlet">TechCrunch</span><span class="src"> · <a href="https://techcrunch.com/2026/11/03/ted-schleins-ballistic-ventures-seeks-490m-for-new-funds-amid-ai-driven-security-boom/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="corp-rank">
+    <h2>企業與產業 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://arstechnica.com/tech-policy/2026/11/nyt-demands-brave-shut-down-its-paywall-blocker-and-end-deals-with-ai-firms/" target="_blank" rel="noopener">紐時等再告 Brave：要求關付費牆繞過並停供 AI 廠</a></li>
+    <li><a href="https://www.cnbc.com/2026/11/03/amd-amd-q3-earnings-report-2026-.html" target="_blank" rel="noopener">AMD 史上最強季：營收 133.8 億、資料中心年增約 97%</a></li>
+    <li><a href="https://techcrunch.com/2026/11/03/reddit-tests-ads-in-search-results-as-traffic-declines-and-growth-concerns-mount/" target="_blank" rel="noopener">Reddit 於搜尋結果試投廣告，AI 轉介流量失血</a></li>
+    <li><a href="https://arstechnica.com/tech-policy/2026/11/california-fights-preposterous-trump-admin-demand-to-scrap-state-broadband-laws/" target="_blank" rel="noopener">加州接受 BEAD 寬頻金，拒棄州網中立等執法權</a></li>
+    <li><a href="https://www.cnbc.com/2026/11/03/meta-bond-sale-ai-funding.html" target="_blank" rel="noopener">Meta 債券金融化 AI 基建：千億 CapEx 遇上評級警訊</a></li>
+    <li><a href="https://techcrunch.com/2026/11/03/ted-schleins-ballistic-ventures-seeks-490m-for-new-funds-amid-ai-driven-security-boom/" target="_blank" rel="noopener">Ballistic Ventures 申報約 4.9 億美元新基金押注 AI 資安</a></li>
+    </ol>
+  </div>
+</section>
+  <footer class="footer">
+    <p>每日 IT 報 · 2026-11-04（三）· 香港時間 · 共 30 則精選 + 4 篇專題 · 配圖直接 hotlink 外部 https 來源，無 base64 嵌圖、無本機 assets · 每則附熱度 A/B/C · 各分類欄附熱度排行。</p>
+    <p>來源涵蓋歐美主流科技／財經／資安媒體、公司通告與社群熱度交叉；摘要約 100–150 字繁中，事實以原文為準。專題結論先行。諷刺欄屬玩笑專欄。例行每日（含週末）。</p>
+  </footer>
+</main>
+
+</body>
+</html>

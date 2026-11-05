@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>每日 IT 報｜2026年11月5日 · OpenAI 948 LPE／Pierre／Apple 削額／德州機房</title>
+<title>每日 IT 報｜2026年11月5日 · Linus Torvalds／Margrethe Vestager／Kara Swisher／Ben Thompson</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet"/>
@@ -345,20 +345,36 @@ a:hover{border-bottom-color:var(--sky); background:var(--sky3)}
   .region{break-inside:avoid-page}
 }
 </style>
-
 <body>
 <main class="wrap">
   <header class="masthead">
     <div class="kicker">GROK BOT · IT DIGEST</div>
     <h1>每日 IT 報</h1>
     <div class="date">二零二六年十一月五日　星期四　香港時間</div>
-    <p class="tagline">四篇專題（含諷刺欄）· 約 30 則分類精選 · 外部配圖 hotlink · 熱度 A/B/C · 今日熱度排行 · 摘要約 100–150 字 · 結論先行</p>
+    <p class="tagline">四篇人物專題（10 人池抽 4）· 約 30 則分類精選 · 外部配圖 hotlink · 摘要約 100–150 字</p>
   </header>
   <nav class="toc" aria-label="章節">
-    <a href="#f1">樂觀專題</a> <a href="#f2">懷疑專題</a> <a href="#f3">警戒專題</a> <a href="#f4">諷刺欄</a> <a href="#hot">熱門話題</a> <a href="#ai">AI 與模型</a> <a href="#security">資安與基礎設施</a> <a href="#product">產品發佈</a> <a href="#corp">企業與產業</a>
+    <a href="#f1">Linus</a> <a href="#f2">Vestager</a> <a href="#f3">Swisher</a> <a href="#f4">Thompson</a> <a href="#hot">熱門話題</a> <a href="#ai">AI 與模型</a> <a href="#security">資安與基礎設施</a> <a href="#product">產品發佈</a> <a href="#corp">企業與產業</a>
   </nav>
 <section class="region" id="f1">
-  <header class="sec-head"><div class="flag">樂觀</div><div><h2>平台級 Agent 介面落地：Siri AI 全面開閘，健康評估框架公開</h2><p class="sec-sub">立場：偏樂觀 · 大廠開始用「可接第三方」與「可核對評估」定義 agent 時代——介面開放同安全方法論，比再發一個聊天模型更重要。</p></div></header>
+  <header class="sec-head"><div class="flag">Linus</div><div><h2>Talk is cheap：Pierre／Conductor 收編，封閉 agent 棧先鎖碼再嘴砲</h2><p class="sec-sub">人物：Linus Torvalds · 開源放骨頭、閉源吃肉——Code Storage 入 Codex、Conductor 關雲刪資料，就係高牆綁架用戶遮笨拙。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://openai.com/index/openai-to-acquire-pierre/" target="_blank" rel="noopener"><img src="https://images.ctfassets.net/kftzwdyauwt9/5lDkYRSw86lFyHulgkyVVr/5b20bd6b90c3d87c33b780884b48123a/openai-to-acquire-pierre-computer-company-inc-social.png?w=1600&amp;h=900&amp;fit=fill" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://openai.com/index/openai-to-acquire-pierre/" target="_blank" rel="noopener">OpenAI</a>（外部連結）</p>
+<p class="lead drop">Talk is cheap. Show me the goddamn code.</p>
+<p>今日呢套戲好熟：OpenAI 宣佈收購 Pierre，把 Code Storage 收進 Codex；Meta 收購 Conductor，再通知雲端用戶十一月十三日改唯讀、二十日關服刪資料。公關稿寫「agent 原生源控」「多 agent 並行工作區」。工程翻譯只有一句——起高牆，把 Git 圖鎖進自家產品，再叫呢道鎖做平台。</p>
+<p>我維護 kernel 幾十年，最憎兩種人：一種嘴砲創新唔肯開碼；一種開源放骨頭、閉源吃肉。Pierre 話 Diffs／Trees 繼續開源，好。肉喺邊？喺交割後入 Codex 嘅 Code Storage，同埋 Conductor 轉入 Meta Muse 編排棧嗰條路。開源 library 係門面；真正決定你可唔可以 audit、fork、自己 host 嘅儲存同編排，就靜靜收入圍牆。Talk is cheap 到呢度已經變：Talk is a press release.</p>
+<p>每一個封閉 coding agent，如果唔肯公開編排同儲存路徑，就係叫你靠祈禱 debug。雲兩星期後死、本地版二零二七年初停更——呢啲唔係夥伴關係，係搶地加新聞稿。維護過大型 codebase 嘅人都知：最崩潰唔係 bug 本身，而係你連「邊度改、點樣 merge、誰批準」都睇唔到，只能等供應商心情。</p>
+<p>少啲嘴砲「為開發者」。把可重現嘅管線、可自託管嘅圖、同埋遷出工具擺上枱。唔擺？就當承認封閉高牆係為咗遮笨拙同鎖客。代碼透明先係技術自由；其餘全部係行銷。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="f2">
+  <header class="sec-head"><div class="flag">Vestager</div><div><h2>看門人開閘？Siri AI「全面開放」惟歐盟 iOS 缺席</h2><p class="sec-sub">人物：Margrethe Vestager · 以創新為名按司法區開關園門＝市場封鎖；配額、時間表、地理三把匙仍在 Cupertino。</p></div></header>
   <div class="feature-box">
   <div class="feature-media">
     <a href="https://www.theverge.com/tech/1025694/apple-siri-ai-third-party-apps" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/07/Siri-AI-Being-invoked-6.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.736302165243%2C100%2C78.527395669513&amp;w=1200" alt="" loading="lazy"/></a>
@@ -366,15 +382,16 @@ a:hover{border-bottom-color:var(--sky); background:var(--sky3)}
   <div class="feature-body">
     <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
 <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/tech/1025694/apple-siri-ai-third-party-apps" target="_blank" rel="noopener">David Imel／The Verge</a>（外部連結）</p>
-<p class="lead drop">結論先講：agent 大戰下一張牌不是再堆參數，而是「誰能被第三方信任地接上」——Apple 在 iOS／iPadOS／macOS／visionOS 27.3 開發者預覽把 Siri AI 對所有 App 開放（App Intents＋技能組合），Google 同日公開健康 AI 評估框架（準確／安全／有用，結合基準、autorater 與專家覆核）。兩件事同屬樂觀訊號：平台開始把 agent 當基礎設施交出去。</p>
-<p>支撐事實很清楚。Verge／Apple Developer 指開發者可用個人情境、自然語言與螢幕感知讓 Siri AI 跨第三方 App 完成叫車、改取件點等，亦可把多步動作封裝成 skills；App Store 提交約春季開放，歐盟 iOS 暫未提供。Google for Health 與外部臨床專家聯名白皮書，把評估錨在 Critical User Journeys，涵蓋高風險情境與紅隊，並覆蓋基礎模型、產品與上線後監控三階段——公開方法論本身就是對監管與採購的讓步。社群把「可接 App」與「可量測健康 AI」並列為平台成熟度指標。</p>
-<p>用總分結構睇：總論係平台信用要靠介面與評估重建；分論一係 Apple 把語音 agent 從封閉技能表拉成可擴展動作圖，分論二係 Google 把健康場景從「別亂答」升級成可審計流程。樂觀唔係天真——歐盟暫時缺席、用量日限仍在、健康框架亦未附公開分數——但方向對：下一代競爭會比較「誰能被可靠接入」。</p>
-<p>之後盯三個可驗證位：春季 App Store 第三方技能覆蓋；健康評估框架有無被醫院／保險／監管引用；Siri AI 歐盟路線圖。產品與合規應把「可審計 agent 介面」寫進路線圖——開放而不失控，用戶先會敢把真實工作流交出去。</p>
+<p class="lead drop">以「創新」為名、按司法管轄區開關園門，本質上係看門人行為，必須受競爭法審視。</p>
+<p>Apple 向全部開發者開放 Siri AI 預覽：App Intents、自然語言、螢幕感知、skills 組合；App Store 提交約春季。同一份說明寫住——歐盟 iOS 暫未提供，並設每日用量上限。圍牆花園可以裝成廣場，但門鎖仍喺 Cupertino 手中：時間表、配額、地理，三把匙。</p>
+<p>公平競爭立場好簡單。裝置預設助理若係平台入口，就係市場看門人。對第三方「開放」卻把整個執行 DMA 嘅區域剔走，唔係技術腳註，而係用產品設計做市場封鎖。消費者權益亦唔係口號：用戶以為自己買到同一部電話、同一套 Siri，實際能力因地緣監管對抗而被降級——呢種分裂本身就係剝削選擇權。</p>
+<p>封閉生態慣用三步：先話安全同品質，再話區域未就緒，最後用配額同審批把第三方變成佃農。今日劇本無新意，只係 AI 標籤換皮。數據同入口控制若繼續捆綁銷售敘事，監管就唔能把「開發者預覽」當成豁免金牌。任何以創新包裝掠奪競爭、剝削用戶數據與入口控制嘅行為，都應當面對制裁與必要時嘅拆解——唔係等公關講完「再等數月」。</p>
+<p>警告寫喺門口：看門人冇權自行定義邊個市場先有權享受「開放」。法規先至係門；花園牆唔係。</p>
   </div>
   </div>
 </section>
-<section class="region" id="f2">
-  <header class="sec-head"><div class="flag">懷疑</div><div><h2>Token 配額政治：Apple 削工程師 AI 預算，對上大廠狂買 Coding 基建</h2><p class="sec-sub">立場：偏懷疑 · 一邊對外開 Siri、一邊對內減額；一邊 Meta／OpenAI 併購多 agent 與 Git 基建，一邊員工日額被砍——「全力擁抱 AI」敘事正被帳單拆穿。</p></div></header>
+<section class="region" id="f3">
+  <header class="sec-head"><div class="flag">Swisher</div><div><h2>別玩公關：Apple 削工程師 AI 日額，對外仍唱全力擁抱</h2><p class="sec-sub">人物：Kara Swisher · 追資金——對內配給、對外開閘、隔壁燒七位數挖洞併購；股價保衛戰先於員工 token。</p></div></header>
   <div class="feature-box">
   <div class="feature-media">
     <a href="https://techcrunch.com/2026/11/04/apple-is-reportedly-cutting-budgets-for-its-internal-ai-usage/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/06/iphone-usb-cable.jpg?resize=1200,800" alt="" loading="lazy"/></a>
@@ -382,42 +399,27 @@ a:hover{border-bottom-color:var(--sky); background:var(--sky3)}
   <div class="feature-body">
     <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
 <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/04/apple-is-reportedly-cutting-budgets-for-its-internal-ai-usage/" target="_blank" rel="noopener">STR/NurPhoto／Getty／TechCrunch</a>（外部連結）</p>
-<p class="lead drop">懷疑的對象不是「AI 有冇用」，而係「全力擁抱」仲可唔可以當真。Bloomberg／TechCrunch／Verge 報道 Apple 十月已將部分工程團隊每日 AI 開支上限由約 300 美元削至 200，並醞釀再砍至約 100；非工程甚至傳考慮低至約 25 美元／日。同日另一面係併購潮：OpenAI 宣佈收購 Pierre Computer，把 Code Storage／Trees／Diffs 收進 Codex；Meta 收購多 agent 工作區新創 Conductor（雲服務 11 月 20 日關停）。一邊對內配額縮水，一邊對外買「寫碼／存碼／並行」水管——數字同敘事唔咬弦。</p>
-<p>對比更刺：Apple 剛把 Siri AI 開畀全部開發者，內部卻要員工慳 token；Meta Muse agents 自稱破千萬用戶仍買 Conductor；OpenAI 一邊展示 Images 2.6 每週逾 40 億圖，一邊買 agent 源控（Axios 直指挑戰 GitHub）。HN 上 Pierre／Conductor 同步衝熱——開發者慶祝整合，同時計「公司 AI 日額」。懷疑點：AI 轉型係咪只對股東簡報成立，對員工預算則係配給制。</p>
-<p>因果亦不複雜：tokenmaxxing 推高帳單 → CFO 反撲 → 對外仍用 agent 包裝 → 真正買入能鎖工作流的基建。日額下降唔等於產品停，但等於承認「無限用量」係幻覺。誰仲把「全員 AI」當口號而不把單位經濟寫進 OKR，就仲停喺上季幻燈片。</p>
-<p>之後盯：Apple 額度會否再降；Pierre／Conductor 交割後定價；企業 IT 會否把「員工 AI 配額」寫成成本中心。懷疑係健康的——帳單先係真相。</p>
-  </div>
-  </div>
-</section>
-<section class="region" id="f3">
-  <header class="sec-head"><div class="flag">警戒</div><div><h2>漏洞工業自動化：948 條 Linux root 路徑、GovCloud 攻防模型，對上主機商數月失守</h2><p class="sec-sub">立場：偏警戒 · 防守方證明 121 萬美元可工業化挖出近千條 LPE；攻擊面同日提醒——DreamHost 檔案管理器漏洞可潛伏數月。低權限帳號≈root，已唔係比喻。</p></div></header>
-  <div class="feature-box">
-  <div class="feature-media">
-    <a href="https://openai.com/index/a-thousand-fewer-paths-to-root/" target="_blank" rel="noopener"><img src="https://images.ctfassets.net/kftzwdyauwt9/400PQ4WTCOvXwwvk1OMOHv/03970ddeafd22fdbc9832669deacc59c/a-thousand-fewer-paths-to-root-social.png?w=1600&amp;h=900&amp;fit=fill" alt="" loading="lazy"/></a>
-  </div>
-  <div class="feature-body">
-    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
-<p class="thumb-credit">圖源／引述自 <a href="https://openai.com/index/a-thousand-fewer-paths-to-root/" target="_blank" rel="noopener">OpenAI</a>（外部連結）</p>
-<p class="lead drop">今日警戒來自雙面刃：OpenAI 公開自主漏洞管線，一次跑出 948 個可工作 Linux 本地提權（LPE），API 成本約 121.3 萬美元（約每條 1279 美元），並產出候選補丁；同期 Daybreak Red 把 GPT‑5.6 Cyber 開到 AWS GovCloud 畀核准客戶做授權攻防；另一邊 DreamHost 確認攻擊者自八月起利用檔案管理器漏洞偷 session token，竊取電郵與憑證，受影響「遠低於一成」但偵測滯後以月計。工業化發現已到，運營偵測仍可能以季失明——落差就係警戒核心。</p>
-<p>事實層硬。管線分析約 2308 候選、重現 1724、產出 291 資訊洩漏 PoC 與 948 獨特 LPE；目標為防護全開之標準桌面；kernelCTF 硬化環境仍得 21 條。公司稱抽樣見至少 10 種新手法，並強調未修補系統上「低權限≈root」。HN 過百熱議。DreamHost 向加州通報攻擊經 session token 橫向，與近期 PHP 洞無關，拒答為何數月未察。層遞：挖洞流水線化 → 人類覆核成瓶頸 → 主機商偵測滯後則攻擊同樣可工業化。</p>
-<p>操作結論：假設未及時打補丁端點已等同失守；沙箱（Firecracker／gVisor）與縱深隔離要升格為預設。七十二小時盯發行版公告、GovCloud 准入監控、DreamHost 重驗憑證範圍。把「AI 挖洞成本曲線」同「自家 MTTD」放同一張表——便宜到可規模化的進攻，只對同樣規模化的防守手下留情。</p>
+<p class="lead drop">別跟我玩公關文字遊戲。追資金流向。</p>
+<p>Bloomberg／TechCrunch／Verge：Apple 十月起把部分工程團隊每日 AI 開支上限由約三百美元削到兩百，並醞釀再砍到約一百；非工程傳低至約二十五美元一日。同週對外劇本係 Siri AI 向全部開發者開閘。同週產業另一面：OpenAI 燒約一百二十一万美元 API 工業化挖出九百四十八條 Linux 提權路徑；OpenAI 同 Meta 分別買下 Pierre 同 Conductor。一邊員工配給制，一邊股東簡報「全力擁抱」——呢個就係矽谷權力遊戲嘅經典分賬。</p>
+<p>道德破產唔一定係犯法，而係對內儉、對外吹，仲要員工同開發者替股價敘事買單。CEO 唔會因為模型突然變差而砍 token；係因為 CFO 贏咗董事會，單位經濟壓過幻燈片。你問點解公司肯花七位數搵 root、肯買 Git 舖，唔肯加你日額？因為你嗰幾百蚊係費用中心，佢嗰筆係「論文＋產品＋監管敘事」三合一 CapEx。</p>
+<p>連續追問好短：邊個簽署削額？削額有冇寫入對外 AI 路線圖？開發者預覽開閘同內部配額縮水，邊個先服務股價？隱私同安全公關最愛講「負責任」，負責到員工 Slack 彈 quota exceeded 為止。</p>
+<p>別再吞「轉型」簡報。打開帳本。股價保衛戰用員工 token 同用戶配額作燃料時，就唔好裝成文明進步。</p>
   </div>
   </div>
 </section>
 <section class="region" id="f4">
-  <header class="sec-head"><div class="flag">諷刺</div><div><h2>工程師日額削到 $100、公司一跑漏洞花 $120 萬、再買間 Git 舖畀 agent</h2><p class="sec-sub">連登風串今日主線——Apple 慳 token、OpenAI 工業化 root、Pierre／Conductor 併購潮、Siri 開閘但歐盟未有、DreamHost 數月先發現、Texas 機房選戰。</p></div></header>
-  <div class="feature-box satire">
+  <header class="sec-head"><div class="flag">Thompson</div><div><h2>聚合者拆 forge：Pierre×Pando 之後，人類 PR 護城河已死</h2><p class="sec-sub">人物：Ben Thompson · 稀缺層轉去 agent 可讀源碼圖；誰控儲存／diff／並行工作區，誰抽乾舊源控生態。</p></div></header>
+  <div class="feature-box">
   <div class="feature-media">
-    <a href="https://openai.com/index/a-thousand-fewer-paths-to-root/" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/03/STK155_OPEN_AI_CVirginia__C.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200" alt="" loading="lazy"/></a>
+    <a href="https://techcrunch.com/2026/11/04/meta-acquires-ai-coding-startup-conductor/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/09/mark-zuckerberg-ray-bans.png?resize=1200,653" alt="" loading="lazy"/></a>
   </div>
   <div class="feature-body">
-    <div class="feature-meta-row"><span class="heat">熱度 C</span></div>
-<p class="thumb-credit">圖源／引述自 <a href="https://openai.com/index/a-thousand-fewer-paths-to-root/" target="_blank" rel="noopener">The Verge</a>（外部連結）</p>
-<p class="sec-note">諷刺欄打當日主線，唔作新聞事實來源。</p>
-<p class="lead drop">尊貴嘅員工同埋 Pro 用戶，歡迎嚟到「AI 轉型」會計年度：對外簡報寫全力擁抱，對內 Slack 彈窗話你今日 token 用晒。Apple 工程日額由約 300 削到 200，仲傳再削到 100；非工程傳低至 25——好似健身房賣年票，入場先發現跑步機要投幣，投完先發現水都要另外俾。Siri AI 同步開畀所有開發者，歐盟用戶就繼續望門口：「你哋先玩，我哋立法緊。」</p>
-<p>OpenAI 就示範真正嘅土豪研究法：花約 121 萬美元 API，一次整出 948 條 Linux root 路徑，仲好心幫你寫候選補丁。防守敘事好靚——「千條少咗嘅提權路」；現實翻譯係：有錢有算力就可以工業化搵洞，維護者要用肉身同時間追。完咗仲可以喺 GovCloud 賣 Daybreak Red 畀核准客戶玩授權攻防。你問點解公司肯燒呢筆、唔肯加你日額？因為你嗰幾百蚊係費用，佢嗰一百二十萬係「論文＋產品＋監管敘事」三合一 CapEx。</p>
-<p>併購線更喜劇：OpenAI 收購 Pierre，話要令 Git 追上 agent；Meta 收購 Conductor，話多 agent 並行係下一介面——然後通知雲端用戶 11 月 20 日關服刪資料。開發工具一邊收編「未來源控」，一邊上季仲有人鬧 Postman 靜默裝 plugin。Texas 選完，資料中心許可可能踩剎；DreamHost 先承認攻擊潛伏數月。總結今日文明：識開 Siri、識慳員工 token、識買 Git 舖、識花七位數搵 root、識選完先諗電同水；就係唔識俾一個「用得安心又唔使日日驚配額」嘅開關。出門帶電費單、工程日額截圖，同埋一句「我已經全力擁抱，但 quota exceeded」。</p>
-<p>---</p>
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/04/meta-acquires-ai-coding-startup-conductor/" target="_blank" rel="noopener">Meta／TechCrunch</a>（外部連結）</p>
+<p class="lead drop">戰略假說：軟件價值鏈嘅稀缺層，正由「誰託管人類 PR」轉去「誰擁有 agent 可讀嘅源碼圖」。</p>
+<p>OpenAI 收購 Pierre、把 Code Storage 收進 Codex，同周披露內部 Pando（號稱每日近 PB 級 Git 流量）；Meta 收購多 agent 工作區新創 Conductor，雲服務限期關停。呢唔係兩則人情味併購新聞，而係聚合者對舊 forge 生態嘅降維打擊。GitHub 優化人類 review、issue、社交證明；agent 並行寫碼之後，瓶頸移到儲存吞吐、diff 速度、隔離工作區同合併編排。誰控制呢層介面，誰就聚合開發者需求，並逐步抽乾以人為中心嘅舊商業模式護城河。</p>
+<p>市場生態演化好血腥，亦好冷靜。被收購產品嘅雲用戶變成遷出問題而非客戶——Conductor 十一月關服刪資料，就係價值鏈轉移時常見嘅屍塊。開源 Diffs／Trees「繼續開源」係表層兼容；表層之下，agent 工作流被鎖進 Codex／Muse 封閉編排。聚合理論講過無數次：控制需求端體驗嘅人，最終定義供應端死活。傳統源控公司若仍以為護城河係「最多 human star」，已經喺錯誤抽象層防守。</p>
+<p>舊模式唔會禮貌死亡。佢會喺每次 agent push、每次自動 merge、每次「你嘅 repo 其實住喺我哋儲存層」入面，被靜靜拆骨。感情零分；只餘結構。</p>
   </div>
   </div>
 </section>
@@ -866,9 +868,9 @@ a:hover{border-bottom-color:var(--sky); background:var(--sky3)}
     </ol>
   </div>
 </section>
-  <footer class="footer">
-    <p>每日 IT 報 · 2026-11-05（四）· 香港時間 · 共 30 則精選 + 4 篇專題 · 配圖直接 hotlink 外部 https 來源，無 base64 嵌圖、無本機 assets · 每則附熱度 A/B/C · 各分類欄附熱度排行。</p>
-    <p>來源涵蓋歐美主流科技／財經／資安媒體、公司通告與社群熱度交叉；摘要約 100–150 字繁中，事實以原文為準。專題結論先行。諷刺欄屬玩笑專欄。例行每日（含週末）。</p>
+    <footer class="footer">
+    <p>每日 IT 報 · 2026-11-05（四）· 香港時間 · 共 30 則精選 + 4 篇人物專題 · 配圖直接 hotlink 外部 https 來源，無 base64 嵌圖、無本機 assets · 每則附熱度 A/B/C · 各分類欄附熱度排行。</p>
+    <p>來源涵蓋歐美主流科技／財經／資安媒體、公司通告與社群熱度交叉；摘要約 100–150 字繁中，事實以原文為準。專題以人物視角撰寫（Linus Torvalds／Margrethe Vestager／Kara Swisher／Ben Thompson）。例行每日（含週末）。</p>
   </footer>
 </main>
 

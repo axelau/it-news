@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>每日 IT 報｜2026年11月5日 · OpenAI 948 LPE／Pierre／Apple 削額／德州機房</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --cream:#F5F5EC;
+  --paper:#FFFEF7;
+  --navy:#0A2558;
+  --navy2:#14356e;
+  --sky:#A3C1DA;
+  --sky2:#C5D9EA;
+  --sky3:#E8F1F8;
+  --ink:#0A2558;
+  --ink2:#1e3a66;
+  --muted:#5a6f8a;
+  --link:#0A2558;
+  --white:#fffef9;
+  --heat-a:#0A2558;
+  --heat-b:#3d5a80;
+  --heat-c:#7a8fa8;
+  --px:4px;
+}
+*{box-sizing:border-box}
+html{font-size:16.5px}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(163,193,218,.35) 0 2px, transparent 3px),
+    radial-gradient(circle at 88% 18%, rgba(10,37,88,.12) 0 2px, transparent 3px),
+    radial-gradient(circle at 70% 92%, rgba(163,193,218,.28) 0 2px, transparent 3px),
+    var(--cream);
+  background-size:28px 28px, 36px 36px, 24px 24px, auto;
+  color:var(--ink);
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  line-height:1.55;
+  image-rendering:auto;
+}
+a{color:var(--link); text-decoration:none; border-bottom:2px solid transparent}
+a:hover{border-bottom-color:var(--sky); background:var(--sky3)}
+
+/* pixel border helper — stepped corners via box-shadow */
+.pixel-border{
+  border:3px solid var(--navy);
+  box-shadow:
+    3px 0 0 0 var(--navy),
+    -3px 0 0 0 var(--navy),
+    0 3px 0 0 var(--navy),
+    0 -3px 0 0 var(--navy),
+    6px 6px 0 0 rgba(10,37,88,.18);
+  clip-path: polygon(
+    0 8px, 8px 8px, 8px 0,
+    calc(100% - 8px) 0, calc(100% - 8px) 8px, 100% 8px,
+    100% calc(100% - 8px), calc(100% - 8px) calc(100% - 8px), calc(100% - 8px) 100%,
+    8px 100%, 8px calc(100% - 8px), 0 calc(100% - 8px)
+  );
+}
+
+.wrap{
+  max-width:1000px; margin:1.25rem auto 2.5rem; padding:1.35rem clamp(1.75rem,7vw,3.75rem) 2.5rem;
+  background:var(--paper);
+  border:3px solid var(--navy);
+  position:relative;
+  box-shadow:
+    4px 4px 0 0 var(--navy),
+    8px 8px 0 0 var(--sky);
+}
+/* dither + decorations around wrap */
+.wrap::before,.wrap::after{
+  content:"+"; position:absolute; color:var(--sky); font-family:"Press Start 2P",monospace;
+  font-size:.55rem; line-height:1; pointer-events:none; opacity:.85;
+}
+.wrap::before{top:.55rem; left:.7rem}
+.wrap::after{bottom:.55rem; right:.7rem}
+
+/* ===== MASTHEAD ===== */
+.masthead{
+  text-align:center;
+  padding:1.6rem 1rem 1.25rem;
+  margin:0 0 1.15rem;
+  background:linear-gradient(180deg, var(--sky3) 0%, var(--paper) 70%);
+  border:3px solid var(--navy);
+  position:relative;
+  box-shadow:4px 4px 0 0 var(--navy);
+}
+.masthead::before{
+  content:"PLAY · WORK · CREATE · CONNECT";
+  position:absolute; left:.5rem; top:50%; transform:translateY(-50%) rotate(-90deg);
+  transform-origin:center; font-family:"Press Start 2P",monospace; font-size:.42rem;
+  letter-spacing:.08em; color:var(--sky); white-space:nowrap; opacity:.7;
+  display:none;
+}
+@media (min-width:860px){
+  .masthead::before{display:block}
+}
+.masthead .kicker{
+  font-family:"Press Start 2P",monospace;
+  font-size:.55rem; letter-spacing:.12em; color:var(--navy);
+  margin-bottom:.85rem;
+  display:inline-block;
+  background:var(--navy); color:#fff;
+  padding:.45rem .7rem;
+  box-shadow:3px 3px 0 0 var(--sky);
+}
+.masthead h1{
+  font-family:"Press Start 2P",monospace;
+  font-size:clamp(1.15rem, 4.2vw, 1.85rem);
+  margin:.35rem 0 .7rem; font-weight:400; letter-spacing:.06em;
+  color:var(--navy);
+  text-shadow: 3px 3px 0 var(--sky), 6px 6px 0 rgba(10,37,88,.15);
+  line-height:1.45;
+}
+.masthead .date{
+  font-family:"VT323",monospace;
+  font-size:1.35rem; color:var(--navy2); margin-top:.15rem; letter-spacing:.04em;
+}
+.masthead .tagline{
+  font-size:.8rem; color:var(--muted); margin:.55rem auto 0; max-width:46rem; line-height:1.5;
+}
+
+/* floating pluses in masthead */
+.masthead .date::before{content:"+  "; color:var(--sky); font-family:"Press Start 2P",monospace; font-size:.5rem}
+.masthead .date::after{content:"  +"; color:var(--sky); font-family:"Press Start 2P",monospace; font-size:.5rem}
+
+/* ===== TOC ===== */
+.toc{
+  display:flex; flex-wrap:wrap; gap:.45rem .55rem; justify-content:center;
+  margin:0 0 1.5rem; padding:.85rem .6rem;
+  border:3px solid var(--navy); background:var(--sky3);
+  box-shadow:3px 3px 0 0 var(--navy);
+  font-size:.82rem;
+}
+.toc a{
+  color:#fff; background:var(--navy); border:2px solid var(--navy);
+  padding:.28rem .55rem; font-weight:700; letter-spacing:.02em;
+  box-shadow:2px 2px 0 0 var(--sky);
+  border-bottom:2px solid var(--navy);
+}
+.toc a:hover{
+  background:var(--sky); color:var(--navy); border-bottom-color:var(--navy);
+}
+
+/* ===== REGIONS / SECTION HEADS ===== */
+.region{
+  margin:0 0 4.2rem; padding-bottom:2.7rem;
+  border-bottom:3px dashed var(--navy);
+}
+.region:last-of-type{border-bottom:none}
+.sec-head{display:flex; align-items:stretch; gap:.85rem; margin-bottom:.95rem}
+.flag{
+  background:var(--navy); color:#fff;
+  writing-mode:vertical-rl; text-orientation:mixed;
+  letter-spacing:.2em; font-weight:700; font-size:.88rem;
+  padding:.65rem .4rem; min-width:2.15rem;
+  display:flex; align-items:center; justify-content:center;
+  border:3px solid var(--navy);
+  box-shadow:3px 3px 0 0 var(--sky);
+  font-family:"Noto Sans TC",sans-serif;
+  position:relative;
+}
+.flag::after{
+  content:""; position:absolute; inset:-3px;
+  border:1px solid var(--sky); pointer-events:none; opacity:.6;
+}
+.sec-head h2{
+  margin:0; font-size:1.35rem; letter-spacing:.04em; line-height:1.35;
+  color:var(--navy); font-weight:700;
+}
+.sec-sub{margin:.2rem 0 0; color:var(--muted); font-size:.8rem}
+
+/* ===== FEATURE BOX ===== */
+.feature-box{
+  max-width:100%; margin:0 0 2rem; padding:0; overflow:hidden;
+  background:var(--white);
+  border:3px solid var(--navy);
+  box-shadow:4px 4px 0 0 var(--navy);
+  display:grid; grid-template-columns:minmax(220px,34%) 1fr; gap:0;
+  position:relative;
+}
+.feature-box::before{
+  content:"+"; position:absolute; top:.35rem; right:.5rem; z-index:2;
+  font-family:"Press Start 2P",monospace; font-size:.5rem; color:var(--sky); opacity:.9;
+}
+.feature-box .feature-media{
+  margin:0; background:var(--sky2); border-right:3px solid var(--navy); min-height:12rem; line-height:0;
+}
+.feature-box .feature-media a{display:block; line-height:0; height:100%; border:0}
+.feature-box .feature-media a:hover{background:transparent}
+.feature-box .feature-media img{width:100%; height:100%; min-height:12rem; object-fit:cover; display:block}
+.feature-box .feature-body{padding:1.1rem 1.2rem 1rem}
+.feature-box p{margin:0 0 .95rem; color:var(--ink2); font-size:.98rem; text-align:justify}
+.feature-box p.lead{font-size:1.05rem; color:var(--ink)}
+.feature-box p:last-child{margin-bottom:0}
+.feature-meta-row{display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; margin:0 0 .75rem}
+.drop::first-letter{
+  float:left; font-family:"Press Start 2P",monospace;
+  font-size:1.55rem; line-height:1.1; padding:.15rem .25rem 0 0;
+  font-weight:400; color:var(--navy);
+}
+
+/* satire accent */
+.feature-box.satire{
+  border-color:var(--navy);
+  background:linear-gradient(135deg, #fff9f0 0%, var(--white) 55%);
+  box-shadow:4px 4px 0 0 var(--sky), 8px 8px 0 0 var(--navy);
+}
+.feature-box.satire .sec-note{font-size:.76rem; color:var(--muted); margin:0 0 .75rem; font-style:italic}
+
+/* ===== STORY GRID ===== */
+.grid{display:grid; grid-template-columns:1fr 1fr; gap:2rem 1.15rem}
+.story{
+  padding:0; overflow:hidden;
+  background:var(--white);
+  border:3px solid var(--navy);
+  box-shadow:3px 3px 0 0 var(--sky);
+  display:flex; flex-direction:column;
+  position:relative;
+}
+.story::after{
+  content:"+"; position:absolute; bottom:.3rem; right:.4rem;
+  font-family:"Press Start 2P",monospace; font-size:.4rem; color:var(--sky); opacity:.75;
+  pointer-events:none;
+}
+.story.lead{grid-column:1 / -1; box-shadow:4px 4px 0 0 var(--navy)}
+.story.lead .story-media img{max-height:280px}
+.story-media{margin:0; background:var(--sky2); border-bottom:3px solid var(--navy); line-height:0}
+.story-media a{display:block; line-height:0; border:0}
+.story-media a:hover{background:transparent}
+.story-media img{width:100%; height:160px; object-fit:cover; display:block}
+.story.lead .story-media img{height:240px}
+.story-body{padding:.8rem .95rem .95rem; min-width:0; flex:1; display:flex; flex-direction:column}
+.story h3{margin:0 0 .35rem; font-size:1.02rem; line-height:1.35; font-weight:700; color:var(--navy)}
+.story.lead h3{font-size:1.28rem}
+.story h3 a{border:0; color:var(--navy)}
+.story h3 a:hover{background:var(--sky3); border:0}
+.story .dek{margin:0 0 .5rem; color:var(--ink2); font-size:.9rem; flex:1}
+.story.lead .dek{font-size:.98rem}
+.meta{margin:0; font-size:.72rem; color:var(--muted); font-family:"VT323",monospace; font-size:.95rem}
+.outlet{font-weight:700; color:var(--navy2); font-family:"Noto Sans TC",sans-serif; font-size:.72rem}
+.src{margin-left:.15rem}
+
+/* ===== HEAT BADGES — 90s window pop ===== */
+.heat{
+  display:inline-flex; align-items:stretch; gap:0;
+  padding:0; font-size:.68rem; font-weight:700; letter-spacing:.04em; line-height:1.2;
+  border:2px solid var(--navy);
+  background:var(--paper);
+  box-shadow:2px 2px 0 0 var(--navy);
+  overflow:hidden;
+  font-family:"Press Start 2P",monospace;
+  font-size:.48rem;
+  position:relative;
+}
+.heat::before{
+  content:"■";
+  background:var(--navy); color:#fff;
+  padding:.32rem .4rem;
+  display:inline-flex; align-items:center;
+  font-size:.42rem; letter-spacing:0;
+}
+/* put label text next to title bar */
+.heat{
+  color:var(--navy);
+  padding-right:.55rem;
+  align-items:center;
+}
+.heat::after{
+  content:"×";
+  margin-left:.35rem;
+  color:var(--navy);
+  font-size:.55rem;
+  line-height:1;
+  opacity:.7;
+}
+
+/* ===== THUMB CREDIT ===== */
+.thumb-credit{
+  margin:.1rem 0 .5rem; font-size:.65rem; color:var(--muted); line-height:1.35;
+  word-break:break-word;
+  padding:.35rem .5rem;
+  background:var(--sky3);
+  border-left:4px solid var(--sky);
+}
+.thumb-credit a{color:var(--muted); border-bottom:1px dotted var(--sky)}
+
+/* ===== RANK BOX — sky promo banner ===== */
+.rank-box{
+  margin:1.15rem 0 2rem; padding:1.1rem 1.2rem 1rem;
+  border:3px solid var(--navy);
+  background:var(--sky);
+  box-shadow:4px 4px 0 0 var(--navy);
+  position:relative;
+}
+.rank-box::before{
+  content:"LEVEL UP";
+  position:absolute; top:-.55rem; right:1rem;
+  font-family:"Press Start 2P",monospace; font-size:.42rem;
+  background:var(--navy); color:#fff; padding:.3rem .45rem;
+  box-shadow:2px 2px 0 0 var(--paper);
+}
+.rank-box h2{
+  margin:0 0 .3rem; font-size:1.15rem; letter-spacing:.04em; color:var(--navy);
+  font-family:"Press Start 2P",monospace; font-size:.72rem; line-height:1.55;
+}
+.rank-box .rank-sub{margin:0 0 .75rem; color:var(--navy2); font-size:.78rem}
+.rank-box ol{margin:0; padding-left:1.4rem; background:var(--paper); border:2px solid var(--navy); padding:.75rem 1rem .75rem 1.85rem}
+.rank-box li{margin:0 0 .45rem; font-size:.9rem; line-height:1.4; color:var(--navy)}
+.rank-box li a{font-weight:700; color:var(--navy); border-bottom:2px solid transparent}
+.rank-box li a:hover{border-bottom-color:var(--navy); background:var(--sky3)}
+
+/* ===== FOOTER ===== */
+.footer{
+  margin-top:1.4rem; padding:1rem 1rem .2rem;
+  border:3px solid var(--navy); background:var(--sky3);
+  box-shadow:3px 3px 0 0 var(--navy);
+  font-size:.76rem; color:var(--muted); line-height:1.6;
+}
+.footer p:first-child{
+  font-family:"VT323",monospace; font-size:1.05rem; color:var(--navy);
+}
+
+@media (max-width:720px){
+  .wrap{margin:.6rem auto 1.5rem; padding:1rem .85rem 1.75rem; box-shadow:3px 3px 0 0 var(--navy), 6px 6px 0 0 var(--sky); max-width:calc(100% - 1rem)}
+  .grid{grid-template-columns:1fr}
+  .flag{writing-mode:horizontal-tb; min-width:auto; padding:.35rem .7rem; letter-spacing:.15em}
+  .sec-head{flex-direction:column; gap:.4rem}
+  .drop::first-letter{font-size:1.25rem}
+  .feature-box{grid-template-columns:1fr}
+  .feature-box .feature-media{border-right:none; border-bottom:3px solid var(--navy); min-height:10rem}
+  .feature-box .feature-media img{min-height:10rem; max-height:200px}
+  .story.lead .story-media img,.story-media img{height:180px}
+  .masthead h1{font-size:1.05rem}
+  .rank-box h2{font-size:.58rem}
+  .toc a{font-size:.75rem}
+}
+@media print{
+  body{background:#fff}
+  .wrap{box-shadow:none; max-width:none}
+  a{color:inherit; text-decoration:none}
+  .region{break-inside:avoid-page}
+}
+</style>
+
+<body>
+<main class="wrap">
+  <header class="masthead">
+    <div class="kicker">GROK BOT · IT DIGEST</div>
+    <h1>每日 IT 報</h1>
+    <div class="date">二零二六年十一月五日　星期四　香港時間</div>
+    <p class="tagline">四篇專題（含諷刺欄）· 約 30 則分類精選 · 外部配圖 hotlink · 熱度 A/B/C · 今日熱度排行 · 摘要約 100–150 字 · 結論先行</p>
+  </header>
+  <nav class="toc" aria-label="章節">
+    <a href="#f1">樂觀專題</a> <a href="#f2">懷疑專題</a> <a href="#f3">警戒專題</a> <a href="#f4">諷刺欄</a> <a href="#hot">熱門話題</a> <a href="#ai">AI 與模型</a> <a href="#security">資安與基礎設施</a> <a href="#product">產品發佈</a> <a href="#corp">企業與產業</a>
+  </nav>
+<section class="region" id="f1">
+  <header class="sec-head"><div class="flag">樂觀</div><div><h2>平台級 Agent 介面落地：Siri AI 全面開閘，健康評估框架公開</h2><p class="sec-sub">立場：偏樂觀 · 大廠開始用「可接第三方」與「可核對評估」定義 agent 時代——介面開放同安全方法論，比再發一個聊天模型更重要。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://www.theverge.com/tech/1025694/apple-siri-ai-third-party-apps" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/07/Siri-AI-Being-invoked-6.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.736302165243%2C100%2C78.527395669513&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/tech/1025694/apple-siri-ai-third-party-apps" target="_blank" rel="noopener">David Imel／The Verge</a>（外部連結）</p>
+<p class="lead drop">結論先講：agent 大戰下一張牌不是再堆參數，而是「誰能被第三方信任地接上」——Apple 在 iOS／iPadOS／macOS／visionOS 27.3 開發者預覽把 Siri AI 對所有 App 開放（App Intents＋技能組合），Google 同日公開健康 AI 評估框架（準確／安全／有用，結合基準、autorater 與專家覆核）。兩件事同屬樂觀訊號：平台開始把 agent 當基礎設施交出去。</p>
+<p>支撐事實很清楚。Verge／Apple Developer 指開發者可用個人情境、自然語言與螢幕感知讓 Siri AI 跨第三方 App 完成叫車、改取件點等，亦可把多步動作封裝成 skills；App Store 提交約春季開放，歐盟 iOS 暫未提供。Google for Health 與外部臨床專家聯名白皮書，把評估錨在 Critical User Journeys，涵蓋高風險情境與紅隊，並覆蓋基礎模型、產品與上線後監控三階段——公開方法論本身就是對監管與採購的讓步。社群把「可接 App」與「可量測健康 AI」並列為平台成熟度指標。</p>
+<p>用總分結構睇：總論係平台信用要靠介面與評估重建；分論一係 Apple 把語音 agent 從封閉技能表拉成可擴展動作圖，分論二係 Google 把健康場景從「別亂答」升級成可審計流程。樂觀唔係天真——歐盟暫時缺席、用量日限仍在、健康框架亦未附公開分數——但方向對：下一代競爭會比較「誰能被可靠接入」。</p>
+<p>之後盯三個可驗證位：春季 App Store 第三方技能覆蓋；健康評估框架有無被醫院／保險／監管引用；Siri AI 歐盟路線圖。產品與合規應把「可審計 agent 介面」寫進路線圖——開放而不失控，用戶先會敢把真實工作流交出去。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="f2">
+  <header class="sec-head"><div class="flag">懷疑</div><div><h2>Token 配額政治：Apple 削工程師 AI 預算，對上大廠狂買 Coding 基建</h2><p class="sec-sub">立場：偏懷疑 · 一邊對外開 Siri、一邊對內減額；一邊 Meta／OpenAI 併購多 agent 與 Git 基建，一邊員工日額被砍——「全力擁抱 AI」敘事正被帳單拆穿。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://techcrunch.com/2026/11/04/apple-is-reportedly-cutting-budgets-for-its-internal-ai-usage/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/06/iphone-usb-cable.jpg?resize=1200,800" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/04/apple-is-reportedly-cutting-budgets-for-its-internal-ai-usage/" target="_blank" rel="noopener">STR/NurPhoto／Getty／TechCrunch</a>（外部連結）</p>
+<p class="lead drop">懷疑的對象不是「AI 有冇用」，而係「全力擁抱」仲可唔可以當真。Bloomberg／TechCrunch／Verge 報道 Apple 十月已將部分工程團隊每日 AI 開支上限由約 300 美元削至 200，並醞釀再砍至約 100；非工程甚至傳考慮低至約 25 美元／日。同日另一面係併購潮：OpenAI 宣佈收購 Pierre Computer，把 Code Storage／Trees／Diffs 收進 Codex；Meta 收購多 agent 工作區新創 Conductor（雲服務 11 月 20 日關停）。一邊對內配額縮水，一邊對外買「寫碼／存碼／並行」水管——數字同敘事唔咬弦。</p>
+<p>對比更刺：Apple 剛把 Siri AI 開畀全部開發者，內部卻要員工慳 token；Meta Muse agents 自稱破千萬用戶仍買 Conductor；OpenAI 一邊展示 Images 2.6 每週逾 40 億圖，一邊買 agent 源控（Axios 直指挑戰 GitHub）。HN 上 Pierre／Conductor 同步衝熱——開發者慶祝整合，同時計「公司 AI 日額」。懷疑點：AI 轉型係咪只對股東簡報成立，對員工預算則係配給制。</p>
+<p>因果亦不複雜：tokenmaxxing 推高帳單 → CFO 反撲 → 對外仍用 agent 包裝 → 真正買入能鎖工作流的基建。日額下降唔等於產品停，但等於承認「無限用量」係幻覺。誰仲把「全員 AI」當口號而不把單位經濟寫進 OKR，就仲停喺上季幻燈片。</p>
+<p>之後盯：Apple 額度會否再降；Pierre／Conductor 交割後定價；企業 IT 會否把「員工 AI 配額」寫成成本中心。懷疑係健康的——帳單先係真相。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="f3">
+  <header class="sec-head"><div class="flag">警戒</div><div><h2>漏洞工業自動化：948 條 Linux root 路徑、GovCloud 攻防模型，對上主機商數月失守</h2><p class="sec-sub">立場：偏警戒 · 防守方證明 121 萬美元可工業化挖出近千條 LPE；攻擊面同日提醒——DreamHost 檔案管理器漏洞可潛伏數月。低權限帳號≈root，已唔係比喻。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://openai.com/index/a-thousand-fewer-paths-to-root/" target="_blank" rel="noopener"><img src="https://images.ctfassets.net/kftzwdyauwt9/400PQ4WTCOvXwwvk1OMOHv/03970ddeafd22fdbc9832669deacc59c/a-thousand-fewer-paths-to-root-social.png?w=1600&amp;h=900&amp;fit=fill" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://openai.com/index/a-thousand-fewer-paths-to-root/" target="_blank" rel="noopener">OpenAI</a>（外部連結）</p>
+<p class="lead drop">今日警戒來自雙面刃：OpenAI 公開自主漏洞管線，一次跑出 948 個可工作 Linux 本地提權（LPE），API 成本約 121.3 萬美元（約每條 1279 美元），並產出候選補丁；同期 Daybreak Red 把 GPT‑5.6 Cyber 開到 AWS GovCloud 畀核准客戶做授權攻防；另一邊 DreamHost 確認攻擊者自八月起利用檔案管理器漏洞偷 session token，竊取電郵與憑證，受影響「遠低於一成」但偵測滯後以月計。工業化發現已到，運營偵測仍可能以季失明——落差就係警戒核心。</p>
+<p>事實層硬。管線分析約 2308 候選、重現 1724、產出 291 資訊洩漏 PoC 與 948 獨特 LPE；目標為防護全開之標準桌面；kernelCTF 硬化環境仍得 21 條。公司稱抽樣見至少 10 種新手法，並強調未修補系統上「低權限≈root」。HN 過百熱議。DreamHost 向加州通報攻擊經 session token 橫向，與近期 PHP 洞無關，拒答為何數月未察。層遞：挖洞流水線化 → 人類覆核成瓶頸 → 主機商偵測滯後則攻擊同樣可工業化。</p>
+<p>操作結論：假設未及時打補丁端點已等同失守；沙箱（Firecracker／gVisor）與縱深隔離要升格為預設。七十二小時盯發行版公告、GovCloud 准入監控、DreamHost 重驗憑證範圍。把「AI 挖洞成本曲線」同「自家 MTTD」放同一張表——便宜到可規模化的進攻，只對同樣規模化的防守手下留情。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="f4">
+  <header class="sec-head"><div class="flag">諷刺</div><div><h2>工程師日額削到 $100、公司一跑漏洞花 $120 萬、再買間 Git 舖畀 agent</h2><p class="sec-sub">連登風串今日主線——Apple 慳 token、OpenAI 工業化 root、Pierre／Conductor 併購潮、Siri 開閘但歐盟未有、DreamHost 數月先發現、Texas 機房選戰。</p></div></header>
+  <div class="feature-box satire">
+  <div class="feature-media">
+    <a href="https://openai.com/index/a-thousand-fewer-paths-to-root/" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/03/STK155_OPEN_AI_CVirginia__C.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 C</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://openai.com/index/a-thousand-fewer-paths-to-root/" target="_blank" rel="noopener">The Verge</a>（外部連結）</p>
+<p class="sec-note">諷刺欄打當日主線，唔作新聞事實來源。</p>
+<p class="lead drop">尊貴嘅員工同埋 Pro 用戶，歡迎嚟到「AI 轉型」會計年度：對外簡報寫全力擁抱，對內 Slack 彈窗話你今日 token 用晒。Apple 工程日額由約 300 削到 200，仲傳再削到 100；非工程傳低至 25——好似健身房賣年票，入場先發現跑步機要投幣，投完先發現水都要另外俾。Siri AI 同步開畀所有開發者，歐盟用戶就繼續望門口：「你哋先玩，我哋立法緊。」</p>
+<p>OpenAI 就示範真正嘅土豪研究法：花約 121 萬美元 API，一次整出 948 條 Linux root 路徑，仲好心幫你寫候選補丁。防守敘事好靚——「千條少咗嘅提權路」；現實翻譯係：有錢有算力就可以工業化搵洞，維護者要用肉身同時間追。完咗仲可以喺 GovCloud 賣 Daybreak Red 畀核准客戶玩授權攻防。你問點解公司肯燒呢筆、唔肯加你日額？因為你嗰幾百蚊係費用，佢嗰一百二十萬係「論文＋產品＋監管敘事」三合一 CapEx。</p>
+<p>併購線更喜劇：OpenAI 收購 Pierre，話要令 Git 追上 agent；Meta 收購 Conductor，話多 agent 並行係下一介面——然後通知雲端用戶 11 月 20 日關服刪資料。開發工具一邊收編「未來源控」，一邊上季仲有人鬧 Postman 靜默裝 plugin。Texas 選完，資料中心許可可能踩剎；DreamHost 先承認攻擊潛伏數月。總結今日文明：識開 Siri、識慳員工 token、識買 Git 舖、識花七位數搵 root、識選完先諗電同水；就係唔識俾一個「用得安心又唔使日日驚配額」嘅開關。出門帶電費單、工程日額截圖，同埋一句「我已經全力擁抱，但 quota exceeded」。</p>
+<p>---</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="hot">
+  <header class="sec-head"><div class="flag">熱門</div><div><h2>熱門話題</h2><p class="sec-sub">OpenAI 948 LPE、Pierre／Conductor、Apple 削額、德州機房與 Siri AI · 6則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://openai.com/index/a-thousand-fewer-paths-to-root/" target="_blank" rel="noopener"><img src="https://images.ctfassets.net/kftzwdyauwt9/400PQ4WTCOvXwwvk1OMOHv/03970ddeafd22fdbc9832669deacc59c/a-thousand-fewer-paths-to-root-social.png?w=1600&amp;h=900&amp;fit=fill" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://openai.com/index/a-thousand-fewer-paths-to-root/" target="_blank" rel="noopener">OpenAI</a>（外部連結）</p>
+    <h3><a href="https://openai.com/index/a-thousand-fewer-paths-to-root/" target="_blank" rel="noopener">OpenAI 自主管線一次產出 948 個 Linux LPE 利用</a></h3>
+    <p class="dek">OpenAI 公開漏洞發現／利用／補丁管線：一次跑出 2308 候選、重現 1724、948 個可工作 Linux 本地提權，API 成本約 121.3 萬美元。目標為防護全開之標準桌面系統；公司強調低權限未修補環境對強敵近乎等同 root，並正與維護者報送。</p>
+    <p class="meta"><span class="outlet">OpenAI</span><span class="src"> · <a href="https://openai.com/index/a-thousand-fewer-paths-to-root/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://openai.com/index/openai-to-acquire-pierre/" target="_blank" rel="noopener"><img src="https://images.ctfassets.net/kftzwdyauwt9/5lDkYRSw86lFyHulgkyVVr/5b20bd6b90c3d87c33b780884b48123a/openai-to-acquire-pierre-computer-company-inc-social.png?w=1600&amp;h=900&amp;fit=fill" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://openai.com/index/openai-to-acquire-pierre/" target="_blank" rel="noopener">OpenAI</a>（外部連結）</p>
+    <h3><a href="https://openai.com/index/openai-to-acquire-pierre/" target="_blank" rel="noopener">OpenAI 收購 Pierre：把 Code Storage 收進 Codex</a></h3>
+    <p class="dek">OpenAI 宣佈收購 Pierre Computer；其 Trees／Diffs 已用於 Codex，Code Storage 將於交割後整合。Axios 指此舉瞄準 GitHub 地位、服務 agent 並行寫碼時代；開源專案承諾維持開源，仍待監管批准，雙方交割前獨立營運。</p>
+    <p class="meta"><span class="outlet">OpenAI／Axios</span><span class="src"> · <a href="https://openai.com/index/openai-to-acquire-pierre/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/04/meta-acquires-ai-coding-startup-conductor/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/09/mark-zuckerberg-ray-bans.png?resize=1200,653" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/04/meta-acquires-ai-coding-startup-conductor/" target="_blank" rel="noopener">Meta／TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/04/meta-acquires-ai-coding-startup-conductor/" target="_blank" rel="noopener">Meta 收購多 agent 編程新創 Conductor</a></h3>
+    <p class="dek">Meta 收購 Conductor，該產品讓工程師以多個 agent 於並行工作區推進專案；金額未披露。雲服務 11 月 20 日關停並刪資料，本地版維護至 2027 年初。疊加 Muse Code／Muse agents，顯示 Meta 以併購補齊 agent 編排能力。</p>
+    <p class="meta"><span class="outlet">TechCrunch</span><span class="src"> · <a href="https://techcrunch.com/2026/11/04/meta-acquires-ai-coding-startup-conductor/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/04/apple-is-reportedly-cutting-budgets-for-its-internal-ai-usage/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/06/iphone-usb-cable.jpg?resize=1200,800" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/04/apple-is-reportedly-cutting-budgets-for-its-internal-ai-usage/" target="_blank" rel="noopener">STR/NurPhoto／Getty／TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/04/apple-is-reportedly-cutting-budgets-for-its-internal-ai-usage/" target="_blank" rel="noopener">Apple 據報下調工程團隊每日 AI 開支上限</a></h3>
+    <p class="dek">Bloomberg 指 Apple 十月起將部分工程團隊每日 AI 預算由約 300 美元降至 200，並考慮再降至約 100；非工程團隊或低至約 25 美元／日。反映上半年 tokenmaxxing 後帳單反噬，「全員無限 AI」敘事讓位給配額制。</p>
+    <p class="meta"><span class="outlet">TechCrunch／Bloomberg</span><span class="src"> · <a href="https://techcrunch.com/2026/11/04/apple-is-reportedly-cutting-budgets-for-its-internal-ai-usage/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.technologyreview.com/2026/11/04/1148043/texas-was-the-new-epicenter-of-the-ai-data-center-buildout-that-might-be-kaput/" target="_blank" rel="noopener"><img src="https://wp.technologyreview.com/wp-content/uploads/2026/11/GettyImages-2303431102.jpg?resize=1200,600" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.technologyreview.com/2026/11/04/1148043/texas-was-the-new-epicenter-of-the-ai-data-center-buildout-that-might-be-kaput/" target="_blank" rel="noopener">Getty／MIT Technology Review</a>（外部連結）</p>
+    <h3><a href="https://www.technologyreview.com/2026/11/04/1148043/texas-was-the-new-epicenter-of-the-ai-data-center-buildout-that-might-be-kaput/" target="_blank" rel="noopener">德州選後：AI 資料中心擴張恐踩剎</a></h3>
+    <p class="dek">德州原是美國 AI 機房最快增長市場；選後民主黨 Talarico 勝出聯邦參院、新州長路線偏向暫停或收緊資料中心許可，並聚焦水電與社區否決權。延續「電力政治」主線：選票與地方反彈開始改寫超大規模算力地圖。</p>
+    <p class="meta"><span class="outlet">MIT Technology Review／Verge</span><span class="src"> · <a href="https://www.technologyreview.com/2026/11/04/1148043/texas-was-the-new-epicenter-of-the-ai-data-center-buildout-that-might-be-kaput/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/tech/1025694/apple-siri-ai-third-party-apps" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/07/Siri-AI-Being-invoked-6.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.736302165243%2C100%2C78.527395669513&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/tech/1025694/apple-siri-ai-third-party-apps" target="_blank" rel="noopener">David Imel／The Verge</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/tech/1025694/apple-siri-ai-third-party-apps" target="_blank" rel="noopener">Apple 向全部開發者開放 Siri AI 第三方整合</a></h3>
+    <p class="dek">iOS 27.3 等開發者預覽起，Siri AI 可經 App Intents 存取第三方 App，支援個人情境、自然語言與螢幕感知，並可組合 skills。App Store 提交約春季開放；歐盟 iOS 暫未提供，且設每日用量上限。</p>
+    <p class="meta"><span class="outlet">The Verge／Apple Developer</span><span class="src"> · <a href="https://www.theverge.com/tech/1025694/apple-siri-ai-third-party-apps" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="hot-rank">
+    <h2>熱門話題 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://openai.com/index/a-thousand-fewer-paths-to-root/" target="_blank" rel="noopener">OpenAI 自主管線一次產出 948 個 Linux LPE 利用</a></li>
+    <li><a href="https://openai.com/index/openai-to-acquire-pierre/" target="_blank" rel="noopener">OpenAI 收購 Pierre：把 Code Storage 收進 Codex</a></li>
+    <li><a href="https://techcrunch.com/2026/11/04/meta-acquires-ai-coding-startup-conductor/" target="_blank" rel="noopener">Meta 收購多 agent 編程新創 Conductor</a></li>
+    <li><a href="https://techcrunch.com/2026/11/04/apple-is-reportedly-cutting-budgets-for-its-internal-ai-usage/" target="_blank" rel="noopener">Apple 據報下調工程團隊每日 AI 開支上限</a></li>
+    <li><a href="https://www.technologyreview.com/2026/11/04/1148043/texas-was-the-new-epicenter-of-the-ai-data-center-buildout-that-might-be-kaput/" target="_blank" rel="noopener">德州選後：AI 資料中心擴張恐踩剎</a></li>
+    <li><a href="https://www.theverge.com/tech/1025694/apple-siri-ai-third-party-apps" target="_blank" rel="noopener">Apple 向全部開發者開放 Siri AI 第三方整合</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="ai">
+  <header class="sec-head"><div class="flag">AI</div><div><h2>AI 與模型</h2><p class="sec-sub">Images 2.6、Daybreak Red、健康評估、Pierre 源控與開源權重 · 6則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/ai-artificial-intelligence/1026474/openai-chatgpt-animated-gifs-images-2-6" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/03/STK155_OPEN_AI_CVirginia__C.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/ai-artificial-intelligence/1026474/openai-chatgpt-animated-gifs-images-2-6" target="_blank" rel="noopener">The Verge</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/ai-artificial-intelligence/1026474/openai-chatgpt-animated-gifs-images-2-6" target="_blank" rel="noopener">Images 2.6：ChatGPT 原生產 GIF，每週圖像逾 40 億</a></h3>
+    <p class="dek">OpenAI 推出 Images 2.6，ChatGPT 可一鍵產／編 GIF（調速、逐幀）；公司稱 ChatGPT＋API 每週圖像生成逾 40 億，較九月約 30 億再升。API 同步推 GPT-Image-2.6 Flare／Sunburst，消費生成持續產品化。</p>
+    <p class="meta"><span class="outlet">The Verge／OpenAI</span><span class="src"> · <a href="https://www.theverge.com/ai-artificial-intelligence/1026474/openai-chatgpt-animated-gifs-images-2-6" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://openai.com/index/daybreak-red-aws-govcloud" target="_blank" rel="noopener"><img src="https://images.ctfassets.net/kftzwdyauwt9/400PQ4WTCOvXwwvk1OMOHv/03970ddeafd22fdbc9832669deacc59c/a-thousand-fewer-paths-to-root-social.png?w=1600&amp;h=900&amp;fit=fill" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://openai.com/index/daybreak-red-aws-govcloud" target="_blank" rel="noopener">OpenAI（Cyber／Daybreak 示意）</a>（外部連結）</p>
+    <h3><a href="https://openai.com/index/daybreak-red-aws-govcloud" target="_blank" rel="noopener">Daybreak Red：GPT‑5.6 Cyber 登陸 AWS GovCloud</a></h3>
+    <p class="dek">OpenAI 指 GPT‑5.6 Cyber 經 Daybreak Red 於 AWS GovCloud（US-East）Amazon Bedrock 向核准客戶開放，用於授權漏洞研究與驗證。需同時通過 OpenAI 審批與 AWS 配置；推理資料不入訓，強調身分核驗與監控。</p>
+    <p class="meta"><span class="outlet">OpenAI／AWS</span><span class="src"> · <a href="https://openai.com/index/daybreak-red-aws-govcloud" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://blog.google/innovation-and-ai/technology/health/evaluating-health-ai-at-scale/" target="_blank" rel="noopener"><img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Health_AI_Evals_inline.max-1440x810.png" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://blog.google/innovation-and-ai/technology/health/evaluating-health-ai-at-scale/" target="_blank" rel="noopener">Google</a>（外部連結）</p>
+    <h3><a href="https://blog.google/innovation-and-ai/technology/health/evaluating-health-ai-at-scale/" target="_blank" rel="noopener">Google 公開健康 AI 評估框架：準確／安全／有用</a></h3>
+    <p class="dek">Google for Health 聯同外部臨床專家發白皮書，以 Critical User Journeys 為錨，結合封閉基準、autorater 與專家覆核，評估健康 AI 的準確、安全與有用性，覆蓋模型、產品與上線後三階段，供開發者與監管參考。</p>
+    <p class="meta"><span class="outlet">Google Blog</span><span class="src"> · <a href="https://blog.google/innovation-and-ai/technology/health/evaluating-health-ai-at-scale/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.axios.com/2026/11/04/openai-pierre-computer-github" target="_blank" rel="noopener"><img src="https://images.ctfassets.net/kftzwdyauwt9/5lDkYRSw86lFyHulgkyVVr/5b20bd6b90c3d87c33b780884b48123a/openai-to-acquire-pierre-computer-company-inc-social.png?w=1600&amp;h=900&amp;fit=fill" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.axios.com/2026/11/04/openai-pierre-computer-github" target="_blank" rel="noopener">OpenAI</a>（外部連結）</p>
+    <h3><a href="https://www.axios.com/2026/11/04/openai-pierre-computer-github" target="_blank" rel="noopener">【跨層】OpenAI×Pierre：為 agent 並行改寫源控</a></h3>
+    <p class="dek">Axios 獨家敘事指 OpenAI 收 Pierre 意在挑戰以人為中心的 GitHub 工作流；公司本周亦披露內部 Pando 源控後端，號稱推送時間大減。Coding agent 競爭由「寫得出」升級到「存得下、審得快、部署得出」。</p>
+    <p class="meta"><span class="outlet">Axios</span><span class="src"> · <a href="https://www.axios.com/2026/11/04/openai-pierre-computer-github" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://huggingface.co/moonshotai/Kimi-K3.1-Pro" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/11/Recursive-Neural-Spiral-in-Circuitry.png?resize=1200,600" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://huggingface.co/moonshotai/Kimi-K3.1-Pro" target="_blank" rel="noopener">TechCrunch（模型／權重示意）</a>（外部連結）</p>
+    <h3><a href="https://huggingface.co/moonshotai/Kimi-K3.1-Pro" target="_blank" rel="noopener">HN 熱議：Kimi K3.1 Pro 權重釋出</a></h3>
+    <p class="dek">Moonshot 於 Hugging Face 釋出 Kimi K3.1 Pro 權重，HN 討論熱度瞬間拉高，延續開源／開放權重模型與閉源 API 對壘。屬社群熱點代理（Reddit 直連常 403），反映開發者對可自託管長上下文模型需求未減。</p>
+    <p class="meta"><span class="outlet">Hugging Face／HN</span><span class="src"> · <a href="https://huggingface.co/moonshotai/Kimi-K3.1-Pro" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.anthropic.com/research/provable-inference" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/09/GettyImages-2294192768.jpg?resize=1200,798" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.anthropic.com/research/provable-inference" target="_blank" rel="noopener">Samuel Boivin/NurPhoto／Getty／TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://www.anthropic.com/research/provable-inference" target="_blank" rel="noopener">Anthropic：可證明推理（provable inference）進展</a></h3>
+    <p class="dek">Anthropic 公布大型語言模型可證明推理相關研究進展，與日前 FlashProve「證明模型身分」同屬信任基礎設施敘事。企業採購愈重視「輸出可驗證／模型可指認」，研究線正從基準分數走向密碼學與形式化保證。</p>
+    <p class="meta"><span class="outlet">Anthropic</span><span class="src"> · <a href="https://www.anthropic.com/research/provable-inference" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="ai-rank">
+    <h2>AI 與模型 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://www.theverge.com/ai-artificial-intelligence/1026474/openai-chatgpt-animated-gifs-images-2-6" target="_blank" rel="noopener">Images 2.6：ChatGPT 原生產 GIF，每週圖像逾 40 億</a></li>
+    <li><a href="https://openai.com/index/daybreak-red-aws-govcloud" target="_blank" rel="noopener">Daybreak Red：GPT‑5.6 Cyber 登陸 AWS GovCloud</a></li>
+    <li><a href="https://www.axios.com/2026/11/04/openai-pierre-computer-github" target="_blank" rel="noopener">【跨層】OpenAI×Pierre：為 agent 並行改寫源控</a></li>
+    <li><a href="https://blog.google/innovation-and-ai/technology/health/evaluating-health-ai-at-scale/" target="_blank" rel="noopener">Google 公開健康 AI 評估框架：準確／安全／有用</a></li>
+    <li><a href="https://huggingface.co/moonshotai/Kimi-K3.1-Pro" target="_blank" rel="noopener">HN 熱議：Kimi K3.1 Pro 權重釋出</a></li>
+    <li><a href="https://www.anthropic.com/research/provable-inference" target="_blank" rel="noopener">Anthropic：可證明推理（provable inference）進展</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="security">
+  <header class="sec-head"><div class="flag">資安</div><div><h2>資安與基礎設施</h2><p class="sec-sub">自動化挖洞、DreamHost 滯後、Postman 續報與技術債 · 6則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://openai.com/index/a-thousand-fewer-paths-to-root/" target="_blank" rel="noopener"><img src="https://images.ctfassets.net/kftzwdyauwt9/400PQ4WTCOvXwwvk1OMOHv/03970ddeafd22fdbc9832669deacc59c/a-thousand-fewer-paths-to-root-social.png?w=1600&amp;h=900&amp;fit=fill" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://openai.com/index/a-thousand-fewer-paths-to-root/" target="_blank" rel="noopener">OpenAI</a>（外部連結）</p>
+    <h3><a href="https://openai.com/index/a-thousand-fewer-paths-to-root/" target="_blank" rel="noopener">OpenAI：千條少咗嘅 root 路徑——自動化挖洞時代</a></h3>
+    <p class="dek">同一主軸之資安讀法：948 LPE、約每條 1279 美元、抽樣見新利用手法；kernelCTF 硬化靶仍得 21 條。防守含義係補丁與隔離必須工業化，否則低權限帳號對強敵已接近 root。HN 同步過百熱議。</p>
+    <p class="meta"><span class="outlet">OpenAI</span><span class="src"> · <a href="https://openai.com/index/a-thousand-fewer-paths-to-root/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/04/hackers-stole-dreamhost-customer-files-and-inboxes-during-months-long-attack/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/11/GettyImages-2249547675.jpg?w=1024" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/04/hackers-stole-dreamhost-customer-files-and-inboxes-during-months-long-attack/" target="_blank" rel="noopener">Thomas Fuller/SOPA／LightRocket／Getty／TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/04/hackers-stole-dreamhost-customer-files-and-inboxes-during-months-long-attack/" target="_blank" rel="noopener">DreamHost：檔案管理器漏洞致數月攻擊，電郵憑證外洩</a></h3>
+    <p class="dek">DreamHost 向加州通報：攻擊自八月起，經檔案管理器漏洞取得 session token，竊取客戶電郵與憑證；偵測滯後至近周停電與重設密碼後才披露。受影響「遠低於一成」、約 40 萬付費客戶基數，細節調查中。</p>
+    <p class="meta"><span class="outlet">TechCrunch</span><span class="src"> · <a href="https://techcrunch.com/2026/11/04/hackers-stole-dreamhost-customer-files-and-inboxes-during-months-long-attack/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://news.ycombinator.com/item?id=50354960" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2023/03/GettyImages-1354786584.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://news.ycombinator.com/item?id=50354960" target="_blank" rel="noopener">Getty／stock（開發工具示意）</a>（外部連結）</p>
+    <h3><a href="https://news.ycombinator.com/item?id=50354960" target="_blank" rel="noopener">【續報】Postman 被指未明確同意即安裝 AI 插件</a></h3>
+    <p class="dek">開發者社群續炒 Postman Desktop 自動加入 Claude Code／Codex 類插件並嘗試信任 startup hook；與「assume compromised」供應鏈主線連讀。工具預設行為再成攻擊面，呼籲改為顯式 opt-in。</p>
+    <p class="meta"><span class="outlet">Hacker News／社群彙編</span><span class="src"> · <a href="https://news.ycombinator.com/item?id=50354960" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://arstechnica.com/security/2026/11/hackers-exploited-ios-and-android-flaws-to-infect-phones/" target="_blank" rel="noopener"><img src="https://cdn.arstechnica.net/wp-content/uploads/2020/10/malware-1000x648.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://arstechnica.com/security/2026/11/hackers-exploited-ios-and-android-flaws-to-infect-phones/" target="_blank" rel="noopener">Getty／Ars Technica（惡意軟件示意）</a>（外部連結）</p>
+    <h3><a href="https://arstechnica.com/security/2026/11/hackers-exploited-ios-and-android-flaws-to-infect-phones/" target="_blank" rel="noopener">Ars：駭客利用已修 iOS／Android 漏洞感染手機</a></h3>
+    <p class="dek">Ars 報道與俄羅斯關聯活動利用已公開／已修的 iOS 與 Android 漏洞感染手機，再次凸顯「補丁存在≠裝置已更新」。行動端仍是釣魚與間諜軟件入口，企業 MDM、強制更新與 N 日監控要同步審計。</p>
+    <p class="meta"><span class="outlet">Ars Technica</span><span class="src"> · <a href="https://arstechnica.com/security/2026/11/hackers-exploited-ios-and-android-flaws-to-infect-phones/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://layer3intel.com/blog/residential-proxies-white-house-network" target="_blank" rel="noopener"><img src="https://cdn.arstechnica.net/wp-content/uploads/2026/11/mecool-malware.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://layer3intel.com/blog/residential-proxies-white-house-network" target="_blank" rel="noopener">Google／Ars（殭屍／代理示意）</a>（外部連結）</p>
+    <h3><a href="https://layer3intel.com/blog/residential-proxies-white-house-network" target="_blank" rel="noopener">HN 頭條：白宮網絡偵測到住宅代理</a></h3>
+    <p class="dek">Layer3Intel 指在與白宮相關網絡路徑偵測到住宅代理特徵，HN 置頂熱議（分數逾 600）。住宅代理濫用與昨日認證 Android TV 殭屍網同一光譜：家庭寬頻裝置／代理池持續成為隱蔽跳板。</p>
+    <p class="meta"><span class="outlet">Layer3Intel／HN</span><span class="src"> · <a href="https://layer3intel.com/blog/residential-proxies-white-house-network" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://spectrum.ieee.org/ai-in-cybersecurity-php2shell-vulnerability" target="_blank" rel="noopener"><img src="https://cdn.arstechnica.net/wp-content/uploads/2020/10/malware-1000x648.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://spectrum.ieee.org/ai-in-cybersecurity-php2shell-vulnerability" target="_blank" rel="noopener">Getty／Ars（資安示意）</a>（外部連結）</p>
+    <h3><a href="https://spectrum.ieee.org/ai-in-cybersecurity-php2shell-vulnerability" target="_blank" rel="noopener">IEEE Spectrum：AI 逼企業清四十年技術債</a></h3>
+    <p class="dek">IEEE Spectrum 以 PHP／歷史漏洞為例，指 AI 攻防正在逼企業償還數十年技術債——舊堆疊、未清依賴與緩慢補丁週期，在自動化利用面前更難藏。HN 高分轉載，成開發者社群當日共鳴文，呼籲優先清債。</p>
+    <p class="meta"><span class="outlet">IEEE Spectrum</span><span class="src"> · <a href="https://spectrum.ieee.org/ai-in-cybersecurity-php2shell-vulnerability" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="security-rank">
+    <h2>資安與基礎設施 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://openai.com/index/a-thousand-fewer-paths-to-root/" target="_blank" rel="noopener">OpenAI：千條少咗嘅 root 路徑——自動化挖洞時代</a></li>
+    <li><a href="https://techcrunch.com/2026/11/04/hackers-stole-dreamhost-customer-files-and-inboxes-during-months-long-attack/" target="_blank" rel="noopener">DreamHost：檔案管理器漏洞致數月攻擊，電郵憑證外洩</a></li>
+    <li><a href="https://news.ycombinator.com/item?id=50354960" target="_blank" rel="noopener">【續報】Postman 被指未明確同意即安裝 AI 插件</a></li>
+    <li><a href="https://arstechnica.com/security/2026/11/hackers-exploited-ios-and-android-flaws-to-infect-phones/" target="_blank" rel="noopener">Ars：駭客利用已修 iOS／Android 漏洞感染手機</a></li>
+    <li><a href="https://layer3intel.com/blog/residential-proxies-white-house-network" target="_blank" rel="noopener">HN 頭條：白宮網絡偵測到住宅代理</a></li>
+    <li><a href="https://spectrum.ieee.org/ai-in-cybersecurity-php2shell-vulnerability" target="_blank" rel="noopener">IEEE Spectrum：AI 逼企業清四十年技術債</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="product">
+  <header class="sec-head"><div class="flag">產品</div><div><h2>產品發佈</h2><p class="sec-sub">Siri AI 預覽、ChatGPT GIF、Nothing 裝置與雲遊戲 · 6則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://developer.apple.com/news/?id=gdk2umrf" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/07/Siri-AI-Being-invoked-6.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.736302165243%2C100%2C78.527395669513&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://developer.apple.com/news/?id=gdk2umrf" target="_blank" rel="noopener">David Imel／The Verge</a>（外部連結）</p>
+    <h3><a href="https://developer.apple.com/news/?id=gdk2umrf" target="_blank" rel="noopener">Siri AI 開發者預覽：第三方 App 可被語音代理操作</a></h3>
+    <p class="dek">Apple 官方宣佈 Siri AI 開發者預覽向所有開發者開放，經 App Intents 暴露內容與動作，並支援 skills 多步組合；覆蓋 iOS／iPadOS／macOS／visionOS 27.3 beta。春季起接受 App Store 提交，消費端「再等數月」。</p>
+    <p class="meta"><span class="outlet">Apple Developer</span><span class="src"> · <a href="https://developer.apple.com/news/?id=gdk2umrf" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/ai-artificial-intelligence/1026474/openai-chatgpt-animated-gifs-images-2-6" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/03/STK155_OPEN_AI_CVirginia__C.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/ai-artificial-intelligence/1026474/openai-chatgpt-animated-gifs-images-2-6" target="_blank" rel="noopener">The Verge</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/ai-artificial-intelligence/1026474/openai-chatgpt-animated-gifs-images-2-6" target="_blank" rel="noopener">ChatGPT 可產動畫 GIF，Images 2.6 全面推送</a></h3>
+    <p class="dek">產品向：用戶可用提示或上載相片一鍵產 GIF，並於對話內調速與逐幀編輯；Images 2.6 同步加快出圖。覆蓋 ChatGPT 與 Codex 全平台，消費生成從靜態圖擴至短循環動畫，創作門檻再降一截。</p>
+    <p class="meta"><span class="outlet">The Verge</span><span class="src"> · <a href="https://www.theverge.com/ai-artificial-intelligence/1026474/openai-chatgpt-animated-gifs-images-2-6" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/04/nothing-ceo-says-companys-mysterious-ai-first-device-is-dropping-next-month/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/11/GettyImages-2249547675.jpg?w=1024" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/04/nothing-ceo-says-companys-mysterious-ai-first-device-is-dropping-next-month/" target="_blank" rel="noopener">Nothing／TechCrunch（品牌示意；以稿件配圖為準）</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/04/nothing-ceo-says-companys-mysterious-ai-first-device-is-dropping-next-month/" target="_blank" rel="noopener">Nothing：無螢幕 AI 原生裝置稱下月出貨</a></h3>
+    <p class="dek">CEO Carl Pei 於 X 稱首款 AI 原生產品 12 月出貨：「冇新螢幕、亦唔係 App」，定位生產力工具，並淡化與掛件／眼鏡敘事綁定。細節未公佈，消費硬體尋找「AI iPhone 時刻」繼續試錯。</p>
+    <p class="meta"><span class="outlet">TechCrunch／Verge</span><span class="src"> · <a href="https://techcrunch.com/2026/11/04/nothing-ceo-says-companys-mysterious-ai-first-device-is-dropping-next-month/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/tech/1027113/x-says-its-updated-web-app-is-way-faster" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2025/07/STK160_X_TWITTER_2__A.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/tech/1027113/x-says-its-updated-web-app-is-way-faster" target="_blank" rel="noopener">The Verge</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/tech/1027113/x-says-its-updated-web-app-is-way-faster" target="_blank" rel="noopener">X 稱重寫網頁版大幅加速，正逐國推給登入用戶</a></h3>
+    <p class="dek">X 工程指新網頁版在慢連線下首帖由逾 22 秒降至約 2.7 秒，並合併原多人／爬蟲／預覽多套伺服器為一。已用於登出與搜尋爬取頁，登入用戶按國家分批遷移；安全研究員稱體感明顯更順、介面更齊；業界與社群同步跟進後續發展。</p>
+    <p class="meta"><span class="outlet">The Verge</span><span class="src"> · <a href="https://www.theverge.com/tech/1027113/x-says-its-updated-web-app-is-way-faster" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/news/1026455/xbox-nano-direct-cloud-wifi-connection-xbox-cloud-gaming-phone-controller" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/25651509/_STK084_SONOS_C.png?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 C</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/news/1026455/xbox-nano-direct-cloud-wifi-connection-xbox-cloud-gaming-phone-controller" target="_blank" rel="noopener">The Verge／Microsoft（雲遊戲示意；以稿件圖為準）</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/news/1026455/xbox-nano-direct-cloud-wifi-connection-xbox-cloud-gaming-phone-controller" target="_blank" rel="noopener">Xbox：Nano 直連雲端 Wi‑Fi＋手機當手掣預覽</a></h3>
+    <p class="dek">Microsoft 預覽 Xbox Nano「cloud connect」以 Wi‑Fi 直連雲遊戲伺服器減低輸入延遲；另推智慧電視上以手機作手掣。美國可試 Nano 直連，其他地區可試手機手掣，兩者仍屬 beta、支援有限。</p>
+    <p class="meta"><span class="outlet">The Verge</span><span class="src"> · <a href="https://www.theverge.com/news/1026455/xbox-nano-direct-cloud-wifi-connection-xbox-cloud-gaming-phone-controller" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/home/1026401/gemini-for-home-att-connected-life" target="_blank" rel="noopener"><img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Health_AI_Evals_inline.max-1440x810.png" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 C</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/home/1026401/gemini-for-home-att-connected-life" target="_blank" rel="noopener">Google（Home／助理示意）</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/home/1026401/gemini-for-home-att-connected-life" target="_blank" rel="noopener">Gemini for Home 接入 AT&amp;T 智慧安防</a></h3>
+    <p class="dek">AT&amp;T Connected Life 稱成首個接入 Google Home Premium／Gemini for Home 的家居安防產品，語音與情境自動化伸延至安防場景。智慧家居助手競爭由喇叭擴至「安防＋助理」套餐。</p>
+    <p class="meta"><span class="outlet">The Verge</span><span class="src"> · <a href="https://www.theverge.com/home/1026401/gemini-for-home-att-connected-life" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="product-rank">
+    <h2>產品發佈 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://developer.apple.com/news/?id=gdk2umrf" target="_blank" rel="noopener">Siri AI 開發者預覽：第三方 App 可被語音代理操作</a></li>
+    <li><a href="https://www.theverge.com/ai-artificial-intelligence/1026474/openai-chatgpt-animated-gifs-images-2-6" target="_blank" rel="noopener">ChatGPT 可產動畫 GIF，Images 2.6 全面推送</a></li>
+    <li><a href="https://techcrunch.com/2026/11/04/nothing-ceo-says-companys-mysterious-ai-first-device-is-dropping-next-month/" target="_blank" rel="noopener">Nothing：無螢幕 AI 原生裝置稱下月出貨</a></li>
+    <li><a href="https://www.theverge.com/tech/1027113/x-says-its-updated-web-app-is-way-faster" target="_blank" rel="noopener">X 稱重寫網頁版大幅加速，正逐國推給登入用戶</a></li>
+    <li><a href="https://www.theverge.com/news/1026455/xbox-nano-direct-cloud-wifi-connection-xbox-cloud-gaming-phone-controller" target="_blank" rel="noopener">Xbox：Nano 直連雲端 Wi‑Fi＋手機當手掣預覽</a></li>
+    <li><a href="https://www.theverge.com/home/1026401/gemini-for-home-att-connected-life" target="_blank" rel="noopener">Gemini for Home 接入 AT&amp;T 智慧安防</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="corp">
+  <header class="sec-head"><div class="flag">企業</div><div><h2>企業與產業</h2><p class="sec-sub">Apple 配額、coding agent 併購、德州機房政治與 Robotaxi · 6則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/tech/1026771/apple-is-reportedly-lowering-ai-usage-budgets" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/06/iphone-usb-cable.jpg?resize=1200,800" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/tech/1026771/apple-is-reportedly-lowering-ai-usage-budgets" target="_blank" rel="noopener">STR/NurPhoto／Getty／TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/tech/1026771/apple-is-reportedly-lowering-ai-usage-budgets" target="_blank" rel="noopener">Apple 內部 AI 配額下調：成本控制壓過 tokenmaxxing</a></h3>
+    <p class="dek">企業治理視角下，Apple 下調員工 AI 日額標誌大型科技公司由「強制用量」轉向「費用封頂」。與對外開放 Siri AI、對內慳 token 並讀，顯示 AI 轉型已進入單位經濟與財務紀律階段，口號讓位配額。</p>
+    <p class="meta"><span class="outlet">The Verge／Bloomberg</span><span class="src"> · <a href="https://www.theverge.com/tech/1026771/apple-is-reportedly-lowering-ai-usage-budgets" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/ai-artificial-intelligence/1026915/meta-conductor-acquisition" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/09/mark-zuckerberg-ray-bans.png?resize=1200,653" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/ai-artificial-intelligence/1026915/meta-conductor-acquisition" target="_blank" rel="noopener">Meta／TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/ai-artificial-intelligence/1026915/meta-conductor-acquisition" target="_blank" rel="noopener">Coding agent 軍備賽：Pierre×OpenAI、Conductor×Meta</a></h3>
+    <p class="dek">一日內兩宗開發工具併購，疊加 xAI／Cursor 等既有佈局，顯示競爭焦點轉到多 agent 編排與源碼工作流控制權。雲端關停與刪資料條款，亦提醒被收購新創的現有用戶要預留遷出與備份窗口；業界與社群同步跟進後續發展。</p>
+    <p class="meta"><span class="outlet">The Verge／TechCrunch</span><span class="src"> · <a href="https://www.theverge.com/ai-artificial-intelligence/1026915/meta-conductor-acquisition" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/04/snapchat-surpasses-30m-paid-subscribers/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2022/07/GettyImages-647104884.jpg?resize=1200,800" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/04/snapchat-surpasses-30m-paid-subscribers/" target="_blank" rel="noopener">Drew Angerer／Getty／TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/04/snapchat-surpasses-30m-paid-subscribers/" target="_blank" rel="noopener">Snapchat+ 系付費訂戶突破 3000 萬</a></h3>
+    <p class="dek">Snap 第三季指 Snapchat+／Memories／Lens+ 等付費訂戶逾 3000 萬；惟廣告收入與 DAU 低於預期，股價重挫約一成二。訂閱成長與廣告疲弱並存，社群平台變現由廣告持續切向分層訂閱。</p>
+    <p class="meta"><span class="outlet">TechCrunch</span><span class="src"> · <a href="https://techcrunch.com/2026/11/04/snapchat-surpasses-30m-paid-subscribers/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/04/waymo-confirms-it-will-start-splitting-with-uber-in-january-2028/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/11/GettyImages-2249547675.jpg?w=1024" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/04/waymo-confirms-it-will-start-splitting-with-uber-in-january-2028/" target="_blank" rel="noopener">Smith Collection／Getty／TechCrunch（示意）</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/04/waymo-confirms-it-will-start-splitting-with-uber-in-january-2028/" target="_blank" rel="noopener">Waymo：2028 年 1 月起奧斯汀／亞特蘭大與 Uber 分拆</a></h3>
+    <p class="dek">Waymo 共同 CEO 確認 2028 年 1 月起在奧斯汀與亞特蘭大改以自家 App 接單，指混合派車體驗「好似抽獎」。Uber 稱仍可按協議搭載；Robotaxi 平台由「借流量」轉「自建用戶關係」。</p>
+    <p class="meta"><span class="outlet">TechCrunch／Bloomberg</span><span class="src"> · <a href="https://techcrunch.com/2026/11/04/waymo-confirms-it-will-start-splitting-with-uber-in-january-2028/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/policy/1026036/data-center-dense-texas-turns-blue" target="_blank" rel="noopener"><img src="https://wp.technologyreview.com/wp-content/uploads/2026/11/GettyImages-2303431102.jpg?resize=1200,600" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/policy/1026036/data-center-dense-texas-turns-blue" target="_blank" rel="noopener">Getty／MIT Technology Review</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/policy/1026036/data-center-dense-texas-turns-blue" target="_blank" rel="noopener">德州機房政治：許可、稅優與水電成選後主戰場</a></h3>
+    <p class="dek">選後分析指德州資料中心密度偏高，新政治格局下可能出現全州暫停新批、或收緊地方否決權與稅務優惠。延續中期選舉「電費／用水」主線，超大規模雲端選址與專案融資的風險溢價明顯上升；業界與社群同步跟進後續發展。</p>
+    <p class="meta"><span class="outlet">The Verge／Texas Tribune</span><span class="src"> · <a href="https://www.theverge.com/policy/1026036/data-center-dense-texas-turns-blue" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://arstechnica.com/tech-policy/2026/11/big-tech-claims-voters-ai-backlash-is-anti-trump-not-anti-tech/" target="_blank" rel="noopener"><img src="https://cdn.arstechnica.net/wp-content/uploads/2016/10/cropped-ars-logo-512_480.png" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 C</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://arstechnica.com/tech-policy/2026/11/big-tech-claims-voters-ai-backlash-is-anti-trump-not-anti-tech/" target="_blank" rel="noopener">Ars Technica</a>（外部連結）</p>
+    <h3><a href="https://arstechnica.com/tech-policy/2026/11/big-tech-claims-voters-ai-backlash-is-anti-trump-not-anti-tech/" target="_blank" rel="noopener">Big Tech 稱 AI 反彈係「反特朗普」而非「反科技」</a></h3>
+    <p class="dek">Ars 報道大廠公關將部分選民對 AI／資料中心反彈詮釋為黨派投票而非科技本身——與地方電費、用水抗爭敘事對撞。產業政治溝通進入「重新命名問題」階段，預期監管遊說與社區溝通成本都會續升；業界與社群同步跟進後續發展。</p>
+    <p class="meta"><span class="outlet">Ars Technica</span><span class="src"> · <a href="https://arstechnica.com/tech-policy/2026/11/big-tech-claims-voters-ai-backlash-is-anti-trump-not-anti-tech/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="corp-rank">
+    <h2>企業與產業 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://www.theverge.com/tech/1026771/apple-is-reportedly-lowering-ai-usage-budgets" target="_blank" rel="noopener">Apple 內部 AI 配額下調：成本控制壓過 tokenmaxxing</a></li>
+    <li><a href="https://www.theverge.com/ai-artificial-intelligence/1026915/meta-conductor-acquisition" target="_blank" rel="noopener">Coding agent 軍備賽：Pierre×OpenAI、Conductor×Meta</a></li>
+    <li><a href="https://www.theverge.com/policy/1026036/data-center-dense-texas-turns-blue" target="_blank" rel="noopener">德州機房政治：許可、稅優與水電成選後主戰場</a></li>
+    <li><a href="https://techcrunch.com/2026/11/04/snapchat-surpasses-30m-paid-subscribers/" target="_blank" rel="noopener">Snapchat+ 系付費訂戶突破 3000 萬</a></li>
+    <li><a href="https://techcrunch.com/2026/11/04/waymo-confirms-it-will-start-splitting-with-uber-in-january-2028/" target="_blank" rel="noopener">Waymo：2028 年 1 月起奧斯汀／亞特蘭大與 Uber 分拆</a></li>
+    <li><a href="https://arstechnica.com/tech-policy/2026/11/big-tech-claims-voters-ai-backlash-is-anti-trump-not-anti-tech/" target="_blank" rel="noopener">Big Tech 稱 AI 反彈係「反特朗普」而非「反科技」</a></li>
+    </ol>
+  </div>
+</section>
+  <footer class="footer">
+    <p>每日 IT 報 · 2026-11-05（四）· 香港時間 · 共 30 則精選 + 4 篇專題 · 配圖直接 hotlink 外部 https 來源，無 base64 嵌圖、無本機 assets · 每則附熱度 A/B/C · 各分類欄附熱度排行。</p>
+    <p>來源涵蓋歐美主流科技／財經／資安媒體、公司通告與社群熱度交叉；摘要約 100–150 字繁中，事實以原文為準。專題結論先行。諷刺欄屬玩笑專欄。例行每日（含週末）。</p>
+  </footer>
+</main>
+
+</body>
+</html>

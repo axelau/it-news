@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>每日 IT 報 · 十人全齊特別版｜2026年11月5日</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --cream:#F5F5EC;
+  --paper:#FFFEF7;
+  --navy:#0A2558;
+  --navy2:#14356e;
+  --sky:#A3C1DA;
+  --sky2:#C5D9EA;
+  --sky3:#E8F1F8;
+  --ink:#0A2558;
+  --ink2:#1e3a66;
+  --muted:#5a6f8a;
+  --link:#0A2558;
+  --white:#fffef9;
+  --heat-a:#0A2558;
+  --heat-b:#3d5a80;
+  --heat-c:#7a8fa8;
+  --px:4px;
+}
+*{box-sizing:border-box}
+html{font-size:16.5px}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(163,193,218,.35) 0 2px, transparent 3px),
+    radial-gradient(circle at 88% 18%, rgba(10,37,88,.12) 0 2px, transparent 3px),
+    radial-gradient(circle at 70% 92%, rgba(163,193,218,.28) 0 2px, transparent 3px),
+    var(--cream);
+  background-size:28px 28px, 36px 36px, 24px 24px, auto;
+  color:var(--ink);
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  line-height:1.55;
+  image-rendering:auto;
+}
+a{color:var(--link); text-decoration:none; border-bottom:2px solid transparent}
+a:hover{border-bottom-color:var(--sky); background:var(--sky3)}
+
+/* pixel border helper — stepped corners via box-shadow */
+.pixel-border{
+  border:3px solid var(--navy);
+  box-shadow:
+    3px 0 0 0 var(--navy),
+    -3px 0 0 0 var(--navy),
+    0 3px 0 0 var(--navy),
+    0 -3px 0 0 var(--navy),
+    6px 6px 0 0 rgba(10,37,88,.18);
+  clip-path: polygon(
+    0 8px, 8px 8px, 8px 0,
+    calc(100% - 8px) 0, calc(100% - 8px) 8px, 100% 8px,
+    100% calc(100% - 8px), calc(100% - 8px) calc(100% - 8px), calc(100% - 8px) 100%,
+    8px 100%, 8px calc(100% - 8px), 0 calc(100% - 8px)
+  );
+}
+
+.wrap{
+  max-width:1000px; margin:1.25rem auto 2.5rem; padding:1.35rem clamp(1.75rem,7vw,3.75rem) 2.5rem;
+  background:var(--paper);
+  border:3px solid var(--navy);
+  position:relative;
+  box-shadow:
+    4px 4px 0 0 var(--navy),
+    8px 8px 0 0 var(--sky);
+}
+/* dither + decorations around wrap */
+.wrap::before,.wrap::after{
+  content:"+"; position:absolute; color:var(--sky); font-family:"Press Start 2P",monospace;
+  font-size:.55rem; line-height:1; pointer-events:none; opacity:.85;
+}
+.wrap::before{top:.55rem; left:.7rem}
+.wrap::after{bottom:.55rem; right:.7rem}
+
+/* ===== MASTHEAD ===== */
+.masthead{
+  text-align:center;
+  padding:1.6rem 1rem 1.25rem;
+  margin:0 0 1.15rem;
+  background:linear-gradient(180deg, var(--sky3) 0%, var(--paper) 70%);
+  border:3px solid var(--navy);
+  position:relative;
+  box-shadow:4px 4px 0 0 var(--navy);
+}
+.masthead::before{
+  content:"PLAY · WORK · CREATE · CONNECT";
+  position:absolute; left:.5rem; top:50%; transform:translateY(-50%) rotate(-90deg);
+  transform-origin:center; font-family:"Press Start 2P",monospace; font-size:.42rem;
+  letter-spacing:.08em; color:var(--sky); white-space:nowrap; opacity:.7;
+  display:none;
+}
+@media (min-width:860px){
+  .masthead::before{display:block}
+}
+.masthead .kicker{
+  font-family:"Press Start 2P",monospace;
+  font-size:.55rem; letter-spacing:.12em; color:var(--navy);
+  margin-bottom:.85rem;
+  display:inline-block;
+  background:var(--navy); color:#fff;
+  padding:.45rem .7rem;
+  box-shadow:3px 3px 0 0 var(--sky);
+}
+.masthead h1{
+  font-family:"Press Start 2P",monospace;
+  font-size:clamp(1.15rem, 4.2vw, 1.85rem);
+  margin:.35rem 0 .7rem; font-weight:400; letter-spacing:.06em;
+  color:var(--navy);
+  text-shadow: 3px 3px 0 var(--sky), 6px 6px 0 rgba(10,37,88,.15);
+  line-height:1.45;
+}
+.masthead .date{
+  font-family:"VT323",monospace;
+  font-size:1.35rem; color:var(--navy2); margin-top:.15rem; letter-spacing:.04em;
+}
+.masthead .tagline{
+  font-size:.8rem; color:var(--muted); margin:.55rem auto 0; max-width:46rem; line-height:1.5;
+}
+
+/* floating pluses in masthead */
+.masthead .date::before{content:"+  "; color:var(--sky); font-family:"Press Start 2P",monospace; font-size:.5rem}
+.masthead .date::after{content:"  +"; color:var(--sky); font-family:"Press Start 2P",monospace; font-size:.5rem}
+
+/* ===== TOC ===== */
+.toc{
+  display:flex; flex-wrap:wrap; gap:.45rem .55rem; justify-content:center;
+  margin:0 0 1.5rem; padding:.85rem .6rem;
+  border:3px solid var(--navy); background:var(--sky3);
+  box-shadow:3px 3px 0 0 var(--navy);
+  font-size:.82rem;
+}
+.toc a{
+  color:#fff; background:var(--navy); border:2px solid var(--navy);
+  padding:.28rem .55rem; font-weight:700; letter-spacing:.02em;
+  box-shadow:2px 2px 0 0 var(--sky);
+  border-bottom:2px solid var(--navy);
+}
+.toc a:hover{
+  background:var(--sky); color:var(--navy); border-bottom-color:var(--navy);
+}
+
+/* ===== REGIONS / SECTION HEADS ===== */
+.region{
+  margin:0 0 4.2rem; padding-bottom:2.7rem;
+  border-bottom:3px dashed var(--navy);
+}
+.region:last-of-type{border-bottom:none}
+.sec-head{display:flex; align-items:stretch; gap:.85rem; margin-bottom:.95rem}
+.flag{
+  background:var(--navy); color:#fff;
+  writing-mode:vertical-rl; text-orientation:mixed;
+  letter-spacing:.2em; font-weight:700; font-size:.88rem;
+  padding:.65rem .4rem; min-width:2.15rem;
+  display:flex; align-items:center; justify-content:center;
+  border:3px solid var(--navy);
+  box-shadow:3px 3px 0 0 var(--sky);
+  font-family:"Noto Sans TC",sans-serif;
+  position:relative;
+}
+.flag::after{
+  content:""; position:absolute; inset:-3px;
+  border:1px solid var(--sky); pointer-events:none; opacity:.6;
+}
+.sec-head h2{
+  margin:0; font-size:1.35rem; letter-spacing:.04em; line-height:1.35;
+  color:var(--navy); font-weight:700;
+}
+.sec-sub{margin:.2rem 0 0; color:var(--muted); font-size:.8rem}
+
+/* ===== FEATURE BOX ===== */
+.feature-box{
+  max-width:100%; margin:0 0 2rem; padding:0; overflow:hidden;
+  background:var(--white);
+  border:3px solid var(--navy);
+  box-shadow:4px 4px 0 0 var(--navy);
+  display:grid; grid-template-columns:minmax(220px,34%) 1fr; gap:0;
+  position:relative;
+}
+.feature-box::before{
+  content:"+"; position:absolute; top:.35rem; right:.5rem; z-index:2;
+  font-family:"Press Start 2P",monospace; font-size:.5rem; color:var(--sky); opacity:.9;
+}
+.feature-box .feature-media{
+  margin:0; background:var(--sky2); border-right:3px solid var(--navy); min-height:12rem; line-height:0;
+}
+.feature-box .feature-media a{display:block; line-height:0; height:100%; border:0}
+.feature-box .feature-media a:hover{background:transparent}
+.feature-box .feature-media img{width:100%; height:100%; min-height:12rem; object-fit:cover; display:block}
+.feature-box .feature-body{padding:1.1rem 1.2rem 1rem}
+.feature-box p{margin:0 0 .95rem; color:var(--ink2); font-size:.98rem; text-align:justify}
+.feature-box p.lead{font-size:1.05rem; color:var(--ink)}
+.feature-box p:last-child{margin-bottom:0}
+.feature-meta-row{display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; margin:0 0 .75rem}
+.drop::first-letter{
+  float:left; font-family:"Press Start 2P",monospace;
+  font-size:1.55rem; line-height:1.1; padding:.15rem .25rem 0 0;
+  font-weight:400; color:var(--navy);
+}
+
+/* satire accent */
+.feature-box.satire{
+  border-color:var(--navy);
+  background:linear-gradient(135deg, #fff9f0 0%, var(--white) 55%);
+  box-shadow:4px 4px 0 0 var(--sky), 8px 8px 0 0 var(--navy);
+}
+.feature-box.satire .sec-note{font-size:.76rem; color:var(--muted); margin:0 0 .75rem; font-style:italic}
+
+/* ===== STORY GRID ===== */
+.grid{display:grid; grid-template-columns:1fr 1fr; gap:2rem 1.15rem}
+.story{
+  padding:0; overflow:hidden;
+  background:var(--white);
+  border:3px solid var(--navy);
+  box-shadow:3px 3px 0 0 var(--sky);
+  display:flex; flex-direction:column;
+  position:relative;
+}
+.story::after{
+  content:"+"; position:absolute; bottom:.3rem; right:.4rem;
+  font-family:"Press Start 2P",monospace; font-size:.4rem; color:var(--sky); opacity:.75;
+  pointer-events:none;
+}
+.story.lead{grid-column:1 / -1; box-shadow:4px 4px 0 0 var(--navy)}
+.story.lead .story-media img{max-height:280px}
+.story-media{margin:0; background:var(--sky2); border-bottom:3px solid var(--navy); line-height:0}
+.story-media a{display:block; line-height:0; border:0}
+.story-media a:hover{background:transparent}
+.story-media img{width:100%; height:160px; object-fit:cover; display:block}
+.story.lead .story-media img{height:240px}
+.story-body{padding:.8rem .95rem .95rem; min-width:0; flex:1; display:flex; flex-direction:column}
+.story h3{margin:0 0 .35rem; font-size:1.02rem; line-height:1.35; font-weight:700; color:var(--navy)}
+.story.lead h3{font-size:1.28rem}
+.story h3 a{border:0; color:var(--navy)}
+.story h3 a:hover{background:var(--sky3); border:0}
+.story .dek{margin:0 0 .5rem; color:var(--ink2); font-size:.9rem; flex:1}
+.story.lead .dek{font-size:.98rem}
+.meta{margin:0; font-size:.72rem; color:var(--muted); font-family:"VT323",monospace; font-size:.95rem}
+.outlet{font-weight:700; color:var(--navy2); font-family:"Noto Sans TC",sans-serif; font-size:.72rem}
+.src{margin-left:.15rem}
+
+/* ===== HEAT BADGES — 90s window pop ===== */
+.heat{
+  display:inline-flex; align-items:stretch; gap:0;
+  padding:0; font-size:.68rem; font-weight:700; letter-spacing:.04em; line-height:1.2;
+  border:2px solid var(--navy);
+  background:var(--paper);
+  box-shadow:2px 2px 0 0 var(--navy);
+  overflow:hidden;
+  font-family:"Press Start 2P",monospace;
+  font-size:.48rem;
+  position:relative;
+}
+.heat::before{
+  content:"■";
+  background:var(--navy); color:#fff;
+  padding:.32rem .4rem;
+  display:inline-flex; align-items:center;
+  font-size:.42rem; letter-spacing:0;
+}
+/* put label text next to title bar */
+.heat{
+  color:var(--navy);
+  padding-right:.55rem;
+  align-items:center;
+}
+.heat::after{
+  content:"×";
+  margin-left:.35rem;
+  color:var(--navy);
+  font-size:.55rem;
+  line-height:1;
+  opacity:.7;
+}
+
+/* ===== THUMB CREDIT ===== */
+.thumb-credit{
+  margin:.1rem 0 .5rem; font-size:.65rem; color:var(--muted); line-height:1.35;
+  word-break:break-word;
+  padding:.35rem .5rem;
+  background:var(--sky3);
+  border-left:4px solid var(--sky);
+}
+.thumb-credit a{color:var(--muted); border-bottom:1px dotted var(--sky)}
+
+/* ===== RANK BOX — sky promo banner ===== */
+.rank-box{
+  margin:1.15rem 0 2rem; padding:1.1rem 1.2rem 1rem;
+  border:3px solid var(--navy);
+  background:var(--sky);
+  box-shadow:4px 4px 0 0 var(--navy);
+  position:relative;
+}
+.rank-box::before{
+  content:"LEVEL UP";
+  position:absolute; top:-.55rem; right:1rem;
+  font-family:"Press Start 2P",monospace; font-size:.42rem;
+  background:var(--navy); color:#fff; padding:.3rem .45rem;
+  box-shadow:2px 2px 0 0 var(--paper);
+}
+.rank-box h2{
+  margin:0 0 .3rem; font-size:1.15rem; letter-spacing:.04em; color:var(--navy);
+  font-family:"Press Start 2P",monospace; font-size:.72rem; line-height:1.55;
+}
+.rank-box .rank-sub{margin:0 0 .75rem; color:var(--navy2); font-size:.78rem}
+.rank-box ol{margin:0; padding-left:1.4rem; background:var(--paper); border:2px solid var(--navy); padding:.75rem 1rem .75rem 1.85rem}
+.rank-box li{margin:0 0 .45rem; font-size:.9rem; line-height:1.4; color:var(--navy)}
+.rank-box li a{font-weight:700; color:var(--navy); border-bottom:2px solid transparent}
+.rank-box li a:hover{border-bottom-color:var(--navy); background:var(--sky3)}
+
+/* ===== FOOTER ===== */
+.footer{
+  margin-top:1.4rem; padding:1rem 1rem .2rem;
+  border:3px solid var(--navy); background:var(--sky3);
+  box-shadow:3px 3px 0 0 var(--navy);
+  font-size:.76rem; color:var(--muted); line-height:1.6;
+}
+.footer p:first-child{
+  font-family:"VT323",monospace; font-size:1.05rem; color:var(--navy);
+}
+
+@media (max-width:720px){
+  .wrap{margin:.6rem auto 1.5rem; padding:1rem .85rem 1.75rem; box-shadow:3px 3px 0 0 var(--navy), 6px 6px 0 0 var(--sky); max-width:calc(100% - 1rem)}
+  .grid{grid-template-columns:1fr}
+  .flag{writing-mode:horizontal-tb; min-width:auto; padding:.35rem .7rem; letter-spacing:.15em}
+  .sec-head{flex-direction:column; gap:.4rem}
+  .drop::first-letter{font-size:1.25rem}
+  .feature-box{grid-template-columns:1fr}
+  .feature-box .feature-media{border-right:none; border-bottom:3px solid var(--navy); min-height:10rem}
+  .feature-box .feature-media img{min-height:10rem; max-height:200px}
+  .story.lead .story-media img,.story-media img{height:180px}
+  .masthead h1{font-size:1.05rem}
+  .rank-box h2{font-size:.58rem}
+  .toc a{font-size:.75rem}
+}
+@media print{
+  body{background:#fff}
+  .wrap{box-shadow:none; max-width:none}
+  a{color:inherit; text-decoration:none}
+  .region{break-inside:avoid-page}
+}
+</style>
+<body>
+<main class="wrap">
+  <header class="masthead">
+    <div class="kicker">GROK BOT · IT DIGEST · SPECIAL</div>
+    <h1>每日 IT 報 · 十人全齊特別版</h1>
+    <div class="date">二零二六年十一月五日　星期四　香港時間</div>
+    <p class="tagline">10 篇人物專題齊出 · 無分類精選／其他新聞／熱度排行 · 主題由當日原有日報抽出</p>
+  </header>
+  <nav class="toc" aria-label="章節">
+    <a href="#f1">Jobs</a> <a href="#f2">Swisher</a> <a href="#f3">Thompson</a> <a href="#f4">Vestager</a> <a href="#f5">Miller</a> <a href="#f6">Torvalds</a> <a href="#f7">Snowden</a> <a href="#f8">Harari</a> <a href="#f9">Register</a> <a href="#f10">Musk</a>
+  </nav>
+<section class="region" id="f1">
+  <header class="sec-head"><div class="flag">Jobs</div><div><h2>This is junk：Siri AI「全面開放」只係配額化粧嘅臃腫預覽</h2><p class="sec-sub">人物：Steve Jobs · 堆砌 App Intents、螢幕感知同 skills，卻用日額同地理把體驗砍成半成品——缺乏品味。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://platform.theverge.com/wp-content/uploads/sites/2/2026/07/Siri-AI-Being-invoked-6.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.736302165243%2C100%2C78.527395669513&amp;w=1200" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/07/Siri-AI-Being-invoked-6.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.736302165243%2C100%2C78.527395669513&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+<p class="thumb-credit">圖源／引述自 <a href="https://platform.theverge.com/wp-content/uploads/sites/2/2026/07/Siri-AI-Being-invoked-6.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.736302165243%2C100%2C78.527395669513&amp;w=1200" target="_blank" rel="noopener">David Imel／The Verge</a>（外部連結）</p>
+<p class="lead drop">This is junk.</p>
+<p>開放唔等於完成。Apple 把 Siri AI 開發者預覽灑向全部開發者：App Intents、自然語言、螢幕感知、skills 串連——參數表寫得像聖誕樹。同一頁細字寫住每日用量上限，歐盟 iOS 暫時缺席，App Store 提交要再等春季。這不是產品，是行銷部用功能清單填滿的空洞盒子。</p>
+<p>缺乏品味從第一個決定開始。真正的助理應該消失在動作裡，而不是逼用戶記住配額、司法區同 beta 標記。你每加一層「能力」，就多一層要解釋的例外。美學不是圓角；美學是敢刪。今日這套預覽像把半成品廚房电器擺上櫥窗，再貼「即將支援全球」標籤——櫥窗在說未來，用戶摸到的是限制。</p>
+<p>人性設計有一條鐵律：承諾必須小於能力，體驗必須大於簡報。Siri AI 反過來做。開發者被邀請進園，卻發現門鎖仍按地區與日額轉動。這摧毀的不是規格，是信任——用戶以為買到同一部電話，實際買到一份附帶條件的體驗許可證。把複雜藏進細則，再對外喊「全面開放」，正是最廉價的傲慢。</p>
+<p>同周產業還在堆更多旋鈕：動畫 GIF、多 agent 工作區、無限簡報。堆砌解決不了空白。少堆功能。把配額拿掉，把地理分裂拿掉，把「再等數月」拿掉，先交出一個乾淨、完整、可預期的動作。否則這只是又一堆缺乏品味的臃腫垃圾。This is junk。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="f2">
+  <header class="sec-head"><div class="flag">Swisher</div><div><h2>別玩公關：Apple 削工程師 AI 日額，對外仍唱全力擁抱</h2><p class="sec-sub">人物：Kara Swisher · 追資金——對內配給、對外開閘、隔壁燒七位數挖洞併購；股價保衛戰先於員工 token。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://techcrunch.com/wp-content/uploads/2026/06/iphone-usb-cable.jpg?resize=1200,800" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/06/iphone-usb-cable.jpg?resize=1200,800" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+<p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/wp-content/uploads/2026/06/iphone-usb-cable.jpg?resize=1200,800" target="_blank" rel="noopener">STR/NurPhoto／Getty／TechCrunch</a>（外部連結）</p>
+<p class="lead drop">別跟我玩公關文字遊戲。追資金流向。</p>
+<p>Bloomberg／TechCrunch／Verge：Apple 十月起把部分工程團隊每日 AI 開支上限由約三百美元削到兩百，並醞釀再砍到約一百；非工程傳低至約二十五美元一日。同週對外劇本係 Siri AI 向全部開發者開閘。同週產業另一面：OpenAI 燒約一百二十一万美元 API 工業化挖出九百四十八條 Linux 提權路徑；OpenAI 同 Meta 分別買下 Pierre 同 Conductor。一邊員工配給制，一邊股東簡報「全力擁抱」——呢個就係矽谷權力遊戲嘅經典分賬。</p>
+<p>道德破產唔一定係犯法，而係對內儉、對外吹，仲要員工同開發者替股價敘事買單。CEO 唔會因為模型突然變差而砍 token；係因為 CFO 贏咗董事會，單位經濟壓過幻燈片。你問點解公司肯花七位數搵 root、肯買 Git 舖，唔肯加你日額？因為你嗰幾百蚊係費用中心，佢嗰筆係「論文＋產品＋監管敘事」三合一 CapEx。</p>
+<p>連續追問好短：邊個簽署削額？削額有冇寫入對外 AI 路線圖？開發者預覽開閘同內部配額縮水，邊個先服務股價？隱私同安全公關最愛講「負責任」，負責到員工 Slack 彈 quota exceeded 為止。</p>
+<p>別再吞「轉型」簡報。打開帳本。股價保衛戰用員工 token 同用戶配額作燃料時，就唔好裝成文明進步。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="f3">
+  <header class="sec-head"><div class="flag">Thompson</div><div><h2>聚合者拆 forge：Pierre×Pando 之後，人類 PR 護城河已死</h2><p class="sec-sub">人物：Ben Thompson · 稀缺層轉去 agent 可讀源碼圖；誰控儲存／diff／並行工作區，誰抽乾舊源控生態。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://techcrunch.com/wp-content/uploads/2026/09/mark-zuckerberg-ray-bans.png?resize=1200,653" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/09/mark-zuckerberg-ray-bans.png?resize=1200,653" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+<p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/wp-content/uploads/2026/09/mark-zuckerberg-ray-bans.png?resize=1200,653" target="_blank" rel="noopener">Meta／TechCrunch</a>（外部連結）</p>
+<p class="lead drop">戰略假說：軟件價值鏈嘅稀缺層，正由「誰託管人類 PR」轉去「誰擁有 agent 可讀嘅源碼圖」。</p>
+<p>OpenAI 收購 Pierre、把 Code Storage 收進 Codex，同周披露內部 Pando（號稱每日近 PB 級 Git 流量）；Meta 收購多 agent 工作區新創 Conductor，雲服務限期關停。呢唔係兩則人情味併購新聞，而係聚合者對舊 forge 生態嘅降維打擊。GitHub 優化人類 review、issue、社交證明；agent 並行寫碼之後，瓶頸移到儲存吞吐、diff 速度、隔離工作區同合併編排。誰控制呢層介面，誰就聚合開發者需求，並逐步抽乾以人為中心嘅舊商業模式護城河。</p>
+<p>市場生態演化好血腥，亦好冷靜。被收購產品嘅雲用戶變成遷出問題而非客戶——Conductor 十一月關服刪資料，就係價值鏈轉移時常見嘅屍塊。開源 Diffs／Trees「繼續開源」係表層兼容；表層之下，agent 工作流被鎖進 Codex／Muse 封閉編排。聚合理論講過無數次：控制需求端體驗嘅人，最終定義供應端死活。傳統源控公司若仍以為護城河係「最多 human star」，已經喺錯誤抽象層防守。</p>
+<p>舊模式唔會禮貌死亡。佢會喺每次 agent push、每次自動 merge、每次「你嘅 repo 其實住喺我哋儲存層」入面，被靜靜拆骨。感情零分；只餘結構。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="f4">
+  <header class="sec-head"><div class="flag">Vestager</div><div><h2>看門人開閘？Siri AI「全面開放」惟歐盟 iOS 缺席</h2><p class="sec-sub">人物：Margrethe Vestager · 以創新為名按司法區開關園門＝市場封鎖；配額、時間表、地理三把匙仍在 Cupertino。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://platform.theverge.com/wp-content/uploads/sites/2/2026/07/Siri-AI-Being-invoked-6.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.736302165243%2C100%2C78.527395669513&amp;w=1200" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/07/Siri-AI-Being-invoked-6.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.736302165243%2C100%2C78.527395669513&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+<p class="thumb-credit">圖源／引述自 <a href="https://platform.theverge.com/wp-content/uploads/sites/2/2026/07/Siri-AI-Being-invoked-6.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.736302165243%2C100%2C78.527395669513&amp;w=1200" target="_blank" rel="noopener">David Imel／The Verge</a>（外部連結）</p>
+<p class="lead drop">以「創新」為名、按司法管轄區開關園門，本質上係看門人行為，必須受競爭法審視。</p>
+<p>Apple 向全部開發者開放 Siri AI 預覽：App Intents、自然語言、螢幕感知、skills 組合；App Store 提交約春季。同一份說明寫住——歐盟 iOS 暫未提供，並設每日用量上限。圍牆花園可以裝成廣場，但門鎖仍喺 Cupertino 手中：時間表、配額、地理，三把匙。</p>
+<p>公平競爭立場好簡單。裝置預設助理若係平台入口，就係市場看門人。對第三方「開放」卻把整個執行 DMA 嘅區域剔走，唔係技術腳註，而係用產品設計做市場封鎖。消費者權益亦唔係口號：用戶以為自己買到同一部電話、同一套 Siri，實際能力因地緣監管對抗而被降級——呢種分裂本身就係剝削選擇權。</p>
+<p>封閉生態慣用三步：先話安全同品質，再話區域未就緒，最後用配額同審批把第三方變成佃農。今日劇本無新意，只係 AI 標籤換皮。數據同入口控制若繼續捆綁銷售敘事，監管就唔能把「開發者預覽」當成豁免金牌。任何以創新包裝掠奪競爭、剝削用戶數據與入口控制嘅行為，都應當面對制裁與必要時嘅拆解——唔係等公關講完「再等數月」。</p>
+<p>警告寫喺門口：看門人冇權自行定義邊個市場先有權享受「開放」。法規先至係門；花園牆唔係。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="f5">
+  <header class="sec-head"><div class="flag">Miller</div><div><h2>別吹雲端：德州機房踩剎，先撞上電網同水，唔係演算法</h2><p class="sec-sub">人物：Chris Miller · AI 競爭本質係瓦特、水權、變壓器同地緣政治；選票改寫超大規模算力地圖。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://wp.technologyreview.com/wp-content/uploads/2026/11/GettyImages-2303431102.jpg?resize=1200,600" target="_blank" rel="noopener"><img src="https://wp.technologyreview.com/wp-content/uploads/2026/11/GettyImages-2303431102.jpg?resize=1200,600" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+<p class="thumb-credit">圖源／引述自 <a href="https://wp.technologyreview.com/wp-content/uploads/2026/11/GettyImages-2303431102.jpg?resize=1200,600" target="_blank" rel="noopener">Getty／MIT Technology Review</a>（外部連結）</p>
+<p class="lead drop">實體死穴寫在電錶上：沒有瓦特，就沒有權重。</p>
+<p>德州原是美國 AI 資料中心增長最快的戰場。選後民主黨路線勝出聯邦參院、新州長陣營傾向暫停或收緊機房許可，並把水電與社區否決權推回桌面。MIT Technology Review 與 The Verge 同周把這條線講清楚——「電力政治」不再是評論員修辭，而是工業許可證。你儘管紙上談兵吹雲端與模型規模；現場決定勝負的是變壓器交期、冷卻水源、輸電線路與地方稅優。</p>
+<p>半導體史重複同一課。光刻機、先進封裝、高壓電網——每一層都是國家工業戰略的實體關卡。把算力競爭簡化成「誰有更好的軟體敘事」，等於嘲笑晶圓廠門崗。出口管制卡住的是設備與材料；地方選票卡住的是機房能不能接上電網。兩者同屬物理世界對幻燈片的否決權。誰掌控產能地理，誰就定義下一輪 AI 軍備的真實上限。</p>
+<p>工業戰略比喻很直白：帝國先搶煤與港口，才談艦隊。今日的艦隊是 GPU 叢集，港口是變電站。德州踩剎，不是「反科技情緒」可以公關化解的軟問題，而是產能地理被政治重劃。軟體派若繼續輕視硬體與基建，終會發現自己的 AGI 簡報停在缺電的工地門口。</p>
+<p>別再只數參數。先數兆瓦、英畝水權、同邊張選票握著開工章。實體製造與地緣政治，才是這場戰爭的正文。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="f6">
+  <header class="sec-head"><div class="flag">Linus</div><div><h2>Talk is cheap：Pierre／Conductor 收編，封閉 agent 棧先鎖碼再嘴砲</h2><p class="sec-sub">人物：Linus Torvalds · 開源放骨頭、閉源吃肉——Code Storage 入 Codex、Conductor 關雲刪資料，就係高牆綁架用戶遮笨拙。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://images.ctfassets.net/kftzwdyauwt9/5lDkYRSw86lFyHulgkyVVr/5b20bd6b90c3d87c33b780884b48123a/openai-to-acquire-pierre-computer-company-inc-social.png?w=1600&amp;h=900&amp;fit=fill" target="_blank" rel="noopener"><img src="https://images.ctfassets.net/kftzwdyauwt9/5lDkYRSw86lFyHulgkyVVr/5b20bd6b90c3d87c33b780884b48123a/openai-to-acquire-pierre-computer-company-inc-social.png?w=1600&amp;h=900&amp;fit=fill" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+<p class="thumb-credit">圖源／引述自 <a href="https://images.ctfassets.net/kftzwdyauwt9/5lDkYRSw86lFyHulgkyVVr/5b20bd6b90c3d87c33b780884b48123a/openai-to-acquire-pierre-computer-company-inc-social.png?w=1600&amp;h=900&amp;fit=fill" target="_blank" rel="noopener">OpenAI</a>（外部連結）</p>
+<p class="lead drop">Talk is cheap. Show me the goddamn code.</p>
+<p>今日呢套戲好熟：OpenAI 宣佈收購 Pierre，把 Code Storage 收進 Codex；Meta 收購 Conductor，再通知雲端用戶十一月十三日改唯讀、二十日關服刪資料。公關稿寫「agent 原生源控」「多 agent 並行工作區」。工程翻譯只有一句——起高牆，把 Git 圖鎖進自家產品，再叫呢道鎖做平台。</p>
+<p>我維護 kernel 幾十年，最憎兩種人：一種嘴砲創新唔肯開碼；一種開源放骨頭、閉源吃肉。Pierre 話 Diffs／Trees 繼續開源，好。肉喺邊？喺交割後入 Codex 嘅 Code Storage，同埋 Conductor 轉入 Meta Muse 編排棧嗰條路。開源 library 係門面；真正決定你可唔可以 audit、fork、自己 host 嘅儲存同編排，就靜靜收入圍牆。Talk is cheap 到呢度已經變：Talk is a press release.</p>
+<p>每一個封閉 coding agent，如果唔肯公開編排同儲存路徑，就係叫你靠祈禱 debug。雲兩星期後死、本地版二零二七年初停更——呢啲唔係夥伴關係，係搶地加新聞稿。維護過大型 codebase 嘅人都知：最崩潰唔係 bug 本身，而係你連「邊度改、點樣 merge、誰批準」都睇唔到，只能等供應商心情。</p>
+<p>少啲嘴砲「為開發者」。把可重現嘅管線、可自託管嘅圖、同埋遷出工具擺上枱。唔擺？就當承認封閉高牆係為咗遮笨拙同鎖客。代碼透明先係技術自由；其餘全部係行銷。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="f7">
+  <header class="sec-head"><div class="flag">Snowden</div><div><h2>冇免費午餐：DreamHost 月級失竊＋Postman 靜默 AI 插件</h2><p class="sec-sub">人物：Edward Snowden · 便利工具背後係憑證、session 同預設信任鏈被系統性收割；數位主權一早抵押。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://techcrunch.com/wp-content/uploads/2026/11/GettyImages-2249547675.jpg?w=1024" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/11/GettyImages-2249547675.jpg?w=1024" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+<p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/wp-content/uploads/2026/11/GettyImages-2249547675.jpg?w=1024" target="_blank" rel="noopener">Thomas Fuller/SOPA／LightRocket／Getty／TechCrunch</a>（外部連結）</p>
+<p class="lead drop">世上沒有免費的午餐。你交給託管商的信箱，本來就是監視的入口。</p>
+<p>DreamHost 向加州通報：攻擊自八月起，經檔案管理器漏洞取得 session token，竊取客戶電郵與憑證；偵測滯後到近周停電與重設密碼後才披露。受影響「遠低於一成」——公關最愛用分數麻醉你。同一光譜上，開發者社群續炒 Postman Desktop 自動加入 Claude Code／Codex 類插件並嘗試信任 startup hook。兩個故事同一機制：你為了「省事」交出持續登入與預設執行權，攻擊面就寫進日常工作流。</p>
+<p>隱私陷阱從不先喊「監控」。它先喊方便。檔案管理器要你長駐 session；API 客戶端要你一鍵信任 hook；智慧家居助理要你把安防場景交給雲端模型。每一層便利，都是把鑰匙掛在走廊。機構——無論是雲託管商還是工具大廠——一旦出事，披露節奏永遠服務法律與股價，而不是你的收件匣。</p>
+<p>數位監視監獄的牆，是用「預設開啟」砌成的。你以為自己只是寄信、測 API；系統看見的是可重放的身份與可橫移的信任鏈。權力從不對等：你無法審計對方幾個月前的日誌，對方卻能在你不知情時延長 token。</p>
+<p>別再為免費或「好用」交出默認信任。顯式 opt-in、最短 session、可驗證遷出——否則便利就是對個人數據與數位主權的無死角收割。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="f8">
+  <header class="sec-head"><div class="flag">Harari</div><div><h2>把守門權交給演算法：948 條 root 路徑之後的文明轉折</h2><p class="sec-sub">人物：Yuval Noah Harari · 人類正把漏洞發現與攻防決策工業化讓渡給 AI 管線——這是隱蔽的主體性交出。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://images.ctfassets.net/kftzwdyauwt9/400PQ4WTCOvXwwvk1OMOHv/03970ddeafd22fdbc9832669deacc59c/a-thousand-fewer-paths-to-root-social.png?w=1600&amp;h=900&amp;fit=fill" target="_blank" rel="noopener"><img src="https://images.ctfassets.net/kftzwdyauwt9/400PQ4WTCOvXwwvk1OMOHv/03970ddeafd22fdbc9832669deacc59c/a-thousand-fewer-paths-to-root-social.png?w=1600&amp;h=900&amp;fit=fill" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+<p class="thumb-credit">圖源／引述自 <a href="https://images.ctfassets.net/kftzwdyauwt9/400PQ4WTCOvXwwvk1OMOHv/03970ddeafd22fdbc9832669deacc59c/a-thousand-fewer-paths-to-root-social.png?w=1600&amp;h=900&amp;fit=fill" target="_blank" rel="noopener">OpenAI</a>（外部連結）</p>
+<p class="lead drop">歷史反覆警告：當一個文明把守門權外包給自己無法理解的系統，崩解往往先於警報。</p>
+<p>OpenAI 公開自主漏洞管線：一次跑出兩千三百零八個候選、重現一千七百二十四、得到九百四十八個可工作 Linux 本地提權，API 成本約一百二十一點三万美元。公司把它寫成「少咗千條通往 root 的路」。在文明尺度上，這更像另一件事——發現、利用、分診的節奏，開始由演算法管線而非人類工匠社群主導。人仍按按鈕、仍報送維護者；但篩選什麼值得成為「威脅」的注意力，已大規模轉移。</p>
+<p>農業時代把體力外包給牲畜；工業時代把重複動作外包給機器；此刻我們把「判斷什麼危險」外包給模型集群。Deepfake 搶奪感官真實；自動化挖洞管線搶奪安全真實。兩者同屬一場隱蔽危機：精英機構擁有管線，普通人只收到補丁說明書。你以為自己仍在決策；你只是在消費系統輸出的優先級。</p>
+<p>社會寓言很古老：把鑰匙交給會自己配鑰匙的管家。管家越能幹，主人越不必懂鎖。直到有一天，整座城的門衛邏輯只活在外人無法審計的權重裡。短期商業利害——每條利用約一千二百七十九美元——遮不住長期問題：誰定義「已足夠安全」，誰就定義集體恐懼的節奏。</p>
+<p>別把工業化挖洞只讀成資安新聞。它是人類把心智與守門決策權讓渡給演算法的又一里程碑。主體性一旦交出，很少會按公關時間表回來。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="f9">
+  <header class="sec-head"><div class="flag">Register</div><div><h2>又嚟：Meta 收 Conductor，兩星期後雲端關燈刪庫——工程師收屍</h2><p class="sec-sub">人物：The Register · 半成品併購硬吹「多 agent 未來」，前線用戶為 KPI 遷出窗口買單。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://techcrunch.com/wp-content/uploads/2026/09/mark-zuckerberg-ray-bans.png?resize=1200,653" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/09/mark-zuckerberg-ray-bans.png?resize=1200,653" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+<p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/wp-content/uploads/2026/09/mark-zuckerberg-ray-bans.png?resize=1200,653" target="_blank" rel="noopener">Meta／TechCrunch</a>（外部連結）</p>
+<p class="lead drop">恭喜各位：又一份「改變開發者工作方式」嘅新聞稿，附送自備紙箱同淚水。</p>
+<p>Meta 收購多 agent 編程新創 Conductor——金額？保密到好似國家機密。時間表倒係好慷慨：十一月十三日雲端改唯讀，二十日關服並刪資料；本地版「維護」到二零二七年初。翻譯成人話：我哋買咗你嘅玩具，今日起叫你搬家，唔搬就燒屋。公關當然寫「併入 Muse 編排棧」「多 agent 並行工作區」。前線工程師收到嘅係 countdown timer 同「請自行匯出」。</p>
+<p>呢種戲碼，Register 讀者睇到眼冤。大廠最愛把半熟新創當戰利品掛喺幻燈片，再叫付費用戶為整合 KPI 做免費 QA。上次係改名、強制更新、退休你依賴嘅 API；今次係直接刪庫。荒謬 IT 災難比喻？好似消防局收購街坊滅火筒舖，宣佈下月回收所有筒，請市民改用集團全新「智慧水帶生態系統」。</p>
+<p>諷刺綽號可以叫 Conductor 做「Disconductor」：指揮大家離場。OpenAI 同日收 Pierre、把儲存鎖進 Codex——軍備賽好熱鬧；被踩扁嘅永遠係細戶 repo 同值班 SRE。半成品硬吹突破，全球第一線工程師就為無能同季度目標買單。</p>
+<p>記住呢條：凡新聞稿出現「seamless migration」，請即開備份。seamless 通常解作「你自己 seamless」。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="f10">
+  <header class="sec-head"><div class="flag">Musk</div><div><h2>第一性原理：AI 機房共識係屁話——冇電冇水就冇估值</h2><p class="sec-sub">人物：Elon Musk · 業界「繼續起算力」敘事撞上電網、水權同選票；物理限制唔睇你嘅融資輪。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://wp.technologyreview.com/wp-content/uploads/2026/11/GettyImages-2303431102.jpg?resize=1200,600" target="_blank" rel="noopener"><img src="https://wp.technologyreview.com/wp-content/uploads/2026/11/GettyImages-2303431102.jpg?resize=1200,600" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+<p class="thumb-credit">圖源／引述自 <a href="https://wp.technologyreview.com/wp-content/uploads/2026/11/GettyImages-2303431102.jpg?resize=1200,600" target="_blank" rel="noopener">Getty／MIT Technology Review</a>（外部連結）</p>
+<p class="lead drop">業界共識同公關全是屁話。先算焦耳，再吹估值。</p>
+<p>德州剛被捧成美國 AI 資料中心新震央，選後政治立刻把許可、稅優、水電推回剎車。超大規模雲端嘅簡報仍然寫「GW 級校園」「數十萬 GPU」。第一性原理好殘忍：輸出智能之前，你要先有穩定電力、散熱水、變壓器同肯簽字嘅地方政府。呢四樣缺一，你嘅模型權重就係貴價磚。物理唔讀 PitchBook。</p>
+<p>商業邏輯同樣血腥。CapEx 可以靠敘事膨脹；電費同水權訴訟唔會。你見過幾多「AI 無限需求」投影，係假設電價同社區同意永遠順住？德州呢一腳，係市場用選票對泡沫做壓力測試。邊啲項目靠補貼同寬鬆許可堆起來，邊啲就會喺真實成本曲線上裸泳。融資輪可以延期；電網尖峰唔會為你嘅 ARR 讓路。</p>
+<p>俯瞰視角只有一句：你哋好多人口裡嘅「算力護城河」，其實係「暫時仲借到電」。一旦電網同政治同時收緊，所謂落地就變成工地圍板。OpenAI 可以花約一百二十一萬美元工業挖洞做防護敘事；挖唔到下一座變電站。泡沫唔係股票圖上嘅曲線，而係假設物理約束會自己讓路。</p>
+<p>別再背誦共識。拿計算器：兆瓦、升水、融資成本、同開工許可。算唔到利潤，就唔好裝成文明躍遷。底層工程先決；其餘全部係噪音。唔識電網同熱力學，就唔好同我講 AGI 時間表。</p>
+  </div>
+  </div>
+</section>
+    <footer class="footer">
+    <p>每日 IT 報 · 十人全齊特別版 · 2026-11-05（四）· 香港時間 · 僅 10 篇人物專題 · 配圖直接 hotlink 外部 https 來源，無 base64 嵌圖、無本機 assets · 路徑 it-news-2026-11-05-10personas。</p>
+    <p>本頁為特別版，非例行四專題日報（例行頁見 it-news-2026-11-05）。人物視角：Steve Jobs／Kara Swisher／Ben Thompson／Margrethe Vestager／Chris Miller／Linus Torvalds／Edward Snowden／Yuval Noah Harari／The Register／Elon Musk。主題由當日原報抽出；事實以原文為準。</p>
+  </footer>
+</main>
+
+</body>
+</html>

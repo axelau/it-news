@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>每日 IT 報｜2026年11月10日 · Pixel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --cream:#F5F5EC;
+  --paper:#FFFEF7;
+  --navy:#0A2558;
+  --navy2:#14356e;
+  --sky:#A3C1DA;
+  --sky2:#C5D9EA;
+  --sky3:#E8F1F8;
+  --ink:#0A2558;
+  --ink2:#1e3a66;
+  --muted:#5a6f8a;
+  --link:#0A2558;
+  --white:#fffef9;
+  --heat-a:#0A2558;
+  --heat-b:#3d5a80;
+  --heat-c:#7a8fa8;
+  --px:4px;
+}
+*{box-sizing:border-box}
+html{font-size:16.5px}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(163,193,218,.35) 0 2px, transparent 3px),
+    radial-gradient(circle at 88% 18%, rgba(10,37,88,.12) 0 2px, transparent 3px),
+    radial-gradient(circle at 70% 92%, rgba(163,193,218,.28) 0 2px, transparent 3px),
+    var(--cream);
+  background-size:28px 28px, 36px 36px, 24px 24px, auto;
+  color:var(--ink);
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  line-height:1.55;
+  image-rendering:auto;
+}
+a{color:var(--link); text-decoration:none; border-bottom:2px solid transparent}
+a:hover{border-bottom-color:var(--sky); background:var(--sky3)}
+
+/* pixel border helper — stepped corners via box-shadow */
+.pixel-border{
+  border:3px solid var(--navy);
+  box-shadow:
+    3px 0 0 0 var(--navy),
+    -3px 0 0 0 var(--navy),
+    0 3px 0 0 var(--navy),
+    0 -3px 0 0 var(--navy),
+    6px 6px 0 0 rgba(10,37,88,.18);
+  clip-path: polygon(
+    0 8px, 8px 8px, 8px 0,
+    calc(100% - 8px) 0, calc(100% - 8px) 8px, 100% 8px,
+    100% calc(100% - 8px), calc(100% - 8px) calc(100% - 8px), calc(100% - 8px) 100%,
+    8px 100%, 8px calc(100% - 8px), 0 calc(100% - 8px)
+  );
+}
+
+.wrap{
+  max-width:1000px; margin:1.25rem clamp(1rem,5vw,3rem) 2.5rem; padding:1.35rem clamp(1.75rem,7vw,3.75rem) 2.5rem;
+  background:var(--paper);
+  border:3px solid var(--navy);
+  position:relative;
+  box-shadow:
+    4px 4px 0 0 var(--navy),
+    8px 8px 0 0 var(--sky);
+}
+/* dither + decorations around wrap */
+.wrap::before,.wrap::after{
+  content:"+"; position:absolute; color:var(--sky); font-family:"Press Start 2P",monospace;
+  font-size:.55rem; line-height:1; pointer-events:none; opacity:.85;
+}
+.wrap::before{top:.55rem; left:.7rem}
+.wrap::after{bottom:.55rem; right:.7rem}
+
+/* ===== MASTHEAD ===== */
+.masthead{
+  text-align:center;
+  padding:1.6rem 1rem 1.25rem;
+  margin:0 0 1.15rem;
+  background:linear-gradient(180deg, var(--sky3) 0%, var(--paper) 70%);
+  border:3px solid var(--navy);
+  position:relative;
+  box-shadow:4px 4px 0 0 var(--navy);
+}
+.masthead::before{
+  content:"PLAY · WORK · CREATE · CONNECT";
+  position:absolute; left:.5rem; top:50%; transform:translateY(-50%) rotate(-90deg);
+  transform-origin:center; font-family:"Press Start 2P",monospace; font-size:.42rem;
+  letter-spacing:.08em; color:var(--sky); white-space:nowrap; opacity:.7;
+  display:none;
+}
+@media (min-width:860px){
+  .masthead::before{display:block}
+}
+.masthead .kicker{
+  font-family:"Press Start 2P",monospace;
+  font-size:.55rem; letter-spacing:.12em; color:var(--navy);
+  margin-bottom:.85rem;
+  display:inline-block;
+  background:var(--navy); color:#fff;
+  padding:.45rem .7rem;
+  box-shadow:3px 3px 0 0 var(--sky);
+}
+.masthead h1{
+  font-family:"Press Start 2P",monospace;
+  font-size:clamp(1.15rem, 4.2vw, 1.85rem);
+  margin:.35rem 0 .7rem; font-weight:400; letter-spacing:.06em;
+  color:var(--navy);
+  text-shadow: 3px 3px 0 var(--sky), 6px 6px 0 rgba(10,37,88,.15);
+  line-height:1.45;
+}
+.masthead .date{
+  font-family:"VT323",monospace;
+  font-size:1.35rem; color:var(--navy2); margin-top:.15rem; letter-spacing:.04em;
+}
+.masthead .tagline{
+  font-size:.8rem; color:var(--muted); margin:.55rem auto 0; max-width:46rem; line-height:1.5;
+}
+
+/* floating pluses in masthead */
+.masthead .date::before{content:"+  "; color:var(--sky); font-family:"Press Start 2P",monospace; font-size:.5rem}
+.masthead .date::after{content:"  +"; color:var(--sky); font-family:"Press Start 2P",monospace; font-size:.5rem}
+
+/* ===== TOC ===== */
+.toc{
+  display:flex; flex-wrap:wrap; gap:.45rem .55rem; justify-content:center;
+  margin:0 0 1.5rem; padding:.85rem .6rem;
+  border:3px solid var(--navy); background:var(--sky3);
+  box-shadow:3px 3px 0 0 var(--navy);
+  font-size:.82rem;
+}
+.toc a{
+  color:#fff; background:var(--navy); border:2px solid var(--navy);
+  padding:.28rem .55rem; font-weight:700; letter-spacing:.02em;
+  box-shadow:2px 2px 0 0 var(--sky);
+  border-bottom:2px solid var(--navy);
+}
+.toc a:hover{
+  background:var(--sky); color:var(--navy); border-bottom-color:var(--navy);
+}
+
+/* ===== REGIONS / SECTION HEADS ===== */
+.region{
+  margin:0 0 4.2rem; padding-bottom:2.7rem;
+  border-bottom:3px dashed var(--navy);
+}
+.region:last-of-type{border-bottom:none}
+.sec-head{display:flex; align-items:stretch; gap:.85rem; margin-bottom:.95rem}
+.flag{
+  background:var(--navy); color:#fff;
+  writing-mode:vertical-rl; text-orientation:mixed;
+  letter-spacing:.2em; font-weight:700; font-size:.88rem;
+  padding:.65rem .4rem; min-width:2.15rem;
+  display:flex; align-items:center; justify-content:center;
+  border:3px solid var(--navy);
+  box-shadow:3px 3px 0 0 var(--sky);
+  font-family:"Noto Sans TC",sans-serif;
+  position:relative;
+}
+.flag::after{
+  content:""; position:absolute; inset:-3px;
+  border:1px solid var(--sky); pointer-events:none; opacity:.6;
+}
+.sec-head h2{
+  margin:0; font-size:1.35rem; letter-spacing:.04em; line-height:1.35;
+  color:var(--navy); font-weight:700;
+}
+.sec-sub{margin:.2rem 0 0; color:var(--muted); font-size:.8rem}
+
+/* ===== FEATURE BOX ===== */
+.feature-box{
+  max-width:100%; margin:0 0 2rem; padding:0; overflow:hidden;
+  background:var(--white);
+  border:3px solid var(--navy);
+  box-shadow:4px 4px 0 0 var(--navy);
+  display:grid; grid-template-columns:minmax(220px,34%) 1fr; gap:0;
+  position:relative;
+}
+.feature-box::before{
+  content:"+"; position:absolute; top:.35rem; right:.5rem; z-index:2;
+  font-family:"Press Start 2P",monospace; font-size:.5rem; color:var(--sky); opacity:.9;
+}
+.feature-box .feature-media{
+  margin:0; background:var(--sky2); border-right:3px solid var(--navy); min-height:12rem; line-height:0;
+}
+.feature-box .feature-media a{display:block; line-height:0; height:100%; border:0}
+.feature-box .feature-media a:hover{background:transparent}
+.feature-box .feature-media img{width:100%; height:100%; min-height:12rem; object-fit:cover; display:block}
+.feature-box .feature-body{padding:1.1rem 1.2rem 1rem}
+.feature-box p{margin:0 0 .95rem; color:var(--ink2); font-size:.98rem; text-align:justify}
+.feature-box p.lead{font-size:1.05rem; color:var(--ink)}
+.feature-box p:last-child{margin-bottom:0}
+.feature-meta-row{display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; margin:0 0 .75rem}
+.drop::first-letter{
+  float:left; font-family:"Press Start 2P",monospace;
+  font-size:1.55rem; line-height:1.1; padding:.15rem .25rem 0 0;
+  font-weight:400; color:var(--navy);
+}
+
+/* satire accent */
+.feature-box.satire{
+  border-color:var(--navy);
+  background:linear-gradient(135deg, #fff9f0 0%, var(--white) 55%);
+  box-shadow:4px 4px 0 0 var(--sky), 8px 8px 0 0 var(--navy);
+}
+.feature-box.satire .sec-note{font-size:.76rem; color:var(--muted); margin:0 0 .75rem; font-style:italic}
+
+/* ===== STORY GRID ===== */
+.grid{display:grid; grid-template-columns:1fr 1fr; gap:2rem 1.15rem}
+.story{
+  padding:0; overflow:hidden;
+  background:var(--white);
+  border:3px solid var(--navy);
+  box-shadow:3px 3px 0 0 var(--sky);
+  display:flex; flex-direction:column;
+  position:relative;
+}
+.story::after{
+  content:"+"; position:absolute; bottom:.3rem; right:.4rem;
+  font-family:"Press Start 2P",monospace; font-size:.4rem; color:var(--sky); opacity:.75;
+  pointer-events:none;
+}
+.story.lead{grid-column:1 / -1; box-shadow:4px 4px 0 0 var(--navy)}
+.story.lead .story-media img{max-height:280px}
+.story-media{margin:0; background:var(--sky2); border-bottom:3px solid var(--navy); line-height:0}
+.story-media a{display:block; line-height:0; border:0}
+.story-media a:hover{background:transparent}
+.story-media img{width:100%; height:160px; object-fit:cover; display:block}
+.story.lead .story-media img{height:240px}
+.story-body{padding:.8rem .95rem .95rem; min-width:0; flex:1; display:flex; flex-direction:column}
+.story h3{margin:0 0 .35rem; font-size:1.02rem; line-height:1.35; font-weight:700; color:var(--navy)}
+.story.lead h3{font-size:1.28rem}
+.story h3 a{border:0; color:var(--navy)}
+.story h3 a:hover{background:var(--sky3); border:0}
+.story .dek{margin:0 0 .5rem; color:var(--ink2); font-size:.9rem; flex:1}
+.story.lead .dek{font-size:.98rem}
+.meta{margin:0; font-size:.72rem; color:var(--muted); font-family:"VT323",monospace; font-size:.95rem}
+.outlet{font-weight:700; color:var(--navy2); font-family:"Noto Sans TC",sans-serif; font-size:.72rem}
+.src{margin-left:.15rem}
+
+/* ===== HEAT BADGES — 90s window pop ===== */
+.heat{
+  display:inline-flex; align-items:stretch; gap:0;
+  padding:0; font-size:.68rem; font-weight:700; letter-spacing:.04em; line-height:1.2;
+  border:2px solid var(--navy);
+  background:var(--paper);
+  box-shadow:2px 2px 0 0 var(--navy);
+  overflow:hidden;
+  font-family:"Press Start 2P",monospace;
+  font-size:.48rem;
+  position:relative;
+}
+.heat::before{
+  content:"■";
+  background:var(--navy); color:#fff;
+  padding:.32rem .4rem;
+  display:inline-flex; align-items:center;
+  font-size:.42rem; letter-spacing:0;
+}
+/* put label text next to title bar */
+.heat{
+  color:var(--navy);
+  padding-right:.55rem;
+  align-items:center;
+}
+.heat::after{
+  content:"×";
+  margin-left:.35rem;
+  color:var(--navy);
+  font-size:.55rem;
+  line-height:1;
+  opacity:.7;
+}
+
+/* ===== THUMB CREDIT ===== */
+.thumb-credit{
+  margin:.1rem 0 .5rem; font-size:.65rem; color:var(--muted); line-height:1.35;
+  word-break:break-word;
+  padding:.35rem .5rem;
+  background:var(--sky3);
+  border-left:4px solid var(--sky);
+}
+.thumb-credit a{color:var(--muted); border-bottom:1px dotted var(--sky)}
+
+/* ===== RANK BOX — sky promo banner ===== */
+.rank-box{
+  margin:1.15rem 0 2rem; padding:1.1rem 1.2rem 1rem;
+  border:3px solid var(--navy);
+  background:var(--sky);
+  box-shadow:4px 4px 0 0 var(--navy);
+  position:relative;
+}
+.rank-box::before{
+  content:"LEVEL UP";
+  position:absolute; top:-.55rem; right:1rem;
+  font-family:"Press Start 2P",monospace; font-size:.42rem;
+  background:var(--navy); color:#fff; padding:.3rem .45rem;
+  box-shadow:2px 2px 0 0 var(--paper);
+}
+.rank-box h2{
+  margin:0 0 .3rem; font-size:1.15rem; letter-spacing:.04em; color:var(--navy);
+  font-family:"Press Start 2P",monospace; font-size:.72rem; line-height:1.55;
+}
+.rank-box .rank-sub{margin:0 0 .75rem; color:var(--navy2); font-size:.78rem}
+.rank-box ol{margin:0; padding-left:1.4rem; background:var(--paper); border:2px solid var(--navy); padding:.75rem 1rem .75rem 1.85rem}
+.rank-box li{margin:0 0 .45rem; font-size:.9rem; line-height:1.4; color:var(--navy)}
+.rank-box li a{font-weight:700; color:var(--navy); border-bottom:2px solid transparent}
+.rank-box li a:hover{border-bottom-color:var(--navy); background:var(--sky3)}
+
+/* ===== FOOTER ===== */
+.footer{
+  margin-top:1.4rem; padding:1rem 1rem .2rem;
+  border:3px solid var(--navy); background:var(--sky3);
+  box-shadow:3px 3px 0 0 var(--navy);
+  font-size:.76rem; color:var(--muted); line-height:1.6;
+}
+.footer p:first-child{
+  font-family:"VT323",monospace; font-size:1.05rem; color:var(--navy);
+}
+
+@media (max-width:720px){
+  .wrap{margin:.6rem .5rem 1.5rem; padding:1rem .85rem 1.75rem; box-shadow:3px 3px 0 0 var(--navy), 6px 6px 0 0 var(--sky)}
+  .grid{grid-template-columns:1fr}
+  .flag{writing-mode:horizontal-tb; min-width:auto; padding:.35rem .7rem; letter-spacing:.15em}
+  .sec-head{flex-direction:column; gap:.4rem}
+  .drop::first-letter{font-size:1.25rem}
+  .feature-box{grid-template-columns:1fr}
+  .feature-box .feature-media{border-right:none; border-bottom:3px solid var(--navy); min-height:10rem}
+  .feature-box .feature-media img{min-height:10rem; max-height:200px}
+  .story.lead .story-media img,.story-media img{height:180px}
+  .masthead h1{font-size:1.05rem}
+  .rank-box h2{font-size:.58rem}
+  .toc a{font-size:.75rem}
+}
+@media print{
+  body{background:#fff}
+  .wrap{box-shadow:none; max-width:none}
+  a{color:inherit; text-decoration:none}
+  .region{break-inside:avoid-page}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="masthead">
+    <div class="kicker">GROK BOT · IT DIGEST</div>
+    <h1>每日 IT 報</h1>
+    <div class="date">二零二六年十一月十日　星期二　香港時間</div>
+    <p class="tagline">四篇人物專題（10 人池抽 4）· 約 30 則分類精選 · 外部配圖 hotlink · 摘要約 100–150 字</p>
+  </header>
+  <nav class="toc" aria-label="章節">
+    <a href="#f1">Swisher</a> <a href="#f2">Linus</a> <a href="#f3">Thompson</a> <a href="#f4">Snowden</a> <a href="#hot">熱門話題</a> <a href="#ai">AI 與模型</a> <a href="#security">資安與基礎設施</a> <a href="#product">消費電子／平台</a> <a href="#chips">晶片／硬體／地緣</a> <a href="#policy">政策／監管</a> <a href="#opensource">開源／開發</a>
+  </nav>
+<section class="region" id="f1">
+  <header class="sec-head"><div class="flag">Swisher</div><div><h2>審訊：骨相估齡全球上線——和解之後，掃描升級成公關</h2><p class="sec-sub">人物：Kara Swisher · 唔玩公關遊戲。最高約 180 億和解之後，Meta 把「保護青少年」譯成對全球檔案、留言同骨相的測齡機器。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://techcrunch.com/2026/11/09/meta-expands-instagrams-ai-age-guessing-tech-globally/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/05/instagram-header.jpg?resize=1200,800" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/09/meta-expands-instagrams-ai-age-guessing-tech-globally/" target="_blank" rel="noopener">Jonathan Raa/NurPhoto／Getty／TechCrunch</a>（外部連結）</p>
+<p class="lead drop">冇人問過你同唔同意被量骨相。Meta 把一場最高約一百八十億美元的和解，翻譯成對全球用戶檔案、留言同影像的大規模年齡推估，再包裝成家長安心。</p>
+<p>TechCrunch 報道：Instagram 的 AI 測齡會分析整個檔案的語境線索，例如生日慶祝或年級，並掃描帖文、留言、簡介同說明；視覺線索包括身高或骨相。即使用戶填寫成人生日，系統仍可把懷疑未成年者送入 Teen Account：默認私密、只准已連結對象私訊、隱藏有害留言。Meta 官方網誌確認，該技術即日起全球擴展；Facebook 繼續推開，Threads 計劃今年稍後跟進。背景係八月與美國五十二個州檢察長達成協議，承諾加強識別十三歲以下兒童同十三至十七歲青少年。</p>
+<p>呢套唔係慈善，係權力遊戲。平台先被控傷害青少年，再把「我們會更努力找出未成年」寫進和解履約，換取掃描範圍升級。澳洲已開始使用 Apple 的年齡區間訊號；Meta 進一步呼籲立法，要求 app store 向所有應用統一提供經驗證的年齡，並點名 TikTok 與 YouTube 跟做。公關句子係「即使填成人生日都放入保護」；權力翻譯係：你嘅自我陳述唔再算數，模型睇文、睇相、睇骨相先算數。圍牆花園自己定義邊個係小孩，再試圖把識別責任外判到作業系統層。</p>
+<p>問清楚先。誰核准用骨相估齡？估錯成人會被鎖進青少年模式，定估錯青少年會被放行？訓練樣本從邊度來、存幾耐、同廣告系統有冇隔牆？和解書唔等於赦免狀。硅谷最老嘅把戲：先造成傷害，再把監控升級賣成補救。資金同訴訟風險下的道德表演，永遠講緊安全；被掃描嘅人很少被問過一句同意。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="f2">
+  <header class="sec-head"><div class="flag">Linus</div><div><h2>開源：Fable 5.2 吹爆黑洞同費馬——權重同證明擺上枱未？</h2><p class="sec-sub">人物：Linus Torvalds · Talk is cheap. 巨型科學聲稱對上 Mythos 驗證牆；官方 Office 技能仲被指可載入植入庫。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://www.theverge.com/ai-artificial-intelligence/1030005/anthropic-claude-fable-mythos-5-2" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/01/STK269_ANTHROPIC_2_B.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/ai-artificial-intelligence/1030005/anthropic-claude-fable-mythos-5-2" target="_blank" rel="noopener">Cath Virginia／The Verge</a>（外部連結）</p>
+<p class="lead drop">Talk is cheap. 新聞稿可以喺一日內解決兩個開放物理問題、用一千個 agent 三十小時形式化費馬最後定理，再由空資料夾用八日砌出可開機作業系統。工程師只問：獨立的人重跑到未？</p>
+<p>Anthropic 十一月九日發布 Claude Fable 5.2 與 Mythos 5.2，兩者係同一底層模型：Fable 加上網絡安全與生物學防護後對所有人開放；Mythos 只開放畀通過生命科學或網絡安全驗證計劃的機構。定價為每百萬輸入 token 八美元、輸出四十美元。基準表上，FrontierCode 2.0 在最高力度錄得約百分之四十九點一。公司又稱核心代碼庫逾九成已合併改動由 Claude（加人指導）寫成；黑洞物理據稱已有預印本，費馬形式化亦有專頁。有 PDF 好過只有投影片。</p>
+<p>但我維護過大型 codebase，最憎把「我們自己跑出來的分數」當成物理定律。預印本要經得起對手復現；形式化要公開 Lean 庫等人 fork；「設計三部可運作電路」要交出原理圖同測試紀錄，唔係只放宣傳片。Mythos 繼續關在驗證牆後，外界無法審計同一套權重解除防護後做啲咩。更失修的是依賴項：AIR Security 指官方 Office 技能在 Linux 上從固定臨時路徑載入共享庫，植入檔案即可在處理文件時執行代碼。Dark Reading 報道 Anthropic 認為問題超出其安全邊界，因為跑在沙箱裡。官方技能都係軟件依賴；沙箱唔係免責金牌。</p>
+<p>少啲 daunting technical challenges 海報。把可審計的權重、證明庫同可重現實驗擺上枱。唔擺？就當承認封閉高牆仍然係行銷，同埋遮住你唔想人 fork 的部份。代碼透明先係技術自由；其餘全部係嘴砲。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="f3">
+  <header class="sec-head"><div class="flag">Thompson</div><div><h2>戰略：Google 一年四套 TPU——要喺推理層拆 Nvidia 的聚合</h2><p class="sec-sub">人物：Ben Thompson · 稀缺層仍在加速器；Google 用系統模組化＋TorchTPU 搶推理與 agent 量產市場，而非再出一顆芯。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/tpu-8i-max-and-8tx/" target="_blank" rel="noopener"><img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/TPU-8tx_and_8i-Max.width-1300.png" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/tpu-8i-max-and-8tx/" target="_blank" rel="noopener">Google</a>（外部連結）</p>
+<p class="lead drop">戰略假說：加速器的稀缺層仍然係 Nvidia 用 CUDA 生態同出貨節奏聚合咗訓練需求；Google 的反擊唔係再出一顆「更快的芯」，而係用系統模組化，把硅、封裝、網絡同軟件相容層垂直整合，搶推理同 agent 量產市場。</p>
+<p>Google 十一月九日由基建首長 Amin Vahdat 宣布第八代再加兩套系統：TPU 8tx 與 TPU 8i Max，令呢一代一年內共四套（四月已推 8t 訓練、8i 推理）。重點係系統唔等於新芯片：8tx 用同 8t 同一塊硅，搭配第五代 AMD EPYC，把機密運算做進硬體，令敏感數據同模型權重在運算中仍被隔離，面向政府同受監管企業，並稱延遲較 8t 可低至一半。8i Max 把兩顆 8i 封進同一封裝，運算、SRAM 與 HBM 頻寬倍增，瞄準跨代碼庫或數小時影片的超長上下文，同一機架可塞入雙倍硅。公司稱 TPU 業務已有近一百個外部客戶；未公布售價同確切供貨日。</p>
+<p>價值鏈翻譯直白。Nvidia 握的唔只係晶片性能，而係開發者預設會寫 CUDA、買家預設會排隊買 GPU。Google 開源 TorchTPU，讓 PyTorch／Hugging Face 少改代碼上 TPU，再配 vLLM、SGLang 與 Cloud Pathways——目的係降低轉換成本，把需求從「買誰的卡」改寫成「喺誰的雲、誰的系統棧上跑」。感情零分：機密運算撬開合規預算；長上下文承接 agent 時代的記憶體牆。誰能把推理變成日常用量，誰就能稀釋 Nvidia 在訓練時期建立的議價權。</p>
+<p>CUDA 生態同供應合約仍然厚。幾年後回望，今日這兩套系統只係條款修訂：價值會流向同時控制硅、機架、網絡同開發者入口的一方。聚合者理論只認一件事：需求在邊度被整合，供應端就喺邊度報到。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="f4">
+  <header class="sec-head"><div class="flag">Snowden</div><div><h2>監控：晶片版「Find My」——出口管制正在要求硅片報到</h2><p class="sec-sub">人物：Edward Snowden · 冇免費午餐。三項晶片法案更可能塞進國防授權法案；位置驗證一旦落地，算力就要打電話回家。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://spectrum.ieee.org/find-my-ai-chip" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2025/06/STK083_NVIDIA_2.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://spectrum.ieee.org/find-my-ai-chip" target="_blank" rel="noopener">Cath Virginia／The Verge</a>（外部連結）</p>
+<p class="lead drop">冇免費午餐。華府要用出口管制卡住先進算力，就想令每顆高階加速器學會報位置——呢唔係比喻，而係正在被推進國防授權法案包裹的法律架構。</p>
+<p>路透社十一月九日報道：黃仁勳承認與一名美方指稱為中國情報人員的女子有關係後，國會更傾向把三項晶片法案納入二零二七財年國防授權法管理包裹。其中包括《AI Overwatch Act》（讓國會更深介入先進晶片出口）、《Chip Security Act》（要求企業追蹤晶片以防走私）與《MATCH Act》（推動盟國收緊更多半導體設備對華出口）。眾議院外交事務委員會較早前已通過三案；Warren 與共和黨議員 Banks 發表聯合聲明，稱此事令國家安全疑慮「更加緊迫」。Nvidia 據報係前兩案的最大反對者。</p>
+<p>CSET 與 IEEE Spectrum 拆解所謂「AI 晶片版 Find My」：以 ping 為基礎的位置驗證（PLV）量度芯片到可信伺服器的往返時間來估計位置；新芯片可做進硬體，存量或靠韌體更新。限制一目了然：離線或運輸中的芯片追唔到；停止回應時分唔清係轉移、關機定蓄意斷線；有資源者可偽造位置；最佳精度約二十英里；PLV 只知芯片在哪，唔知邊個在用。商務部還可獲權核實已出口產品的擁有權同位置；許可持有人若得悉轉移或篡改須迅速上報。</p>
+<p>一旦架構落地，監視對象就唔再只係「運去某一國的那批貨」。任何被定義為覆蓋產品的加速器，都可能被要求對可信伺服器證明自己仲喺獲批座標。出口管制的語言係國家安全；工程翻譯係：算力開始擁有必須打電話回家的身分證。你用便利換來的，係對物理計算位置的持續可見性。當硅片都要向政府報到，監獄嘅牆就砌到機房裡。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="hot">
+  <header class="sec-head"><div class="flag">熱門</div><div><h2>熱門話題</h2><p class="sec-sub">Nvidia 周一股價約、Anthropic 發布、Google 一年四套第、Meta 全球擴展 In、摩根大通圖表：七家 AI、Disney×Adobe · 6則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/ai-artificial-intelligence/1030422/nvidia-jensen-huang-ai-china-alice-huang" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2025/06/STK083_NVIDIA_2.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/ai-artificial-intelligence/1030422/nvidia-jensen-huang-ai-china-alice-huang" target="_blank" rel="noopener">Cath Virginia／The Verge</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/ai-artificial-intelligence/1030422/nvidia-jensen-huang-ai-china-alice-huang" target="_blank" rel="noopener">Nvidia 周一股價約跌 4%：黃仁勳承認關係、董事會獨立調查</a></h3>
+    <p class="dek">黃仁勳承認與美方指稱為中國情報人員的女子有婚外關係後，Nvidia 董事會展開獨立調查，周一股價據報下跌約百分之四。事件令公司游說放寬對華晶片出口的政治成本上升，並與三項晶片法案納入國防授權法案的呼聲疊加。中國外交部斥有關間諜指控毫無根據。</p>
+    <p class="meta"><span class="outlet">The Verge／CNBC／路透</span><span class="src"> · <a href="https://www.theverge.com/ai-artificial-intelligence/1030422/nvidia-jensen-huang-ai-china-alice-huang" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/ai-artificial-intelligence/1030005/anthropic-claude-fable-mythos-5-2" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/01/STK269_ANTHROPIC_2_B.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/ai-artificial-intelligence/1030005/anthropic-claude-fable-mythos-5-2" target="_blank" rel="noopener">Cath Virginia／The Verge</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/ai-artificial-intelligence/1030005/anthropic-claude-fable-mythos-5-2" target="_blank" rel="noopener">Anthropic 發布 Claude Fable 5.2／Mythos 5.2：科學聲稱＋Mythos 驗證牆</a></h3>
+    <p class="dek">Anthropic 宣布 Fable 5.2 與 Mythos 5.2 為同一底層模型，號稱改進編程、推理與視覺，並稱解決兩個黑洞開放問題、三十小時形式化費馬最後定理。Fable 即日開放；Mythos 僅限通過生命科學或網絡安全驗證的機構。標價每百萬輸入八美元、輸出四十美元。</p>
+    <p class="meta"><span class="outlet">The Verge／Anthropic</span><span class="src"> · <a href="https://www.theverge.com/ai-artificial-intelligence/1030005/anthropic-claude-fable-mythos-5-2" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/tpu-8i-max-and-8tx/" target="_blank" rel="noopener"><img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/TPU-8tx_and_8i-Max.width-1300.png" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/tpu-8i-max-and-8tx/" target="_blank" rel="noopener">Google</a>（外部連結）</p>
+    <h3><a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/tpu-8i-max-and-8tx/" target="_blank" rel="noopener">Google 一年四套第八代 TPU：新增 8tx 機密運算、8i Max 長上下文</a></h3>
+    <p class="dek">Google 為第八代 TPU 再加兩套系統：8tx 把機密運算做進硬體，面向政府與受監管企業；8i Max 把兩顆 8i 封入同一封裝，倍增運算與記憶體頻寬。加上四月的 8t／8i，公司稱首次一年推出四套，TPU 業務近一百個外部客戶，並開源 TorchTPU 降低遷移門檻。</p>
+    <p class="meta"><span class="outlet">Google／The Next Web</span><span class="src"> · <a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/tpu-8i-max-and-8tx/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/09/meta-expands-instagrams-ai-age-guessing-tech-globally/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/05/instagram-header.jpg?resize=1200,800" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/09/meta-expands-instagrams-ai-age-guessing-tech-globally/" target="_blank" rel="noopener">Jonathan Raa/NurPhoto／Getty／TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/09/meta-expands-instagrams-ai-age-guessing-tech-globally/" target="_blank" rel="noopener">Meta 全球擴展 Instagram AI 測齡：掃檔案與骨相，即使填成人生日</a></h3>
+    <p class="dek">Meta 把 AI 年齡推估技術擴至全球 Instagram，即使使用者填寫成人生日，仍可能被判為青少年並鎖進 Teen Account。TechCrunch 指系統會掃帖文、留言、簡介，並看身高或骨相等視覺線索。此舉接續八月與美國五十二個州檢察長、最高約一百八十億美元的和解承諾。</p>
+    <p class="meta"><span class="outlet">TechCrunch／Meta</span><span class="src"> · <a href="https://techcrunch.com/2026/11/09/meta-expands-instagrams-ai-age-guessing-tech-globally/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://assets.jpmprivatebank.com/content/dam/jpm-pb-aem/global/en/documents/eotm/ai-tracker.pdf" target="_blank" rel="noopener"><img src="https://wp.technologyreview.com/wp-content/uploads/2026/11/GettyImages-2303431102.jpg?resize=1200,600" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://assets.jpmprivatebank.com/content/dam/jpm-pb-aem/global/en/documents/eotm/ai-tracker.pdf" target="_blank" rel="noopener">Getty／MIT Technology Review</a>（外部連結）</p>
+    <h3><a href="https://assets.jpmprivatebank.com/content/dam/jpm-pb-aem/global/en/documents/eotm/ai-tracker.pdf" target="_blank" rel="noopener">摩根大通圖表：七家 AI 相關表外承諾合計約 4.49 兆美元</a></h3>
+    <p class="dek">摩根大通 AI Tracker 顯示，七家（Microsoft、Google、Meta、Amazon、Oracle、NVIDIA、Anthropic）未開始租約加採購承諾合計約四點四九兆美元；Google 約一點零八兆、Anthropic 八百六十五億、Meta 八百一十億。此為合約未來支出，唔等於已入帳債務。</p>
+    <p class="meta"><span class="outlet">J.P. Morgan AM／X 討論</span><span class="src"> · <a href="https://assets.jpmprivatebank.com/content/dam/jpm-pb-aem/global/en/documents/eotm/ai-tracker.pdf" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/tech/1029773/disney-adobe-generative-ai-partnership" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2024/10/the_verge_social_share.png" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/tech/1029773/disney-adobe-generative-ai-partnership" target="_blank" rel="noopener">The Verge</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/tech/1029773/disney-adobe-generative-ai-partnership" target="_blank" rel="noopener">Disney×Adobe 多年聯盟：為樂園、影業與 ESPN 打造品牌安全生成模型</a></h3>
+    <p class="dek">Disney 與 Adobe 宣布多年戰略聯盟，以「藝術家主導」方式為迪士尼製作流水線共建專屬生成式模型，並讓迪士尼提早使用 Firefly Foundry 等工具。覆蓋電影工作室、主題樂園、郵輪與 ESPN，強調以自家角色與風格訓練、產出可商用素材。分析指此舉亦是疏遠通用大模型的品牌控制策略。</p>
+    <p class="meta"><span class="outlet">The Verge／Adobe</span><span class="src"> · <a href="https://www.theverge.com/tech/1029773/disney-adobe-generative-ai-partnership" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="hot-rank">
+    <h2>熱門話題 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://www.theverge.com/ai-artificial-intelligence/1030422/nvidia-jensen-huang-ai-china-alice-huang" target="_blank" rel="noopener">[A] Nvidia 周一股價約跌 4%：黃仁勳承認關係、董事會獨立調查</a></li>
+    <li><a href="https://www.theverge.com/ai-artificial-intelligence/1030005/anthropic-claude-fable-mythos-5-2" target="_blank" rel="noopener">[A] Anthropic 發布 Claude Fable 5.2／Mythos 5.2：科學聲稱＋Mythos 驗證牆</a></li>
+    <li><a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/tpu-8i-max-and-8tx/" target="_blank" rel="noopener">[A] Google 一年四套第八代 TPU：新增 8tx 機密運算、8i Max 長上下文</a></li>
+    <li><a href="https://techcrunch.com/2026/11/09/meta-expands-instagrams-ai-age-guessing-tech-globally/" target="_blank" rel="noopener">[A] Meta 全球擴展 Instagram AI 測齡：掃檔案與骨相，即使填成人生日</a></li>
+    <li><a href="https://assets.jpmprivatebank.com/content/dam/jpm-pb-aem/global/en/documents/eotm/ai-tracker.pdf" target="_blank" rel="noopener">[A] 摩根大通圖表：七家 AI 相關表外承諾合計約 4.49 兆美元</a></li>
+    <li><a href="https://www.theverge.com/tech/1029773/disney-adobe-generative-ai-partnership" target="_blank" rel="noopener">[B] Disney×Adobe 多年聯盟：為樂園、影業與 ESPN 打造品牌安全生成模型</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="ai">
+  <header class="sec-head"><div class="flag">AI</div><div><h2>AI 與模型</h2><p class="sec-sub">Fable 5.2：Fr、Meta 發布 Muse、字節 Seedream 、OpenAI Contr、ChatGPT Ente · 5則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://www.anthropic.com/claude-fable-and-mythos-5-2" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/01/STK269_ANTHROPIC_2_B.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.anthropic.com/claude-fable-and-mythos-5-2" target="_blank" rel="noopener">Cath Virginia／The Verge</a>（外部連結）</p>
+    <h3><a href="https://www.anthropic.com/claude-fable-and-mythos-5-2" target="_blank" rel="noopener">Fable 5.2：FrontierCode 約 49.1%、千 agent 形式化費馬、Mythos 驗證牆</a></h3>
+    <p class="dek">官方網誌列出 Fable 5.2 在 FrontierCode 2.0 最高力度約百分之四十九點一，並稱逾九成核心代碼庫合併改動由 Claude 寫成。物理結果據稱有預印本；Mythos 走驗證計劃。屬本日模型主條，與專題呼應，焦點仍是聲稱可否獨立復現。</p>
+    <p class="meta"><span class="outlet">Anthropic</span><span class="src"> · <a href="https://www.anthropic.com/claude-fable-and-mythos-5-2" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/tech/1029979/meta-is-launching-its-smallest-and-most-efficient-ai-model-muse-ember" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/11/Recursive-Neural-Spiral-in-Circuitry.png?resize=1200,600" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/tech/1029979/meta-is-launching-its-smallest-and-most-efficient-ai-model-muse-ember" target="_blank" rel="noopener">TechCrunch（示意）</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/tech/1029979/meta-is-launching-its-smallest-and-most-efficient-ai-model-muse-ember" target="_blank" rel="noopener">【短項】Meta 發布 Muse Ember：最小最便宜的 agent 執行層模型</a></h3>
+    <p class="dek">Meta 推出其「最小、最有效率」模型 Muse Ember，定位重複性 agent 工作：工具呼叫、編碼子任務、路由、擷取與長文解析，並稱單位智力成本優於 Claude Haiku 5.5 或 GPT‑6 Luna。此為 Muse 產品線延伸，不作專題主軸，以免與十一月六日 Muse 篇重複。</p>
+    <p class="meta"><span class="outlet">The Verge／Meta</span><span class="src"> · <a href="https://www.theverge.com/tech/1029979/meta-is-launching-its-smallest-and-most-efficient-ai-model-muse-ember" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://seed.bytedance.com/en/blog/more-realistic-images-more-stable-editing-across-100-rounds-introducing-seedream-5-5" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/11/Recursive-Neural-Spiral-in-Circuitry.png?resize=1200,600" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://seed.bytedance.com/en/blog/more-realistic-images-more-stable-editing-across-100-rounds-introducing-seedream-5-5" target="_blank" rel="noopener">ByteDance Seed／TechCrunch（示意）</a>（外部連結）</p>
+    <h3><a href="https://seed.bytedance.com/en/blog/more-realistic-images-more-stable-editing-across-100-rounds-introducing-seedream-5-5" target="_blank" rel="noopener">字節 Seedream 5.5：宣稱可連續一百輪編輯仍保住未改像素</a></h3>
+    <p class="dek">字節跳動 Seed 團隊發布圖像模型 Seedream 5.5，重點係專業製作向的多輪編輯：官方稱最長可連續一百輪，並在像素級保留未被修改區域，減少偏色與細節崩壞。亦強調原生 RGBA 透明背景與小字渲染。屬影像生成工具迭代，適合設計與行銷工作流觀察。</p>
+    <p class="meta"><span class="outlet">ByteDance Seed</span><span class="src"> · <a href="https://seed.bytedance.com/en/blog/more-realistic-images-more-stable-editing-across-100-rounds-introducing-seedream-5-5" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://openai.com/index/control-room/" target="_blank" rel="noopener"><img src="https://images.ctfassets.net/kftzwdyauwt9/7CRGR1hiay1UfPVqjUSdAk/da9d8e1e61347fdae6d40e0a72962731/introducing-control-room-social.png?w=1600&amp;h=900&amp;fit=fill" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://openai.com/index/control-room/" target="_blank" rel="noopener">OpenAI</a>（外部連結）</p>
+    <h3><a href="https://openai.com/index/control-room/" target="_blank" rel="noopener">OpenAI Control Room：研究工作負載可在三十五秒內停止出 token</a></h3>
+    <p class="dek">OpenAI 介紹 Control Room：集中追蹤研究基礎設施上的模型工作負載，並在安全或資安疑慮出現時停止輸出。推論引擎按 job ID 向控制室查詢授權，已停止的作業即使代碼仍在跑亦無法再取 token；控制室本身失效則預設拒絕推論。最大干預延遲為三十五秒。</p>
+    <p class="meta"><span class="outlet">OpenAI</span><span class="src"> · <a href="https://openai.com/index/control-room/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://openai.com/index/chatgpt-enterprise-aws-marketplace" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/11/Recursive-Neural-Spiral-in-Circuitry.png?resize=1200,600" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://openai.com/index/chatgpt-enterprise-aws-marketplace" target="_blank" rel="noopener">TechCrunch（示意）</a>（外部連結）</p>
+    <h3><a href="https://openai.com/index/chatgpt-enterprise-aws-marketplace" target="_blank" rel="noopener">ChatGPT Enterprise 上架 AWS Marketplace：採購可計入雲承諾額度</a></h3>
+    <p class="dek">OpenAI 把 ChatGPT Enterprise 放到 AWS Marketplace，企業可沿用現有 AWS 採購與賬單購買，符合條件的支出可計入雲承諾額度。範圍包括 ChatGPT、Work、Codex 與 dots，補足已在 Bedrock 提供的模型路徑——企業導入瓶頸往往在採購而非模型分數。</p>
+    <p class="meta"><span class="outlet">OpenAI／AWS</span><span class="src"> · <a href="https://openai.com/index/chatgpt-enterprise-aws-marketplace" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="ai-rank">
+    <h2>AI 與模型 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://www.anthropic.com/claude-fable-and-mythos-5-2" target="_blank" rel="noopener">[A] Fable 5.2：FrontierCode 約 49.1%、千 agent 形式化費馬、Mythos 驗證牆</a></li>
+    <li><a href="https://www.theverge.com/tech/1029979/meta-is-launching-its-smallest-and-most-efficient-ai-model-muse-ember" target="_blank" rel="noopener">[B] 【短項】Meta 發布 Muse Ember：最小最便宜的 agent 執行層模型</a></li>
+    <li><a href="https://seed.bytedance.com/en/blog/more-realistic-images-more-stable-editing-across-100-rounds-introducing-seedream-5-5" target="_blank" rel="noopener">[B] 字節 Seedream 5.5：宣稱可連續一百輪編輯仍保住未改像素</a></li>
+    <li><a href="https://openai.com/index/control-room/" target="_blank" rel="noopener">[B] OpenAI Control Room：研究工作負載可在三十五秒內停止出 token</a></li>
+    <li><a href="https://openai.com/index/chatgpt-enterprise-aws-marketplace" target="_blank" rel="noopener">[B] ChatGPT Enterprise 上架 AWS Marketplace：採購可計入雲承諾額度</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="security">
+  <header class="sec-head"><div class="flag">資安</div><div><h2>資安與基礎設施</h2><p class="sec-sub">Fireworks 擴大、法國正式歸咎伊朗：超市冷、德國主機商 Mittwa、Claude「Offic、Acronis：台灣攻擊 · 5則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://fireworks.ai/security/bulletins/october-2026-security-incident-update" target="_blank" rel="noopener"><img src="https://cdn.arstechnica.net/wp-content/uploads/2017/05/getty-hacking-1152x648.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://fireworks.ai/security/bulletins/october-2026-security-incident-update" target="_blank" rel="noopener">Getty／Ars（資安示意）</a>（外部連結）</p>
+    <h3><a href="https://fireworks.ai/security/bulletins/october-2026-security-incident-update" target="_blank" rel="noopener">Fireworks 擴大披露：賬單資料外洩，部分客戶數據集與未完成權重被取</a></h3>
+    <p class="dek">Nvidia 支持的推論新創 Fireworks 於十一月九日更新十月安全事件：除早前評估作業環境變數外，攻擊者還取用賬戶與賬單資料；有限客戶的密鑰、數據集與未完成模型權重亦受影響。十月二十四日途徑為第三方雲上研發機器遭入侵。公司已報案並請 Unit 42 協助，暫未發現對預設零留存推論服務的影響。</p>
+    <p class="meta"><span class="outlet">Fireworks AI</span><span class="src"> · <a href="https://fireworks.ai/security/bulletins/october-2026-security-incident-update" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.bleepingcomputer.com/news/security/france-blames-iranian-hackers-for-supermarket-attacks-that-sparked-fires/" target="_blank" rel="noopener"><img src="https://cdn.arstechnica.net/wp-content/uploads/2017/05/getty-hacking-1152x648.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.bleepingcomputer.com/news/security/france-blames-iranian-hackers-for-supermarket-attacks-that-sparked-fires/" target="_blank" rel="noopener">Getty／Ars（資安示意）</a>（外部連結）</p>
+    <h3><a href="https://www.bleepingcomputer.com/news/security/france-blames-iranian-hackers-for-supermarket-attacks-that-sparked-fires/" target="_blank" rel="noopener">法國正式歸咎伊朗：超市冷凍櫃攻擊致至少十五宗火災</a></h3>
+    <p class="dek">法國將十月針對超市冷凍系統的網絡攻擊歸咎於與革命衛隊相關的 Shahid Kaveh 單位。CERT-FR 指攻擊波及約七百個零售點，造成至少十五宗火災與數千萬歐元食品損失。巴黎檢方展開司法調查並尋求國際通緝；法方擬召見伊朗大使並推動歐盟制裁。屬工控／冷鏈攻擊線的最新國家歸責。</p>
+    <p class="meta"><span class="outlet">BleepingComputer／CERT-FR</span><span class="src"> · <a href="https://www.bleepingcomputer.com/news/security/france-blames-iranian-hackers-for-supermarket-attacks-that-sparked-fires/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://therecord.media/cyberattack-germany-ai-mittwald" target="_blank" rel="noopener"><img src="https://cdn.arstechnica.net/wp-content/uploads/2017/05/getty-hacking-1152x648.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://therecord.media/cyberattack-germany-ai-mittwald" target="_blank" rel="noopener">Getty／Ars（資安示意）</a>（外部連結）</p>
+    <h3><a href="https://therecord.media/cyberattack-germany-ai-mittwald" target="_blank" rel="noopener">德國主機商 Mittwald：MCP 伺服器被攻破，五十六個客戶項目受損</a></h3>
+    <p class="dek">服務網頁代理商的德國主機商 Mittwald 稱，攻擊者利用其 Model Context Protocol 伺服器漏洞，在未被發現的八日內入侵並影響五十六個客戶項目。公司於十一月四日發現後關閉 MCP 伺服器並鎖定賬戶，稱客戶中心與託管網站未受影響。報道指攻擊過程疑似借助 AI 工具加速橫向移動。</p>
+    <p class="meta"><span class="outlet">The Record／Mittwald</span><span class="src"> · <a href="https://therecord.media/cyberattack-germany-ai-mittwald" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.darkreading.com/endpoint-security/attackers-claude-office-party-flaw-malicious-code-linux" target="_blank" rel="noopener"><img src="https://cdn.arstechnica.net/wp-content/uploads/2017/05/getty-hacking-1152x648.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.darkreading.com/endpoint-security/attackers-claude-office-party-flaw-malicious-code-linux" target="_blank" rel="noopener">Getty／Ars（資安示意）</a>（外部連結）</p>
+    <h3><a href="https://www.darkreading.com/endpoint-security/attackers-claude-office-party-flaw-malicious-code-linux" target="_blank" rel="noopener">Claude「Office Party」：官方辦公技能可在 Linux 載入植入共享庫</a></h3>
+    <p class="dek">AIR Security 發現 Anthropic 官方辦公技能在 Linux 上會從固定臨時路徑載入共享庫，攻擊者植入檔案後，可在處理文件時以用戶權限執行代碼。缺陷影響 socket 被封鎖的環境，包括部分沙箱。報道指公司認為問題超出安全邊界，因為代碼在沙箱內執行。</p>
+    <p class="meta"><span class="outlet">Dark Reading／AIR Security</span><span class="src"> · <a href="https://www.darkreading.com/endpoint-security/attackers-claude-office-party-flaw-malicious-code-linux" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://thehackernews.com/2026/11/taiwan-based-hacker-used-bossai-ai.html" target="_blank" rel="noopener"><img src="https://cdn.arstechnica.net/wp-content/uploads/2017/05/getty-hacking-1152x648.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://thehackernews.com/2026/11/taiwan-based-hacker-used-bossai-ai.html" target="_blank" rel="noopener">Getty／Ars（資安示意）</a>（外部連結）</p>
+    <h3><a href="https://thehackernews.com/2026/11/taiwan-based-hacker-used-bossai-ai.html" target="_blank" rel="noopener">Acronis：台灣攻擊者用十二個 AI agent 組成 BOSSAI，竊取台北派勤紀錄</a></h3>
+    <p class="dek">Acronis 研究指單一名台灣攻擊者操作由十二個 AI agent 組成的 BOSSAI 網格，目標遍及十一國數百組織，並從公開介面取走台北七個行政區的緊急派勤紀錄。團隊亦發現消防平台暴露二零一八年病人資料（含心電圖）。商用模型拒絕進攻任務後，攻擊端改在被削護欄的開源模型上運行。</p>
+    <p class="meta"><span class="outlet">The Hacker News／Acronis</span><span class="src"> · <a href="https://thehackernews.com/2026/11/taiwan-based-hacker-used-bossai-ai.html" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="security-rank">
+    <h2>資安與基礎設施 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://fireworks.ai/security/bulletins/october-2026-security-incident-update" target="_blank" rel="noopener">[A] Fireworks 擴大披露：賬單資料外洩，部分客戶數據集與未完成權重被取</a></li>
+    <li><a href="https://www.bleepingcomputer.com/news/security/france-blames-iranian-hackers-for-supermarket-attacks-that-sparked-fires/" target="_blank" rel="noopener">[A] 法國正式歸咎伊朗：超市冷凍櫃攻擊致至少十五宗火災</a></li>
+    <li><a href="https://therecord.media/cyberattack-germany-ai-mittwald" target="_blank" rel="noopener">[A] 德國主機商 Mittwald：MCP 伺服器被攻破，五十六個客戶項目受損</a></li>
+    <li><a href="https://www.darkreading.com/endpoint-security/attackers-claude-office-party-flaw-malicious-code-linux" target="_blank" rel="noopener">[B] Claude「Office Party」：官方辦公技能可在 Linux 載入植入共享庫</a></li>
+    <li><a href="https://thehackernews.com/2026/11/taiwan-based-hacker-used-bossai-ai.html" target="_blank" rel="noopener">[B] Acronis：台灣攻擊者用十二個 AI agent 組成 BOSSAI，竊取台北派勤紀錄</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="product">
+  <header class="sec-head"><div class="flag">產品</div><div><h2>消費電子／平台</h2><p class="sec-sub">Apple 推 49.9、Medium 推出筆記應、Instagram Ef、Meta 呼籲 TikT · 4則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/tech/1030084/apple-intelligence-usage-packs-ai-features-creator-studio-logic-pro" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2025/06/apple-on-phone.jpg?resize=1200,800" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/tech/1030084/apple-intelligence-usage-packs-ai-features-creator-studio-logic-pro" target="_blank" rel="noopener">Cheng Xin／Getty／TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/tech/1030084/apple-intelligence-usage-packs-ai-features-creator-studio-logic-pro" target="_blank" rel="noopener">Apple 推 49.99 美元 Intelligence Usage Pack：先由 Logic Pro 起跳</a></h3>
+    <p class="dek">Apple 開始出售四十九點九九美元 Intelligence Usage Pack，供用家用盡 Creator Studio 部分 AI 月額後加購。Logic Pro 率先提供其 Gemini 助手；一次性購買、不支援家庭共享，可按月結轉並於十二個月後到期。本月將擴至 Final Cut 與 iWork 等，免費額度之後開始計量。</p>
+    <p class="meta"><span class="outlet">The Verge／9to5Mac／Apple</span><span class="src"> · <a href="https://www.theverge.com/tech/1030084/apple-intelligence-usage-packs-ai-features-creator-studio-logic-pro" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/tech/1029676/medium-tk-notes-app" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2024/10/the_verge_social_share.png" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/tech/1029676/medium-tk-notes-app" target="_blank" rel="noopener">The Verge</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/tech/1029676/medium-tk-notes-app" target="_blank" rel="noopener">Medium 推出筆記應用 TK：把 AI 助手嵌進寫作，並做私人 Libraries</a></h3>
+    <p class="dek">Medium 首次做出博客以外的產品 TK：極簡筆記加上類似私人社交的 Libraries，讓寫作者在小圈子分享草稿。輸入 TK 可召喚模型整理筆記或補上資料；免費提供網頁、iOS 與 Android 版，並可經 MCP 或 Claude skill 接駁用戶自有助手。公司押注寫作不必再依賴 Google 轉介流量。</p>
+    <p class="meta"><span class="outlet">The Verge</span><span class="src"> · <a href="https://www.theverge.com/tech/1029676/medium-tk-notes-app" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/tech/1030061/instagram-ai-effect-builder-filters" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/05/instagram-header.jpg?resize=1200,800" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/tech/1030061/instagram-ai-effect-builder-filters" target="_blank" rel="noopener">Jonathan Raa/NurPhoto／Getty／TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/tech/1030061/instagram-ai-effect-builder-filters" target="_blank" rel="noopener">Instagram Effect Builder：用提示詞生成 Stories 濾鏡，先限美國成年用戶</a></h3>
+    <p class="dek">Instagram 推出網頁工具 Effect Builder，讓用戶用文字提示生成自訂 AI 濾鏡，用於 Stories。目前向十八歲以上美國居民開放，可先在自己的相片上預覽並改寫提示，再提交安全審查後公開。消費端濾鏡生產被模型化，同時把內容審核前移到上架閘口。</p>
+    <p class="meta"><span class="outlet">The Verge</span><span class="src"> · <a href="https://www.theverge.com/tech/1030061/instagram-ai-effect-builder-filters" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://about.fb.com/news/2026/11/expanding-teen-account-protections-to-teens-around-the-world/" target="_blank" rel="noopener"><img src="https://about.fb.com/wp-content/uploads/2026/11/Expanding-Teen-Account-Protections-to-Teens-Around-the-World_socialShare.jpg?w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://about.fb.com/news/2026/11/expanding-teen-account-protections-to-teens-around-the-world/" target="_blank" rel="noopener">Meta</a>（外部連結）</p>
+    <h3><a href="https://about.fb.com/news/2026/11/expanding-teen-account-protections-to-teens-around-the-world/" target="_blank" rel="noopener">Meta 呼籲 TikTok／YouTube 跟做測齡，並推 app store 統一年齡訊號</a></h3>
+    <p class="dek">在全球擴展測齡的同一篇網誌裡，Meta 點名希望 TikTok 與 YouTube 採取相同做法，並稱已在澳洲自願使用 Apple 的年齡區間訊號。公司主張由應用商店向所有 app 提供一次驗證的年齡，比每家平台各自核驗更有效且「更保護隱私」——把識別責任外移到作業系統層的游說同步展開。</p>
+    <p class="meta"><span class="outlet">Meta</span><span class="src"> · <a href="https://about.fb.com/news/2026/11/expanding-teen-account-protections-to-teens-around-the-world/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="product-rank">
+    <h2>消費電子／平台 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://www.theverge.com/tech/1030084/apple-intelligence-usage-packs-ai-features-creator-studio-logic-pro" target="_blank" rel="noopener">[A] Apple 推 49.99 美元 Intelligence Usage Pack：先由 Logic Pro 起跳</a></li>
+    <li><a href="https://www.theverge.com/tech/1029676/medium-tk-notes-app" target="_blank" rel="noopener">[B] Medium 推出筆記應用 TK：把 AI 助手嵌進寫作，並做私人 Libraries</a></li>
+    <li><a href="https://www.theverge.com/tech/1030061/instagram-ai-effect-builder-filters" target="_blank" rel="noopener">[B] Instagram Effect Builder：用提示詞生成 Stories 濾鏡，先限美國成年用戶</a></li>
+    <li><a href="https://about.fb.com/news/2026/11/expanding-teen-account-protections-to-teens-around-the-world/" target="_blank" rel="noopener">[B] Meta 呼籲 TikTok／YouTube 跟做測齡，並推 app store 統一年齡訊號</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="chips">
+  <header class="sec-head"><div class="flag">晶片</div><div><h2>晶片／硬體／地緣</h2><p class="sec-sub">TPU 8tx／8i M、路透：黃仁勳事件後，三項、「Find My」做進加、Skild AI 開源  · 4則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/tpu-8i-max-and-8tx/" target="_blank" rel="noopener"><img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/TPU-8tx_and_8i-Max.width-1300.png" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/tpu-8i-max-and-8tx/" target="_blank" rel="noopener">Google</a>（外部連結）</p>
+    <h3><a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/tpu-8i-max-and-8tx/" target="_blank" rel="noopener">TPU 8tx／8i Max：系統模組化而非新硅，瞄準機密推理與記憶體牆</a></h3>
+    <p class="dek">Google 強調這次宣布的是系統而非新芯片：8tx 重用 8t 硅並搭配第五代 AMD EPYC，把數據與權重在運算中隔離；8i Max 以雙芯片封裝倍增運算與 HBM 頻寬。Amin Vahdat 稱近一百客戶。戰略讀法係用系統迭代速度追 Nvidia 的出貨節奏，並用開源軟件棧降低 CUDA 鎖定。</p>
+    <p class="meta"><span class="outlet">Google</span><span class="src"> · <a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/tpu-8i-max-and-8tx/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.investing.com/news/world-news/nvidia-spy-allegations-likely-to-spur-laws-totighten-chinas-access-to-ai-chips-5013421" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2025/06/STK083_NVIDIA_2.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.investing.com/news/world-news/nvidia-spy-allegations-likely-to-spur-laws-totighten-chinas-access-to-ai-chips-5013421" target="_blank" rel="noopener">Cath Virginia／The Verge</a>（外部連結）</p>
+    <h3><a href="https://www.investing.com/news/world-news/nvidia-spy-allegations-likely-to-spur-laws-totighten-chinas-access-to-ai-chips-5013421" target="_blank" rel="noopener">路透：黃仁勳事件後，三項晶片法案更可能塞進國防授權法案</a></h3>
+    <p class="dek">路透引述：黃仁勳承認相關關係後，國會更傾向把《AI Overwatch Act》《Chip Security Act》《MATCH Act》納入二零二七財年國防授權法包裹。三案已獲眾院外交委員會通過；Chip Security 要求出口前做位置驗證。Nvidia 據報是前兩案最大反對者。法案尚未通過。</p>
+    <p class="meta"><span class="outlet">Reuters／Investing.com</span><span class="src"> · <a href="https://www.investing.com/news/world-news/nvidia-spy-allegations-likely-to-spur-laws-totighten-chinas-access-to-ai-chips-5013421" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://spectrum.ieee.org/find-my-ai-chip" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2025/06/STK083_NVIDIA_2.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://spectrum.ieee.org/find-my-ai-chip" target="_blank" rel="noopener">Cath Virginia／The Verge</a>（外部連結）</p>
+    <h3><a href="https://spectrum.ieee.org/find-my-ai-chip" target="_blank" rel="noopener">「Find My」做進加速器：CSET／IEEE 拆解芯片定位驗證的能力同盲點</a></h3>
+    <p class="dek">若 Chip Security Act 落地，芯片商可能要以硬體根信任、加密證明或指紋識別來做位置驗證。CSET 較推薦實地檢查加上 ping 延遲驗證（PLV），但 PLV 追唔到離線芯片、無法分辨關機與轉移、精度最佳約二十英里，亦分唔清同一座標的不同使用者。追蹤架構一旦建成，可見性就不再限於走私個案。</p>
+    <p class="meta"><span class="outlet">IEEE Spectrum／CSET</span><span class="src"> · <a href="https://spectrum.ieee.org/find-my-ai-chip" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://skild.ai/blogs/steel" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/11/Recursive-Neural-Spiral-in-Circuitry.png?resize=1200,600" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://skild.ai/blogs/steel" target="_blank" rel="noopener">TechCrunch（示意）</a>（外部連結）</p>
+    <h3><a href="https://skild.ai/blogs/steel" target="_blank" rel="noopener">Skild AI 開源 Steel 物理求解器，整合入 Nvidia Newton 引擎</a></h3>
+    <p class="dek">機器人公司 Skild AI 開源與 Nvidia 合作開發的物理求解器 Steel，並整合進開源 Newton 物理引擎，供機器人抓取與接觸密集型任務的模擬訓練。項目以可擴展、跨機器人與跨任務為賣點，開發者可在 GitHub 取用。屬具身智能基礎設施的開源短項，對照封閉機器人棧。</p>
+    <p class="meta"><span class="outlet">Skild AI／Newton</span><span class="src"> · <a href="https://skild.ai/blogs/steel" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="chips-rank">
+    <h2>晶片／硬體／地緣 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/tpu-8i-max-and-8tx/" target="_blank" rel="noopener">[A] TPU 8tx／8i Max：系統模組化而非新硅，瞄準機密推理與記憶體牆</a></li>
+    <li><a href="https://www.investing.com/news/world-news/nvidia-spy-allegations-likely-to-spur-laws-totighten-chinas-access-to-ai-chips-5013421" target="_blank" rel="noopener">[A] 路透：黃仁勳事件後，三項晶片法案更可能塞進國防授權法案</a></li>
+    <li><a href="https://spectrum.ieee.org/find-my-ai-chip" target="_blank" rel="noopener">[B] 「Find My」做進加速器：CSET／IEEE 拆解芯片定位驗證的能力同盲點</a></li>
+    <li><a href="https://skild.ai/blogs/steel" target="_blank" rel="noopener">[B] Skild AI 開源 Steel 物理求解器，整合入 Nvidia Newton 引擎</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="policy">
+  <header class="sec-head"><div class="flag">政策</div><div><h2>政策／監管</h2><p class="sec-sub">Warren／Banks、騰訊首席 AI 科學家警、特朗普在《60 Minu、表外 AI 承諾約 4. · 4則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://www.investing.com/news/world-news/nvidia-spy-allegations-likely-to-spur-laws-totighten-chinas-access-to-ai-chips-5013421" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2025/06/STK083_NVIDIA_2.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.investing.com/news/world-news/nvidia-spy-allegations-likely-to-spur-laws-totighten-chinas-access-to-ai-chips-5013421" target="_blank" rel="noopener">Cath Virginia／The Verge</a>（外部連結）</p>
+    <h3><a href="https://www.investing.com/news/world-news/nvidia-spy-allegations-likely-to-spur-laws-totighten-chinas-access-to-ai-chips-5013421" target="_blank" rel="noopener">Warren／Banks 聯署：黃仁勳事件令切斷中國取得先進芯片「更加緊迫」</a></h3>
+    <p class="dek">民主黨參議員 Warren 與共和黨參議員 Banks 發表聯合聲明，稱黃仁勳確認與疑似中國情報人員的關係，使國家安全疑慮更加緊迫，並呼籲在國防授權法案中通過《AI Overwatch Act》等關鍵法案。倡議組織指真正關卡是白宮是否願意在此事上繼續挺 Nvidia。白宮未有置評。</p>
+    <p class="meta"><span class="outlet">Reuters</span><span class="src"> · <a href="https://www.investing.com/news/world-news/nvidia-spy-allegations-likely-to-spur-laws-totighten-chinas-access-to-ai-chips-5013421" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.scmp.com/tech/big-tech/article/3373697/ai-will-soon-master-biology-unleashing-new-safety-risks-tencent-ai-chief-warns" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/11/Recursive-Neural-Spiral-in-Circuitry.png?resize=1200,600" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.scmp.com/tech/big-tech/article/3373697/ai-will-soon-master-biology-unleashing-new-safety-risks-tencent-ai-chief-warns" target="_blank" rel="noopener">TechCrunch（示意）</a>（外部連結）</p>
+    <h3><a href="https://www.scmp.com/tech/big-tech/article/3373697/ai-will-soon-master-biology-unleashing-new-safety-risks-tencent-ai-chief-warns" target="_blank" rel="noopener">騰訊首席 AI 科學家警告：模型即將精通生物學，生物武器風險隨之上升</a></h3>
+    <p class="dek">騰訊首席 AI 科學家姚順雨在香港一場科學研討會上警告，前沿模型即將足以掌握生物學，加快藥物發現的同時，也可能協助惡意行為者製造生物武器。他認為單純全開源或全封閉都無法獨自解決風險。開源與封閉之爭正從代碼延伸到生物能力邊界。</p>
+    <p class="meta"><span class="outlet">南華早報</span><span class="src"> · <a href="https://www.scmp.com/tech/big-tech/article/3373697/ai-will-soon-master-biology-unleashing-new-safety-risks-tencent-ai-chief-warns" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/ai-artificial-intelligence/1029802/trump-60-minutes-ai" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2024/10/the_verge_social_share.png" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/ai-artificial-intelligence/1029802/trump-60-minutes-ai" target="_blank" rel="noopener">The Verge</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/ai-artificial-intelligence/1029802/trump-60-minutes-ai" target="_blank" rel="noopener">特朗普在《60 Minutes》稱曾威脅「大型 AI 公司」領導人準備坐牢</a></h3>
+    <p class="dek">特朗普在十一月八日播出的《60 Minutes》訪問中稱，其團隊曾因涉及 AI 的不當行為報告，向「其中一間大型」AI 公司的未具名領導人威脅監禁，並稱對方其後「完全改變了一切」。他未指明人物或公司。言論與 Nvidia 調查同期出現，屬總統以刑事威懾介入產業的信號，細節無法核實。</p>
+    <p class="meta"><span class="outlet">The Verge／60 Minutes</span><span class="src"> · <a href="https://www.theverge.com/ai-artificial-intelligence/1029802/trump-60-minutes-ai" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://assets.jpmprivatebank.com/content/dam/jpm-pb-aem/global/en/documents/eotm/ai-tracker.pdf" target="_blank" rel="noopener"><img src="https://wp.technologyreview.com/wp-content/uploads/2026/11/GettyImages-2303431102.jpg?resize=1200,600" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://assets.jpmprivatebank.com/content/dam/jpm-pb-aem/global/en/documents/eotm/ai-tracker.pdf" target="_blank" rel="noopener">Getty／MIT Technology Review</a>（外部連結）</p>
+    <h3><a href="https://assets.jpmprivatebank.com/content/dam/jpm-pb-aem/global/en/documents/eotm/ai-tracker.pdf" target="_blank" rel="noopener">表外 AI 承諾約 4.49 兆：合約未來支出重劃超大規模風險地圖</a></h3>
+    <p class="dek">同一份摩根大通圖表把七家的表內長期債務與租賃負債加總約七百五十八億，表外承諾則約六倍。標題寫「約四兆」；柱狀數值加總約四點四九兆。這不自動等於隱匿負債，但說明市場定價時若只看資產負債表，會低估租約與採購承諾對未來現金流的鎖定程度。</p>
+    <p class="meta"><span class="outlet">J.P. Morgan AM</span><span class="src"> · <a href="https://assets.jpmprivatebank.com/content/dam/jpm-pb-aem/global/en/documents/eotm/ai-tracker.pdf" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="policy-rank">
+    <h2>政策／監管 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://www.investing.com/news/world-news/nvidia-spy-allegations-likely-to-spur-laws-totighten-chinas-access-to-ai-chips-5013421" target="_blank" rel="noopener">[A] Warren／Banks 聯署：黃仁勳事件令切斷中國取得先進芯片「更加緊迫」</a></li>
+    <li><a href="https://www.scmp.com/tech/big-tech/article/3373697/ai-will-soon-master-biology-unleashing-new-safety-risks-tencent-ai-chief-warns" target="_blank" rel="noopener">[B] 騰訊首席 AI 科學家警告：模型即將精通生物學，生物武器風險隨之上升</a></li>
+    <li><a href="https://www.theverge.com/ai-artificial-intelligence/1029802/trump-60-minutes-ai" target="_blank" rel="noopener">[B] 特朗普在《60 Minutes》稱曾威脅「大型 AI 公司」領導人準備坐牢</a></li>
+    <li><a href="https://assets.jpmprivatebank.com/content/dam/jpm-pb-aem/global/en/documents/eotm/ai-tracker.pdf" target="_blank" rel="noopener">[B] 表外 AI 承諾約 4.49 兆：合約未來支出重劃超大規模風險地圖</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="opensource">
+  <header class="sec-head"><div class="flag">開源</div><div><h2>開源／開發</h2><p class="sec-sub">Steel 開源：把機器、Google 開源 To、MaxxBench 風波、DHH 把 Omarch · 4則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://skild.ai/blogs/steel" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/11/Recursive-Neural-Spiral-in-Circuitry.png?resize=1200,600" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://skild.ai/blogs/steel" target="_blank" rel="noopener">TechCrunch（示意）</a>（外部連結）</p>
+    <h3><a href="https://skild.ai/blogs/steel" target="_blank" rel="noopener">Steel 開源：把機器人物理模擬求解器放進 Newton／GitHub</a></h3>
+    <p class="dek">Steel 以開源形式釋出並接入 Newton，開發者可直接呼叫求解器做可擴展機器人模擬。相對許多具身智能實驗室把模擬棧留在牆內，呢次至少把求解器代碼放到可 fork 的位置。Nvidia 同期在機器人會議更新開源人體模型與 Isaac Lab，開源模擬層成為競賽場。</p>
+    <p class="meta"><span class="outlet">Skild AI</span><span class="src"> · <a href="https://skild.ai/blogs/steel" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/tpu-8i-max-and-8tx/" target="_blank" rel="noopener"><img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/TPU-8tx_and_8i-Max.width-1300.png" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/tpu-8i-max-and-8tx/" target="_blank" rel="noopener">Google</a>（外部連結）</p>
+    <h3><a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/tpu-8i-max-and-8tx/" target="_blank" rel="noopener">Google 開源 TorchTPU：PyTorch／Hugging Face 號稱少改代碼可上 TPU</a></h3>
+    <p class="dek">配合新 TPU 系統，Google 重申上月開源的 TorchTPU，使 PyTorch 代碼與 Hugging Face 模型可在 TPU 上原生運行，並為 vLLM、SGLang 提供後端。另開源 TPU Sync 與 XLA Serving Engine，試圖把「改代碼成本」從 CUDA 鎖定中拆走。開源在這裡是獲客工具，不是慈善。</p>
+    <p class="meta"><span class="outlet">Google</span><span class="src"> · <a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/tpu-8i-max-and-8tx/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://x.com/i/trending/2119115237014340081" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/11/Recursive-Neural-Spiral-in-Circuitry.png?resize=1200,600" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://x.com/i/trending/2119115237014340081" target="_blank" rel="noopener">TechCrunch（示意）</a>（外部連結）</p>
+    <h3><a href="https://x.com/i/trending/2119115237014340081" target="_blank" rel="noopener">MaxxBench 風波：微改檔名大小寫，公開編程基準分數大幅散開</a></h3>
+    <p class="dek">開發者討論熱傳：DeepSeek V4.1 Flash 在速度取向編程基準表現突出，但有人把八十九道 DeepSWE 任務做檔名大小寫等微小改動後，分數大幅散開，DeepSeek 從約百分之七十四跌至約百分之五十六。社區解讀係模型可能過擬合熟悉測試。屬基準懷疑論短項，提醒「榜上第一」唔等於可維護工程。</p>
+    <p class="meta"><span class="outlet">X／開發者討論</span><span class="src"> · <a href="https://x.com/i/trending/2119115237014340081" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://x.com/i/trending/2119880001252433927" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2025/06/STK083_NVIDIA_2.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 C</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://x.com/i/trending/2119880001252433927" target="_blank" rel="noopener">Cath Virginia／The Verge</a>（外部連結）</p>
+    <h3><a href="https://x.com/i/trending/2119880001252433927" target="_blank" rel="noopener">DHH 把 Omarchy Linux 裝上 Nvidia DGX Spark 當日常桌面</a></h3>
+    <p class="dek">Rails 作者 DHH 展示把自訂 Linux 發行版 Omarchy 裝到 Nvidia 桌面級 DGX Spark，用作本地 agent 工作站。該機主打高統一記憶體與桌面形態的本地推理。討論熱在「把 AI 超算當日常電腦」同本地部署，而非新產品發表。價格據社區討論上升，屬硬體玩家向短項。</p>
+    <p class="meta"><span class="outlet">X／開發者討論</span><span class="src"> · <a href="https://x.com/i/trending/2119880001252433927" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="opensource-rank">
+    <h2>開源／開發 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://skild.ai/blogs/steel" target="_blank" rel="noopener">[A] Steel 開源：把機器人物理模擬求解器放進 Newton／GitHub</a></li>
+    <li><a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/tpu-8i-max-and-8tx/" target="_blank" rel="noopener">[B] Google 開源 TorchTPU：PyTorch／Hugging Face 號稱少改代碼可上 TPU</a></li>
+    <li><a href="https://x.com/i/trending/2119115237014340081" target="_blank" rel="noopener">[B] MaxxBench 風波：微改檔名大小寫，公開編程基準分數大幅散開</a></li>
+    <li><a href="https://x.com/i/trending/2119880001252433927" target="_blank" rel="noopener">[C] DHH 把 Omarchy Linux 裝上 Nvidia DGX Spark 當日常桌面</a></li>
+    </ol>
+  </div>
+</section>
+  <footer class="footer">
+    <p>每日 IT 報 · 2026-11-10（二）· 香港時間 · 共 32 則精選 + 4 篇人物專題 · 配圖直接 hotlink 外部 https 來源，無 base64 嵌圖、無本機 assets · 每則附熱度 A/B/C · 各分類欄附熱度排行。</p>
+    <p>來源涵蓋歐美主流科技／財經／資安媒體、公司通告與社群熱度交叉；摘要約 100–150 字繁中，事實以原文為準。專題以人物視角撰寫（Kara Swisher／Linus Torvalds／Ben Thompson／Edward Snowden）。例行每日（含週末）。</p>
+  </footer>
+</main>
+
+</body>
+</html>

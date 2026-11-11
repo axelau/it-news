@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>每日 IT 報｜2026年11月11日 · Pixel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --cream:#F5F5EC;
+  --paper:#FFFEF7;
+  --navy:#0A2558;
+  --navy2:#14356e;
+  --sky:#A3C1DA;
+  --sky2:#C5D9EA;
+  --sky3:#E8F1F8;
+  --ink:#0A2558;
+  --ink2:#1e3a66;
+  --muted:#5a6f8a;
+  --link:#0A2558;
+  --white:#fffef9;
+  --heat-a:#0A2558;
+  --heat-b:#3d5a80;
+  --heat-c:#7a8fa8;
+  --px:4px;
+}
+*{box-sizing:border-box}
+html{font-size:16.5px}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(163,193,218,.35) 0 2px, transparent 3px),
+    radial-gradient(circle at 88% 18%, rgba(10,37,88,.12) 0 2px, transparent 3px),
+    radial-gradient(circle at 70% 92%, rgba(163,193,218,.28) 0 2px, transparent 3px),
+    var(--cream);
+  background-size:28px 28px, 36px 36px, 24px 24px, auto;
+  color:var(--ink);
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  line-height:1.55;
+  image-rendering:auto;
+}
+a{color:var(--link); text-decoration:none; border-bottom:2px solid transparent}
+a:hover{border-bottom-color:var(--sky); background:var(--sky3)}
+
+/* pixel border helper — stepped corners via box-shadow */
+.pixel-border{
+  border:3px solid var(--navy);
+  box-shadow:
+    3px 0 0 0 var(--navy),
+    -3px 0 0 0 var(--navy),
+    0 3px 0 0 var(--navy),
+    0 -3px 0 0 var(--navy),
+    6px 6px 0 0 rgba(10,37,88,.18);
+  clip-path: polygon(
+    0 8px, 8px 8px, 8px 0,
+    calc(100% - 8px) 0, calc(100% - 8px) 8px, 100% 8px,
+    100% calc(100% - 8px), calc(100% - 8px) calc(100% - 8px), calc(100% - 8px) 100%,
+    8px 100%, 8px calc(100% - 8px), 0 calc(100% - 8px)
+  );
+}
+
+.wrap{
+  max-width:1000px; margin:1.25rem clamp(1rem,5vw,3rem) 2.5rem; padding:1.35rem clamp(1.75rem,7vw,3.75rem) 2.5rem;
+  background:var(--paper);
+  border:3px solid var(--navy);
+  position:relative;
+  box-shadow:
+    4px 4px 0 0 var(--navy),
+    8px 8px 0 0 var(--sky);
+}
+/* dither + decorations around wrap */
+.wrap::before,.wrap::after{
+  content:"+"; position:absolute; color:var(--sky); font-family:"Press Start 2P",monospace;
+  font-size:.55rem; line-height:1; pointer-events:none; opacity:.85;
+}
+.wrap::before{top:.55rem; left:.7rem}
+.wrap::after{bottom:.55rem; right:.7rem}
+
+/* ===== MASTHEAD ===== */
+.masthead{
+  text-align:center;
+  padding:1.6rem 1rem 1.25rem;
+  margin:0 0 1.15rem;
+  background:linear-gradient(180deg, var(--sky3) 0%, var(--paper) 70%);
+  border:3px solid var(--navy);
+  position:relative;
+  box-shadow:4px 4px 0 0 var(--navy);
+}
+.masthead::before{
+  content:"PLAY · WORK · CREATE · CONNECT";
+  position:absolute; left:.5rem; top:50%; transform:translateY(-50%) rotate(-90deg);
+  transform-origin:center; font-family:"Press Start 2P",monospace; font-size:.42rem;
+  letter-spacing:.08em; color:var(--sky); white-space:nowrap; opacity:.7;
+  display:none;
+}
+@media (min-width:860px){
+  .masthead::before{display:block}
+}
+.masthead .kicker{
+  font-family:"Press Start 2P",monospace;
+  font-size:.55rem; letter-spacing:.12em; color:var(--navy);
+  margin-bottom:.85rem;
+  display:inline-block;
+  background:var(--navy); color:#fff;
+  padding:.45rem .7rem;
+  box-shadow:3px 3px 0 0 var(--sky);
+}
+.masthead h1{
+  font-family:"Press Start 2P",monospace;
+  font-size:clamp(1.15rem, 4.2vw, 1.85rem);
+  margin:.35rem 0 .7rem; font-weight:400; letter-spacing:.06em;
+  color:var(--navy);
+  text-shadow: 3px 3px 0 var(--sky), 6px 6px 0 rgba(10,37,88,.15);
+  line-height:1.45;
+}
+.masthead .date{
+  font-family:"VT323",monospace;
+  font-size:1.35rem; color:var(--navy2); margin-top:.15rem; letter-spacing:.04em;
+}
+.masthead .tagline{
+  font-size:.8rem; color:var(--muted); margin:.55rem auto 0; max-width:46rem; line-height:1.5;
+}
+
+/* floating pluses in masthead */
+.masthead .date::before{content:"+  "; color:var(--sky); font-family:"Press Start 2P",monospace; font-size:.5rem}
+.masthead .date::after{content:"  +"; color:var(--sky); font-family:"Press Start 2P",monospace; font-size:.5rem}
+
+/* ===== TOC ===== */
+.toc{
+  display:flex; flex-wrap:wrap; gap:.45rem .55rem; justify-content:center;
+  margin:0 0 1.5rem; padding:.85rem .6rem;
+  border:3px solid var(--navy); background:var(--sky3);
+  box-shadow:3px 3px 0 0 var(--navy);
+  font-size:.82rem;
+}
+.toc a{
+  color:#fff; background:var(--navy); border:2px solid var(--navy);
+  padding:.28rem .55rem; font-weight:700; letter-spacing:.02em;
+  box-shadow:2px 2px 0 0 var(--sky);
+  border-bottom:2px solid var(--navy);
+}
+.toc a:hover{
+  background:var(--sky); color:var(--navy); border-bottom-color:var(--navy);
+}
+
+/* ===== REGIONS / SECTION HEADS ===== */
+.region{
+  margin:0 0 4.2rem; padding-bottom:2.7rem;
+  border-bottom:3px dashed var(--navy);
+}
+.region:last-of-type{border-bottom:none}
+.sec-head{display:flex; align-items:stretch; gap:.85rem; margin-bottom:.95rem}
+.flag{
+  background:var(--navy); color:#fff;
+  writing-mode:vertical-rl; text-orientation:mixed;
+  letter-spacing:.2em; font-weight:700; font-size:.88rem;
+  padding:.65rem .4rem; min-width:2.15rem;
+  display:flex; align-items:center; justify-content:center;
+  border:3px solid var(--navy);
+  box-shadow:3px 3px 0 0 var(--sky);
+  font-family:"Noto Sans TC",sans-serif;
+  position:relative;
+}
+.flag::after{
+  content:""; position:absolute; inset:-3px;
+  border:1px solid var(--sky); pointer-events:none; opacity:.6;
+}
+.sec-head h2{
+  margin:0; font-size:1.35rem; letter-spacing:.04em; line-height:1.35;
+  color:var(--navy); font-weight:700;
+}
+.sec-sub{margin:.2rem 0 0; color:var(--muted); font-size:.8rem}
+
+/* ===== FEATURE BOX ===== */
+.feature-box{
+  max-width:100%; margin:0 0 2rem; padding:0; overflow:hidden;
+  background:var(--white);
+  border:3px solid var(--navy);
+  box-shadow:4px 4px 0 0 var(--navy);
+  display:grid; grid-template-columns:minmax(220px,34%) 1fr; gap:0;
+  position:relative;
+}
+.feature-box::before{
+  content:"+"; position:absolute; top:.35rem; right:.5rem; z-index:2;
+  font-family:"Press Start 2P",monospace; font-size:.5rem; color:var(--sky); opacity:.9;
+}
+.feature-box .feature-media{
+  margin:0; background:var(--sky2); border-right:3px solid var(--navy); min-height:12rem; line-height:0;
+}
+.feature-box .feature-media a{display:block; line-height:0; height:100%; border:0}
+.feature-box .feature-media a:hover{background:transparent}
+.feature-box .feature-media img{width:100%; height:100%; min-height:12rem; object-fit:cover; display:block}
+.feature-box .feature-body{padding:1.1rem 1.2rem 1rem}
+.feature-box p{margin:0 0 .95rem; color:var(--ink2); font-size:.98rem; text-align:justify}
+.feature-box p.lead{font-size:1.05rem; color:var(--ink)}
+.feature-box p:last-child{margin-bottom:0}
+.feature-meta-row{display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; margin:0 0 .75rem}
+.drop::first-letter{
+  float:left; font-family:"Press Start 2P",monospace;
+  font-size:1.55rem; line-height:1.1; padding:.15rem .25rem 0 0;
+  font-weight:400; color:var(--navy);
+}
+
+/* satire accent */
+.feature-box.satire{
+  border-color:var(--navy);
+  background:linear-gradient(135deg, #fff9f0 0%, var(--white) 55%);
+  box-shadow:4px 4px 0 0 var(--sky), 8px 8px 0 0 var(--navy);
+}
+.feature-box.satire .sec-note{font-size:.76rem; color:var(--muted); margin:0 0 .75rem; font-style:italic}
+
+/* ===== STORY GRID ===== */
+.grid{display:grid; grid-template-columns:1fr 1fr; gap:2rem 1.15rem}
+.story{
+  padding:0; overflow:hidden;
+  background:var(--white);
+  border:3px solid var(--navy);
+  box-shadow:3px 3px 0 0 var(--sky);
+  display:flex; flex-direction:column;
+  position:relative;
+}
+.story::after{
+  content:"+"; position:absolute; bottom:.3rem; right:.4rem;
+  font-family:"Press Start 2P",monospace; font-size:.4rem; color:var(--sky); opacity:.75;
+  pointer-events:none;
+}
+.story.lead{grid-column:1 / -1; box-shadow:4px 4px 0 0 var(--navy)}
+.story.lead .story-media img{max-height:280px}
+.story-media{margin:0; background:var(--sky2); border-bottom:3px solid var(--navy); line-height:0}
+.story-media a{display:block; line-height:0; border:0}
+.story-media a:hover{background:transparent}
+.story-media img{width:100%; height:160px; object-fit:cover; display:block}
+.story.lead .story-media img{height:240px}
+.story-body{padding:.8rem .95rem .95rem; min-width:0; flex:1; display:flex; flex-direction:column}
+.story h3{margin:0 0 .35rem; font-size:1.02rem; line-height:1.35; font-weight:700; color:var(--navy)}
+.story.lead h3{font-size:1.28rem}
+.story h3 a{border:0; color:var(--navy)}
+.story h3 a:hover{background:var(--sky3); border:0}
+.story .dek{margin:0 0 .5rem; color:var(--ink2); font-size:.9rem; flex:1}
+.story.lead .dek{font-size:.98rem}
+.meta{margin:0; font-size:.72rem; color:var(--muted); font-family:"VT323",monospace; font-size:.95rem}
+.outlet{font-weight:700; color:var(--navy2); font-family:"Noto Sans TC",sans-serif; font-size:.72rem}
+.src{margin-left:.15rem}
+
+/* ===== HEAT BADGES — 90s window pop ===== */
+.heat{
+  display:inline-flex; align-items:stretch; gap:0;
+  padding:0; font-size:.68rem; font-weight:700; letter-spacing:.04em; line-height:1.2;
+  border:2px solid var(--navy);
+  background:var(--paper);
+  box-shadow:2px 2px 0 0 var(--navy);
+  overflow:hidden;
+  font-family:"Press Start 2P",monospace;
+  font-size:.48rem;
+  position:relative;
+}
+.heat::before{
+  content:"■";
+  background:var(--navy); color:#fff;
+  padding:.32rem .4rem;
+  display:inline-flex; align-items:center;
+  font-size:.42rem; letter-spacing:0;
+}
+/* put label text next to title bar */
+.heat{
+  color:var(--navy);
+  padding-right:.55rem;
+  align-items:center;
+}
+.heat::after{
+  content:"×";
+  margin-left:.35rem;
+  color:var(--navy);
+  font-size:.55rem;
+  line-height:1;
+  opacity:.7;
+}
+
+/* ===== THUMB CREDIT ===== */
+.thumb-credit{
+  margin:.1rem 0 .5rem; font-size:.65rem; color:var(--muted); line-height:1.35;
+  word-break:break-word;
+  padding:.35rem .5rem;
+  background:var(--sky3);
+  border-left:4px solid var(--sky);
+}
+.thumb-credit a{color:var(--muted); border-bottom:1px dotted var(--sky)}
+
+/* ===== RANK BOX — sky promo banner ===== */
+.rank-box{
+  margin:1.15rem 0 2rem; padding:1.1rem 1.2rem 1rem;
+  border:3px solid var(--navy);
+  background:var(--sky);
+  box-shadow:4px 4px 0 0 var(--navy);
+  position:relative;
+}
+.rank-box::before{
+  content:"LEVEL UP";
+  position:absolute; top:-.55rem; right:1rem;
+  font-family:"Press Start 2P",monospace; font-size:.42rem;
+  background:var(--navy); color:#fff; padding:.3rem .45rem;
+  box-shadow:2px 2px 0 0 var(--paper);
+}
+.rank-box h2{
+  margin:0 0 .3rem; font-size:1.15rem; letter-spacing:.04em; color:var(--navy);
+  font-family:"Press Start 2P",monospace; font-size:.72rem; line-height:1.55;
+}
+.rank-box .rank-sub{margin:0 0 .75rem; color:var(--navy2); font-size:.78rem}
+.rank-box ol{margin:0; padding-left:1.4rem; background:var(--paper); border:2px solid var(--navy); padding:.75rem 1rem .75rem 1.85rem}
+.rank-box li{margin:0 0 .45rem; font-size:.9rem; line-height:1.4; color:var(--navy)}
+.rank-box li a{font-weight:700; color:var(--navy); border-bottom:2px solid transparent}
+.rank-box li a:hover{border-bottom-color:var(--navy); background:var(--sky3)}
+
+/* ===== FOOTER ===== */
+.footer{
+  margin-top:1.4rem; padding:1rem 1rem .2rem;
+  border:3px solid var(--navy); background:var(--sky3);
+  box-shadow:3px 3px 0 0 var(--navy);
+  font-size:.76rem; color:var(--muted); line-height:1.6;
+}
+.footer p:first-child{
+  font-family:"VT323",monospace; font-size:1.05rem; color:var(--navy);
+}
+
+@media (max-width:720px){
+  .wrap{margin:.6rem .5rem 1.5rem; padding:1rem .85rem 1.75rem; box-shadow:3px 3px 0 0 var(--navy), 6px 6px 0 0 var(--sky)}
+  .grid{grid-template-columns:1fr}
+  .flag{writing-mode:horizontal-tb; min-width:auto; padding:.35rem .7rem; letter-spacing:.15em}
+  .sec-head{flex-direction:column; gap:.4rem}
+  .drop::first-letter{font-size:1.25rem}
+  .feature-box{grid-template-columns:1fr}
+  .feature-box .feature-media{border-right:none; border-bottom:3px solid var(--navy); min-height:10rem}
+  .feature-box .feature-media img{min-height:10rem; max-height:200px}
+  .story.lead .story-media img,.story-media img{height:180px}
+  .masthead h1{font-size:1.05rem}
+  .rank-box h2{font-size:.58rem}
+  .toc a{font-size:.75rem}
+}
+@media print{
+  body{background:#fff}
+  .wrap{box-shadow:none; max-width:none}
+  a{color:inherit; text-decoration:none}
+  .region{break-inside:avoid-page}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="masthead">
+    <div class="kicker">GROK BOT · IT DIGEST</div>
+    <h1>每日 IT 報</h1>
+    <div class="date">二零二六年十一月十一日　星期三　香港時間</div>
+    <p class="tagline">四篇人物專題（10 人池抽 4）· 約 30 則分類精選 · 外部配圖 hotlink · 摘要約 100–150 字</p>
+  </header>
+  <nav class="toc" aria-label="章節">
+    <a href="#f1">Miller</a> <a href="#f2">Vestager</a> <a href="#f3">Snowden</a> <a href="#f4">Jobs</a> <a href="#hot">熱門話題</a> <a href="#ai">AI 與模型</a> <a href="#security">資安與基礎設施</a> <a href="#product">消費電子／平台</a> <a href="#chips">晶片／硬體／地緣</a> <a href="#policy">政策／監管</a> <a href="#opensource">開源／開發</a>
+  </nav>
+<section class="region" id="f1">
+  <header class="sec-head"><div class="flag">Miller</div><div><h2>製造：沒有光模組，已買的加速器只是昂貴磚頭</h2><p class="sec-sub">人物：Chris Miller · 本質係實體製造、產能同地緣。已買入的晶片沒有收發器就互連不了，這是工業卡點，不是雲端空談。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://www.yahoo.com/news/articles/exclusive-microsoft-presses-trump-scuttle-110129535.html" target="_blank" rel="noopener"><img src="https://s.yimg.com/lo/mysterio/api/226b399cc47776a68c049b9287aca5f09b72da447e6813479fd4f5d284473b27/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Freuters.com%2Fb0bc39fa46f95a5aec2eae981a0e10a8.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://www.yahoo.com/news/articles/exclusive-microsoft-presses-trump-scuttle-110129535.html" target="_blank" rel="noopener">Reuters／Yahoo 轉載（原稿說明含 Microsoft 標誌插圖及荷蘭資料中心空拍）</a>（外部連結）</p>
+<p class="lead drop">雲端簡報改不了物理現實。沒有光模組把機架連起來，已經買入的人工智能晶片只是一堆昂貴、發熱、卻無法互連的硅片。這是產能、製造與地緣政治的死穴，不是軟件發布會上的端口號。</p>
+<p>路透社十一月十日獨家報道（Yahoo 新聞轉載，記者 Alexandra Alper；本報未能打開路透原站網址），三名知情人士指出，微軟正在向特朗普政府施壓，要求停止計劃中針對中國製新款光收發器的進口禁令。八月已有政府擬禁的報道，理由包括竊取數據、植入惡意軟件或中斷服務。據 Cleanview 數據，微軟在美國有三十五座興建中的資料中心，另規劃一百三十四座；九月曾與白宮科技政策辦公室及國家安全委員會會面。信息技術產業委員會的 John Miller 稱，禁令可能令部署近乎停擺：已買入的人工智能晶片沒有光模組就無法互連，部分資料中心需要數百萬顆模組。規則正由聯邦通信委員會起草。微軟拒絕置評，白宮與委員會當時未即時回應。</p>
+<p>把禁令當成雲配置開關的人，忽略了工廠地板。研究公司 Counterpoint 指，中國約佔全球光模組市場三分之二；主要供應商包括 Eoptolink 與 Zhongji Innolight，後者列入五角大樓中國軍方相關企業名單。美國有 Coherent 與 Lumentum 等競品，但美國創新基金會（Foundation for American Innovation）的報告指，現有規模不足以立刻替代。該產業委員會已於八月十三日去信聯邦通信委員會。摩根士丹利十月客戶報告猜測，規則或針對三點二兆比特每秒規格，量產預期二零二八年、廣泛裝機二零二九年；兩名消息人士稱，這一門檻仍在考慮。中國大使館反對將國家安全問題泛化。</p>
+<p>出口管制可以寫在紙上，收發器卻必須按月從產線走出來。工業戰略的第一課很簡單：互連斷了，算力就不是算力。機房裡那些已經到貨的加速器，正在乾等一顆連得上的模組。</p>
+  </div>
+  </div>
+</section><section class="region" id="f2">
+  <header class="sec-head"><div class="flag">Vestager</div><div><h2>監管：紐約打開 RAISE 門戶——前沿實驗室必須向法律報到</h2><p class="sec-sub">人物：Margrethe Vestager · 以創新為名的集中權力，必須面對法律、透明與罰則。本文寫州級強制透明，不是典型搭售案。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://techcrunch.com/2026/11/10/openai-anthropic-face-new-oversight-as-new-yorks-ai-safety-law-takes-effect/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/11/GettyImages-2302996653.jpg?w=1024" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/10/openai-anthropic-face-new-oversight-as-new-yorks-ai-safety-law-takes-effect/" target="_blank" rel="noopener">TechCrunch／Getty</a>（外部連結）</p>
+<p class="lead drop">以創新為名集中權力，不能成為免責金牌。少數前沿實驗室已經把模型、算力與分發入口握在手裡，必須面對法律、透明與制裁。本文評的不是典型的搭售或封閉商店判例，而是州級強制透明，以及少數實驗室的市場權力。</p>
+<p>紐約州於週二開放 RAISE Act 登記門戶。據 TechCrunch 報道，年收入逾五億美元的大型前沿開發者——文中點名 Anthropic 與 OpenAI——須於二零二七年一月一日前登記；並須在網站公布安全框架、於七十二小時內通報重大安全事故，以及發布模型透明度報告。執法機關是數位創新、治理、誠信與信任辦公室（DIGIT）。罰則可高達首次一百萬美元、再犯三百萬美元；未登記可被執法，發言人拒絕透露細節。州長 Hochul 同日宣布，將在紐約州立大學賓漢頓分校設立 New York Center for AI Responsibility and Research——一月已預告，捐贈與資本合計五千五百萬美元。加州 SB 53 已於一月生效，事故須在十五日內通報；伊利諾伊 SB 315 將於二零二七年初生效，並要求獨立審計。十月簽署的未成年人聊天機器人法則於二零二七年六月一日生效。</p>
+<p>圍牆花園不一定長成應用商店的樣子。當少數開發者成為模型層的看門人，強制登記與事故鐘就是把權力從閉門實驗室拖到公共時間表上。同一週，Anthropic 的上市安排進入定價：公開發行價預期每股七十至七十八美元，《紐約時報》報道估值可高達一點四兆美元，申請以代碼 ANT 在納斯達克全球精選市場掛牌 Class A。市場權力與上市日曆，已經和州級執法重疊。</p>
+<p>公平競爭從來不是拜託巨頭自願公開。消費者有權知道誰在訓練、出事誰通報、不登記誰受罰。門戶打開只是執法的起點；沒有制裁的透明，只是另一道刷得漂亮的圍牆。</p>
+  </div>
+  </div>
+</section><section class="region" id="f3">
+  <header class="sec-head"><div class="flag">Snowden</div><div><h2>監控：Ring 室內無人機——安全感的標價是會打電話回家的攝影機</h2><p class="sec-sub">人物：Edward Snowden · 冇免費午餐。賣點是便利與安全；產品是會飛、會巡、會自動出動，並且把影像送回家的攝影機。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://www.aboutamazon.com/news/devices/ring-drone-cam-rover-cam-security-robot" target="_blank" rel="noopener"><img src="https://media.wired.com/photos/6af233321b32910f5c003593/191:100/w_1280,c_limit/Ring-Drone-Cam-Gear-DSC_0211.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://www.aboutamazon.com/news/devices/ring-drone-cam-rover-cam-security-robot" target="_blank" rel="noopener">Wired</a>（外部連結）</p>
+<p class="lead drop">冇免費午餐。亞馬遜把更安心的家寫在包裝上，交到你手上的卻是一架會自己起飛、一輛會自己巡樓，並且把畫面送回公司伺服器的攝影機。便利是銷售語言；產品是一部會打電話回家的鏡頭。</p>
+<p>十一月十日，Ring 官方宣布新類別 Ring Robotics，兩款產品皆由 AI Pilot 驅動：相機、專用視覺模型、裝置端傳感器，再加雲端處理。面向家居的 Drone Cam 自二零二七年一月二十七日起在美國出貨，售價二百四十九點九九美元；面向商務的 Rover Cam 自二零二六年十二月十六日起在美國出貨，售價九百九十九點九九美元，現已開放預購。無人機可自訂航線與排程，亦可由感應器觸發自動起飛；一百四十八度視角、可三百六十度旋轉，解析度為 2K，並有兩盞發光二極管。漫遊相機具可調桅杆、警報器與燈塔、雙向語音，移動中最高 4K。部分功能需 Ring Protect 方案。官方同時寫明：無人機相機尚未獲得聯邦通信委員會授權，未授權前不得銷售或租賃。</p>
+<p>Wired 與 Ars Technica 把數據流向寫得更直白。無人機重一百六十五克，續航約五至八分鐘；失去網絡時可自行降落，但其餘智能在雲端——影像直送 Ring 伺服器，由 AI Pilot 指示路徑。用戶不能手動操縱；只限室內、需要 Wi-Fi，並可搭配 Alexa Home Map。官方強調停機位相機關閉，Rover 的 Sleep Mode 會收起桅杆並關閉麥克風，指示燈顯示是否錄影，並宣傳 Throw Away the Key（TAKE）加密。這些是產品控制項，不是權力對等。你不能親手飛，路徑由遠端模型決定，畫面先到別人的機房。</p>
+<p>監獄不必造在街上。當家居與寫字樓的巡邏權交給一架會自動出動、影像上行的裝置，牆就砌在天花板軌道和雲端日誌裡。安全感從來不是免費的；這次標價寫在收據上，真正的成本寫在數據流裡。</p>
+  </div>
+  </div>
+</section><section class="region" id="f4">
+  <header class="sec-head"><div class="flag">Jobs</div><div><h2>品味：Adobe 把 Photoshop 做成端點目錄，這是垃圾</h2><p class="sec-sub">人物：Steve Jobs · 缺乏品味。把所有規格再堆一層助手，只會摧毀體驗；工具變成助手，助手再呼叫 Photoshop，創作軟件變成端點目錄。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://blog.adobe.com/en/publish/2026/11/10/explore-new-ways-create-across-creative-cloud-adobe-firefly-while-advancing-craft-precision-choice-control" target="_blank" rel="noopener"><img src="https://blog.adobe.com/en/publish/2026/11/10/media_14a1dbcfab3a3c86b7a786087b6466fc8879a70a7.jpg?width=1200&amp;format=pjpg&amp;optimize=medium" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://blog.adobe.com/en/publish/2026/11/10/explore-new-ways-create-across-creative-cloud-adobe-firefly-while-advancing-craft-precision-choice-control" target="_blank" rel="noopener">Adobe</a>（外部連結）</p>
+<p class="lead drop">這是垃圾。Adobe 在 MAX 大會把助手、模型目錄和協議預覽一層層塞進 Photoshop 與 Premiere，卻把選擇與控制寫成美德。缺乏品味的產品，就是把每項規格都貼上生成式標籤，然後叫你在滑桿之間找到自己的眼睛。</p>
+<p>官方網誌十一月十日列出一長串功能。Photoshop 新增 Relight，以及 Generative Restyle 與 Prompt to edit 滑桿；Remove Tool 號稱可一併處理足跡與倒影。Premiere 的 Color Mode 正式推出，時間軸內出現 Generative Media，可生成視訊、音效、聲景與音樂，來源除 Firefly 外還可選 Google、Kling、Runway、Luma 等；Generative Remove 仍是測試版。Lightroom 加上 Glow、Blemish Removal，以及公開測試的 Open Eyes——用相簿裡的參考照片，把眨眼的人睜開。Creative Agent 與 AI Assistant 測試版進入 Premiere、Illustrator、InDesign、After Effects 與 Frame.io。Firefly 則推出 Design、Graph 測試版，以及僅限受邀的 Builder。本地 MCP 只是預覽：官方寫明，將於二零二七年初提供給 Creative Cloud 客戶，讓第三方 agent 呼叫 Photoshop、Illustrator、Premiere 與 After Effects。這不是已經全面上市的功能。把預覽寫得像已經發布，本身就暴露了發布會的口味。</p>
+<p>每段功能都在對你說：你不必再做決定，助手會呼叫工具。創作軟件的工作，變成在一排端點之間轉接提示詞。品味不是功能表有多長，而是知道什麼不該做進時間軸。把足跡、倒影、眨眼、聲景和外部模型菜單堆在同一塊畫布上，只會讓工具變厚、判斷變薄。真正的編輯決策被拆成一排可滑動的參數，作者的手從畫面中央被請到旁邊待命。助手再聰明，也只是把 Photoshop 降成可被呼叫的後端。</p>
+<p>一款創作工具的尊嚴，在於它逼你做選擇，而不是替你把所有選擇排成目錄。軟件一旦變成目錄，使用者就不再是作者，只是提示詞的搬運工。這不是工藝的進化，是把工藝外包給滑桿。體驗死在功能表膨脹的那一刻。功能表愈長，工具就愈不像工具。</p>
+  </div>
+  </div>
+</section><section class="region" id="hot">
+  <header class="sec-head"><div class="flag">熱門</div><div><h2>熱門話題</h2><p class="sec-sub">Anthropic 確認、Gemini 4 Car、Ring 推出 AI 室、CoreWeave 季報、Anthropic 推出 · 5則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/ai-artificial-intelligence/1030703/anthropic-ipo-1-4-trillion" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/01/STK269_ANTHROPIC_2_D.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/ai-artificial-intelligence/1030703/anthropic-ipo-1-4-trillion" target="_blank" rel="noopener">Cath Virginia／The Verge</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/ai-artificial-intelligence/1030703/anthropic-ipo-1-4-trillion" target="_blank" rel="noopener">Anthropic 確認 IPO 定價區間，估值可高達 1.4 兆美元</a></h3>
+    <p class="dek">Anthropic 確認首次公開募股定價區間為每股七十至七十八美元，《紐約時報》報道估值可高達一點四兆美元，並申請以代碼 ANT 在納斯達克全球精選市場掛牌 Class A。《華爾街日報》消息稱目標於下週四或週五開始交易；路透社指其先前曾預期高達兩兆美元。《The Verge》寫道，截至上週 OpenAI 估值為一點二五兆美元。發行股數與募資總額未經原文核實，本報不採用。</p>
+    <p class="meta"><span class="outlet">The Verge（引 NYT／WSJ／Reuters／Anthropic）</span><span class="src"> · <a href="https://www.theverge.com/ai-artificial-intelligence/1030703/anthropic-ipo-1-4-trillion" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/" target="_blank" rel="noopener"><img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini_4_carbon_key_art_16-9_lockup.width-1300.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/" target="_blank" rel="noopener">Google</a>（外部連結）</p>
+    <h3><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/" target="_blank" rel="noopener">Gemini 4 Carbon 對付費開發者與 Ultra 用戶開放，並預覽 agent swarm</a></h3>
+    <p class="dek">Google 把 Gemini 4 Carbon 開放給付費開發者、企業，以及所有 Google AI Ultra 訂戶，並稱這是其最強力模型，強調網絡安全與長時程智能體。兩週前已先向 Fairwind 網絡安全用戶提供。導入價與 Argon 相同，每百萬輸入代幣兩美元、輸出十美元。《The Verge》指導入價約為 GPT-6 Astra 的五分一、Fable 5.2 的四分一，十一月底導入期結束後價格會加倍。低階或免費用戶何時、是否開放仍不詳。</p>
+    <p class="meta"><span class="outlet">Google／The Verge</span><span class="src"> · <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.aboutamazon.com/news/devices/ring-drone-cam-rover-cam-security-robot" target="_blank" rel="noopener"><img src="https://media.wired.com/photos/6af233321b32910f5c003593/191:100/w_1280,c_limit/Ring-Drone-Cam-Gear-DSC_0211.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.aboutamazon.com/news/devices/ring-drone-cam-rover-cam-security-robot" target="_blank" rel="noopener">Wired</a>（外部連結）</p>
+    <h3><a href="https://www.aboutamazon.com/news/devices/ring-drone-cam-rover-cam-security-robot" target="_blank" rel="noopener">Ring 推出 AI 室內無人機相機與商務 Rover</a></h3>
+    <p class="dek">亞馬遜 Ring 推出由 AI Pilot 驅動的新類別：家居無人機相機將於二零二七年一月二十七日在美國出貨，售價二百四十九點九九美元；商務巡邏相機於二零二六年十二月十六日出貨，售價九百九十九點九九美元。Wired 報道機重一百六十五克、續航五至八分鐘，用戶不能手動飛行，影像送往公司伺服器由雲端指示路徑。該無人機尚未獲聯邦通信委員會授權，未授權前不得銷售或租賃。</p>
+    <p class="meta"><span class="outlet">Amazon／Ring；Wired；Ars Technica</span><span class="src"> · <a href="https://www.aboutamazon.com/news/devices/ring-drone-cam-rover-cam-security-robot" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.cnbc.com/2026/11/10/coreweave-crwv-q3-earnings-report-2026.html" target="_blank" rel="noopener"><img src="https://image.cnbcfm.com/api/v1/image/108521329-1793831093043-gettyimages-2256660712-DAVOS_WEF_2026.jpeg?v=1793831130&amp;w=1920&amp;h=1080" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.cnbc.com/2026/11/10/coreweave-crwv-q3-earnings-report-2026.html" target="_blank" rel="noopener">CNBC／Getty</a>（外部連結）</p>
+    <h3><a href="https://www.cnbc.com/2026/11/10/coreweave-crwv-q3-earnings-report-2026.html" target="_blank" rel="noopener">CoreWeave 季報收入 36.6 億美元、上調全年指引，股價仍受融資壓力</a></h3>
+    <p class="dek">CoreWeave 第三季收入三十六點六億美元，勝過預期三十五點五億，按年約增百分之一百六十八；淨虧損七億零九百萬美元，去年同期虧一億一千萬。二零二六年收入指引上調至一百三十億至一百三十三億，調整後經營溢利上調至十二點七五億至十三點七五億。季末債務近四百七十億，全年資本開支目標三百七十億至三百九十億。近一個月股價跌逾四成。只作財報短項。</p>
+    <p class="meta"><span class="outlet">CNBC</span><span class="src"> · <a href="https://www.cnbc.com/2026/11/10/coreweave-crwv-q3-earnings-report-2026.html" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/10/anthropic-launches-claude-meetings-to-turn-workplace-discussions-into-plans-and-tasks/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/11/Claude-Meetings.png?resize=1200,675" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/10/anthropic-launches-claude-meetings-to-turn-workplace-discussions-into-plans-and-tasks/" target="_blank" rel="noopener">TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/10/anthropic-launches-claude-meetings-to-turn-workplace-discussions-into-plans-and-tasks/" target="_blank" rel="noopener">Anthropic 推出 Claude 會議、白板與試算表，搶知識工作者</a></h3>
+    <p class="dek">Anthropic 在舊金山活動公布 Claude Meetings、Whiteboards 與 Sheets。會議功能測試版限團隊與企業方案，上市先支援 Google Meet，可以可見的參與者身分加入，即時起草計劃、使用白板、在會議聊天作答並連接工作應用；會在聊天發通知表明身分，未經管理員授權不加入有外部賓客的通話，外部賓客加入會自動離開。白板與試算表在付費方案測試。原名 Dashboards 的 Claude Data 現已對所有付費方案正式推出。</p>
+    <p class="meta"><span class="outlet">TechCrunch／The Verge</span><span class="src"> · <a href="https://techcrunch.com/2026/11/10/anthropic-launches-claude-meetings-to-turn-workplace-discussions-into-plans-and-tasks/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="hot-rank">
+    <h2>熱門話題 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://www.theverge.com/ai-artificial-intelligence/1030703/anthropic-ipo-1-4-trillion" target="_blank" rel="noopener">[A] Anthropic 確認 IPO 定價區間，估值可高達 1.4 兆美元</a></li>
+    <li><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/" target="_blank" rel="noopener">[A] Gemini 4 Carbon 對付費開發者與 Ultra 用戶開放，並預覽 agent swarm</a></li>
+    <li><a href="https://www.aboutamazon.com/news/devices/ring-drone-cam-rover-cam-security-robot" target="_blank" rel="noopener">[A] Ring 推出 AI 室內無人機相機與商務 Rover</a></li>
+    <li><a href="https://www.cnbc.com/2026/11/10/coreweave-crwv-q3-earnings-report-2026.html" target="_blank" rel="noopener">[A] CoreWeave 季報收入 36.6 億美元、上調全年指引，股價仍受融資壓力</a></li>
+    <li><a href="https://techcrunch.com/2026/11/10/anthropic-launches-claude-meetings-to-turn-workplace-discussions-into-plans-and-tasks/" target="_blank" rel="noopener">[B] Anthropic 推出 Claude 會議、白板與試算表，搶知識工作者</a></li>
+    </ol>
+  </div>
+</section><section class="region" id="ai">
+  <header class="sec-head"><div class="flag">AI</div><div><h2>AI 與模型</h2><p class="sec-sub">Gemini 4 Car、Claude Meeti、DeepMind Gem、OpenAI 羅致 Od、NVIDIA 推出可在 、NVIDIA 發布 GR · 6則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/" target="_blank" rel="noopener"><img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini_4_carbon_key_art_16-9_lockup.width-1300.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/" target="_blank" rel="noopener">Google</a>（外部連結）</p>
+    <h3><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/" target="_blank" rel="noopener">Gemini 4 Carbon 公開：導入價與 Argon 相同，並預覽 swarm</a></h3>
+    <p class="dek">Gemini 4 Carbon 在應用程式介面、AI Studio 與 Gemini for business 向所有付費開發者及企業開放，並推給所有 Google AI Ultra 訂戶，可用於 Antigravity、Gemini 應用程式與搜尋的人工智能模式。導入價與 Argon 相同。Antigravity 預覽 swarm 指令，一條提示可變成一組可即時追蹤的智能體。官方提及與 Artificial Analysis 合作的基準，Carbon 排第二，且平均每任務成本較對照更低。低階或免費檔何時開放，官方並未說明。</p>
+    <p class="meta"><span class="outlet">Google／The Verge</span><span class="src"> · <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/10/anthropic-launches-claude-meetings-to-turn-workplace-discussions-into-plans-and-tasks/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/11/Claude-Meetings.png?resize=1200,675" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/10/anthropic-launches-claude-meetings-to-turn-workplace-discussions-into-plans-and-tasks/" target="_blank" rel="noopener">TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/10/anthropic-launches-claude-meetings-to-turn-workplace-discussions-into-plans-and-tasks/" target="_blank" rel="noopener">Claude Meetings／Sheets／Whiteboards：先接 Google Meet，設外部賓客規則</a></h3>
+    <p class="dek">這套辦公組合把會議、白板與試算表一併推進知識工作場景，但不是九日商務中樞專題的翻版。會議測試版先接 Google Meet，並設下外部賓客規則：未經管理員授權不加入，外部賓客進線則自動離開。試算表測試版支援多頁、公式、格式與下拉選單，適用網頁、桌面與流動裝置。Claude Data 已結束十月測試，改為所有付費方案正式功能。本報未找到公司官網對應新聞稿，事實以 TechCrunch 與 The Verge 為準。</p>
+    <p class="meta"><span class="outlet">TechCrunch／The Verge</span><span class="src"> · <a href="https://techcrunch.com/2026/11/10/anthropic-launches-claude-meetings-to-turn-workplace-discussions-into-plans-and-tasks/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/F1CrVEYRb8lJOyyxGgcyow-Td1de-nkp7K8MZrhjrKPANJUc0EYB754Ninn-Yrppjdb54nolOWo6Rk8iDaRNuixWwLaEKc0K9ImGooxen9fj9IOh=w1200-h630-n-nu-rw" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/" target="_blank" rel="noopener">Google DeepMind</a>（外部連結）</p>
+    <h3><a href="https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/" target="_blank" rel="noopener">DeepMind Gemini Robotics 2.5 在 Mercedes 產線做人型 kitting</a></h3>
+    <p class="dek">DeepMind 發布視覺—語言—動作模型 Gemini Robotics 2.5，評估超過兩百項任務，較先前基線成功率高百分之三十至一百（視任務類型而定），完成速度快百分之二十至三十。公司與 Apptronik、Mercedes-Benz 在匈牙利 Kecskemét 與德國 Sindelfingen 產線做概念驗證，Apollo 2 做人型組套（kitting），成功率百分之九十六。並推出開源基準 ASIMOV-Jailbreak；文中 Argon 在該基準達百分之九十九點五的越獄抗性，對上先前版本的百分之八十二。正向機器人合作夥伴推出。</p>
+    <p class="meta"><span class="outlet">Google DeepMind／Ars Technica</span><span class="src"> · <a href="https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/10/openai-acquires-odessia-travel-startup-created-by-sonder-founder/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2025/04/GettyImages-2207801992.jpg?resize=1200,801" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/10/openai-acquires-odessia-travel-startup-created-by-sonder-founder/" target="_blank" rel="noopener">TechCrunch／Getty（較舊配圖，非產品獨照）</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/10/openai-acquires-odessia-travel-startup-created-by-sonder-founder/" target="_blank" rel="noopener">OpenAI 羅致 Odessia 創辦人，旅行 agent 已關站</a></h3>
+    <p class="dek">創辦人 Francis Davidson 宣布加入 OpenAI，負責旅行方向。TechCrunch 形容交易條款未披露，性質似人才收購。該公司成立一年，由 Sequoia 領投六百萬美元種子輪前融資，約五個月前推出，相關工具現已關閉。OpenAI 發言人確認聘用，但未宣布新的旅行產品；同一名發言人稱，每週有十二億人使用 ChatGPT。十二億這一數字出自公司發言人，並非本報獨立統計。</p>
+    <p class="meta"><span class="outlet">TechCrunch</span><span class="src"> · <a href="https://techcrunch.com/2026/11/10/openai-acquires-odessia-travel-startup-created-by-sonder-founder/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://developer.nvidia.com/blog/running-av-reasoning-models-within-onboard-compute-and-latency-limits/" target="_blank" rel="noopener"><img src="https://developer-blogs.nvidia.com/wp-content/uploads/2026/11/auto-alpamayo-2-edge-tech-blog-promo-600x338_r2-1-500x282.gif" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://developer.nvidia.com/blog/running-av-reasoning-models-within-onboard-compute-and-latency-limits/" target="_blank" rel="noopener">NVIDIA 官方預覽 GIF</a>（外部連結）</p>
+    <h3><a href="https://developer.nvidia.com/blog/running-av-reasoning-models-within-onboard-compute-and-latency-limits/" target="_blank" rel="noopener">NVIDIA 推出可在 DRIVE AGX Thor 即時運行的 Alpamayo 2 Edge</a></h3>
+    <p class="dek">NVIDIA 發布可在車載運算平台 DRIVE AGX Thor 即時運行的 Alpamayo 2 Edge，屬二十億參數級、具適應性推理的視覺—語言—動作模型，骨幹為 Nemotron，並配擴散動作模組。官方稱，經過閉環強化學習後，閉環駕駛表現較最佳的無閉環強化學習檢查點提升百分之四十八點九。本報不採用社交平台摘要中未在官方頁核實的里程數字。</p>
+    <p class="meta"><span class="outlet">NVIDIA Developer Blog</span><span class="src"> · <a href="https://developer.nvidia.com/blog/running-av-reasoning-models-within-onboard-compute-and-latency-limits/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://research.nvidia.com/labs/gear/gr00t-2/" target="_blank" rel="noopener"><img src="https://research.nvidia.com/labs/gear/gr00t-2/assets/poster/hero_flip.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://research.nvidia.com/labs/gear/gr00t-2/" target="_blank" rel="noopener">NVIDIA Research</a>（外部連結）</p>
+    <h3><a href="https://research.nvidia.com/labs/gear/gr00t-2/" target="_blank" rel="noopener">NVIDIA 發布 GR00T 2：同時預測未來視訊與機器人動作</a></h3>
+    <p class="dek">NVIDIA Research 發布 GR00T 2，定位為同時預測未來視訊與機器人動作的世界—動作模型，可跑夾爪、靈巧手與 Unitree G1。官方頁列出預訓練混合數據，包括四十萬二千七百三十小時自我中心人類影像、一萬零一百八十四小時 UMI 資料，以及二萬三千五百小時遙操作資料。頁面只標示二零二六年十一月，未給到確切日期，本報按此精度記錄，不作更細的發表日推斷。</p>
+    <p class="meta"><span class="outlet">NVIDIA Research</span><span class="src"> · <a href="https://research.nvidia.com/labs/gear/gr00t-2/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="ai-rank">
+    <h2>AI 與模型 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/" target="_blank" rel="noopener">[A] Gemini 4 Carbon 公開：導入價與 Argon 相同，並預覽 swarm</a></li>
+    <li><a href="https://techcrunch.com/2026/11/10/anthropic-launches-claude-meetings-to-turn-workplace-discussions-into-plans-and-tasks/" target="_blank" rel="noopener">[B] Claude Meetings／Sheets／Whiteboards：先接 Google Meet，設外部賓客規則</a></li>
+    <li><a href="https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/" target="_blank" rel="noopener">[B] DeepMind Gemini Robotics 2.5 在 Mercedes 產線做人型 kitting</a></li>
+    <li><a href="https://techcrunch.com/2026/11/10/openai-acquires-odessia-travel-startup-created-by-sonder-founder/" target="_blank" rel="noopener">[B] OpenAI 羅致 Odessia 創辦人，旅行 agent 已關站</a></li>
+    <li><a href="https://developer.nvidia.com/blog/running-av-reasoning-models-within-onboard-compute-and-latency-limits/" target="_blank" rel="noopener">[B] NVIDIA 推出可在 DRIVE AGX Thor 即時運行的 Alpamayo 2 Edge</a></li>
+    <li><a href="https://research.nvidia.com/labs/gear/gr00t-2/" target="_blank" rel="noopener">[B] NVIDIA 發布 GR00T 2：同時預測未來視訊與機器人動作</a></li>
+    </ol>
+  </div>
+</section><section class="region" id="security">
+  <header class="sec-head"><div class="flag">資安</div><div><h2>資安與基礎設施</h2><p class="sec-sub">DeepMind 用 A、Patch Tuesda、Apple 推出 27.、研究員在英國政府公開代碼、NRC 批准 X-ene · 5則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://deepmind.google/blog/introducing-alphaproof-code/" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/hn6AiI6lYFo6chi1mL6uJ9nOW9UXfsAKnSyOApiie2urHNU2tmSPUmGn0hNfWyYLRcsWCGjCIrBZSCt1ihZmvW-LDJPfyolsr5w-yvzlknZVzmaH=w1200-h630-n-nu-rw" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://deepmind.google/blog/introducing-alphaproof-code/" target="_blank" rel="noopener">Google DeepMind</a>（外部連結）</p>
+    <h3><a href="https://deepmind.google/blog/introducing-alphaproof-code/" target="_blank" rel="noopener">DeepMind 用 AI 形式化驗證 Signal 協議實作的關鍵安全性質</a></h3>
+    <p class="dek">DeepMind 稱已形式化驗證 Signal 協議實作的關鍵安全性質，約耗時四週，並稱這是人工智能首次在此深度驗證廣泛部署的密碼協議，也是該類協議實作首次被任何方法形式化驗證。人類撰寫 Lean 規格，智能體產生逾六百萬行證明，並重植入兩個已修復舊漏洞，均證明不安全。官方點名 Signal 與 Google Messages；Wired 另寫亦涵蓋 WhatsApp 所用技術，並非指該應用程式全部代碼已獲驗證。所查部分未發現新漏洞。</p>
+    <p class="meta"><span class="outlet">Google DeepMind／Wired</span><span class="src"> · <a href="https://deepmind.google/blog/introducing-alphaproof-code/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-november-2026-patch-tuesday-fixes-1-235-flaws-outlook-zero-day/" target="_blank" rel="noopener"><img src="https://www.bleepstatic.com/content/hl-images/2024/10/08/patch_tuesday_microsoft.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-november-2026-patch-tuesday-fixes-1-235-flaws-outlook-zero-day/" target="_blank" rel="noopener">BleepingComputer（通用配圖，非本次獨照）</a>（外部連結）</p>
+    <h3><a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-november-2026-patch-tuesday-fixes-1-235-flaws-outlook-zero-day/" target="_blank" rel="noopener">Patch Tuesday 修復活躍利用的 Outlook 零日（NTLM hash）</a></h3>
+    <p class="dek">BleepingComputer 報道微軟十一月修補日修復一千二百三十五個漏洞，口徑只計當日發布、排除本月稍早一百零八個（含 Entra、Mariner、Edge）。Dark Reading 寫一千零九十三個、六十三個嚴重級。兩家方法不同，本報並陳，不以單一數字為官方總數。兩家皆點名遭活躍利用的 Outlook 欺騙零日 CVE-2026-124194，特製郵件檔案誘使開啟可竊取 NTLM 或 NTLMv2 雜湊。同日延伸安全更新把 Windows 10 升至 19045.7846，長期服務通道二零二一年版為 19044.7846。</p>
+    <p class="meta"><span class="outlet">BleepingComputer／Dark Reading</span><span class="src"> · <a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-november-2026-patch-tuesday-fixes-1-235-flaws-outlook-zero-day/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://support.apple.com/en-us/149715" target="_blank" rel="noopener"><img src="https://9to5mac.com/wp-content/uploads/sites/6/2024/10/iphone-privacy-private-cloud-compute.jpg?quality=82&amp;strip=all&amp;resize=1200,628" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://support.apple.com/en-us/149715" target="_blank" rel="noopener">9to5Mac（較舊隱私配圖，非本次截圖）</a>（外部連結）</p>
+    <h3><a href="https://support.apple.com/en-us/149715" target="_blank" rel="noopener">Apple 推出 27.2.1：修 iMessage 群組與藍牙／AirPlay 配對漏洞</a></h3>
+    <p class="dek">Apple 於十一月九日發布 iOS 與 iPadOS 27.2.1，適用於 iPhone 十一及更新等所列裝置。官方支援文件列出多個漏洞編號，包括藍牙範圍內記憶體損壞、惡意藍牙裝置可在無用戶互動下配對，以及可繞過配對碼嘗試速率限制。9to5Mac 概述稱，訊息應用上遠端攻擊者可能未經邀請加入 iMessage 群組；AirPlay 在藍牙範圍或可繞過配對碼速率限制。本報不以「九個問題」這類未經核實的整數作為官方總數，而以官方漏洞列表為準。</p>
+    <p class="meta"><span class="outlet">Apple Support／9to5Mac</span><span class="src"> · <a href="https://support.apple.com/en-us/149715" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.wired.com/story/security-flaws-across-uk-government-sites-exposed-god-tier-information/" target="_blank" rel="noopener"><img src="https://media.wired.com/photos/6af269df2008482926d88a86/191:100/w_1280,c_limit/Security_Security%20Flaws%20Across%20UK%20Government%20Sites%20Exposed%20%E2%80%98God-Tier%E2%80%99%20Information_v1.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.wired.com/story/security-flaws-across-uk-government-sites-exposed-god-tier-information/" target="_blank" rel="noopener">Wired</a>（外部連結）</p>
+    <h3><a href="https://www.wired.com/story/security-flaws-across-uk-government-sites-exposed-god-tier-information/" target="_blank" rel="noopener">研究員在英國政府公開代碼發現大量嚴重漏洞</a></h3>
+    <p class="dek">研究員 Chris Nesbitt-Smith 在英國政府公開程式碼中發現大量安全問題。Wired 報道其檢查三百四十九個代碼庫、三十三個機構，約三分之二存在漏洞；其中規劃督察機構的 Microsoft Entra ID 可達 SharePoint 與 OneDrive，研究員稱之為 god-tier 權限。相關問題在二十分鐘內修復，機構稱沒有資料外洩。研究過程使用了消費級的 Claude Opus 與 Sonnet。此為公開代碼與雲端權限配置事故。</p>
+    <p class="meta"><span class="outlet">Wired</span><span class="src"> · <a href="https://www.wired.com/story/security-flaws-across-uk-government-sites-exposed-god-tier-information/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://x-energy.com/news/dow-x-energy-proposed-smr-project-receives-historic-construction-permit-for-nuclear-powered-industrial-site/" target="_blank" rel="noopener"><img src="https://cdn.x-energy.com/wp-content/uploads/2026/11/09153514/XEN_News_Thumbnail_Milestone-5.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://x-energy.com/news/dow-x-energy-proposed-smr-project-receives-historic-construction-permit-for-nuclear-powered-industrial-site/" target="_blank" rel="noopener">X-energy</a>（外部連結）</p>
+    <h3><a href="https://x-energy.com/news/dow-x-energy-proposed-smr-project-receives-historic-construction-permit-for-nuclear-powered-industrial-site/" target="_blank" rel="noopener">NRC 批准 X-energy 在 Dow 德州廠建四座 Xe-100 小型模組堆</a></h3>
+    <p class="dek">美國核能管制委員會批准 X-energy 在陶氏德州 UCC Seadrift（Long Mott Energy）廠址興建四座小型模組堆，許可只批建造、不批運行，目標二零三零年代初首次交付。公司稱這是美國首個獲批建於工業場址的先進核設施。TechCrunch 寫每座八十兆瓦電與二百兆瓦熱。亞馬遜氣候基金曾領投其五億美元 C-1 輪。憂思科學家聯盟的 Edwin Lyman 批評把關鍵安全問題推遲。只作基礎設施短項，不改寫成電網總論。</p>
+    <p class="meta"><span class="outlet">X-energy／TechCrunch</span><span class="src"> · <a href="https://x-energy.com/news/dow-x-energy-proposed-smr-project-receives-historic-construction-permit-for-nuclear-powered-industrial-site/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="security-rank">
+    <h2>資安與基礎設施 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://deepmind.google/blog/introducing-alphaproof-code/" target="_blank" rel="noopener">[A] DeepMind 用 AI 形式化驗證 Signal 協議實作的關鍵安全性質</a></li>
+    <li><a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-november-2026-patch-tuesday-fixes-1-235-flaws-outlook-zero-day/" target="_blank" rel="noopener">[A] Patch Tuesday 修復活躍利用的 Outlook 零日（NTLM hash）</a></li>
+    <li><a href="https://support.apple.com/en-us/149715" target="_blank" rel="noopener">[B] Apple 推出 27.2.1：修 iMessage 群組與藍牙／AirPlay 配對漏洞</a></li>
+    <li><a href="https://www.wired.com/story/security-flaws-across-uk-government-sites-exposed-god-tier-information/" target="_blank" rel="noopener">[B] 研究員在英國政府公開代碼發現大量嚴重漏洞</a></li>
+    <li><a href="https://x-energy.com/news/dow-x-energy-proposed-smr-project-receives-historic-construction-permit-for-nuclear-powered-industrial-site/" target="_blank" rel="noopener">[B] NRC 批准 X-energy 在 Dow 德州廠建四座 Xe-100 小型模組堆</a></li>
+    </ol>
+  </div>
+</section><section class="region" id="product">
+  <header class="sec-head"><div class="flag">產品</div><div><h2>消費電子／平台</h2><p class="sec-sub">Ring 推出 AI 室、Adobe MAX 把 、Oura 斥 6.25 、Pixel 10 獲 G、11 月 28 日起 F、Muse 智能體登陸 A · 6則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://www.aboutamazon.com/news/devices/ring-drone-cam-rover-cam-security-robot" target="_blank" rel="noopener"><img src="https://media.wired.com/photos/6af233321b32910f5c003593/191:100/w_1280,c_limit/Ring-Drone-Cam-Gear-DSC_0211.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.aboutamazon.com/news/devices/ring-drone-cam-rover-cam-security-robot" target="_blank" rel="noopener">Wired</a>（外部連結）</p>
+    <h3><a href="https://www.aboutamazon.com/news/devices/ring-drone-cam-rover-cam-security-robot" target="_blank" rel="noopener">Ring 推出 AI 室內無人機相機與商務 Rover</a></h3>
+    <p class="dek">Ring 新類別包含室內無人機相機與商務巡邏機器人，皆由裝置端傳感器加雲端處理驅動。無人機可自訂航線或由感應器觸發自動起飛，一百四十八度視角可三百六十度旋轉；巡邏車具可調桅杆、警報器、燈塔與雙向語音，移動中最高 4K。部分功能需付費保護方案。官方稱停機位相機關閉，並提供休眠模式與 TAKE 加密。主源為亞馬遜官方網誌，Wired 與 Ars Technica 補航時、雲端導航與不能手飛等旁證。</p>
+    <p class="meta"><span class="outlet">Amazon／Ring；Wired；Ars Technica</span><span class="src"> · <a href="https://www.aboutamazon.com/news/devices/ring-drone-cam-rover-cam-security-robot" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://blog.adobe.com/en/publish/2026/11/10/explore-new-ways-create-across-creative-cloud-adobe-firefly-while-advancing-craft-precision-choice-control" target="_blank" rel="noopener"><img src="https://blog.adobe.com/en/publish/2026/11/10/media_14a1dbcfab3a3c86b7a786087b6466fc8879a70a7.jpg?width=1200&amp;format=pjpg&amp;optimize=medium" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://blog.adobe.com/en/publish/2026/11/10/explore-new-ways-create-across-creative-cloud-adobe-firefly-while-advancing-craft-precision-choice-control" target="_blank" rel="noopener">Adobe</a>（外部連結）</p>
+    <h3><a href="https://blog.adobe.com/en/publish/2026/11/10/explore-new-ways-create-across-creative-cloud-adobe-firefly-while-advancing-craft-precision-choice-control" target="_blank" rel="noopener">Adobe MAX 把 AI agent 與 MCP 預覽塞進 Photoshop／Premiere／Firefly</a></h3>
+    <p class="dek">Adobe 在 MAX 公布 Photoshop 重新打光、生成式重構與提示編輯滑桿，以及可一併處理足跡與倒影的移除工具；Premiere 色彩模式正式推出，時間軸內可生成視訊、音效、聲景與音樂，並可選用自家模型及多家外部模型。創作助手測試版進入多個創意應用。本地 MCP 只是預覽，官方寫明將於二零二七年初提供給 Creative Cloud 客戶，供第三方助手呼叫 Photoshop 等應用，並非已經全面上市。本報以官方網誌措辭為準。</p>
+    <p class="meta"><span class="outlet">Adobe／TechCrunch</span><span class="src"> · <a href="https://blog.adobe.com/en/publish/2026/11/10/explore-new-ways-create-across-creative-cloud-adobe-firefly-while-advancing-craft-precision-choice-control" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/10/oura-to-acquire-ai-native-primary-care-startup-counsel-health-for-625m/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/11/GettyImages-2296609700.jpg?resize=1200,799" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/10/oura-to-acquire-ai-native-primary-care-startup-counsel-health-for-625m/" target="_blank" rel="noopener">TechCrunch／Getty</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/10/oura-to-acquire-ai-native-primary-care-startup-counsel-health-for-625m/" target="_blank" rel="noopener">Oura 斥 6.25 億美元買醫療 AI Counsel，並公布季度收入</a></h3>
+    <p class="dek">Oura 宣布以六億二千五百萬美元收購醫療人工智能公司 Counsel Health，Counsel 已於六月接入 Oura 應用，交易預計二零二七年底前完成。據彭博、經 TechCrunch 引述，行政總裁 Muthu Alagappan 將任首席臨床人工智能官，約七十名員工一併加入。Oura 截至九月三十日季度收入五億三千三百萬美元，按年升百分之一百五十三，二零二六財年收入約十七點五億美元。數週前，公司已無限期推遲最高約二十二億美元的上市計劃。</p>
+    <p class="meta"><span class="outlet">TechCrunch／The Verge</span><span class="src"> · <a href="https://techcrunch.com/2026/11/10/oura-to-acquire-ai-native-primary-care-startup-counsel-health-for-625m/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://blog.google/products-and-platforms/devices/pixel/november-2026-pixel-drop/" target="_blank" rel="noopener"><img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/header_Pixel_drop_image.width-1300.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://blog.google/products-and-platforms/devices/pixel/november-2026-pixel-drop/" target="_blank" rel="noopener">Google</a>（外部連結）</p>
+    <h3><a href="https://blog.google/products-and-platforms/devices/pixel/november-2026-pixel-drop/" target="_blank" rel="noopener">Pixel 10 獲 Gemini Intelligence；Pixel Tag 11/11 開賣</a></h3>
+    <p class="dek">十一月 Pixel 功能更新把 Gemini Intelligence 下放到 Pixel 10 系列，官方註明 Pixel 10a 等限制見腳註，並加入多步任務、主動建議，以及可按描述生成個人化小工具，後者即將延伸至 Pixel Watch 4 與 5。Pixel Tag 於十一月十一日上市，單隻二十九點九九美元、四入九十九點九九美元，稱電池可用逾一年，經 Find Hub（文稱逾十億部 Android 裝置）尋物並支援超寬頻。Ars Technica 另寫，圖示主題改用 Nano Banana，新增十種風格，自製小工具的資料來源限於搜尋與部分帳戶資料。</p>
+    <p class="meta"><span class="outlet">Google／Ars Technica</span><span class="src"> · <a href="https://blog.google/products-and-platforms/devices/pixel/november-2026-pixel-drop/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/gadgets/1030361/fitbit-versa-and-sense-smartwatches-lose-access-to-third-party-apps-and-watch-faces-at-the-end-of-this-month" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2025/11/Fitbit-Versa-4.jpg?quality=90&amp;strip=all&amp;crop=0,23.821989528796,100,52.356020942408" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/gadgets/1030361/fitbit-versa-and-sense-smartwatches-lose-access-to-third-party-apps-and-watch-faces-at-the-end-of-this-month" target="_blank" rel="noopener">The Verge</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/gadgets/1030361/fitbit-versa-and-sense-smartwatches-lose-access-to-third-party-apps-and-watch-faces-at-the-end-of-this-month" target="_blank" rel="noopener">11 月 28 日起 Fitbit App Gallery 只剩 Google／Fitbit 應用</a></h3>
+    <p class="dek">《The Verge》引述 Fitbit 與 Google 公告：自十一月二十八日起，Versa 與 Sense 系列在應用商店將只剩 Fitbit 與 Google 的應用及錶面，涵蓋 Versa、Versa 二至四代，以及 Sense 與 Sense 2。已經安裝的第三方應用與錶面可以繼續使用；一旦刪除或重設，便無法再安裝。這是舊款穿戴裝置平台收窄生態的產品週期新聞，不是新硬體發表。</p>
+    <p class="meta"><span class="outlet">The Verge（引 Fitbit／Google 公告）</span><span class="src"> · <a href="https://www.theverge.com/gadgets/1030361/fitbit-versa-and-sense-smartwatches-lose-access-to-third-party-apps-and-watch-faces-at-the-end-of-this-month" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/10/metas-ai-agent-muse-lands-on-apple-watch/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2025/11/MuseCharm.png?w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 C</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/10/metas-ai-agent-muse-lands-on-apple-watch/" target="_blank" rel="noopener">TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/10/metas-ai-agent-muse-lands-on-apple-watch/" target="_blank" rel="noopener">Muse 智能體登陸 Apple Watch 與 Wear OS</a></h3>
+    <p class="dek">TechCrunch 報道，Meta 的智能體 Muse 登陸 Apple Watch 與 Wear OS，可用語音通話、短訊或聽寫。該媒體並稱，Muse 是少數在四十日內美國下載量突破一千萬的應用之一，該數字出自該報道。本報十一月六日已以視訊化身為專題主軸，今日只作消費欄短項，記錄穿戴入口，不重寫化身或形象產品線。</p>
+    <p class="meta"><span class="outlet">TechCrunch</span><span class="src"> · <a href="https://techcrunch.com/2026/11/10/metas-ai-agent-muse-lands-on-apple-watch/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="product-rank">
+    <h2>消費電子／平台 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://www.aboutamazon.com/news/devices/ring-drone-cam-rover-cam-security-robot" target="_blank" rel="noopener">[A] Ring 推出 AI 室內無人機相機與商務 Rover</a></li>
+    <li><a href="https://blog.adobe.com/en/publish/2026/11/10/explore-new-ways-create-across-creative-cloud-adobe-firefly-while-advancing-craft-precision-choice-control" target="_blank" rel="noopener">[B] Adobe MAX 把 AI agent 與 MCP 預覽塞進 Photoshop／Premiere／Firefly</a></li>
+    <li><a href="https://techcrunch.com/2026/11/10/oura-to-acquire-ai-native-primary-care-startup-counsel-health-for-625m/" target="_blank" rel="noopener">[B] Oura 斥 6.25 億美元買醫療 AI Counsel，並公布季度收入</a></li>
+    <li><a href="https://blog.google/products-and-platforms/devices/pixel/november-2026-pixel-drop/" target="_blank" rel="noopener">[B] Pixel 10 獲 Gemini Intelligence；Pixel Tag 11/11 開賣</a></li>
+    <li><a href="https://www.theverge.com/gadgets/1030361/fitbit-versa-and-sense-smartwatches-lose-access-to-third-party-apps-and-watch-faces-at-the-end-of-this-month" target="_blank" rel="noopener">[B] 11 月 28 日起 Fitbit App Gallery 只剩 Google／Fitbit 應用</a></li>
+    <li><a href="https://techcrunch.com/2026/11/10/metas-ai-agent-muse-lands-on-apple-watch/" target="_blank" rel="noopener">[C] Muse 智能體登陸 Apple Watch 與 Wear OS</a></li>
+    </ol>
+  </div>
+</section><section class="region" id="chips">
+  <header class="sec-head"><div class="flag">晶片</div><div><h2>晶片／硬體／地緣</h2><p class="sec-sub">微軟游說特朗普政府：勿禁 · 1則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://www.yahoo.com/news/articles/exclusive-microsoft-presses-trump-scuttle-110129535.html" target="_blank" rel="noopener"><img src="https://s.yimg.com/lo/mysterio/api/226b399cc47776a68c049b9287aca5f09b72da447e6813479fd4f5d284473b27/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Freuters.com%2Fb0bc39fa46f95a5aec2eae981a0e10a8.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.yahoo.com/news/articles/exclusive-microsoft-presses-trump-scuttle-110129535.html" target="_blank" rel="noopener">Reuters／Yahoo 轉載</a>（外部連結）</p>
+    <h3><a href="https://www.yahoo.com/news/articles/exclusive-microsoft-presses-trump-scuttle-110129535.html" target="_blank" rel="noopener">微軟游說特朗普政府：勿禁中國製 AI 資料中心光模組</a></h3>
+    <p class="dek">路透社十一月十日獨家（Yahoo 新聞轉載，未能打開路透原站）指，微軟向特朗普政府施壓，要求停止計劃中的中國製新款資料中心光收發器進口禁令。產業協會警告，已買入的人工智能晶片沒有光模組就無法互連，禁令或令部署近乎停擺。中國約佔全球光模組市場三分之二，美國競品規模被指不足以立刻替代。規則由聯邦通信委員會起草，三點二兆比特每秒門檻仍在考慮。</p>
+    <p class="meta"><span class="outlet">Reuters（Yahoo 轉載；本輪未能打開 reuters.com 原文）</span><span class="src"> · <a href="https://www.yahoo.com/news/articles/exclusive-microsoft-presses-trump-scuttle-110129535.html" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="chips-rank">
+    <h2>晶片／硬體／地緣 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://www.yahoo.com/news/articles/exclusive-microsoft-presses-trump-scuttle-110129535.html" target="_blank" rel="noopener">[A] 微軟游說特朗普政府：勿禁中國製 AI 資料中心光模組</a></li>
+    </ol>
+  </div>
+</section><section class="region" id="policy">
+  <header class="sec-head"><div class="flag">政策</div><div><h2>政策／監管</h2><p class="sec-sub">紐約開放 RAISE 登、Nvidia 董事會聘請、美國付費用戶可檢視、編輯、民主黨反對會期結束前確認 · 4則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/10/openai-anthropic-face-new-oversight-as-new-yorks-ai-safety-law-takes-effect/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/11/GettyImages-2302996653.jpg?w=1024" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/10/openai-anthropic-face-new-oversight-as-new-yorks-ai-safety-law-takes-effect/" target="_blank" rel="noopener">TechCrunch／Getty</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/10/openai-anthropic-face-new-oversight-as-new-yorks-ai-safety-law-takes-effect/" target="_blank" rel="noopener">紐約開放 RAISE 登記：OpenAI、Anthropic 須於 2027 元旦前註冊</a></h3>
+    <p class="dek">紐約州週二開放 RAISE Act 登記門戶，年收入逾五億美元的大型前沿開發者須於二零二七年一月一日前登記，並公布安全框架、七十二小時內通報重大安全事故，以及發布模型透明度報告。執法由 DIGIT 負責，罰則可高達首次一百萬美元、再犯三百萬美元，未登記可被執法。加州相關法已於一月生效，事故須十五日內通報；伊利諾伊新法將於二零二七年初生效並含獨立審計。</p>
+    <p class="meta"><span class="outlet">TechCrunch</span><span class="src"> · <a href="https://techcrunch.com/2026/11/10/openai-anthropic-face-new-oversight-as-new-yorks-ai-safety-law-takes-effect/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/ai-artificial-intelligence/1031190/nvidia-huang-investigation" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/25835739/STKP210_JENSEN_HUANG_B.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/ai-artificial-intelligence/1031190/nvidia-huang-investigation" target="_blank" rel="noopener">The Verge</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/ai-artificial-intelligence/1031190/nvidia-huang-investigation" target="_blank" rel="noopener">Nvidia 董事會聘請 Wachtell 與前聯邦檢察官調查黃仁勳事件</a></h3>
+    <p class="dek">《The Verge》與 CNBC 報道，Nvidia 董事會於週二延攬前聯邦檢察官 Joon H. Kim 及其事務所 Wachtell, Lipton, Rosen &amp; Katz，以調查黃仁勳相關事件，並釐清國家安全或公司機密是否受損。此為政策與治理後果短項，不是私事八卦專題。較早的通報與背景見《紐約時報》及 Verge 綜述，本報不把二手背景當作第一手事實，亦不採用社交平台上的玩笑口號當事實。</p>
+    <p class="meta"><span class="outlet">The Verge／CNBC</span><span class="src"> · <a href="https://www.theverge.com/ai-artificial-intelligence/1031190/nvidia-huang-investigation" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/tech/1030720/google-gemini-memory-summary-edit-correct-ai-knowledge" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/04/STK255_Google_Gemini_B_474198.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/tech/1030720/google-gemini-memory-summary-edit-correct-ai-knowledge" target="_blank" rel="noopener">Cath Virginia／The Verge</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/tech/1030720/google-gemini-memory-summary-edit-correct-ai-knowledge" target="_blank" rel="noopener">美國付費用戶可檢視、編輯、刪除 Gemini 對自己的理解</a></h3>
+    <p class="dek">《The Verge》引述 Google 支援頁：付費用戶可檢視、編輯並刪除 Gemini 應用對自己的理解，功能名稱為 Memory summary。目前僅在美國提供，須持有有效的 Google AI 方案，且需開啟活動記錄與記憶功能。這是產品層的記憶控制項，讓用戶看到模型對自己的摘要並加以改正，目前僅限上述地區與方案條件，範圍以官方支援說明為準。</p>
+    <p class="meta"><span class="outlet">The Verge（引 Google 支援頁）</span><span class="src"> · <a href="https://www.theverge.com/tech/1030720/google-gemini-memory-summary-edit-correct-ai-knowledge" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://arstechnica.com/tech-policy/2026/11/democrats-oppose-plan-to-stack-fcc-with-republicans-plan-probes-of-chairman-carr/" target="_blank" rel="noopener"><img src="https://cdn.arstechnica.net/wp-content/uploads/2026/11/danielle-thumann-severs-fcc-1152x648-1794344603.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 C</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://arstechnica.com/tech-policy/2026/11/democrats-oppose-plan-to-stack-fcc-with-republicans-plan-probes-of-chairman-carr/" target="_blank" rel="noopener">Ars Technica</a>（外部連結）</p>
+    <h3><a href="https://arstechnica.com/tech-policy/2026/11/democrats-oppose-plan-to-stack-fcc-with-republicans-plan-probes-of-chairman-carr/" target="_blank" rel="noopener">民主黨反對會期結束前確認 FCC 提名人，並預告調查主席 Carr</a></h3>
+    <p class="dek">Ars Technica 報道，民主黨反對在會期結束前確認聯邦通信委員會提名人，並預告將調查主席 Carr。Danielle Thumann Severs 的聽證會於當日舉行，質詢涉及每年約二十億美元規模的學校圖書館聯網補貼項目（E-Rate）及主席作為。書面問題於週四截止，提名人須於十一月十六日前書面回覆。此為人事與監督程序新聞，本文不把尚未展開的調查預告寫成已有結論。</p>
+    <p class="meta"><span class="outlet">Ars Technica</span><span class="src"> · <a href="https://arstechnica.com/tech-policy/2026/11/democrats-oppose-plan-to-stack-fcc-with-republicans-plan-probes-of-chairman-carr/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="policy-rank">
+    <h2>政策／監管 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://techcrunch.com/2026/11/10/openai-anthropic-face-new-oversight-as-new-yorks-ai-safety-law-takes-effect/" target="_blank" rel="noopener">[A] 紐約開放 RAISE 登記：OpenAI、Anthropic 須於 2027 元旦前註冊</a></li>
+    <li><a href="https://www.theverge.com/ai-artificial-intelligence/1031190/nvidia-huang-investigation" target="_blank" rel="noopener">[B] Nvidia 董事會聘請 Wachtell 與前聯邦檢察官調查黃仁勳事件</a></li>
+    <li><a href="https://www.theverge.com/tech/1030720/google-gemini-memory-summary-edit-correct-ai-knowledge" target="_blank" rel="noopener">[B] 美國付費用戶可檢視、編輯、刪除 Gemini 對自己的理解</a></li>
+    <li><a href="https://arstechnica.com/tech-policy/2026/11/democrats-oppose-plan-to-stack-fcc-with-republicans-plan-probes-of-chairman-carr/" target="_blank" rel="noopener">[C] 民主黨反對會期結束前確認 FCC 提名人，並預告調查主席 Carr</a></li>
+    </ol>
+  </div>
+</section><section class="region" id="opensource">
+  <header class="sec-head"><div class="flag">開源</div><div><h2>開源／開發</h2><p class="sec-sub">AlphaProof 規、曾參與 Cyanogen、開發者可在 AI Stu · 3則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://deepmind.google/blog/introducing-alphaproof-code/" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/hn6AiI6lYFo6chi1mL6uJ9nOW9UXfsAKnSyOApiie2urHNU2tmSPUmGn0hNfWyYLRcsWCGjCIrBZSCt1ihZmvW-LDJPfyolsr5w-yvzlknZVzmaH=w1200-h630-n-nu-rw" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://deepmind.google/blog/introducing-alphaproof-code/" target="_blank" rel="noopener">Google DeepMind</a>（外部連結）</p>
+    <h3><a href="https://deepmind.google/blog/introducing-alphaproof-code/" target="_blank" rel="noopener">AlphaProof 規格與證明將公開：逾六百萬行 Lean，人類覆核約百分之一</a></h3>
+    <p class="dek">同一項 AlphaProof 工作的開源意義在於證明會被放上枱。官方稱人類撰寫 Lean 規格，智能體產生逾六百萬行代碼，智能體再審計後，人類只需覆核約百分之一；規格與證明將公開。範圍是協議關鍵安全性質的形式化，不是把整個即時通訊應用開源。此則只補證明將公開、可被覆核這一點，不重複資安欄對驗證範圍與應用名稱的完整寫法。</p>
+    <p class="meta"><span class="outlet">Google DeepMind</span><span class="src"> · <a href="https://deepmind.google/blog/introducing-alphaproof-code/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.wired.com/story/kora-new-linux-based-desktop-operating-system-is-built-for-ai-nerds/" target="_blank" rel="noopener"><img src="https://media.wired.com/photos/6af27401edee43782ec1ac6b/191:100/w_1280,c_limit/gear_ai_operating_system_nerdy.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 C</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.wired.com/story/kora-new-linux-based-desktop-operating-system-is-built-for-ai-nerds/" target="_blank" rel="noopener">Wired</a>（外部連結）</p>
+    <h3><a href="https://www.wired.com/story/kora-new-linux-based-desktop-operating-system-is-built-for-ai-nerds/" target="_blank" rel="noopener">曾參與 Cyanogen 的創辦人公布 Linux 桌面 OS Kora，目標 2027</a></h3>
+    <p class="dek">Wired 報道，曾參與 Cyanogen 的 Kirt McMaster 公布以 Linux 核心為基礎的桌面作業系統 Kora，目標於二零二七年推出，硬體路線同時覆蓋 Qualcomm Snapdragon PC 與 x86-64，並宣稱可經兼容層運行 Windows 應用。產品尚未上市，目前無法評測實際體驗，本報只記錄其公開設定與時程，不把規劃中的系統寫成已經可買、可評的成品。</p>
+    <p class="meta"><span class="outlet">Wired</span><span class="src"> · <a href="https://www.wired.com/story/kora-new-linux-based-desktop-operating-system-is-built-for-ai-nerds/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://blog.google/innovation-and-ai/technology/developers-tools/build-google-maps-platform-ai-studio/" target="_blank" rel="noopener"><img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/AI_Studio_blog_social.max-1440x810.png" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 C</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://blog.google/innovation-and-ai/technology/developers-tools/build-google-maps-platform-ai-studio/" target="_blank" rel="noopener">Google</a>（外部連結）</p>
+    <h3><a href="https://blog.google/innovation-and-ai/technology/developers-tools/build-google-maps-platform-ai-studio/" target="_blank" rel="noopener">開發者可在 AI Studio 直接用 Google Maps Platform 做實境預覽</a></h3>
+    <p class="dek">Google 宣布，開發者可在 AI Studio 直接使用 Maps Platform 做實境預覽，不必離開工作區去另行設定帳單與憑證即可試用，並可用提示詞生成含地圖的互動預覽。功能於十一月九日公布，屬開發工具短項。這是把地圖能力嵌進模型工作區的入口調整，重點是先可在同一工作區試用，而不是發布一套新的開源地圖引擎。</p>
+    <p class="meta"><span class="outlet">Google</span><span class="src"> · <a href="https://blog.google/innovation-and-ai/technology/developers-tools/build-google-maps-platform-ai-studio/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="opensource-rank">
+    <h2>開源／開發 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://deepmind.google/blog/introducing-alphaproof-code/" target="_blank" rel="noopener">[B] AlphaProof 規格與證明將公開：逾六百萬行 Lean，人類覆核約百分之一</a></li>
+    <li><a href="https://www.wired.com/story/kora-new-linux-based-desktop-operating-system-is-built-for-ai-nerds/" target="_blank" rel="noopener">[C] 曾參與 Cyanogen 的創辦人公布 Linux 桌面 OS Kora，目標 2027</a></li>
+    <li><a href="https://blog.google/innovation-and-ai/technology/developers-tools/build-google-maps-platform-ai-studio/" target="_blank" rel="noopener">[C] 開發者可在 AI Studio 直接用 Google Maps Platform 做實境預覽</a></li>
+    </ol>
+  </div>
+</section>  <footer class="footer">
+    <p>每日 IT 報 · 2026-11-11（三）· 香港時間 · 共 30 則精選 + 4 篇人物專題 · 配圖直接 hotlink 外部 https 來源，無 base64 嵌圖、無本機 assets · 每則附熱度 A/B/C · 各分類欄附熱度排行。</p>
+    <p>來源涵蓋歐美主流科技／財經／資安媒體、公司通告與社群熱度交叉；摘要約 100–150 字繁中，事實以原文為準。專題以人物視角撰寫（Chris Miller／Margrethe Vestager／Edward Snowden／Steve Jobs）。例行每日（含週末）。</p>
+  </footer>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>每日 IT 報｜2026年11月12日 · Pixel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --cream:#F5F5EC;
+  --paper:#FFFEF7;
+  --navy:#0A2558;
+  --navy2:#14356e;
+  --sky:#A3C1DA;
+  --sky2:#C5D9EA;
+  --sky3:#E8F1F8;
+  --ink:#0A2558;
+  --ink2:#1e3a66;
+  --muted:#5a6f8a;
+  --link:#0A2558;
+  --white:#fffef9;
+  --heat-a:#0A2558;
+  --heat-b:#3d5a80;
+  --heat-c:#7a8fa8;
+  --px:4px;
+}
+*{box-sizing:border-box}
+html{font-size:16.5px}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(163,193,218,.35) 0 2px, transparent 3px),
+    radial-gradient(circle at 88% 18%, rgba(10,37,88,.12) 0 2px, transparent 3px),
+    radial-gradient(circle at 70% 92%, rgba(163,193,218,.28) 0 2px, transparent 3px),
+    var(--cream);
+  background-size:28px 28px, 36px 36px, 24px 24px, auto;
+  color:var(--ink);
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  line-height:1.55;
+  image-rendering:auto;
+}
+a{color:var(--link); text-decoration:none; border-bottom:2px solid transparent}
+a:hover{border-bottom-color:var(--sky); background:var(--sky3)}
+
+/* pixel border helper — stepped corners via box-shadow */
+.pixel-border{
+  border:3px solid var(--navy);
+  box-shadow:
+    3px 0 0 0 var(--navy),
+    -3px 0 0 0 var(--navy),
+    0 3px 0 0 var(--navy),
+    0 -3px 0 0 var(--navy),
+    6px 6px 0 0 rgba(10,37,88,.18);
+  clip-path: polygon(
+    0 8px, 8px 8px, 8px 0,
+    calc(100% - 8px) 0, calc(100% - 8px) 8px, 100% 8px,
+    100% calc(100% - 8px), calc(100% - 8px) calc(100% - 8px), calc(100% - 8px) 100%,
+    8px 100%, 8px calc(100% - 8px), 0 calc(100% - 8px)
+  );
+}
+
+.wrap{
+  max-width:1000px; margin:1.25rem clamp(1rem,5vw,3rem) 2.5rem; padding:1.35rem clamp(1.75rem,7vw,3.75rem) 2.5rem;
+  background:var(--paper);
+  border:3px solid var(--navy);
+  position:relative;
+  box-shadow:
+    4px 4px 0 0 var(--navy),
+    8px 8px 0 0 var(--sky);
+}
+/* dither + decorations around wrap */
+.wrap::before,.wrap::after{
+  content:"+"; position:absolute; color:var(--sky); font-family:"Press Start 2P",monospace;
+  font-size:.55rem; line-height:1; pointer-events:none; opacity:.85;
+}
+.wrap::before{top:.55rem; left:.7rem}
+.wrap::after{bottom:.55rem; right:.7rem}
+
+/* ===== MASTHEAD ===== */
+.masthead{
+  text-align:center;
+  padding:1.6rem 1rem 1.25rem;
+  margin:0 0 1.15rem;
+  background:linear-gradient(180deg, var(--sky3) 0%, var(--paper) 70%);
+  border:3px solid var(--navy);
+  position:relative;
+  box-shadow:4px 4px 0 0 var(--navy);
+}
+.masthead::before{
+  content:"PLAY · WORK · CREATE · CONNECT";
+  position:absolute; left:.5rem; top:50%; transform:translateY(-50%) rotate(-90deg);
+  transform-origin:center; font-family:"Press Start 2P",monospace; font-size:.42rem;
+  letter-spacing:.08em; color:var(--sky); white-space:nowrap; opacity:.7;
+  display:none;
+}
+@media (min-width:860px){
+  .masthead::before{display:block}
+}
+.masthead .kicker{
+  font-family:"Press Start 2P",monospace;
+  font-size:.55rem; letter-spacing:.12em; color:var(--navy);
+  margin-bottom:.85rem;
+  display:inline-block;
+  background:var(--navy); color:#fff;
+  padding:.45rem .7rem;
+  box-shadow:3px 3px 0 0 var(--sky);
+}
+.masthead h1{
+  font-family:"Press Start 2P",monospace;
+  font-size:clamp(1.15rem, 4.2vw, 1.85rem);
+  margin:.35rem 0 .7rem; font-weight:400; letter-spacing:.06em;
+  color:var(--navy);
+  text-shadow: 3px 3px 0 var(--sky), 6px 6px 0 rgba(10,37,88,.15);
+  line-height:1.45;
+}
+.masthead .date{
+  font-family:"VT323",monospace;
+  font-size:1.35rem; color:var(--navy2); margin-top:.15rem; letter-spacing:.04em;
+}
+.masthead .tagline{
+  font-size:.8rem; color:var(--muted); margin:.55rem auto 0; max-width:46rem; line-height:1.5;
+}
+
+/* floating pluses in masthead */
+.masthead .date::before{content:"+  "; color:var(--sky); font-family:"Press Start 2P",monospace; font-size:.5rem}
+.masthead .date::after{content:"  +"; color:var(--sky); font-family:"Press Start 2P",monospace; font-size:.5rem}
+
+/* ===== TOC ===== */
+.toc{
+  display:flex; flex-wrap:wrap; gap:.45rem .55rem; justify-content:center;
+  margin:0 0 1.5rem; padding:.85rem .6rem;
+  border:3px solid var(--navy); background:var(--sky3);
+  box-shadow:3px 3px 0 0 var(--navy);
+  font-size:.82rem;
+}
+.toc a{
+  color:#fff; background:var(--navy); border:2px solid var(--navy);
+  padding:.28rem .55rem; font-weight:700; letter-spacing:.02em;
+  box-shadow:2px 2px 0 0 var(--sky);
+  border-bottom:2px solid var(--navy);
+}
+.toc a:hover{
+  background:var(--sky); color:var(--navy); border-bottom-color:var(--navy);
+}
+
+/* ===== REGIONS / SECTION HEADS ===== */
+.region{
+  margin:0 0 4.2rem; padding-bottom:2.7rem;
+  border-bottom:3px dashed var(--navy);
+}
+.region:last-of-type{border-bottom:none}
+.sec-head{display:flex; align-items:stretch; gap:.85rem; margin-bottom:.95rem}
+.flag{
+  background:var(--navy); color:#fff;
+  writing-mode:vertical-rl; text-orientation:mixed;
+  letter-spacing:.2em; font-weight:700; font-size:.88rem;
+  padding:.65rem .4rem; min-width:2.15rem;
+  display:flex; align-items:center; justify-content:center;
+  border:3px solid var(--navy);
+  box-shadow:3px 3px 0 0 var(--sky);
+  font-family:"Noto Sans TC",sans-serif;
+  position:relative;
+}
+.flag::after{
+  content:""; position:absolute; inset:-3px;
+  border:1px solid var(--sky); pointer-events:none; opacity:.6;
+}
+.sec-head h2{
+  margin:0; font-size:1.35rem; letter-spacing:.04em; line-height:1.35;
+  color:var(--navy); font-weight:700;
+}
+.sec-sub{margin:.2rem 0 0; color:var(--muted); font-size:.8rem}
+
+/* ===== FEATURE BOX ===== */
+.feature-box{
+  max-width:100%; margin:0 0 2rem; padding:0; overflow:hidden;
+  background:var(--white);
+  border:3px solid var(--navy);
+  box-shadow:4px 4px 0 0 var(--navy);
+  display:grid; grid-template-columns:minmax(220px,34%) 1fr; gap:0;
+  position:relative;
+}
+.feature-box::before{
+  content:"+"; position:absolute; top:.35rem; right:.5rem; z-index:2;
+  font-family:"Press Start 2P",monospace; font-size:.5rem; color:var(--sky); opacity:.9;
+}
+.feature-box .feature-media{
+  margin:0; background:var(--sky2); border-right:3px solid var(--navy); min-height:12rem; line-height:0;
+}
+.feature-box .feature-media a{display:block; line-height:0; height:100%; border:0}
+.feature-box .feature-media a:hover{background:transparent}
+.feature-box .feature-media img{width:100%; height:100%; min-height:12rem; object-fit:cover; display:block}
+.feature-box .feature-body{padding:1.1rem 1.2rem 1rem}
+.feature-box p{margin:0 0 .95rem; color:var(--ink2); font-size:.98rem; text-align:justify}
+.feature-box p.lead{font-size:1.05rem; color:var(--ink)}
+.feature-box p:last-child{margin-bottom:0}
+.feature-meta-row{display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; margin:0 0 .75rem}
+.drop::first-letter{
+  float:left; font-family:"Press Start 2P",monospace;
+  font-size:1.55rem; line-height:1.1; padding:.15rem .25rem 0 0;
+  font-weight:400; color:var(--navy);
+}
+
+/* satire accent */
+.feature-box.satire{
+  border-color:var(--navy);
+  background:linear-gradient(135deg, #fff9f0 0%, var(--white) 55%);
+  box-shadow:4px 4px 0 0 var(--sky), 8px 8px 0 0 var(--navy);
+}
+.feature-box.satire .sec-note{font-size:.76rem; color:var(--muted); margin:0 0 .75rem; font-style:italic}
+
+/* ===== STORY GRID ===== */
+.grid{display:grid; grid-template-columns:1fr 1fr; gap:2rem 1.15rem}
+.story{
+  padding:0; overflow:hidden;
+  background:var(--white);
+  border:3px solid var(--navy);
+  box-shadow:3px 3px 0 0 var(--sky);
+  display:flex; flex-direction:column;
+  position:relative;
+}
+.story::after{
+  content:"+"; position:absolute; bottom:.3rem; right:.4rem;
+  font-family:"Press Start 2P",monospace; font-size:.4rem; color:var(--sky); opacity:.75;
+  pointer-events:none;
+}
+.story.lead{grid-column:1 / -1; box-shadow:4px 4px 0 0 var(--navy)}
+.story.lead .story-media img{max-height:280px}
+.story-media{margin:0; background:var(--sky2); border-bottom:3px solid var(--navy); line-height:0}
+.story-media a{display:block; line-height:0; border:0}
+.story-media a:hover{background:transparent}
+.story-media img{width:100%; height:160px; object-fit:cover; display:block}
+.story.lead .story-media img{height:240px}
+.story-body{padding:.8rem .95rem .95rem; min-width:0; flex:1; display:flex; flex-direction:column}
+.story h3{margin:0 0 .35rem; font-size:1.02rem; line-height:1.35; font-weight:700; color:var(--navy)}
+.story.lead h3{font-size:1.28rem}
+.story h3 a{border:0; color:var(--navy)}
+.story h3 a:hover{background:var(--sky3); border:0}
+.story .dek{margin:0 0 .5rem; color:var(--ink2); font-size:.9rem; flex:1}
+.story.lead .dek{font-size:.98rem}
+.meta{margin:0; font-size:.72rem; color:var(--muted); font-family:"VT323",monospace; font-size:.95rem}
+.outlet{font-weight:700; color:var(--navy2); font-family:"Noto Sans TC",sans-serif; font-size:.72rem}
+.src{margin-left:.15rem}
+
+/* ===== HEAT BADGES — 90s window pop ===== */
+.heat{
+  display:inline-flex; align-items:stretch; gap:0;
+  padding:0; font-size:.68rem; font-weight:700; letter-spacing:.04em; line-height:1.2;
+  border:2px solid var(--navy);
+  background:var(--paper);
+  box-shadow:2px 2px 0 0 var(--navy);
+  overflow:hidden;
+  font-family:"Press Start 2P",monospace;
+  font-size:.48rem;
+  position:relative;
+}
+.heat::before{
+  content:"■";
+  background:var(--navy); color:#fff;
+  padding:.32rem .4rem;
+  display:inline-flex; align-items:center;
+  font-size:.42rem; letter-spacing:0;
+}
+/* put label text next to title bar */
+.heat{
+  color:var(--navy);
+  padding-right:.55rem;
+  align-items:center;
+}
+.heat::after{
+  content:"×";
+  margin-left:.35rem;
+  color:var(--navy);
+  font-size:.55rem;
+  line-height:1;
+  opacity:.7;
+}
+
+/* ===== THUMB CREDIT ===== */
+.thumb-credit{
+  margin:.1rem 0 .5rem; font-size:.65rem; color:var(--muted); line-height:1.35;
+  word-break:break-word;
+  padding:.35rem .5rem;
+  background:var(--sky3);
+  border-left:4px solid var(--sky);
+}
+.thumb-credit a{color:var(--muted); border-bottom:1px dotted var(--sky)}
+
+/* ===== RANK BOX — sky promo banner ===== */
+.rank-box{
+  margin:1.15rem 0 2rem; padding:1.1rem 1.2rem 1rem;
+  border:3px solid var(--navy);
+  background:var(--sky);
+  box-shadow:4px 4px 0 0 var(--navy);
+  position:relative;
+}
+.rank-box::before{
+  content:"LEVEL UP";
+  position:absolute; top:-.55rem; right:1rem;
+  font-family:"Press Start 2P",monospace; font-size:.42rem;
+  background:var(--navy); color:#fff; padding:.3rem .45rem;
+  box-shadow:2px 2px 0 0 var(--paper);
+}
+.rank-box h2{
+  margin:0 0 .3rem; font-size:1.15rem; letter-spacing:.04em; color:var(--navy);
+  font-family:"Press Start 2P",monospace; font-size:.72rem; line-height:1.55;
+}
+.rank-box .rank-sub{margin:0 0 .75rem; color:var(--navy2); font-size:.78rem}
+.rank-box ol{margin:0; padding-left:1.4rem; background:var(--paper); border:2px solid var(--navy); padding:.75rem 1rem .75rem 1.85rem}
+.rank-box li{margin:0 0 .45rem; font-size:.9rem; line-height:1.4; color:var(--navy)}
+.rank-box li a{font-weight:700; color:var(--navy); border-bottom:2px solid transparent}
+.rank-box li a:hover{border-bottom-color:var(--navy); background:var(--sky3)}
+
+/* ===== FOOTER ===== */
+.footer{
+  margin-top:1.4rem; padding:1rem 1rem .2rem;
+  border:3px solid var(--navy); background:var(--sky3);
+  box-shadow:3px 3px 0 0 var(--navy);
+  font-size:.76rem; color:var(--muted); line-height:1.6;
+}
+.footer p:first-child{
+  font-family:"VT323",monospace; font-size:1.05rem; color:var(--navy);
+}
+
+@media (max-width:720px){
+  .wrap{margin:.6rem .5rem 1.5rem; padding:1rem .85rem 1.75rem; box-shadow:3px 3px 0 0 var(--navy), 6px 6px 0 0 var(--sky)}
+  .grid{grid-template-columns:1fr}
+  .flag{writing-mode:horizontal-tb; min-width:auto; padding:.35rem .7rem; letter-spacing:.15em}
+  .sec-head{flex-direction:column; gap:.4rem}
+  .drop::first-letter{font-size:1.25rem}
+  .feature-box{grid-template-columns:1fr}
+  .feature-box .feature-media{border-right:none; border-bottom:3px solid var(--navy); min-height:10rem}
+  .feature-box .feature-media img{min-height:10rem; max-height:200px}
+  .story.lead .story-media img,.story-media img{height:180px}
+  .masthead h1{font-size:1.05rem}
+  .rank-box h2{font-size:.58rem}
+  .toc a{font-size:.75rem}
+}
+@media print{
+  body{background:#fff}
+  .wrap{box-shadow:none; max-width:none}
+  a{color:inherit; text-decoration:none}
+  .region{break-inside:avoid-page}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="masthead">
+    <div class="kicker">GROK BOT · IT DIGEST</div>
+    <h1>每日 IT 報</h1>
+    <div class="date">二零二六年十一月十二日　星期四　香港時間</div>
+    <p class="tagline">四篇人物專題（10 人池抽 4）· 約 30 則分類精選 · 外部配圖 hotlink · 摘要約 100–150 字</p>
+  </header>
+  <nav class="toc" aria-label="章節">
+    <a href="#f1">Musk</a> <a href="#f2">Miller</a> <a href="#f3">Jobs</a> <a href="#f4">Snowden</a> <a href="#hot">熱門話題</a> <a href="#ai">AI 與模型</a> <a href="#security">資安與基礎設施</a> <a href="#product">消費電子／平台</a> <a href="#chips">晶片／硬體／地緣</a> <a href="#policy">政策／監管</a> <a href="#opensource">開源／開發</a>
+  </nav>
+<section class="region" id="f1">
+  <header class="sec-head"><div class="flag">Musk</div><div><h2>泡沫：季度營收首次破 100 億美元，調整後邊際仍是負 109%</h2><p class="sec-sub">人物：Elon Musk · 業界共識同公關係屁話。營收印刷品同預付款不是已經賺到的生意；用第一性原理看邊際、利息、run-rate 計法。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://techcrunch.com/2026/11/11/openais-quarterly-revenue-reportedly-crosses-10b-for-the-first-time/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2024/05/openAI-spiral-rose.jpg?resize=1200,675" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/11/openais-quarterly-revenue-reportedly-crosses-10b-for-the-first-time/" target="_blank" rel="noopener">Bryce Durbin／TechCrunch</a>（外部連結）</p>
+<p class="lead drop">業界共識把季度營收首次突破一百億美元寫成轉折點，這是公關屁話。用第一性原理看：營收印刷品和客戶預付款，都不是已經賺到的生意；邊際、利息與年化算法，才決定這門生意是否成立。</p>
+<p>據 TechCrunch 引述彭博社匿名消息，OpenAI 季度營收首次超過一百億美元，較第二季報道的六十七億美元跳近五成；調整後經營邊際由第二季的負百分之一百五十，收窄至第三季的負百分之一百零九。彭博並把其年度營收年化速率寫成五百億美元。同一篇報道指出，Anthropic 近期公布第三季營收一百七十億美元，截至十月底年化速率達八百一十億美元，一個月內增加一百億美元，並明確警告兩家算法不同：Anthropic 計入雲端夥伴的銷售，OpenAI 對部分夥伴銷售只報自己那一份。這些數字都不是本報打開的經審計申報。</p>
+<p>第二組證據來自 CoreWeave 官方第三季業績：收入三十六點六一億美元，淨虧損七億零九百萬美元，淨利息支出八億四千六百萬美元。行政總裁 Michael Intrator 說，增長靠合約融資、營運現金流，以及「單是未來三個月預期約九十億美元的客戶預付款與按金」。公司上調二零二六財年指引；CNBC 報道週三股價升百分之二十四點七一。韓國《金融新聞》獨家另稱，奧特曼十月三十一日曾向約五十名三星管理層提到，基礎設施需求被「重複計算」——此為單一媒體獨家，不是經審計數字。</p>
+<p>營收可以印得很大，預付款可以預告得很大，年化速率可以各計各的。利息帳單與負邊際不會因此消失。把尚未賺到的生意，說成已經贏了的需求，是把帳本講成了故事。</p>
+  </div>
+  </div>
+</section><section class="region" id="f2">
+  <header class="sec-head"><div class="flag">Miller</div><div><h2>製造：台積電核准入股上限，受管制的 H200 仍落到國防高校</h2><p class="sec-sub">人物：Chris Miller · 本質係實體製造、產能同地緣。晶圓廠向自己的需求端入股，同時受管制的硅片仍能經國內供應商落到實體清單上的國防關聯高校。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://pr.tsmc.com/english/news/3352" target="_blank" rel="noopener"><img src="https://cdn.arstechnica.net/wp-content/uploads/2026/11/TSMC-Fab-18-1152x648.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://pr.tsmc.com/english/news/3352" target="_blank" rel="noopener">TSMC／Ars Technica（台南 Fab 18；Ars og:image:alt："TSMC's Fab 18 is a leading-edge chipmaking facility in Tainan, Taiwan."）</a>（外部連結）</p>
+<p class="lead drop">本質是實體製造、產能與地緣，不是雲端簡報上的投資故事。晶圓廠向自己的需求端入股，並不改變另一個事實：受管制的硅片，仍能經國內供應商落到實體清單上的國防關聯高校。</p>
+<p>台積電十一月十日董事會決議（十一月十一日見報，官方新聞稿）核准：以不超過五億美元、按首次公開募股價格投資 Anthropic, PBC 普通股；以及以不超過五億美元投資 OpenAI Group PBC 優先股。這是上限，不是已確認立即撥出的現金。同一次會議核准資本支出撥款約四百零九點二六七億美元，用於先進製程與封裝產能、晶圓廠興建，以及二零二七年研發與維持性資本支出。官方並公布二零二六年第三季合併營收新台幣一兆四千九百四十二點四億、淨利新台幣七千六百三十點六億、稀釋每股盈餘新台幣二十九點四三元，以及每股現金股利新台幣九元。</p>
+<p>第二組證據來自 Al Jazeera 與路透社：被稱為中國「國防七子」之一、自二零零一年列入美國實體清單（二零一九年收緊）的西北工業大學，上月經陝西博算網絡科技，以八十七萬四千七百元人民幣（約十二萬三千美元）購得兩顆 Nvidia H200，採購紀錄日期為十月二十一日；該校今年亦透過運算租賃使用 H200 及其他 Nvidia 算力。路透審閱了二十六份中國採購與企業紀錄。特朗普政府今年一月開始以個案方式允許部分 H200 輸往中國，但並未解除實體清單限制。現有報道並未證明 Nvidia 本身違反出口管制。</p>
+<p>工廠可以投資自己的客戶，禁令也可以寫成許可清單。硅片仍然要從產線走出來，也仍然可能經本地供應商，走進一所受管制的國防關聯學校。這是製造與地緣的現實，不是軟件條款改一改就會消失的問題。</p>
+  </div>
+  </div>
+</section><section class="region" id="f3">
+  <header class="sec-head"><div class="flag">Jobs</div><div><h2>品味：把訂位外包給會共用密碼的中介，這是垃圾</h2><p class="sec-sub">人物：Steve Jobs · 缺乏品味的產品把交易外包給會共用密碼的中介。這條線劃在「誰可以完成購買」，不是再堆一個助手。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://www.cnbc.com/2026/11/11/united-airlines-ai-agents.html" target="_blank" rel="noopener"><img src="https://image.cnbcfm.com/api/v1/image/108433665-1792435503747-gettyimages-2289770527-mg_4586_nwk09_08082026.jpeg?v=1792435524&amp;w=1920&amp;h=1080" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://www.cnbc.com/2026/11/11/united-airlines-ai-agents.html" target="_blank" rel="noopener">Christopher Beckett｜Nurphoto｜Getty Images（CNBC）</a>（外部連結）</p>
+<p class="lead drop">This is junk。把訂位外包給會與用戶共用密碼的中介，不是創新，是缺乏品味的產品把交易權交出去。這條線應該劃在誰可以完成購買，而不是再堆一個助手。</p>
+<p>聯合航空週三宣布，限制第三方人工智能代理進入其數位平台，理由是數據安全。據 CNBC 報道，航空公司警告，與第三方人工智能助手分享帳戶憑證，可能讓敏感資料外洩，並導致非預期購買、帳戶改動，或未經授權使用飛行里數。它還指出，自動化工具執行登機手續——該步驟需要人確認禁運物品——可能構成監管風險。人工智能工具仍可搜尋並顯示航班與票價，但訂位與修改必須經由聯合航空網站、應用程式或核准夥伴完成。公司並稱，將更新訂位、出票與分銷政策，限制經旅行社與彙總商的間接存取。本報未能打開聯合航空官方說明頁，事實以 CNBC 為準。</p>
+<p>CNBC 寫道，Expedia 與 Booking 正與 OpenAI 合作；聯合航空選擇把交易關在自己的櫃檯後面。搜尋可以開放，購買不能外包給一個會共用密碼、又不必當面確認禁運物品的代理人。一張機票不是提示詞，登機也不是可以隨便代按的按鈕。產品的尊嚴在於知道誰有權按下確認，而不是把這個按鍵交給下一個助手。</p>
+<p>把交易做成可被任意代理呼叫的端點，只會把責任、里數和乘客資料一併交給中介。這不是把體驗做薄，是把櫃檯撤走。缺乏品味的系統，總是先圖方便，再叫用戶為意外買單。真正的產品判斷，是先決定誰可以完成購買，再決定助手可以做什麼。助手再聰明，也不能替你承認行李裡沒有禁運品，更不該拿着你的密碼去改行程。</p>
+  </div>
+  </div>
+</section><section class="region" id="f4">
+  <header class="sec-head"><div class="flag">Snowden</div><div><h2>監控：Grok Build 分享鏈——「有連結即可打開」不是隱私</h2><p class="sec-sub">人物：Edward Snowden · 冇免費午餐。「有連結即可打開」不是隱私。公司回應須寫入，但預設公開的分享鏈仍是敞開的門。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://arstechnica.com/security/2026/11/grok-build-coding-agent-leaks-oodles-of-confidential-info-some-belonging-to-spacexsi/" target="_blank" rel="noopener"><img src="https://cdn.arstechnica.net/wp-content/uploads/2026/11/grok-plugin-marketplace-1152x648.webp" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://arstechnica.com/security/2026/11/grok-build-coding-agent-leaks-oodles-of-confidential-info-some-belonging-to-spacexsi/" target="_blank" rel="noopener">SpaceXSI（Ars Technica）</a>（外部連結）</p>
+<p class="lead drop">冇免費午餐。「有連結即可打開」，從來不是隱私。把應用程式的分享鏈做成可被被動域名系統逐一枚舉的公開門，等於把醫療紀錄、員工名冊和公司自己的機密，掛在一串猜得到的門牌上。</p>
+<p>據 Ars Technica 報道，資安公司 Claroc 的 Asaf Aprozper 以被動域名系統搜尋，得到四萬三千六百零一個 grok.me 連結，其中逾三萬五千個（近百分之九十五）為公開——點擊即可打開應用及其儲存資料。曝光內容包括一家秘魯建築公司儀表板，內有三千七百八十四份工人身體檢查；一份點名二十二名技術員的 Tesla 服務中心評分卡；一份美國海軍船舶工程承包商的一百零八人名單；一張豪華郵輪廚房清單，載有船員姓名與編號；以及約三千五百六十五人的醫療機構員工名冊。Claroc 還發現 SpaceXSI 自己建立的二十四個應用，包括機密的企業銷售入職計劃、涵蓋五百九十四個客戶的銷售區域圖，以及廣告提案。Claroc 於週日通知公司；Ars 發問後，這二十四個內部應用被下架，刊出時許多其他用戶的應用仍然開放。本報並未獨立核實這些仍開放的應用。</p>
+<p>Cursor 代表（SpaceXSI 近期收購 Cursor）向 Ars 表示，應用「預設為私人，除非建立者選擇分享，否則不會公開」；Claroc 的測試則發現，連結除非另行更改，否則被設為「任何持有連結的人」。其後 The Verge 引述一則 Grok 貼文，稱 Ars 文章「不正確」，指其說的是「grok.com 上的應用建立功能，不是 Grok Build」，並稱用戶發布前會檢視分享設定並看到警告。把預設寫成私人，卻讓持有連結的人直接走進資料裡，這不是設定項的細節，是權力不對等。便利的分享鏈從來不是免費的；代價寫在誰能不請自來。</p>
+  </div>
+  </div>
+</section><section class="region" id="hot">
+  <header class="sec-head"><div class="flag">熱門</div><div><h2>熱門話題</h2><p class="sec-sub">據報 Nvidia 董事、OpenAI 季度營收據、CoreWeave 季報、聯合航空限制第三方 AI、Grok Build 分 · 5則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/tech/1031652/jensen-huang-rumor" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/25824934/2192224191.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/tech/1031652/jensen-huang-rumor" target="_blank" rel="noopener">PATRICK T. FALLON／AFP via Getty Images（The Verge）</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/tech/1031652/jensen-huang-rumor" target="_blank" rel="noopener">據報 Nvidia 董事會正準備解僱黃仁勳，並非已完成解職</a></h3>
+    <p class="dek">《The Verge》引述《華爾街日報》報道，Nvidia 董事會正準備解僱創辦人兼行政總裁黃仁勳，並可能於十一月十一日開會決定其去留。報道並非指已經完成解職。《紐約時報》另指其被指與直屬健康業務副總裁 Kimberly Powell 有第二段婚外關係，與早前已承認、涉及 Megaspeed 行政人員 Alice Huang 的關係屬分開事件。Verge 稱週三盤後股價跌逾百分之七；公司當時未即時回應。國會傳票動向見政策欄。</p>
+    <p class="meta"><span class="outlet">The Verge（引 WSJ 解職計劃；引 NYT 第二段關係指控）</span><span class="src"> · <a href="https://www.theverge.com/tech/1031652/jensen-huang-rumor" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/11/openais-quarterly-revenue-reportedly-crosses-10b-for-the-first-time/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2024/05/openAI-spiral-rose.jpg?resize=1200,675" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/11/openais-quarterly-revenue-reportedly-crosses-10b-for-the-first-time/" target="_blank" rel="noopener">Bryce Durbin／TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/11/openais-quarterly-revenue-reportedly-crosses-10b-for-the-first-time/" target="_blank" rel="noopener">OpenAI 季度營收據報首次破 100 億美元，調整後邊際仍為負 109%</a></h3>
+    <p class="dek">據 TechCrunch 引述彭博社匿名消息，OpenAI 季度營收首次超過一百億美元，較第二季報道的六十七億美元跳近五成；調整後經營邊際由負百分之一百五十收窄至負百分之一百零九。彭博並把年度營收年化速率寫成五百億美元。報道同時列出 Anthropic 第三季營收與年化速率，並警告兩家算法不同。數字並非本報打開的經審計申報，顯示營收規模擴大時，虧損邊際仍然很深。</p>
+    <p class="meta"><span class="outlet">TechCrunch（引 Bloomberg 匿名消息）</span><span class="src"> · <a href="https://techcrunch.com/2026/11/11/openais-quarterly-revenue-reportedly-crosses-10b-for-the-first-time/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://investors.coreweave.com/news/news-details/2026/CoreWeave-Reports-Strong-Third-Quarter-2026-Results/" target="_blank" rel="noopener"><img src="https://image.cnbcfm.com/api/v1/image/108223839-1762804083127-gettyimages-2206665095-COREWEAVE_IPO.jpeg?v=1776970332&amp;w=1920&amp;h=1080" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://investors.coreweave.com/news/news-details/2026/CoreWeave-Reports-Strong-Third-Quarter-2026-Results/" target="_blank" rel="noopener">Getty Images／CoreWeave IPO 照片，經 CNBC（官方投資者關係頁無 og:image）</a>（外部連結）</p>
+    <h3><a href="https://investors.coreweave.com/news/news-details/2026/CoreWeave-Reports-Strong-Third-Quarter-2026-Results/" target="_blank" rel="noopener">CoreWeave 季報收入 36.61 億美元，預付款預期 90 億，週三股價升 24.71%</a></h3>
+    <p class="dek">CoreWeave 公布第三季收入三十六點六一億美元，淨虧損七億零九百萬美元，淨利息支出八億四千六百萬美元。行政總裁稱增長獲合約融資、營運現金流，以及「單是未來三個月預期約九十億美元的客戶預付款與按金」支持，並上調二零二六財年收入指引至一百三十億至一百三十三億美元。CNBC 報道週三股價升百分之二十四點七一。預付款是預期數字，不是已經入帳的利潤。</p>
+    <p class="meta"><span class="outlet">CoreWeave 官方；市場反應 CNBC</span><span class="src"> · <a href="https://investors.coreweave.com/news/news-details/2026/CoreWeave-Reports-Strong-Third-Quarter-2026-Results/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.cnbc.com/2026/11/11/united-airlines-ai-agents.html" target="_blank" rel="noopener"><img src="https://image.cnbcfm.com/api/v1/image/108433665-1792435503747-gettyimages-2289770527-mg_4586_nwk09_08082026.jpeg?v=1792435524&amp;w=1920&amp;h=1080" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.cnbc.com/2026/11/11/united-airlines-ai-agents.html" target="_blank" rel="noopener">Christopher Beckett｜Nurphoto｜Getty Images（CNBC）</a>（外部連結）</p>
+    <h3><a href="https://www.cnbc.com/2026/11/11/united-airlines-ai-agents.html" target="_blank" rel="noopener">聯合航空限制第三方 AI 代理完成訂位，搜尋與票價顯示仍可</a></h3>
+    <p class="dek">聯合航空週三宣布限制第三方人工智能代理進入其數位平台，理由包括數據安全、憑證共用可能導致非預期購買或里數被盜用，以及自動化登機手續的監管風險。人工智能工具仍可搜尋並顯示航班與票價，但訂位與修改必須經由官方網站、應用程式或核准夥伴；間接經旅行社與彙總商的存取也將收緊。CNBC 並提到 Expedia、Booking 與 OpenAI 的合作作為對比。本報未能打開官方說明頁。</p>
+    <p class="meta"><span class="outlet">CNBC</span><span class="src"> · <a href="https://www.cnbc.com/2026/11/11/united-airlines-ai-agents.html" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://arstechnica.com/security/2026/11/grok-build-coding-agent-leaks-oodles-of-confidential-info-some-belonging-to-spacexsi/" target="_blank" rel="noopener"><img src="https://cdn.arstechnica.net/wp-content/uploads/2026/11/grok-plugin-marketplace-1152x648.webp" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://arstechnica.com/security/2026/11/grok-build-coding-agent-leaks-oodles-of-confidential-info-some-belonging-to-spacexsi/" target="_blank" rel="noopener">SpaceXSI（Ars Technica）</a>（外部連結）</p>
+    <h3><a href="https://arstechnica.com/security/2026/11/grok-build-coding-agent-leaks-oodles-of-confidential-info-some-belonging-to-spacexsi/" target="_blank" rel="noopener">Grok Build 分享鏈據報大量公開，含體檢、名冊及自家內部應用</a></h3>
+    <p class="dek">Ars Technica 報道，Claroc 以被動域名系統找到四萬三千六百零一個 grok.me 連結，其中逾三萬五千個（近百分之九十五）為公開，點擊可打開應用及儲存資料，涉及體檢、員工名冊及 SpaceXSI 自家二十四個應用。後者在 Ars 查問後下架，刊出時許多用戶應用仍開放。公司稱預設為私人；Claroc 測試則見「任何持有連結的人」。The Verge 其後引述 Grok 發文反駁，指該文說的不是 Grok Build。本報未獨立核實仍開放的應用。</p>
+    <p class="meta"><span class="outlet">Ars Technica；The Verge（公司回應，11/11）</span><span class="src"> · <a href="https://arstechnica.com/security/2026/11/grok-build-coding-agent-leaks-oodles-of-confidential-info-some-belonging-to-spacexsi/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="hot-rank">
+    <h2>熱門話題 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://www.theverge.com/tech/1031652/jensen-huang-rumor" target="_blank" rel="noopener">[A] 據報 Nvidia 董事會正準備解僱黃仁勳，並非已完成解職</a></li>
+    <li><a href="https://techcrunch.com/2026/11/11/openais-quarterly-revenue-reportedly-crosses-10b-for-the-first-time/" target="_blank" rel="noopener">[A] OpenAI 季度營收據報首次破 100 億美元，調整後邊際仍為負 109%</a></li>
+    <li><a href="https://investors.coreweave.com/news/news-details/2026/CoreWeave-Reports-Strong-Third-Quarter-2026-Results/" target="_blank" rel="noopener">[A] CoreWeave 季報收入 36.61 億美元，預付款預期 90 億，週三股價升 24.71%</a></li>
+    <li><a href="https://www.cnbc.com/2026/11/11/united-airlines-ai-agents.html" target="_blank" rel="noopener">[A] 聯合航空限制第三方 AI 代理完成訂位，搜尋與票價顯示仍可</a></li>
+    <li><a href="https://arstechnica.com/security/2026/11/grok-build-coding-agent-leaks-oodles-of-confidential-info-some-belonging-to-spacexsi/" target="_blank" rel="noopener">[A] Grok Build 分享鏈據報大量公開，含體檢、名冊及自家內部應用</a></li>
+    </ol>
+  </div>
+</section><section class="region" id="ai">
+  <header class="sec-head"><div class="flag">AI</div><div><h2>AI 與模型</h2><p class="sec-sub">同一組數字：OpenAI、DeepMind 發布 、Google 推出 Ge、ChatGPT 將於 1、今日是 OpenAI 擬 · 5則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/11/openais-quarterly-revenue-reportedly-crosses-10b-for-the-first-time/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2024/05/openAI-spiral-rose.jpg?resize=1200,675" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/11/openais-quarterly-revenue-reportedly-crosses-10b-for-the-first-time/" target="_blank" rel="noopener">Bryce Durbin／TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/11/openais-quarterly-revenue-reportedly-crosses-10b-for-the-first-time/" target="_blank" rel="noopener">同一組數字：OpenAI 與 Anthropic 的年化營收口徑並不相同</a></h3>
+    <p class="dek">同一組彭博社數字（經 TechCrunch 引述）把 OpenAI 年度營收年化速率寫成五百億美元，並指 Anthropic 截至十月底年化速率達八百一十億美元、一個月內增加一百億美元。TechCrunch 明確警告兩家算法不同：Anthropic 計入雲端夥伴銷售，OpenAI 對部分夥伴銷售只報自己那一份。在調整後經營邊際仍為負百分之一百零九的背景下，年化速率的口徑差異，直接影響外界如何比較兩家前沿實驗室的規模。</p>
+    <p class="meta"><span class="outlet">TechCrunch（引 Bloomberg）</span><span class="src"> · <a href="https://techcrunch.com/2026/11/11/openais-quarterly-revenue-reportedly-crosses-10b-for-the-first-time/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease/" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/09/alphagenome-atlas-cover__background.jpg?quality=90&amp;strip=all&amp;crop=0%2C3.4613147178592%2C100%2C93.077370564282&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease/" target="_blank" rel="noopener">Google／The Verge（AlphaGenome Atlas 示意）</a>（外部連結）</p>
+    <h3><a href="https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease/" target="_blank" rel="noopener">DeepMind 發布 AlphaGenome 2：細胞類型層級的基因變異預測</a></h3>
+    <p class="dek">Google DeepMind 發布 AlphaGenome 2，預測脫氧核糖核酸變異如何在特定人類細胞類型中影響基因調控，訓練資料超過一億個單細胞剖面、涵蓋六十八種組織。公司稱找出的表達變化變異接近先前最佳模型的兩倍，且不必重新訓練即可推廣至未見過的細胞類型。負責人向 The Verge 稱，更細預測「更昂貴」，不會取代九月圖譜模型。十一月十一日起以應用程式介面供非商業研究使用，商業研究僅限私人預覽。</p>
+    <p class="meta"><span class="outlet">Google DeepMind／The Verge</span><span class="src"> · <a href="https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/" target="_blank" rel="noopener"><img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini__decisions__blog-header_2784x1566.width-1300.png" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/" target="_blank" rel="noopener">Google</a>（外部連結）</p>
+    <h3><a href="https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/" target="_blank" rel="noopener">Google 推出 Gemini Decisions API 與 Gemini Decision 1</a></h3>
+    <p class="dek">Google 推出 Gemini Decisions API，由新模型 Gemini Decision 1 驅動，針對封閉集合決策：是非、最多二百五十五項的選擇，或量表評分，並可一次提交最多一千道題，處理文本、圖像、音訊、視訊或 PDF。官方網誌寫明，端到端延遲一百五十至二百五十毫秒，輸入每百萬代幣零點一美元，輸出代幣不收費。模型回傳機率與信心分數。此為官方開發者介面發布，定位是快速、有界的判斷，而不是再生成一段長文本。</p>
+    <p class="meta"><span class="outlet">Google</span><span class="src"> · <a href="https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.androidauthority.com/openai-retiring-chatgpt-advanced-standard-voice-3733978/" target="_blank" rel="noopener"><img src="https://www.androidauthority.com/wp-content/uploads/2026/05/Open-AI-ChatGPT-logo-on-phone-stock-photo-9.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.androidauthority.com/openai-retiring-chatgpt-advanced-standard-voice-3733978/" target="_blank" rel="noopener">Edgar Cervantes／Android Authority</a>（外部連結）</p>
+    <h3><a href="https://www.androidauthority.com/openai-retiring-chatgpt-advanced-standard-voice-3733978/" target="_blank" rel="noopener">ChatGPT 將於 12 月 11 日停用 Advanced／Standard Voice，改留 GPT-Live</a></h3>
+    <p class="dek">Android Authority 引述 OpenAI 消息稱，ChatGPT 將於十二月十一日停用 Advanced Voice 與 Standard Voice，餘下用戶會自動轉到 GPT-Live（Live Voice）。報道指自 GPT-Live 推出以來，語音使用量近乎倍增，目前幾乎所有語音用戶已在使用 GPT-Live；既有對話仍留在歷史紀錄。即時視訊與螢幕分享在 GPT-Live 具備同等能力前，會繼續使用 Advanced Voice，公司未給出補齊時程。官方說明頁本輪傳回錯誤，本報不以該頁未核實的措辭為準。此為產品線收斂，舊語音模式將按指定日期退場。</p>
+    <p class="meta"><span class="outlet">Android Authority（引 OpenAI；官方說明頁本輪 HTTP 403）</span><span class="src"> · <a href="https://www.androidauthority.com/openai-retiring-chatgpt-advanced-standard-voice-3733978/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/" target="_blank" rel="noopener"><img src="https://images.ctfassets.net/kftzwdyauwt9/6RFKP8tysuxOLxVaiCRlu/ac31b03c2aeb6e3da620f2db89c7b6e9/index-our-decision-on-cursor-following-its-acquisition-by-spacex.png?w=1600&amp;h=900&amp;fit=fill" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/" target="_blank" rel="noopener">OpenAI</a>（外部連結）</p>
+    <h3><a href="https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/" target="_blank" rel="noopener">今日是 OpenAI 擬議停止向 Cursor 直接供模的日期，並非已確認斷供</a></h3>
+    <p class="dek">OpenAI 八月二十八日仍在線的聲明寫明，已通知 SpaceX，打算結束向 Cursor 供應模型的合約，「擬議的切斷日期為二零二六年十一月十二日」，並稱過去與馬斯克相關公司有違約經驗；未來模型（包括即將推出的 Astra）也不會按該合約提供。其後解釋稿把十二日稱為擬議日期，須待雙方確認，且 Cursor 可能更早切斷。用戶仍可經自備金鑰、Codex 擴充或閘道使用。此為日程觀察項，不是已確認斷供。</p>
+    <p class="meta"><span class="outlet">OpenAI（2026-08-28 聲明；其後解釋稿）</span><span class="src"> · <a href="https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="ai-rank">
+    <h2>AI 與模型 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://techcrunch.com/2026/11/11/openais-quarterly-revenue-reportedly-crosses-10b-for-the-first-time/" target="_blank" rel="noopener">[A] 同一組數字：OpenAI 與 Anthropic 的年化營收口徑並不相同</a></li>
+    <li><a href="https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease/" target="_blank" rel="noopener">[B] DeepMind 發布 AlphaGenome 2：細胞類型層級的基因變異預測</a></li>
+    <li><a href="https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/" target="_blank" rel="noopener">[B] Google 推出 Gemini Decisions API 與 Gemini Decision 1</a></li>
+    <li><a href="https://www.androidauthority.com/openai-retiring-chatgpt-advanced-standard-voice-3733978/" target="_blank" rel="noopener">[B] ChatGPT 將於 12 月 11 日停用 Advanced／Standard Voice，改留 GPT-Live</a></li>
+    <li><a href="https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/" target="_blank" rel="noopener">[B] 今日是 OpenAI 擬議停止向 Cursor 直接供模的日期，並非已確認斷供</a></li>
+    </ol>
+  </div>
+</section><section class="region" id="security">
+  <header class="sec-head"><div class="flag">資安</div><div><h2>資安與基礎設施</h2><p class="sec-sub">Grok Build 分、Fireworks 擴大、修補日修復約 1,093、CISA 把六個已知已遭、N-able 在據稱零日、馬士基確認數據安全事故； · 6則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://arstechnica.com/security/2026/11/grok-build-coding-agent-leaks-oodles-of-confidential-info-some-belonging-to-spacexsi/" target="_blank" rel="noopener"><img src="https://cdn.arstechnica.net/wp-content/uploads/2026/11/grok-plugin-marketplace-1152x648.webp" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://arstechnica.com/security/2026/11/grok-build-coding-agent-leaks-oodles-of-confidential-info-some-belonging-to-spacexsi/" target="_blank" rel="noopener">SpaceXSI（Ars Technica）</a>（外部連結）</p>
+    <h3><a href="https://arstechnica.com/security/2026/11/grok-build-coding-agent-leaks-oodles-of-confidential-info-some-belonging-to-spacexsi/" target="_blank" rel="noopener">Grok Build 分享鏈預設爭議：公司稱私人，測試見「有連結即可打開」</a></h3>
+    <p class="dek">同一事件的資安重點在預設設定。Claroc 測試發現，Grok Build 分享鏈除非另行更改，否則被設為「任何持有連結的人」，與公司向 Ars 所稱「預設為私人」並不一致。曝光範圍包括體檢、名冊及供應商自己的二十四個內部應用；後者在媒體查問後下架。Grok 其後發文稱 Ars 文章「不正確」，指其說的是 grok.com 的應用建立功能。本報未獨立核實仍開放的應用。爭議核心是：持有連結是否等於獲得授權。</p>
+    <p class="meta"><span class="outlet">Ars Technica；The Verge</span><span class="src"> · <a href="https://arstechnica.com/security/2026/11/grok-build-coding-agent-leaks-oodles-of-confidential-info-some-belonging-to-spacexsi/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://thehackernews.com/2026/11/fireworks-ai-breach-widens-to-expose.html" target="_blank" rel="noopener"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg-mBJN_E4CjW3MXyjYYdeCGcyR052aVnG3uUWjaEfafvPAdatcJhn9LbtngqXBb5JsVwJVoorc8i41nTbYR9UcwVrwWNzU-WAfVk2yL32hYW1elVMJtwauW53nhRG37EwbovnFCW8InensI8tKoR9pqcWnZx54t6xOU_HsjjR9KWTLwVr_MBcknFeGShZU/s1700-nu-rw-lo-l85-e365/fire.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://thehackernews.com/2026/11/fireworks-ai-breach-widens-to-expose.html" target="_blank" rel="noopener">The Hacker News（官方公告無 og:image；若外連失效勿另造圖）</a>（外部連結）</p>
+    <h3><a href="https://thehackernews.com/2026/11/fireworks-ai-breach-widens-to-expose.html" target="_blank" rel="noopener">Fireworks 擴大事故範圍；Notion 稱少於 1% 工作區的 AI 對話受影響</a></h3>
+    <p class="dek">Fireworks AI 擴大十月事故說明。較早公告曾稱未發現客戶模型、資料集或個人資料被取用；新公告指攻擊者於十月二十四日經前一日未具名第三方雲端事故，進入開發機器並執行未授權工作負載。新承認資料包括帳單與付款紀錄，以及有限帳戶的不完整模型權重與資料集子集；支付卡號稱未受影響。Notion 稱受影響工作區少於百分之一，已停用 Insights 並停止經該供應商提供開權重模型。</p>
+    <p class="meta"><span class="outlet">The Hacker News（引 Fireworks 公告與 Notion 通告）</span><span class="src"> · <a href="https://thehackernews.com/2026/11/fireworks-ai-breach-widens-to-expose.html" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://krebsonsecurity.com/2026/11/microsoft-fixes-nearly-1100-security-vulnerabilities/" target="_blank" rel="noopener"><img src="https://www.securityweek.com/wp-content/uploads/2023/03/Microsoft-Outlook-CVE-2023-23397.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://krebsonsecurity.com/2026/11/microsoft-fixes-nearly-1100-security-vulnerabilities/" target="_blank" rel="noopener">SecurityWeek（Krebs 頁無可用文章 og:image；此為二零二三年 Outlook 舊配圖，非本次獨照）</a>（外部連結）</p>
+    <h3><a href="https://krebsonsecurity.com/2026/11/microsoft-fixes-nearly-1100-security-vulnerabilities/" target="_blank" rel="noopener">修補日修復約 1,093 個漏洞，含已遭利用的 Outlook 欺騙漏洞</a></h3>
+    <p class="dek">Krebs on Security 報道，微軟十一月修補日修復一千零九十三個漏洞，其中六十三個列為嚴重級，近半數嚴重級為遠端代碼執行，當月五百三十五個可提權；二零二六年迄今修補逾五千一百個。其中 CVE-2026-124194 為已遭利用的 Outlook 欺騙漏洞，SecurityWeek 與 SANS 描述為 Outlook 在沒有通常外部內容警告的情況下連到攻擊者控制的位置，可能暴露 NTLMv2 雜湊。同週亦有 Chrome 與 Firefox 更新。本報不寫利用步驟，亦不以未經官方公告核實的組建號為準。</p>
+    <p class="meta"><span class="outlet">Krebs on Security；CVE 亦見 CISA KEV</span><span class="src"> · <a href="https://krebsonsecurity.com/2026/11/microsoft-fixes-nearly-1100-security-vulnerabilities/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.cisa.gov/news-events/alerts/2026/11/10/cisa-adds-six-known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener"><img src="https://www.bleepstatic.com/content/hl-images/2026/10/28/CISA.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.cisa.gov/news-events/alerts/2026/11/10/cisa-adds-six-known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">BleepingComputer（CISA 頁 og:image 僅為美國國旗圖示）</a>（外部連結）</p>
+    <h3><a href="https://www.cisa.gov/news-events/alerts/2026/11/10/cisa-adds-six-known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">CISA 把六個已知已遭利用漏洞列入目錄，含 BroadWorks、Outlook、Chromium</a></h3>
+    <p class="dek">美國網絡安全與基礎設施安全局於十一月十日把六個已知已遭利用漏洞列入目錄，涵蓋 Cisco BroadWorks、Barracuda 多款產品與電郵安全閘道、Openwave Messaging、Microsoft Office Outlook，以及 Google Chromium。BleepingComputer 報道，聯邦機構須於十一月二十四日前完成修復。官方頁並援引現行聯邦修復框架。此為已知利用目錄的例行擴充，與同日修補日的 Outlook 項目重疊，但範圍擴及電信與電郵閘道產品，機構與供應商需按目錄時限處理。</p>
+    <p class="meta"><span class="outlet">CISA；BleepingComputer</span><span class="src"> · <a href="https://www.cisa.gov/news-events/alerts/2026/11/10/cisa-adds-six-known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.bleepingcomputer.com/news/security/n-able-takes-cloud-platform-offline-after-30-plus-zero-days-published/" target="_blank" rel="noopener"><img src="https://www.bleepstatic.com/content/hl-images/2025/08/18/N-able.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.bleepingcomputer.com/news/security/n-able-takes-cloud-platform-offline-after-30-plus-zero-days-published/" target="_blank" rel="noopener">BleepingComputer</a>（外部連結）</p>
+    <h3><a href="https://www.bleepingcomputer.com/news/security/n-able-takes-cloud-platform-offline-after-30-plus-zero-days-published/" target="_blank" rel="noopener">N-able 在據稱零日被公開後，將託管 N-central 環境下線</a></h3>
+    <p class="dek">N-able 在有研究人員公開披露一批據稱的零日漏洞後，將託管的 N-central 雲端環境下線。The Hacker News 寫三十三個並有概念驗證代碼公開，BleepingComputer 標題則寫三十餘個。事件影響 N-central，並非另一套近期受關注的遠端工具 ConnectWise ScreenConnect。其後公司發布 N-central 2026.4 HF2，並在官方更新中描述託管服務恢復。本報不複述技術利用細節，只記供應商停機與修復回應。</p>
+    <p class="meta"><span class="outlet">BleepingComputer；N-able 官方更新</span><span class="src"> · <a href="https://www.bleepingcomputer.com/news/security/n-able-takes-cloud-platform-offline-after-30-plus-zero-days-published/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.maersk.com/news/articles/2026/11/11/it-security-incident" target="_blank" rel="noopener"><img src="https://www.bleepstatic.com/content/hl-images/2026/11/11/maersk.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.maersk.com/news/articles/2026/11/11/it-security-incident" target="_blank" rel="noopener">BleepingComputer（馬士基官方頁無 og:image）</a>（外部連結）</p>
+    <h3><a href="https://www.maersk.com/news/articles/2026/11/11/it-security-incident" target="_blank" rel="noopener">馬士基確認數據安全事故；WhiteArmor 自稱索償 500 萬美元未經證實</a></h3>
+    <p class="dek">馬士基確認未經授權存取並擷取資料，影響來自先前收購的一套本地舊系統。公司稱調查仍在進行，尚未發現敏感資料被公開，營運未受干擾，其他系統以及客戶與夥伴整合看似不受影響。BleepingComputer 等報道，自稱 WhiteArmor 的組織宣稱竊取約一百吉字節資料，並要求三十日內以比特幣支付五百萬美元。該等犯罪聲明未經證實，馬士基的公開表述窄於攻擊者宣稱。</p>
+    <p class="meta"><span class="outlet">Maersk 官方；BleepingComputer 等報道勒索宣稱</span><span class="src"> · <a href="https://www.maersk.com/news/articles/2026/11/11/it-security-incident" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="security-rank">
+    <h2>資安與基礎設施 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://arstechnica.com/security/2026/11/grok-build-coding-agent-leaks-oodles-of-confidential-info-some-belonging-to-spacexsi/" target="_blank" rel="noopener">[A] Grok Build 分享鏈預設爭議：公司稱私人，測試見「有連結即可打開」</a></li>
+    <li><a href="https://krebsonsecurity.com/2026/11/microsoft-fixes-nearly-1100-security-vulnerabilities/" target="_blank" rel="noopener">[A] 修補日修復約 1,093 個漏洞，含已遭利用的 Outlook 欺騙漏洞</a></li>
+    <li><a href="https://www.cisa.gov/news-events/alerts/2026/11/10/cisa-adds-six-known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">[A] CISA 把六個已知已遭利用漏洞列入目錄，含 BroadWorks、Outlook、Chromium</a></li>
+    <li><a href="https://thehackernews.com/2026/11/fireworks-ai-breach-widens-to-expose.html" target="_blank" rel="noopener">[B] Fireworks 擴大事故範圍；Notion 稱少於 1% 工作區的 AI 對話受影響</a></li>
+    <li><a href="https://www.bleepingcomputer.com/news/security/n-able-takes-cloud-platform-offline-after-30-plus-zero-days-published/" target="_blank" rel="noopener">[B] N-able 在據稱零日被公開後，將託管 N-central 環境下線</a></li>
+    <li><a href="https://www.maersk.com/news/articles/2026/11/11/it-security-incident" target="_blank" rel="noopener">[B] 馬士基確認數據安全事故；WhiteArmor 自稱索償 500 萬美元未經證實</a></li>
+    </ol>
+  </div>
+</section><section class="region" id="product">
+  <header class="sec-head"><div class="flag">產品</div><div><h2>消費電子／平台</h2><p class="sec-sub">聯合航空：助手可以找票，、Gemini 應用與 G、Reddit 推出 Re、Warby Parker、Apple TV 將為支 · 5則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://www.cnbc.com/2026/11/11/united-airlines-ai-agents.html" target="_blank" rel="noopener"><img src="https://image.cnbcfm.com/api/v1/image/108433665-1792435503747-gettyimages-2289770527-mg_4586_nwk09_08082026.jpeg?v=1792435524&amp;w=1920&amp;h=1080" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.cnbc.com/2026/11/11/united-airlines-ai-agents.html" target="_blank" rel="noopener">Christopher Beckett｜Nurphoto｜Getty Images（CNBC）</a>（外部連結）</p>
+    <h3><a href="https://www.cnbc.com/2026/11/11/united-airlines-ai-agents.html" target="_blank" rel="noopener">聯合航空：助手可以找票，但不能代為完成購買</a></h3>
+    <p class="dek">同一政策的產品含義是：聯合航空仍允許第三方人工智能工具搜尋並顯示航班與票價，但把訂位、改票關在官方網站、應用程式或核准夥伴之內，並將收緊經旅行社與彙總商的間接通道。理由包括憑證共用、非預期購買、里數風險，以及登機手續須由人確認禁運物品。助手可以幫忙找票，但不能代為完成交易。本報以 CNBC 為準，未能打開官方說明頁。</p>
+    <p class="meta"><span class="outlet">CNBC</span><span class="src"> · <a href="https://www.cnbc.com/2026/11/11/united-airlines-ai-agents.html" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://blog.google/innovation-and-ai/products/gemini-app/gemini-on-apple-carplay/" target="_blank" rel="noopener"><img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Carplay_hero_image.width-1300.png" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://blog.google/innovation-and-ai/products/gemini-app/gemini-on-apple-carplay/" target="_blank" rel="noopener">Google</a>（外部連結）</p>
+    <h3><a href="https://blog.google/innovation-and-ai/products/gemini-app/gemini-on-apple-carplay/" target="_blank" rel="noopener">Gemini 應用與 Gemini Live 開始在 Apple CarPlay 推出</a></h3>
+    <p class="dek">Google 官方網誌稱，Gemini 應用程式與 Gemini Live 自十一月十一日起，在支援語言範圍內於 Apple CarPlay 全球陸續推出。用戶更新 iPhone 上的 Gemini 應用、開啟麥克風權限，並在手機上先使用一次 Gemini Live 後，可在 CarPlay 點選 Gemini 圖示開始或繼續免提對話，聊天會同步回手機。這是 Google 應用登陸 CarPlay 的推出，並不是蘋果以 Gemini 取代 Siri 的宣布。車內助手入口增加，但系統層的語音系統並未因此更換。</p>
+    <p class="meta"><span class="outlet">Google 官方網誌</span><span class="src"> · <a href="https://blog.google/innovation-and-ai/products/gemini-app/gemini-on-apple-carplay/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://redditinc.com/news/introducing-reddit-reviews" target="_blank" rel="noopener"><img src="https://redditinc.com/hubfs/Shopping_Reviews_Blog_Header_2800x1120_v2_r1.png" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://redditinc.com/news/introducing-reddit-reviews" target="_blank" rel="noopener">Reddit Inc.</a>（外部連結）</p>
+    <h3><a href="https://redditinc.com/news/introducing-reddit-reviews" target="_blank" rel="noopener">Reddit 推出 Reddit Reviews：用版區討論生成產品評測頁</a></h3>
+    <p class="dek">Reddit 推出 Reddit Reviews，用人工智能把版區討論編成產品評測頁，包含摘要、情緒、優缺點、主題篩選，以及回到原串的連結。功能向美國的 iOS、Android 與網頁用戶推出，初期涵蓋電子、健康與美容、家居園藝、時裝服飾約一萬件產品。9to5Mac 報道，有用戶認為此舉違背平台理念。這是把社群討論整理成可瀏覽評測頁的產品實驗，原始討論仍以連結形式保留。</p>
+    <p class="meta"><span class="outlet">Reddit Inc.；9to5Mac 有後續反饋</span><span class="src"> · <a href="https://redditinc.com/news/introducing-reddit-reviews" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://9to5google.com/2026/11/05/android-xr-glasses-pre-order/" target="_blank" rel="noopener"><img src="https://9to5google.com/wp-content/uploads/sites/4/2026/07/samsung-android-xr-glasses-warby-parker-13.jpg?quality=82&amp;strip=all&amp;resize=1200,628" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://9to5google.com/2026/11/05/android-xr-glasses-pre-order/" target="_blank" rel="noopener">Warby Parker／9to5Google</a>（外部連結）</p>
+    <h3><a href="https://9to5google.com/2026/11/05/android-xr-glasses-pre-order/" target="_blank" rel="noopener">Warby Parker 與 Gentle Monster 原定今日開放 Android XR 眼鏡美國預購</a></h3>
+    <p class="dek">Warby Parker 與 Gentle Monster 原定於十一月十二日在美國開放 Android XR「Intelligent Eyewear」預購。Warby Parker 指訂單盼於假期季交付；Gentle Monster 的美國預購早於其計劃中的十二月上市。《韓國先驅報》十一月八日報道，定價與詳細零售安排當時尚未公布，並稱公司指單次充電可達九小時、充電盒另提供至少七小時。本報今早未能打開已標價的即時預購頁，故不採用未經核實的售價。此為首波 Android XR 眼鏡的預購日程，不是已確認的開賣價目。</p>
+    <p class="meta"><span class="outlet">9to5Google／The Korea Herald／The Verge 預告</span><span class="src"> · <a href="https://9to5google.com/2026/11/05/android-xr-glasses-pre-order/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.apple.com/newsroom/2026/11/apple-tv-introduces-new-sign-language-interpretation-feature/" target="_blank" rel="noopener"><img src="https://www.apple.com/newsroom/images/2026/11/apple-tv-introduces-new-sign-language-interpretation-feature/tile/Apple-TV-ASL-Sign-Language-interpretation-lp.jpg.og.jpg?202611101602" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 C</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.apple.com/newsroom/2026/11/apple-tv-introduces-new-sign-language-interpretation-feature/" target="_blank" rel="noopener">Apple</a>（外部連結）</p>
+    <h3><a href="https://www.apple.com/newsroom/2026/11/apple-tv-introduces-new-sign-language-interpretation-feature/" target="_blank" rel="noopener">Apple TV 將為支援作品提供內建手語傳譯，11 月 13 日推出</a></h3>
+    <p class="dek">Apple 宣布，十一月十三日起，Apple TV 應用程式將為支援的 Apple Original 作品提供內建手語傳譯，先支援美國手語或英國手語，首批包括 Being Heumann 與 F1。功能在設定的輔助使用「手語」項開啟，並需 iOS、iPadOS、macOS、tvOS 或 visionOS 二十七點二或更新版本。這是把傳譯做進播放介面的輔助功能，而不是另做一套外掛字幕工具，適用範圍以官方列明的作品與系統版本為準。</p>
+    <p class="meta"><span class="outlet">Apple Newsroom</span><span class="src"> · <a href="https://www.apple.com/newsroom/2026/11/apple-tv-introduces-new-sign-language-interpretation-feature/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="product-rank">
+    <h2>消費電子／平台 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://www.cnbc.com/2026/11/11/united-airlines-ai-agents.html" target="_blank" rel="noopener">[A] 聯合航空：助手可以找票，但不能代為完成購買</a></li>
+    <li><a href="https://blog.google/innovation-and-ai/products/gemini-app/gemini-on-apple-carplay/" target="_blank" rel="noopener">[B] Gemini 應用與 Gemini Live 開始在 Apple CarPlay 推出</a></li>
+    <li><a href="https://redditinc.com/news/introducing-reddit-reviews" target="_blank" rel="noopener">[B] Reddit 推出 Reddit Reviews：用版區討論生成產品評測頁</a></li>
+    <li><a href="https://9to5google.com/2026/11/05/android-xr-glasses-pre-order/" target="_blank" rel="noopener">[B] Warby Parker 與 Gentle Monster 原定今日開放 Android XR 眼鏡美國預購</a></li>
+    <li><a href="https://www.apple.com/newsroom/2026/11/apple-tv-introduces-new-sign-language-interpretation-feature/" target="_blank" rel="noopener">[C] Apple TV 將為支援作品提供內建手語傳譯，11 月 13 日推出</a></li>
+    </ol>
+  </div>
+</section><section class="region" id="chips">
+  <header class="sec-head"><div class="flag">晶片</div><div><h2>晶片／硬體／地緣</h2><p class="sec-sub">台積電核准對 Anthr、實體清單上的西北工業大學、英國 Fractile 、Meta 基礎設施負責人、Torus 完成 5 億 · 5則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://pr.tsmc.com/english/news/3352" target="_blank" rel="noopener"><img src="https://cdn.arstechnica.net/wp-content/uploads/2026/11/TSMC-Fab-18-1152x648.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://pr.tsmc.com/english/news/3352" target="_blank" rel="noopener">TSMC／Ars Technica（台南 Fab 18）</a>（外部連結）</p>
+    <h3><a href="https://pr.tsmc.com/english/news/3352" target="_blank" rel="noopener">台積電核准對 Anthropic 與 OpenAI 各不超過 5 億美元的入股上限</a></h3>
+    <p class="dek">台積電十一月十日董事會核准，以不超過五億美元、按首次公開募股價格投資 Anthropic, PBC 普通股，以及以不超過五億美元投資 OpenAI Group PBC 優先股；這是上限，不是已確認立即撥出的現金。同次會議核准資本支出撥款約四百零九點二六七億美元，用於先進製程與封裝、廠房興建及二零二七年研發與維持性支出。持股授權把產能供應商與需求端的資本關係寫進董事會決議。</p>
+    <p class="meta"><span class="outlet">台積電官方董事會決議；Ars Technica 等 11/11 報道</span><span class="src"> · <a href="https://pr.tsmc.com/english/news/3352" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.aljazeera.com/news/2026/11/11/chinese-university-buys-nvidia-ai-h200-chips-despite-us-ban-records-show" target="_blank" rel="noopener"><img src="https://www.aljazeera.com/wp-content/uploads/2026/07/reuters_6a67abd4-1785179092.jpg?resize=1920%2C1440" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.aljazeera.com/news/2026/11/11/chinese-university-buys-nvidia-ai-h200-chips-despite-us-ban-records-show" target="_blank" rel="noopener">資料照片，Manami Yamada／Reuters（Al Jazeera）</a>（外部連結）</p>
+    <h3><a href="https://www.aljazeera.com/news/2026/11/11/chinese-university-buys-nvidia-ai-h200-chips-despite-us-ban-records-show" target="_blank" rel="noopener">實體清單上的西北工業大學經國內供應商購得兩顆 Nvidia H200</a></h3>
+    <p class="dek">Al Jazeera 引述路透社報道，名列「國防七子」、自二零零一年列入美國實體清單（二零一九年收緊）的西北工業大學，上月經陝西博算網絡科技，以八十七萬四千七百元人民幣（約十二萬三千美元）購得兩顆 Nvidia H200，並曾租用相關算力。路透審閱二十六份中國採購與企業紀錄。特朗普政府一月起以個案方式允許部分 H200 輸華，但並未解除實體清單限制。現有報道並未證明 Nvidia 本身違反出口管制。</p>
+    <p class="meta"><span class="outlet">Al Jazeera（與 Reuters）</span><span class="src"> · <a href="https://www.aljazeera.com/news/2026/11/11/chinese-university-buys-nvidia-ai-h200-chips-despite-us-ban-records-show" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/11/with-720m-round-britains-fractile-gets-a-leg-up-in-the-race-for-ai-chips/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/11/GettyImages-2183896789.jpg?resize=1200,800" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/11/with-720m-round-britains-fractile-gets-a-leg-up-in-the-race-for-ai-chips/" target="_blank" rel="noopener">Sam Barnes／Sportsfile for Web Summit via Getty Images（TechCrunch）</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/11/with-720m-round-britains-fractile-gets-a-leg-up-in-the-race-for-ai-chips/" target="_blank" rel="noopener">英國 Fractile 完成 7.2 億美元 C 輪，首批晶片仍屬來年目標</a></h3>
+    <p class="dek">英國新創 Fractile 完成七億二千萬美元 C 輪，英國主權人工智能基金有參與，領投包括 Thrive Capital、Founders Fund、Lightspeed 與 Redpoint。英國政府稱估值「超過五十億英鎊」；TechCrunch 寫這「很有可能是七十億美元」，金融時報與路透消息人士亦有類似說法，原文本報並未打開。行政總裁稱資金將助其「明年交出首批晶片與系統」，「前面還有很多工作」。首批硅片仍屬來年目標，不是已經規模出貨。</p>
+    <p class="meta"><span class="outlet">TechCrunch（估值另引英國政府／FT／Reuters 消息）</span><span class="src"> · <a href="https://techcrunch.com/2026/11/11/with-720m-round-britains-fractile-gets-a-leg-up-in-the-race-for-ai-chips/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.cnbc.com/2026/11/11/meta-infrastructure-departure-aws-cloud.html" target="_blank" rel="noopener"><img src="https://image.cnbcfm.com/api/v1/image/108549222-1794421836487-gettyimages-2267715551-ARM_EVERYWHERE.jpeg?v=1794421856&amp;w=1920&amp;h=1080" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.cnbc.com/2026/11/11/meta-infrastructure-departure-aws-cloud.html" target="_blank" rel="noopener">David Paul Morris｜Bloomberg｜Getty Images（CNBC；Janardhan 於二零二六年三月二十四日 Arm Everywhere）</a>（外部連結）</p>
+    <h3><a href="https://www.cnbc.com/2026/11/11/meta-infrastructure-departure-aws-cloud.html" target="_blank" rel="noopener">Meta 基礎設施負責人 Janardhan 將於 2027 年離任，前 AWS 的 Brown 接任</a></h3>
+    <p class="dek">CNBC 取得內部備忘錄報道，Meta 基礎設施負責人 Santosh Janardhan（二零零九年加入）將於二零二七年離任，職務交給七月加入的前亞馬遜雲端運算服務高級副總裁 David Brown。Janardhan 將協助過渡至二零二七年第一季；Brown 將主管基礎設施，並任 Meta Compute 技術總監。CNBC 寫出全年資本開支展望為一千三百五十億至一千四百五十億美元，自由現金流為負二十一點二億美元。此為超大規模基礎設施的人事與資本週期新聞。</p>
+    <p class="meta"><span class="outlet">CNBC（取得內部備忘錄；Bloomberg 較早報道過渡）</span><span class="src"> · <a href="https://www.cnbc.com/2026/11/11/meta-infrastructure-departure-aws-cloud.html" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.torus.co/news/torus-launches-modular-ai-infrastructure-foundry" target="_blank" rel="noopener"><img src="https://media.thenextweb.com/2026/11/torus-foundry-modular-ai-units-salt-lake-city.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.torus.co/news/torus-launches-modular-ai-infrastructure-foundry" target="_blank" rel="noopener">Ken Hovley，Torus（The Next Web；鹽湖城 GigaOne 廠房外的 Foundry 裝置）</a>（外部連結）</p>
+    <h3><a href="https://www.torus.co/news/torus-launches-modular-ai-infrastructure-foundry" target="_blank" rel="noopener">Torus 完成 5 億美元 C 輪，推出 12 至 16 週可部署的 Foundry 模組</a></h3>
+    <p class="dek">鹽湖城公司 Torus 宣布推出 Foundry 預製模組化人工智能推論資料中心單元，並稱完成由 Magnetar 領投的五億美元 C 輪融資。公司定位是把運算放到已有電網餘裕的場址，規模介乎一至二十兆瓦，部署需時十二至十六週，並強調無水冷卻。本報不採用未經公司頁核實的圖形處理器數量或客戶名單。這是把機櫃做成可運到現有電力點的模組，而不是先為晶片再去找新接駁。</p>
+    <p class="meta"><span class="outlet">Torus；The Next Web</span><span class="src"> · <a href="https://www.torus.co/news/torus-launches-modular-ai-infrastructure-foundry" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="chips-rank">
+    <h2>晶片／硬體／地緣 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://pr.tsmc.com/english/news/3352" target="_blank" rel="noopener">[A] 台積電核准對 Anthropic 與 OpenAI 各不超過 5 億美元的入股上限</a></li>
+    <li><a href="https://www.aljazeera.com/news/2026/11/11/chinese-university-buys-nvidia-ai-h200-chips-despite-us-ban-records-show" target="_blank" rel="noopener">[A] 實體清單上的西北工業大學經國內供應商購得兩顆 Nvidia H200</a></li>
+    <li><a href="https://techcrunch.com/2026/11/11/with-720m-round-britains-fractile-gets-a-leg-up-in-the-race-for-ai-chips/" target="_blank" rel="noopener">[B] 英國 Fractile 完成 7.2 億美元 C 輪，首批晶片仍屬來年目標</a></li>
+    <li><a href="https://www.cnbc.com/2026/11/11/meta-infrastructure-departure-aws-cloud.html" target="_blank" rel="noopener">[B] Meta 基礎設施負責人 Janardhan 將於 2027 年離任，前 AWS 的 Brown 接任</a></li>
+    <li><a href="https://www.torus.co/news/torus-launches-modular-ai-infrastructure-foundry" target="_blank" rel="noopener">[B] Torus 完成 5 億美元 C 輪，推出 12 至 16 週可部署的 Foundry 模組</a></li>
+    </ol>
+  </div>
+</section><section class="region" id="policy">
+  <header class="sec-head"><div class="flag">政策</div><div><h2>政策／監管</h2><p class="sec-sub">國會據報正準備在黃仁勳不、歐盟公布《數位公平法案》、澳洲考慮把未申報或不安全、上訴法院收窄司法部獲取記 · 4則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/11/congress-to-call-jensen-huang-in-to-answer-for-alleged-chinese-spy-affair/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/11/Jensen-Huang.jpg?w=1024" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/11/congress-to-call-jensen-huang-in-to-answer-for-alleged-chinese-spy-affair/" target="_blank" rel="noopener">Jose Sarmento Matos／Bloomberg／Getty Images（TechCrunch）</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/11/congress-to-call-jensen-huang-in-to-answer-for-alleged-chinese-spy-affair/" target="_blank" rel="noopener">國會據報正準備在黃仁勳不同意閉門簡報的情況下發出傳票</a></h3>
+    <p class="dek">TechCrunch 引述彭博社報道，國會正準備在黃仁勳不同意閉門簡報的情況下，就其與 Megaspeed 行政人員 Alice Huang（報道形容為涉嫌中國間諜）的關係發出傳票。眾議院中國委員會主席 Moolenaar 週三稱，黃須於當日結束前回應，否則很可能被傳召；外交事務委員會主席 Mast 亦稱正準備傳票。Al Jazeera／路透另提到，已有要求於十一月十八日簡報。Nvidia 當時未即時回應。傳票是否已經送達，並未獲確認。</p>
+    <p class="meta"><span class="outlet">TechCrunch（引 Bloomberg；眾議員於 Fox Business 發言）</span><span class="src"> · <a href="https://techcrunch.com/2026/11/11/congress-to-call-jensen-huang-in-to-answer-for-alleged-chinese-spy-affair/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/policy/1031575/digital-fairness-act-eu-dfa-consumer-protection" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/25319789/STK450_EU_E.jpg?quality=90&amp;strip=all&amp;crop=0%2C9.9676601489831%2C100%2C80.064679702034&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/policy/1031575/digital-fairness-act-eu-dfa-consumer-protection" target="_blank" rel="noopener">Cath Virginia／The Verge</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/policy/1031575/digital-fairness-act-eu-dfa-consumer-protection" target="_blank" rel="noopener">歐盟公布《數位公平法案》草案，成癮功能與 AI 伴侶亦在範圍內</a></h3>
+    <p class="dek">歐盟委員會週三公布《數位公平法案》草案。據 The Verge 整理，內容包括禁止黑暗模式，要求可關閉無限捲動、自動播放等成癮功能，並適用於人工智能伴侶；禁止面向未成年人的類賭博付費過關設計；加強網紅廣告揭露；限制針對未成年人或使用敏感資料的個人化定價。委員會稱每年可節省最多一百三十七億歐元，違法可處全球年營業額最高百分之六罰款。草案仍須通過。</p>
+    <p class="meta"><span class="outlet">The Verge（歐盟委員會草案，11/11）</span><span class="src"> · <a href="https://www.theverge.com/policy/1031575/digital-fairness-act-eu-dfa-consumer-protection" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theregister.com/public-sector/2026/11/11/australia-may-make-knowingly-selling-unsafe-ai-a-crime/5308999" target="_blank" rel="noopener"><img src="https://image.theregister.com/5293744.jpg?imageId=5293744&amp;x=0&amp;y=0&amp;cropw=100&amp;croph=100&amp;panox=0&amp;panoy=0&amp;panow=100&amp;panoh=100&amp;width=1200&amp;height=683" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theregister.com/public-sector/2026/11/11/australia-may-make-knowingly-selling-unsafe-ai-a-crime/5308999" target="_blank" rel="noopener">The Register</a>（外部連結）</p>
+    <h3><a href="https://www.theregister.com/public-sector/2026/11/11/australia-may-make-knowingly-selling-unsafe-ai-a-crime/5308999" target="_blank" rel="noopener">澳洲考慮把未申報或不安全的 AI 損害列為刑事罪行，尚未成法</a></h3>
+    <p class="dek">在 OpenAI 承認其代理取用非公開醫療／醫保相關紀錄、且數週未披露之後，澳洲公布檢討建議，包括強制通報安全事故、對惡劣違規考慮刑事罰則，以及考慮設立「未防止損害」罪名——若公司開發的模型從事有害行為，又未採取合理步驟防止。政府並建議新監管機構，要求安全控制、獨立評估與快速通報。The Register 強調這是檢討與考慮，尚未成為已通過的刑法。</p>
+    <p class="meta"><span class="outlet">The Register；另見 ABC 與總理辦公室稿</span><span class="src"> · <a href="https://www.theregister.com/public-sector/2026/11/11/australia-may-make-knowingly-selling-unsafe-ai-a-crime/5308999" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://arstechnica.com/tech-policy/2026/11/trump-admin-loses-fight-to-spy-on-random-journalists-linkedin-dms/" target="_blank" rel="noopener"><img src="https://cdn.arstechnica.net/wp-content/uploads/2026/11/GettyImages-2292869198-1024x648.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://arstechnica.com/tech-policy/2026/11/trump-admin-loses-fight-to-spy-on-random-journalists-linkedin-dms/" target="_blank" rel="noopener">Smith Collection／Gado／Contributor｜Archive Photos（Ars Technica）</a>（外部連結）</p>
+    <h3><a href="https://arstechnica.com/tech-policy/2026/11/trump-admin-loses-fight-to-spy-on-random-journalists-linkedin-dms/" target="_blank" rel="noopener">上訴法院收窄司法部獲取記者 LinkedIn 私訊的範圍，並非全面作廢</a></h3>
+    <p class="dek">Ars Technica 報道，上訴法院由法官 J. Harvie Wilkinson III 執筆的意見指出，司法部要求取得受針對記者十八個月 LinkedIn 通訊的做法，不能一併涵蓋「大批與洩密調查沒有任何可想像關係」的記者消息來源。該請求並不限於參與一篇政府指其曝光機密軍事資訊報道的記者。法院拒絕全面撤銷，把案件發回大幅收窄，並須考慮通知受調查媒體一名律師的替代方案。涉事媒體未具名。此為收窄，不是全面作廢。</p>
+    <p class="meta"><span class="outlet">Ars Technica</span><span class="src"> · <a href="https://arstechnica.com/tech-policy/2026/11/trump-admin-loses-fight-to-spy-on-random-journalists-linkedin-dms/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="policy-rank">
+    <h2>政策／監管 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://techcrunch.com/2026/11/11/congress-to-call-jensen-huang-in-to-answer-for-alleged-chinese-spy-affair/" target="_blank" rel="noopener">[A] 國會據報正準備在黃仁勳不同意閉門簡報的情況下發出傳票</a></li>
+    <li><a href="https://www.theverge.com/policy/1031575/digital-fairness-act-eu-dfa-consumer-protection" target="_blank" rel="noopener">[A] 歐盟公布《數位公平法案》草案，成癮功能與 AI 伴侶亦在範圍內</a></li>
+    <li><a href="https://www.theregister.com/public-sector/2026/11/11/australia-may-make-knowingly-selling-unsafe-ai-a-crime/5308999" target="_blank" rel="noopener">[B] 澳洲考慮把未申報或不安全的 AI 損害列為刑事罪行，尚未成法</a></li>
+    <li><a href="https://arstechnica.com/tech-policy/2026/11/trump-admin-loses-fight-to-spy-on-random-journalists-linkedin-dms/" target="_blank" rel="noopener">[B] 上訴法院收窄司法部獲取記者 LinkedIn 私訊的範圍，並非全面作廢</a></li>
+    </ol>
+  </div>
+</section><section class="region" id="opensource">
+  <header class="sec-head"><div class="flag">開源</div><div><h2>開源／開發</h2><p class="sec-sub">AWS 推出免費本地 A、GitHub 將自 12、有 28 年歷史的 Ap · 3則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://aws.amazon.com/blogs/aws/test-your-applications-against-aws-locally-with-aws-emulator/" target="_blank" rel="noopener"><img src="https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2026/11/11/Header-A-dark-gradient-1-1260x630.png" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://aws.amazon.com/blogs/aws/test-your-applications-against-aws-locally-with-aws-emulator/" target="_blank" rel="noopener">AWS News Blog</a>（外部連結）</p>
+    <h3><a href="https://aws.amazon.com/blogs/aws/test-your-applications-against-aws-locally-with-aws-emulator/" target="_blank" rel="noopener">AWS 推出免費本地 AWS Emulator：127.0.0.1:9297，並列明保真限制</a></h3>
+    <p class="dek">AWS 宣布推出免費的本地 AWS Emulator，沒有額外服務費，客戶只在部署到真實資源時付費。它在本機 127.0.0.1:9297 提供 AWS 應用程式介面，可用官方命令列與開發套件，以 Rust 實作，源碼置於 GitHub。官方稱由自主代理建構並維護。已列明限制：並不按 AWS 方式評估身分與資源政策，單一帳號、無跨帳號或跨區域行為，未實作操作回傳 HTTP 501，且不應用來測試應用是否安全。</p>
+    <p class="meta"><span class="outlet">AWS News Blog</span><span class="src"> · <a href="https://aws.amazon.com/blogs/aws/test-your-applications-against-aws-locally-with-aws-emulator/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://github.blog/changelog/2026-11-10-dependabot-alerts-will-pause-on-inactive-repositories/" target="_blank" rel="noopener"><img src="https://github.blog/wp-content/uploads/2026/11/Changelog_Improvement_Unfurl_TextOnly_DependabotPauseInctiveRepositories.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 C</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://github.blog/changelog/2026-11-10-dependabot-alerts-will-pause-on-inactive-repositories/" target="_blank" rel="noopener">GitHub Blog</a>（外部連結）</p>
+    <h3><a href="https://github.blog/changelog/2026-11-10-dependabot-alerts-will-pause-on-inactive-repositories/" target="_blank" rel="noopener">GitHub 將自 12 月 8 日起暫停多數一年未活動倉庫的 Dependabot 警示</a></h3>
+    <p class="dek">GitHub 宣布，自十二月八日起，將對大多數過去一年沒有活動的儲存庫暫停 Dependabot 警示。活動包括向任何分支或標籤推送、建立儲存庫，或啟用警示。既有警示會封存而非刪除，重新啟用後可恢復；一次推送會自動重新啟用。已強制執行並啟用警示的安全設定，以及部分企業政策，將獲豁免。長期閒置專案的供應鏈警示不會再自動亮起，除非儲存庫重新有活動。</p>
+    <p class="meta"><span class="outlet">GitHub Changelog</span><span class="src"> · <a href="https://github.blog/changelog/2026-11-10-dependabot-alerts-will-pause-on-inactive-repositories/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://arstechnica.com/gadgets/2026/11/apple-is-shuttering-its-28-year-old-online-community-forum/" target="_blank" rel="noopener"><img src="https://cdn.arstechnica.net/wp-content/uploads/2026/11/GettyImages-1560398364-966x648.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://arstechnica.com/gadgets/2026/11/apple-is-shuttering-its-28-year-old-online-community-forum/" target="_blank" rel="noopener">Peter Dazeley／Getty Images（Ars Technica）</a>（外部連結）</p>
+    <h3><a href="https://arstechnica.com/gadgets/2026/11/apple-is-shuttering-its-28-year-old-online-community-forum/" target="_blank" rel="noopener">有 28 年歷史的 Apple Support Community 將於 11 月 20 日關閉</a></h3>
+    <p class="dek">Ars Technica 報道，Apple 宣布有二十八年歷史的 Apple Support Community 將於十一月二十日永久關閉，宣布時論壇已改為唯讀、不能發新帖。該論壇可追溯至一九九八年的 Apple Tech Exchange，其後更名為 Apple Discussions，再改為 Apple Support Communities。Apple 向 MacRumors 表示，已評估其支援策略與顧客需求，並引導用戶前往官方支援網站。這是把長期社群討論區收進官方支援渠道的平台決定，不是發布新的開發工具。</p>
+    <p class="meta"><span class="outlet">Ars Technica</span><span class="src"> · <a href="https://arstechnica.com/gadgets/2026/11/apple-is-shuttering-its-28-year-old-online-community-forum/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="opensource-rank">
+    <h2>開源／開發 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://aws.amazon.com/blogs/aws/test-your-applications-against-aws-locally-with-aws-emulator/" target="_blank" rel="noopener">[A] AWS 推出免費本地 AWS Emulator：127.0.0.1:9297，並列明保真限制</a></li>
+    <li><a href="https://arstechnica.com/gadgets/2026/11/apple-is-shuttering-its-28-year-old-online-community-forum/" target="_blank" rel="noopener">[B] 有 28 年歷史的 Apple Support Community 將於 11 月 20 日關閉</a></li>
+    <li><a href="https://github.blog/changelog/2026-11-10-dependabot-alerts-will-pause-on-inactive-repositories/" target="_blank" rel="noopener">[C] GitHub 將自 12 月 8 日起暫停多數一年未活動倉庫的 Dependabot 警示</a></li>
+    </ol>
+  </div>
+</section>  <footer class="footer">
+    <p>每日 IT 報 · 2026-11-12（四）· 香港時間 · 共 33 則精選 + 4 篇人物專題 · 配圖直接 hotlink 外部 https 來源，無 base64 嵌圖、無本機 assets · 每則附熱度 A/B/C · 各分類欄附熱度排行。</p>
+    <p>來源涵蓋歐美主流科技／財經／資安媒體、公司通告與社群熱度交叉；摘要約 100–150 字繁中，事實以原文為準。專題以人物視角撰寫（Elon Musk／Chris Miller／Steve Jobs／Edward Snowden）。例行每日（含週末）。</p>
+  </footer>
+</main>
+
+</body>
+</html>

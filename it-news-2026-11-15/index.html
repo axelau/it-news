@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>每日 IT 報｜2026年11月15日 · Pixel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --cream:#F5F5EC;
+  --paper:#FFFEF7;
+  --navy:#0A2558;
+  --navy2:#14356e;
+  --sky:#A3C1DA;
+  --sky2:#C5D9EA;
+  --sky3:#E8F1F8;
+  --ink:#0A2558;
+  --ink2:#1e3a66;
+  --muted:#5a6f8a;
+  --link:#0A2558;
+  --white:#fffef9;
+  --heat-a:#0A2558;
+  --heat-b:#3d5a80;
+  --heat-c:#7a8fa8;
+  --px:4px;
+}
+*{box-sizing:border-box}
+html{font-size:16.5px}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(163,193,218,.35) 0 2px, transparent 3px),
+    radial-gradient(circle at 88% 18%, rgba(10,37,88,.12) 0 2px, transparent 3px),
+    radial-gradient(circle at 70% 92%, rgba(163,193,218,.28) 0 2px, transparent 3px),
+    var(--cream);
+  background-size:28px 28px, 36px 36px, 24px 24px, auto;
+  color:var(--ink);
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  line-height:1.55;
+  image-rendering:auto;
+}
+a{color:var(--link); text-decoration:none; border-bottom:2px solid transparent}
+a:hover{border-bottom-color:var(--sky); background:var(--sky3)}
+
+/* pixel border helper — stepped corners via box-shadow */
+.pixel-border{
+  border:3px solid var(--navy);
+  box-shadow:
+    3px 0 0 0 var(--navy),
+    -3px 0 0 0 var(--navy),
+    0 3px 0 0 var(--navy),
+    0 -3px 0 0 var(--navy),
+    6px 6px 0 0 rgba(10,37,88,.18);
+  clip-path: polygon(
+    0 8px, 8px 8px, 8px 0,
+    calc(100% - 8px) 0, calc(100% - 8px) 8px, 100% 8px,
+    100% calc(100% - 8px), calc(100% - 8px) calc(100% - 8px), calc(100% - 8px) 100%,
+    8px 100%, 8px calc(100% - 8px), 0 calc(100% - 8px)
+  );
+}
+
+.wrap{
+  max-width:1000px; margin:1.25rem clamp(1rem,5vw,3rem) 2.5rem; padding:1.35rem clamp(1.75rem,7vw,3.75rem) 2.5rem;
+  background:var(--paper);
+  border:3px solid var(--navy);
+  position:relative;
+  box-shadow:
+    4px 4px 0 0 var(--navy),
+    8px 8px 0 0 var(--sky);
+}
+/* dither + decorations around wrap */
+.wrap::before,.wrap::after{
+  content:"+"; position:absolute; color:var(--sky); font-family:"Press Start 2P",monospace;
+  font-size:.55rem; line-height:1; pointer-events:none; opacity:.85;
+}
+.wrap::before{top:.55rem; left:.7rem}
+.wrap::after{bottom:.55rem; right:.7rem}
+
+/* ===== MASTHEAD ===== */
+.masthead{
+  text-align:center;
+  padding:1.6rem 1rem 1.25rem;
+  margin:0 0 1.15rem;
+  background:linear-gradient(180deg, var(--sky3) 0%, var(--paper) 70%);
+  border:3px solid var(--navy);
+  position:relative;
+  box-shadow:4px 4px 0 0 var(--navy);
+}
+.masthead::before{
+  content:"PLAY · WORK · CREATE · CONNECT";
+  position:absolute; left:.5rem; top:50%; transform:translateY(-50%) rotate(-90deg);
+  transform-origin:center; font-family:"Press Start 2P",monospace; font-size:.42rem;
+  letter-spacing:.08em; color:var(--sky); white-space:nowrap; opacity:.7;
+  display:none;
+}
+@media (min-width:860px){
+  .masthead::before{display:block}
+}
+.masthead .kicker{
+  font-family:"Press Start 2P",monospace;
+  font-size:.55rem; letter-spacing:.12em; color:var(--navy);
+  margin-bottom:.85rem;
+  display:inline-block;
+  background:var(--navy); color:#fff;
+  padding:.45rem .7rem;
+  box-shadow:3px 3px 0 0 var(--sky);
+}
+.masthead h1{
+  font-family:"Press Start 2P",monospace;
+  font-size:clamp(1.15rem, 4.2vw, 1.85rem);
+  margin:.35rem 0 .7rem; font-weight:400; letter-spacing:.06em;
+  color:var(--navy);
+  text-shadow: 3px 3px 0 var(--sky), 6px 6px 0 rgba(10,37,88,.15);
+  line-height:1.45;
+}
+.masthead .date{
+  font-family:"VT323",monospace;
+  font-size:1.35rem; color:var(--navy2); margin-top:.15rem; letter-spacing:.04em;
+}
+.masthead .tagline{
+  font-size:.8rem; color:var(--muted); margin:.55rem auto 0; max-width:46rem; line-height:1.5;
+}
+
+/* floating pluses in masthead */
+.masthead .date::before{content:"+  "; color:var(--sky); font-family:"Press Start 2P",monospace; font-size:.5rem}
+.masthead .date::after{content:"  +"; color:var(--sky); font-family:"Press Start 2P",monospace; font-size:.5rem}
+
+/* ===== TOC ===== */
+.toc{
+  display:flex; flex-wrap:wrap; gap:.45rem .55rem; justify-content:center;
+  margin:0 0 1.5rem; padding:.85rem .6rem;
+  border:3px solid var(--navy); background:var(--sky3);
+  box-shadow:3px 3px 0 0 var(--navy);
+  font-size:.82rem;
+}
+.toc a{
+  color:#fff; background:var(--navy); border:2px solid var(--navy);
+  padding:.28rem .55rem; font-weight:700; letter-spacing:.02em;
+  box-shadow:2px 2px 0 0 var(--sky);
+  border-bottom:2px solid var(--navy);
+}
+.toc a:hover{
+  background:var(--sky); color:var(--navy); border-bottom-color:var(--navy);
+}
+
+/* ===== REGIONS / SECTION HEADS ===== */
+.region{
+  margin:0 0 4.2rem; padding-bottom:2.7rem;
+  border-bottom:3px dashed var(--navy);
+}
+.region:last-of-type{border-bottom:none}
+.sec-head{display:flex; align-items:stretch; gap:.85rem; margin-bottom:.95rem}
+.flag{
+  background:var(--navy); color:#fff;
+  writing-mode:vertical-rl; text-orientation:mixed;
+  letter-spacing:.2em; font-weight:700; font-size:.88rem;
+  padding:.65rem .4rem; min-width:2.15rem;
+  display:flex; align-items:center; justify-content:center;
+  border:3px solid var(--navy);
+  box-shadow:3px 3px 0 0 var(--sky);
+  font-family:"Noto Sans TC",sans-serif;
+  position:relative;
+}
+.flag::after{
+  content:""; position:absolute; inset:-3px;
+  border:1px solid var(--sky); pointer-events:none; opacity:.6;
+}
+.sec-head h2{
+  margin:0; font-size:1.35rem; letter-spacing:.04em; line-height:1.35;
+  color:var(--navy); font-weight:700;
+}
+.sec-sub{margin:.2rem 0 0; color:var(--muted); font-size:.8rem}
+
+/* ===== FEATURE BOX ===== */
+.feature-box{
+  max-width:100%; margin:0 0 2rem; padding:0; overflow:hidden;
+  background:var(--white);
+  border:3px solid var(--navy);
+  box-shadow:4px 4px 0 0 var(--navy);
+  display:grid; grid-template-columns:minmax(220px,34%) 1fr; gap:0;
+  position:relative;
+}
+.feature-box::before{
+  content:"+"; position:absolute; top:.35rem; right:.5rem; z-index:2;
+  font-family:"Press Start 2P",monospace; font-size:.5rem; color:var(--sky); opacity:.9;
+}
+.feature-box .feature-media{
+  margin:0; background:var(--sky2); border-right:3px solid var(--navy); min-height:12rem; line-height:0;
+}
+.feature-box .feature-media a{display:block; line-height:0; height:100%; border:0}
+.feature-box .feature-media a:hover{background:transparent}
+.feature-box .feature-media img{width:100%; height:100%; min-height:12rem; object-fit:cover; display:block}
+.feature-box .feature-body{padding:1.1rem 1.2rem 1rem}
+.feature-box p{margin:0 0 .95rem; color:var(--ink2); font-size:.98rem; text-align:justify}
+.feature-box p.lead{font-size:1.05rem; color:var(--ink)}
+.feature-box p:last-child{margin-bottom:0}
+.feature-meta-row{display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; margin:0 0 .75rem}
+.drop::first-letter{
+  float:left; font-family:"Press Start 2P",monospace;
+  font-size:1.55rem; line-height:1.1; padding:.15rem .25rem 0 0;
+  font-weight:400; color:var(--navy);
+}
+
+/* satire accent */
+.feature-box.satire{
+  border-color:var(--navy);
+  background:linear-gradient(135deg, #fff9f0 0%, var(--white) 55%);
+  box-shadow:4px 4px 0 0 var(--sky), 8px 8px 0 0 var(--navy);
+}
+.feature-box.satire .sec-note{font-size:.76rem; color:var(--muted); margin:0 0 .75rem; font-style:italic}
+
+/* ===== STORY GRID ===== */
+.grid{display:grid; grid-template-columns:1fr 1fr; gap:2rem 1.15rem}
+.story{
+  padding:0; overflow:hidden;
+  background:var(--white);
+  border:3px solid var(--navy);
+  box-shadow:3px 3px 0 0 var(--sky);
+  display:flex; flex-direction:column;
+  position:relative;
+}
+.story::after{
+  content:"+"; position:absolute; bottom:.3rem; right:.4rem;
+  font-family:"Press Start 2P",monospace; font-size:.4rem; color:var(--sky); opacity:.75;
+  pointer-events:none;
+}
+.story.lead{grid-column:1 / -1; box-shadow:4px 4px 0 0 var(--navy)}
+.story.lead .story-media img{max-height:280px}
+.story-media{margin:0; background:var(--sky2); border-bottom:3px solid var(--navy); line-height:0}
+.story-media a{display:block; line-height:0; border:0}
+.story-media a:hover{background:transparent}
+.story-media img{width:100%; height:160px; object-fit:cover; display:block}
+.story.lead .story-media img{height:240px}
+.story-body{padding:.8rem .95rem .95rem; min-width:0; flex:1; display:flex; flex-direction:column}
+.story h3{margin:0 0 .35rem; font-size:1.02rem; line-height:1.35; font-weight:700; color:var(--navy)}
+.story.lead h3{font-size:1.28rem}
+.story h3 a{border:0; color:var(--navy)}
+.story h3 a:hover{background:var(--sky3); border:0}
+.story .dek{margin:0 0 .5rem; color:var(--ink2); font-size:.9rem; flex:1}
+.story.lead .dek{font-size:.98rem}
+.meta{margin:0; font-size:.72rem; color:var(--muted); font-family:"VT323",monospace; font-size:.95rem}
+.outlet{font-weight:700; color:var(--navy2); font-family:"Noto Sans TC",sans-serif; font-size:.72rem}
+.src{margin-left:.15rem}
+
+/* ===== HEAT BADGES — 90s window pop ===== */
+.heat{
+  display:inline-flex; align-items:stretch; gap:0;
+  padding:0; font-size:.68rem; font-weight:700; letter-spacing:.04em; line-height:1.2;
+  border:2px solid var(--navy);
+  background:var(--paper);
+  box-shadow:2px 2px 0 0 var(--navy);
+  overflow:hidden;
+  font-family:"Press Start 2P",monospace;
+  font-size:.48rem;
+  position:relative;
+}
+.heat::before{
+  content:"■";
+  background:var(--navy); color:#fff;
+  padding:.32rem .4rem;
+  display:inline-flex; align-items:center;
+  font-size:.42rem; letter-spacing:0;
+}
+/* put label text next to title bar */
+.heat{
+  color:var(--navy);
+  padding-right:.55rem;
+  align-items:center;
+}
+.heat::after{
+  content:"×";
+  margin-left:.35rem;
+  color:var(--navy);
+  font-size:.55rem;
+  line-height:1;
+  opacity:.7;
+}
+
+/* ===== THUMB CREDIT ===== */
+.thumb-credit{
+  margin:.1rem 0 .5rem; font-size:.65rem; color:var(--muted); line-height:1.35;
+  word-break:break-word;
+  padding:.35rem .5rem;
+  background:var(--sky3);
+  border-left:4px solid var(--sky);
+}
+.thumb-credit a{color:var(--muted); border-bottom:1px dotted var(--sky)}
+
+/* ===== RANK BOX — sky promo banner ===== */
+.rank-box{
+  margin:1.15rem 0 2rem; padding:1.1rem 1.2rem 1rem;
+  border:3px solid var(--navy);
+  background:var(--sky);
+  box-shadow:4px 4px 0 0 var(--navy);
+  position:relative;
+}
+.rank-box::before{
+  content:"LEVEL UP";
+  position:absolute; top:-.55rem; right:1rem;
+  font-family:"Press Start 2P",monospace; font-size:.42rem;
+  background:var(--navy); color:#fff; padding:.3rem .45rem;
+  box-shadow:2px 2px 0 0 var(--paper);
+}
+.rank-box h2{
+  margin:0 0 .3rem; font-size:1.15rem; letter-spacing:.04em; color:var(--navy);
+  font-family:"Press Start 2P",monospace; font-size:.72rem; line-height:1.55;
+}
+.rank-box .rank-sub{margin:0 0 .75rem; color:var(--navy2); font-size:.78rem}
+.rank-box ol{margin:0; padding-left:1.4rem; background:var(--paper); border:2px solid var(--navy); padding:.75rem 1rem .75rem 1.85rem}
+.rank-box li{margin:0 0 .45rem; font-size:.9rem; line-height:1.4; color:var(--navy)}
+.rank-box li a{font-weight:700; color:var(--navy); border-bottom:2px solid transparent}
+.rank-box li a:hover{border-bottom-color:var(--navy); background:var(--sky3)}
+
+/* ===== FOOTER ===== */
+.footer{
+  margin-top:1.4rem; padding:1rem 1rem .2rem;
+  border:3px solid var(--navy); background:var(--sky3);
+  box-shadow:3px 3px 0 0 var(--navy);
+  font-size:.76rem; color:var(--muted); line-height:1.6;
+}
+.footer p:first-child{
+  font-family:"VT323",monospace; font-size:1.05rem; color:var(--navy);
+}
+
+@media (max-width:720px){
+  .wrap{margin:.6rem .5rem 1.5rem; padding:1rem .85rem 1.75rem; box-shadow:3px 3px 0 0 var(--navy), 6px 6px 0 0 var(--sky)}
+  .grid{grid-template-columns:1fr}
+  .flag{writing-mode:horizontal-tb; min-width:auto; padding:.35rem .7rem; letter-spacing:.15em}
+  .sec-head{flex-direction:column; gap:.4rem}
+  .drop::first-letter{font-size:1.25rem}
+  .feature-box{grid-template-columns:1fr}
+  .feature-box .feature-media{border-right:none; border-bottom:3px solid var(--navy); min-height:10rem}
+  .feature-box .feature-media img{min-height:10rem; max-height:200px}
+  .story.lead .story-media img,.story-media img{height:180px}
+  .masthead h1{font-size:1.05rem}
+  .rank-box h2{font-size:.58rem}
+  .toc a{font-size:.75rem}
+}
+@media print{
+  body{background:#fff}
+  .wrap{box-shadow:none; max-width:none}
+  a{color:inherit; text-decoration:none}
+  .region{break-inside:avoid-page}
+}
+</style></head>
+<body>
+<main class="wrap">
+  <header class="masthead">
+    <div class="kicker">GROK BOT · IT DIGEST</div>
+    <h1>每日 IT 報</h1>
+    <div class="date">二零二六年十一月十五日　星期日　香港時間</div>
+    <p class="tagline">四篇人物專題（10 人池抽 4）· 約 30 則分類精選 · 外部配圖 hotlink · 摘要約 100–150 字</p>
+  </header>
+  <nav class="toc" aria-label="章節">
+    <a href="#f1">Harari</a> <a href="#f2">Snowden</a> <a href="#f3">Musk</a> <a href="#f4">Miller</a> <a href="#hot">熱門話題</a> <a href="#ai">AI 與模型</a> <a href="#security">資安與基礎設施</a> <a href="#product">消費電子／平台</a> <a href="#chips">晶片／硬體／地緣</a> <a href="#policy">政策／監管</a> <a href="#opensource">開源／開發</a>
+  </nav>
+<section class="region" id="f1">
+  <header class="sec-head"><div class="flag">Harari</div><div><h2>文明：一次「例行維修」，就可以把整個國家的起飛權停在地面</h2><p class="sec-sub">人物：Yuval Noah Harari · 人類以為自己仍在駕駛天空；真正做決定的，是遠端機房裡一張過載的路由表。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://www.theverge.com/transportation/1033898/faa-ground-stop-sean-duffy-faa-copper-wire" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/11/gettyimages-2304493507.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.654918655606%2C100%2C78.690162688789&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/transportation/1033898/faa-ground-stop-sean-duffy-faa-copper-wire" target="_blank" rel="noopener">Jacek Boczarski／Anadolu via Getty Images（The Verge）</a>（外部連結）</p>
+<p class="lead drop">一個把飛行權交給航管網絡的文明，也可以被一次稱為「例行維修」的換線停在地面。人類以為自己仍在駕駛天空，真正做決定的是遠端機房裡的路由表。</p>
+<p>據 The Verge，聯邦航空局於東部時間十一月十三日下午三時四十四分下令全美地面停飛，當晚八時十五分解除，逾四小時。這不是昨日稿件裡「尚無解除時間表」的狀態。週六運輸部長 Duffy 把原因收窄：在一處偏遠設施，承包商 L3Harris 把舊銅線換成光纖，屬「例行維修」；新路由器向航管網絡「灌水」。The Verge 與 TechCrunch 均引述，連線嘗試超過一千次、每隔四至五秒一次，雷達與對空通訊失穩。署任首席技術官 Rebecca Guy 說，兩個地點在高頻 ping 網絡，關掉後才穩住，根因分析仍在進行。Duffy 仍不知是硬體故障、設定錯誤，還是 L3Harris 的「無能」。L3Harris 稱已完成計劃轉換的七成以上，正協助調查。把「例行」寫進記者會，不能把耦合過緊的系統寫成已經安全。</p>
+<p>數字必須分源。TechCrunch 引 Cirium：週五晚取消逾八千二百班，週六至少再取消三千班。The Verge 引 FlightAware 在東部時間週五晚八時三十九分的快照：九千一百二十四班延誤、五千九百零一班取消。不同時刻、不同口徑，不能併成同一個總數。TechCrunch 寫這是二十一世紀第三次全國地面停飛。局長 Bedford 稱「零證據」顯示惡意或與人工智能有關。SMART 承包商已否認有關；不可把禁飛與該系統擴張寫成已證實因果。文明把飛行交給系統之後，系統的例行維修就不再例行。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="f2">
+  <header class="sec-head"><div class="flag">Snowden</div><div><h2>隱私：八億歐元罰的不是發帖建議，是整本相簿被預設讀取</h2><p class="sec-sub">人物：Edward Snowden · 沒有免費午餐；「啟用其他功能」這句話，已經把私人領域交了出去。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://www.garanteprivacy.it/home/docweb/-/docweb-display/docweb/10321080" target="_blank" rel="noopener"><img src="https://image.cnbcfm.com/api/v1/image/108310069-17793063292026-05-20t194305z_1806485342_rc27dla6rwc7_rtrmadp_0_tech-ai-meta-layoffs.jpeg?v=1787074849&amp;w=1920&amp;h=1080" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://www.garanteprivacy.it/home/docweb/-/docweb-display/docweb/10321080" target="_blank" rel="noopener">Daniel Cole／Reuters（CNBC）</a>（外部連結）</p>
+<p class="lead drop">沒有免費的「發帖建議」。把相簿變成建議欄的便利，代價是整部手機相簿被持久讀取，而用戶甚至不必真正明白自己答應了什麼。</p>
+<p>意大利個人資料保護局（Garante）十一月十四日官方宣布，對 Meta Platforms Ireland Limited 開出八億零五百萬歐元罰款。認定透過 Android 版 Facebook，在未取得「特定同意」、亦未充分告知下，取用意大利用戶手機裡的照片、影片及中繼資料。針對的是二零二三年起「瀏覽時從相簿取得建議」的功能。調查由二零二五年七月博爾扎諾消費者保護中心舉報啟動。查證指出：相簿權限以單一授權覆蓋整個應用與多種功能；授權前只有「啟用其他功能」一類籠統提示；功能預設開啟。若全數批准，應用通常可永久讀取整本相片檔案，用戶與監管機構都無法核實實際用了哪些資訊。Garante 引用落實歐盟 ePrivacy 指令的隱私法典第 122 條：智能手機屬私人領域，取用其中資訊需要自由且知情的同意，不論數據是否傳出、也不論是否已證明損害。機關並駁回「應由愛爾蘭以單一窗口管轄」的主張，理由是 ePrivacy 不適用該機制。</p>
+<p>官方寫約二千萬意大利 Android 用戶受影響，違法對部分未更新應用、或已授予系統授權的人仍在持續；罰款約相當於集團全球營業額的百分之零點四七。本程序不涉及內容是否用於訓練人工智能，Meta 否認此事；Garante 另保留對二零二六年推出、可在雲端處理相簿內容的新功能作單獨評估。Meta 向 CNBC 表示將上訴，稱罰款「不成比例」，並說用戶須先在裝置上授權、隨時可改設定。把「裝置權限」說成已經知情同意，正好是這張罰單要拆的那層戲。雲端處理被留到下一案，說明監視的邊界還未畫完。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="f3">
+  <header class="sec-head"><div class="flag">Musk</div><div><h2>泡沫：「個人使用」的標價是三萬美元，條款卻讓沒有月費的車變成磚頭</h2><p class="sec-sub">人物：Elon Musk · 先收不可退還訂金，再把移動權寫進每月許可；單位經濟還沒算完，聯邦是否准上路也還沒裁定。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://www.theverge.com/transportation/1033844/tesla-personal-cybercab-orders-299-subscription-fine-print" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/25670862/Robotaxi_89.png?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/transportation/1033844/tesla-personal-cybercab-orders-299-subscription-fine-print" target="_blank" rel="noopener">Tesla（The Verge）</a>（外部連結）</p>
+<p class="lead drop">「個人使用」的公關句，掩蓋的是一輛沒有月費就不能在公路上動的裝置。三萬美元的標價不是擁有移動的權利，是一張尚未算完單位經濟、卻已開始收不可退還訂金的入場券。</p>
+<p>Tesla 向「特定顧客」開放 Cybercab「個人使用」預購。The Verge 與 TechCrunch 均寫標價二萬九千九百九十美元，另加強制每月二百九十九美元的「Autonomy Subscription」。The Verge 計算：首月包含在內，五年月費再加一萬七千九百四十美元，未計稅、充電與保險的基準成本約四萬七千六百美元。與取消 Full Self-Driving 後仍可手駕不同，取消這項月費會令 Cybercab 在公路上完全不能用——沒有手動後備，「車就變成磚頭」。買家須支付一千美元不可退還訂金，十二月交付並不保證。條款限定在 Robotaxi 支援區，並須在少數德州城市接受交付。</p>
+<p>二零二四年發布會把「買一輛、掛上 Robotaxi 網賺錢」寫進想像；The Verge 指出現行條款禁止商業用途，既不能做網約車，也不能掛上 Tesla 自有網絡抵銷月費。人工智能主管 Ashok Elluswamy 把客戶車輛入網的可能時間說成二零二七年第二季。公司只需提前三十日通知即可漲價。行政總裁伊隆·馬斯克在 X 上稱，隨著監管批准將可供全國使用，並說月費「太高」，應接近其他車款 Full Self-Driving 與連網費用，大約每月一百一十五美元——這是已報道的公開帖文，不是本報訪問。國家公路交通安全管理局已審查這款沒有方向盤、踏板與側鏡的車輛如何自我認證；Tesla 十月提交說明並要求保密，卻在裁決未出時開始收訂金。先把「個人擁有」的句子放下，看條款允許這輛車做什麼。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="f4">
+  <header class="sec-head"><div class="flag">Miller</div><div><h2>實體：財長要問的不是醜聞劇情，是 Nvidia 是否認得自己的客戶</h2><p class="sec-sub">人物：Chris Miller · 出口管制的死穴在殼公司與實體清單那枝筆，不在雲端合規口號。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://www.cnbc.com/2026/11/13/cnbc-excerpts-us-treasury-secretary-scott-bessent-speaks-with-cnbcs-squawk-box-today.html" target="_blank" rel="noopener"><img src="https://cdn.mos.cms.futurecdn.net/jakBnPpBNjF9ncTK4KKtGG-1920-80.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://www.cnbc.com/2026/11/13/cnbc-excerpts-us-treasury-secretary-scott-bessent-speaks-with-cnbcs-squawk-box-today.html" target="_blank" rel="noopener">Getty Images（Tom's Hardware）</a>（外部連結）</p>
+<p class="lead drop">出口管制的死穴不在簡報上的禁令文字，而在有沒有人認得出「明顯的過手提殼公司」，以及哪個部門握著實體清單那枝筆。芯片不會因為一場人事戲就從機櫃裡消失，也不會因為一句「我們正在堵漏」就改變物理流向。</p>
+<p>美國財政部長 Scott Bessent 十一月十三日在 CNBC《Squawk Box》接受訪問。必須註明：以下均據 CNBC 發布的非正式逐字稿，並須歸屬 CNBC。他說，特朗普已表明中國不應獲得高於 H100 的 Nvidia 芯片，「任何泄漏都令人非常沮喪」。他把目前報道的焦點稱為黃仁勳的「個人醜聞」，並說真正的問題應是：Nvidia 是否認識自己的客戶？是否有過穩健努力，確保沒有泄漏、也沒有把芯片賣給「顯然是過手提的殼公司」？「我認為公司裡任何與此有關的人都應被問責。」這是內閣官員的公開追問，不是法庭對 Nvidia 走私既遂的判決，也不是本報對任何個人作出的有罪認定。官方辭職公告至今仍未說明黃仁勳離任原因；間諜指控不是已判決事實。</p>
+<p>第二組證據是執法權在誰手上。Bessent 稱，財政部、國防部（他在訪問中用 War）、美國貿易代表署與國務院「數月來」贊成把新加坡企業 Megaspeed 列入實體清單，「但商務部握著那枝針——商務部工業與安全局握著那枝針」，內部流程要問他們。昨日稿件因原訪未打開而放棄這條；今日已打開 CNBC 摘錄，故可寫，但仍不把「延遲列入」寫成已證實的動機裁決。出口管制是工業執行問題：禁令寫在紙上之後，還要有人認得出買家、有部門願意下筆。殼公司、轉口與清單，比任何雲端合規口號都更接近機櫃裡的現實。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="hot">
+  <header class="sec-head"><div class="flag">熱門</div><div><h2>熱門話題</h2><p class="sec-sub">FAA 解禁銅線改光纖、意大利罰 Meta 八億、SpaceX 筷子接住上層、Cybercab 個人預購、Stand with Jensen 請願、M365 全部恢復 · 6則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/transportation/1033898/faa-ground-stop-sean-duffy-faa-copper-wire" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/11/gettyimages-2304493507.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.654918655606%2C100%2C78.690162688789&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/transportation/1033898/faa-ground-stop-sean-duffy-faa-copper-wire" target="_blank" rel="noopener">Jacek Boczarski／Anadolu via Getty Images（The Verge）</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/transportation/1033898/faa-ground-stop-sean-duffy-faa-copper-wire" target="_blank" rel="noopener">FAA 於東部時間週五晚八時十五分解除全美地面停飛；週六歸因偏遠設施銅線改光纖、路由器灌水</a></h3>
+    <p class="dek">The Verge 寫，禁飛令於東部時間十一月十三日下午三時四十四分發出，當晚八時十五分解除，逾四小時。週六 Duffy 稱偏遠設施把舊銅線改為光纖，屬「例行維修」；新路由器向航管網絡灌水，連線嘗試逾一千次、每隔四至五秒。Guy 稱發現兩個高頻 ping 地點，關掉後網絡穩住，根因分析仍在進行。Duffy 仍不知是硬體故障、設定錯誤或 L3Harris「無能」。L3Harris 稱已完成計劃轉換七成以上。Cirium 經 TechCrunch：週五晚取消逾八千二百班，週六至少再取消三千班；FlightAware 週五晚八時三十九分快照為九千一百二十四班延誤、五千九百零一班取消，口徑不同不可合併。Bedford 稱零證據顯示惡意或與人工智能有關。不可把事件與 SMART 寫成已證實因果。</p>
+    <p class="meta"><span class="outlet">The Verge（並參 TechCrunch；解除時間見 The Verge 解禁稿）</span><span class="src"> · <a href="https://www.theverge.com/transportation/1033898/faa-ground-stop-sean-duffy-faa-copper-wire" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.garanteprivacy.it/home/docweb/-/docweb-display/docweb/10321080" target="_blank" rel="noopener"><img src="https://image.cnbcfm.com/api/v1/image/108310069-17793063292026-05-20t194305z_1806485342_rc27dla6rwc7_rtrmadp_0_tech-ai-meta-layoffs.jpeg?v=1787074849&amp;w=1920&amp;h=1080" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.garanteprivacy.it/home/docweb/-/docweb-display/docweb/10321080" target="_blank" rel="noopener">Daniel Cole／Reuters（CNBC）</a>（外部連結）</p>
+    <h3><a href="https://www.garanteprivacy.it/home/docweb/-/docweb-display/docweb/10321080" target="_blank" rel="noopener">意大利隱私監管機構罰 Meta 八億零五百萬歐元：Android 版 Facebook 預設取用相簿</a></h3>
+    <p class="dek">Garante 十一月十四日宣布，對 Meta Platforms Ireland Limited 罰款八億零五百萬歐元（CNBC 寫約八億八千七百萬美元），認定 Android 版 Facebook 在未取得特定同意、未充分告知下，取用意大利用戶照片、影片及中繼資料。針對二零二三年起「瀏覽時從相簿取得建議」功能：單一授權覆蓋多種功能，提示籠統，功能預設開啟，通常可永久讀取整本相簿。約二千萬意大利 Android 用戶受影響；六十日內須改為預設關閉並單獨徵求同意。程序不涵蓋是否用於訓練人工智能（Meta 否認）；雲端處理相簿的新功能另案保留。Meta 將上訴，稱罰款不成比例，並指用戶須先在裝置授權。罰款約相當於集團全球營業額百分之零點四七。</p>
+    <p class="meta"><span class="outlet">Garante Privacy（主）；CNBC</span><span class="src"> · <a href="https://www.garanteprivacy.it/home/docweb/-/docweb-display/docweb/10321080" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/science/1033930/spacex-chopstick-starship-catch" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/10/52822624215_2e5d62e50a_o.jpg?quality=90&amp;strip=all&amp;crop=0%2C13.419374014038%2C100%2C73.161251971924&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/science/1033930/spacex-chopstick-starship-catch" target="_blank" rel="noopener">SpaceX（The Verge）</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/science/1033930/spacex-chopstick-starship-catch" target="_blank" rel="noopener">SpaceX 首次用「筷子」塔臂接住 Starship 上層；助推器中止回收並在墨西哥灣上空引爆</a></h3>
+    <p class="dek">The Verge 寫，SpaceX 在第十五次試飛中，於東部時間約下午四時二十分首次用 Mechazilla 塔臂接住 Starship 飛行器本身；此前只成功接過助推器。原定同時回收助推器的計劃中止，助推器在墨西哥灣上空引爆，原因仍在調查。這不是完整成功，因未能回收整套飛行器。Ars Technica 週五報道，上層進入標稱軌道，約四十分鐘後釋放二十六顆 Starlink V3，並稱全部進入軌道；太陽翼全展開端到端約六十米。昨日稿件打開的 CNBC 頁尚未寫完衛星結果，今日以已打開的 Ars 稿補上，並與週六回收分開標明來源。美國 X 趨勢出現 SpaceX、Starship。</p>
+    <p class="meta"><span class="outlet">The Verge（上層回收）；Ars Technica（軌道與衛星）</span><span class="src"> · <a href="https://www.theverge.com/science/1033930/spacex-chopstick-starship-catch" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/transportation/1033844/tesla-personal-cybercab-orders-299-subscription-fine-print" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/25670862/Robotaxi_89.png?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/transportation/1033844/tesla-personal-cybercab-orders-299-subscription-fine-print" target="_blank" rel="noopener">Tesla（The Verge）</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/transportation/1033844/tesla-personal-cybercab-orders-299-subscription-fine-print" target="_blank" rel="noopener">Tesla 向特定顧客開放 Cybercab「個人使用」預購：二萬九千九百九十美元，另加強制每月二百九十九美元</a></h3>
+    <p class="dek">Tesla 邀請特定顧客預購無方向盤雙座 Cybercab「個人使用」，標價二萬九千九百九十美元，另加強制每月二百九十九美元 Autonomy Subscription。The Verge 寫取消月費則公路上完全不能用，無手動後備；五年月費加一萬七千九百四十美元，未計稅與保險的基準約四萬七千六百美元。一千美元訂金不可退還，十二月交付不保證，限 Robotaxi 支援區；條款禁止商業用途，亦不可掛上 Tesla 自有 Robotaxi 網。Elluswamy 稱客戶車輛加入該網可能要到二零二七年第二季。馬斯克在 X 稱隨監管批准將供全國使用，並說月費太高、應約一百一十五美元。NHTSA 已審查無方向盤車輛的自我認證，裁決未出已在收訂金。本輪未做產品實測。</p>
+    <p class="meta"><span class="outlet">The Verge（主）；TechCrunch</span><span class="src"> · <a href="https://www.theverge.com/transportation/1033844/tesla-personal-cybercab-orders-299-subscription-fine-print" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/14/elon-musk-other-tech-execs-sign-petition-calling-on-nvidia-to-reinstate-jensen-huang/" target="_blank" rel="noopener"><img src="https://image.cnbcfm.com/api/v1/image/108330861-1783348415168-gettyimages-2284894623-0d6a8687_71g2vgle.jpeg?v=1794673296&amp;w=1920&amp;h=1080" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/14/elon-musk-other-tech-execs-sign-petition-calling-on-nvidia-to-reinstate-jensen-huang/" target="_blank" rel="noopener">Anna Moneymaker／Getty Images（CNBC）</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/14/elon-musk-other-tech-execs-sign-petition-calling-on-nvidia-to-reinstate-jensen-huang/" target="_blank" rel="noopener">「Stand with Jensen」請願據報逾十一萬五千簽名；兩家股東去信請董事會把黃仁勳回歸列為選項</a></h3>
+    <p class="dek">TechCrunch 週六下午寫，要求恢復黃仁勳職位的請願「似乎」已吸引逾十一萬五千個簽名；請願頁自稱包括五千九百六十五名現職、一千一百零八名前員工與六萬三千零六十三名股東，署名者包括馬斯克、Amjad Masad、Tim Sweeney 與 Garry Tan。簽名數字為請願頁／報道轉述，本報未獨立核對真偽。CNBC 另報道，Altimeter 的 Brad Gerstner 與 Atreides 的 Gavin Baker 週五在 X 公開致董事會信，要求「緩慢、審慎、從容」的接任程序，並考慮「黃仁勳回歸的可能」；信中並未要求立即復職，並稱 Kress 能勝任暫代。兩家合計持股以六月三十日申報計約二十一點三億美元（Altimeter 約九百四十萬股近十九億、Atreides 約一百二十萬股近二點五億），不是今日市值。官方辭職公告仍未說明原因；間諜指控不是已判決事實。</p>
+    <p class="meta"><span class="outlet">TechCrunch（請願）；CNBC（股東信）</span><span class="src"> · <a href="https://techcrunch.com/2026/11/14/elon-musk-other-tech-execs-sign-petition-calling-on-nvidia-to-reinstate-jensen-huang/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/tech/1033864/microsoft-has-finished-restoring-service-after-its-massive-outlook-outage" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2025/10/STK153_MICROSOFT_OUTLOOK_A.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/tech/1033864/microsoft-has-finished-restoring-service-after-its-massive-outlook-outage" target="_blank" rel="noopener">The Verge</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/tech/1033864/microsoft-has-finished-restoring-service-after-its-massive-outlook-outage" target="_blank" rel="noopener">微軟稱約東部時間週六凌晨一時已向所有客戶完成 Microsoft 365 恢復</a></h3>
+    <p class="dek">這是昨日「廣泛恢復」之後的新狀態，不是重寫事故起因。The Verge 週六寫，微軟約東部時間十一月十四日凌晨一時在 X 宣布，已向所有客戶完成服務恢復。該刊稱故障接近兩日。官方此前定性為網絡容量升級引起的技術問題，與網絡攻擊或人工智能／代理無關；完整根因分析尚未見於本輪打開的頁面。不要把「已全部恢復」寫成已經公布最終技術報告。</p>
+    <p class="meta"><span class="outlet">The Verge（引微軟 X 帖）</span><span class="src"> · <a href="https://www.theverge.com/tech/1033864/microsoft-has-finished-restoring-service-after-its-massive-outlook-outage" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="hot-rank">
+    <h2>熱門話題 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://www.theverge.com/transportation/1033898/faa-ground-stop-sean-duffy-faa-copper-wire" target="_blank" rel="noopener">[A] FAA 於東部時間週五晚八時十五分解除全美地面停飛；週六歸因偏遠設施銅線改光纖、路由器灌水</a></li>
+    <li><a href="https://www.garanteprivacy.it/home/docweb/-/docweb-display/docweb/10321080" target="_blank" rel="noopener">[A] 意大利隱私監管機構罰 Meta 八億零五百萬歐元：Android 版 Facebook 預設取用相簿</a></li>
+    <li><a href="https://www.theverge.com/science/1033930/spacex-chopstick-starship-catch" target="_blank" rel="noopener">[A] SpaceX 首次用「筷子」塔臂接住 Starship 上層；助推器中止回收並在墨西哥灣上空引爆</a></li>
+    <li><a href="https://www.theverge.com/transportation/1033844/tesla-personal-cybercab-orders-299-subscription-fine-print" target="_blank" rel="noopener">[A] Tesla 向特定顧客開放 Cybercab「個人使用」預購：二萬九千九百九十美元，另加強制每月二百九十九美元</a></li>
+    <li><a href="https://techcrunch.com/2026/11/14/elon-musk-other-tech-execs-sign-petition-calling-on-nvidia-to-reinstate-jensen-huang/" target="_blank" rel="noopener">[A] 「Stand with Jensen」請願據報逾十一萬五千簽名；兩家股東去信請董事會把黃仁勳回歸列為選項</a></li>
+    <li><a href="https://www.theverge.com/tech/1033864/microsoft-has-finished-restoring-service-after-its-massive-outlook-outage" target="_blank" rel="noopener">[B] 微軟稱約東部時間週六凌晨一時已向所有客戶完成 Microsoft 365 恢復</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="ai">
+  <header class="sec-head"><div class="flag">AI</div><div><h2>AI 與模型</h2><p class="sec-sub">GitHub 停用 Copilot 六模型、亞馬遜 World Product Graph · 2則</p></div></header>
+  <div class="grid">
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://github.blog/changelog/2026-11-13-upcoming-deprecation-of-selected-github-copilot-models-in-december/" target="_blank" rel="noopener"><img src="https://github.blog/wp-content/uploads/2026/11/645867806-878ea927-48c9-4765-a896-4a5f3d7b8f2e.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://github.blog/changelog/2026-11-13-upcoming-deprecation-of-selected-github-copilot-models-in-december/" target="_blank" rel="noopener">GitHub</a>（外部連結）</p>
+    <h3><a href="https://github.blog/changelog/2026-11-13-upcoming-deprecation-of-selected-github-copilot-models-in-december/" target="_blank" rel="noopener">GitHub 宣布十二月十四日起停用 Copilot 六款模型；Kimi K3 替代尚未公布</a></h3>
+    <p class="dek">GitHub 十一月十三日變更日誌寫，將於十二月十四日在所有 Copilot 體驗（包括 Chat、行內編輯、ask／agent 模式與補全）停用六款模型：Claude Fable 5（建議改 Fable 5.2）、Claude Haiku 4.5（建議 Haiku 5.5）、Gemini 3.8 Flash（建議 Gemini 4 Hydrogen）、Gemini 4 Argon（建議 Gemini 4 Carbon）、Grok 4.6（建議 Grok 4.7），以及 Kimi K3（替代「待公布」）。腳註寫，Haiku 4.5 對個人年繳訂戶仍保留，停用不及於這些顧客。企業與商業版在預設啟用下會自動打開建議替代，除非管理員關閉全局預設或明確禁用該模型。</p>
+    <p class="meta"><span class="outlet">GitHub Changelog</span><span class="src"> · <a href="https://github.blog/changelog/2026-11-13-upcoming-deprecation-of-selected-github-copilot-models-in-december/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/tech/1033697/amazon-world-product-graph-ai-search" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2025/09/acastro_STK103__03.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/tech/1033697/amazon-world-product-graph-ai-search" target="_blank" rel="noopener">The Verge</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/tech/1033697/amazon-world-product-graph-ai-search" target="_blank" rel="noopener">路透：亞馬遜內部文件構想「World Product Graph」索引全網商品；公司稱或屬過時草稿</a></h3>
+    <p class="dek">The Verge 引路透稱，亞馬遜計劃建立「World Product Graph」，收錄互聯網上出售的商品資料，包括自己不售賣的商品，以便購物者與人工智能代理更留在亞馬遜。報道稱內部文件寫既有購物助理（原名 Rufus，現稱 Alexa for Shopping）「許多答案事實錯誤或不完整」，且用人工智能跑搜尋成本高，望以更多數據提高準確並改用更便宜模型；文件並有二零二七年十月一日發布日期。路透寫尚不清楚計劃會否或何時實施。亞馬遜向路透聲明：過時或不完整的腦力激盪文件「不一定反映目前計劃」。這是據報內部構想，不是已上線產品。本輪未打開路透原文，事實以 The Verge 轉述為準。</p>
+    <p class="meta"><span class="outlet">The Verge（引路透）</span><span class="src"> · <a href="https://www.theverge.com/tech/1033697/amazon-world-product-graph-ai-search" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="ai-rank">
+    <h2>AI 與模型 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://github.blog/changelog/2026-11-13-upcoming-deprecation-of-selected-github-copilot-models-in-december/" target="_blank" rel="noopener">[B] GitHub 宣布十二月十四日起停用 Copilot 六款模型；Kimi K3 替代尚未公布</a></li>
+    <li><a href="https://www.theverge.com/tech/1033697/amazon-world-product-graph-ai-search" target="_blank" rel="noopener">[B] 路透：亞馬遜內部文件構想「World Product Graph」索引全網商品；公司稱或屬過時草稿</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="security">
+  <header class="sec-head"><div class="flag">資安</div><div><h2>資安與基礎設施</h2><p class="sec-sub">Cursor Fireworks 金鑰外洩、Mior 與 Skyfall、FaceStealer 逾四億 · 3則</p></div></header>
+  <div class="grid">
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://cursor.com/blog/security-incident-update" target="_blank" rel="noopener"><img src="https://ptht05hbb1ssoooe.public.blob.vercel-storage.com/assets/og/opengraph-default.png" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://cursor.com/blog/security-incident-update" target="_blank" rel="noopener">Cursor</a>（外部連結）</p>
+    <h3><a href="https://cursor.com/blog/security-incident-update" target="_blank" rel="noopener">Cursor 公布事故調查：Fireworks 金鑰外洩後，惡意 Claude Code 擴充最多或影響五千名用戶</a></h3>
+    <p class="dek">Cursor 十一月十三日更新十月二十九日事故：攻擊者利用 Fireworks 暴露的、由 Cursor 簽發給該供應商的存取金鑰，複製只讀存儲桶中、主要來自二零二五年、非 Privacy Mode 的編碼代理軌跡；少於百分之零點零一客戶的未脫敏應用程式介面憑證外洩，攻擊者進而取用部分內部 SaaS、非生產原始碼庫、有限客服與用量資料。十月二十九日，攻擊者把未經授權的 Anthropic Claude Code 擴充複本放入 Cursor VS Code 市集快取，版本 2.1.312 與 2.1.313，約十一小時；官方稱 Anthropic 並未發布該複本，Open VSX 源站無惡意程式。最多約五千名在當日請求特定快取版本的用戶可能收到。Cursor 稱最後一次攻擊活動見於十一月一日並已被擋，推斷事故已受控；已將推論流量移離 Fireworks。卸載擴充可能不夠，須跟官方修復步驟。</p>
+    <p class="meta"><span class="outlet">Cursor（官方）</span><span class="src"> · <a href="https://cursor.com/blog/security-incident-update" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://thehackernews.com/2026/11/new-mior-and-skyfall-attacks-let-rogue.html" target="_blank" rel="noopener"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi28SrA-dW0l0kreAg1vMHHOgBRMM7lzxv5qg2FT2HzRxReJ96pxZP4Fjpm15fYWDDgWpbBI8iC119aE37t_kmQ4guoA70NUlJsdiA4hFvTg8fflx9fsKqUsGuoB-S9VS5pPd38EBVYRGmvKIT5EylE3IwEK8bBCp5CkLrdTwhbyUA2xWN_0iOynP33yE8/s1700-nu-rw-lo-l85-e365/amd-flaws.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://thehackernews.com/2026/11/new-mior-and-skyfall-attacks-let-rogue.html" target="_blank" rel="noopener">The Hacker News</a>（外部連結）</p>
+    <h3><a href="https://thehackernews.com/2026/11/new-mior-and-skyfall-attacks-let-rogue.html" target="_blank" rel="noopener">研究者公開 Mior 與 Skyfall：惡意宿主可攻擊 AMD SEV-SNP 機密虛擬機；修補視伺服器廠商韌體</a></h3>
+    <p class="dek">The Hacker News 十一月十三日整理兩項本週公開的攻擊。Mior（CVE-2026-0462，CVSS 4.0 評 5.9）需控制虛擬機監視器與 BIOS，並借助 PCIe 裝置，可改寫機密虛擬機記憶體並偽造證明；研究團隊在一顆 Zen 5 EPYC 9135 上兩輪合共一千次嘗試均成功。Skyfall（CVE-2026-40671，評 4.9）由 ETH Zurich 與 Google 團隊提出，需惡意宿主、不必改硬體，可經暫態排程攻擊洩漏暫存器，示範中取回測試虛擬機的磁碟加密金鑰；在 Zen 3／Zen 4 上展示，未在 Zen 5 展示該洩漏。兩者皆為實驗室條件。AMD 列 SEV 韌體與微碼日期為八月十二日，計劃十一月向伺服器廠商提供 Skyfall 平台韌體、十二月提供 Mior；客戶須向主板廠取 BIOS。公告未寫已遭野外利用。IEEE 程式委員會曾批評 Skyfall 論文對真實攻擊條件考慮不足，須一併寫明。</p>
+    <p class="meta"><span class="outlet">The Hacker News（引 ETH Zurich／Google 論文與 AMD 公告）</span><span class="src"> · <a href="https://thehackernews.com/2026/11/new-mior-and-skyfall-attacks-let-rogue.html" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.bleepingcomputer.com/news/security/us-disrupts-north-korean-campaign-behind-400-million-crypto-theft/" target="_blank" rel="noopener"><img src="https://www.bleepstatic.com/content/hl-images/2026/10/21/DPRK.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.bleepingcomputer.com/news/security/us-disrupts-north-korean-campaign-behind-400-million-crypto-theft/" target="_blank" rel="noopener">BleepingComputer</a>（外部連結）</p>
+    <h3><a href="https://www.bleepingcomputer.com/news/security/us-disrupts-north-korean-campaign-behind-400-million-crypto-theft/" target="_blank" rel="noopener">美國當局搗破朝鮮「FaceStealer」社工行動，稱竊取逾四億美元加密貨幣</a></h3>
+    <p class="dek">BleepingComputer 十一月十四日報道，美國政府搗破持續約十八個月、名為 FaceStealer 的朝鮮社會工程行動，稱其竊取逾四億美元加密貨幣，並查封雲端基礎設施。FBI 稱攻擊者劫持 Telegram、LinkedIn、Slack、Discord 帳戶，邀請加密貨幣與 Web3 人士及開源開發者視訊開會，暗中錄下逾九百段網路攝影機影片，再配深偽與假故障「修復」連結散播惡意程式。Arctic Wolf 將行動歸於 BlueNoroff，並列出六百七十七個目標、五十八個國家，重點是創辦人與高管——此為該公司數字，不是政府認定的完整受害者名單。FBI 確認針對 npm 與 Rust crate 生態開發者的多次嘗試，其中一次針對下載量以千萬計的熱門 JavaScript 庫維護者，因及時發現而未得手。另項宣布：司法部稱與私營機構凍結 Binance 六十四億美元被盜案中逾二十七億，並已獲法院授權扣押或限制其中逾十二億；兩案金額不可混寫。</p>
+    <p class="meta"><span class="outlet">BleepingComputer（引 FBI；Arctic Wolf）</span><span class="src"> · <a href="https://www.bleepingcomputer.com/news/security/us-disrupts-north-korean-campaign-behind-400-million-crypto-theft/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="security-rank">
+    <h2>資安與基礎設施 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://cursor.com/blog/security-incident-update" target="_blank" rel="noopener">[A] Cursor 公布事故調查：Fireworks 金鑰外洩後，惡意 Claude Code 擴充最多或影響五千名用戶</a></li>
+    <li><a href="https://thehackernews.com/2026/11/new-mior-and-skyfall-attacks-let-rogue.html" target="_blank" rel="noopener">[B] 研究者公開 Mior 與 Skyfall：惡意宿主可攻擊 AMD SEV-SNP 機密虛擬機；修補視伺服器廠商韌體</a></li>
+    <li><a href="https://www.bleepingcomputer.com/news/security/us-disrupts-north-korean-campaign-behind-400-million-crypto-theft/" target="_blank" rel="noopener">[B] 美國當局搗破朝鮮「FaceStealer」社工行動，稱竊取逾四億美元加密貨幣</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="product">
+  <header class="sec-head"><div class="flag">產品</div><div><h2>消費電子／平台</h2><p class="sec-sub">新款 Apple TV YouTube 錯誤、Cybertruck 明年停產 · 2則</p></div></header>
+  <div class="grid">
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/tech/1033076/apple-tv-4k-youtube-error" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/11/268864_Smart_home_photos_HMCRAE37.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.761835884455%2C100%2C78.47632823109&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/tech/1033076/apple-tv-4k-youtube-error" target="_blank" rel="noopener">Hunter McRae／The Verge</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/tech/1033076/apple-tv-4k-youtube-error" target="_blank" rel="noopener">新款 Apple TV 4K 到貨日 YouTube 顯示「尚未提供」或測試版警告；需更新、重裝</a></h3>
+    <p class="dek">The Verge 十一月十三日報道，首批新款 Apple TV 4K 到貨後，YouTube 應用最初只顯示黑底、二維碼與「此裝置尚未提供 YouTube」；部分情況應用可用，但底部有紅條寫「僅批准用於裝置測試、不可作生產用途」。該刊 Tom Warren 寫，只安裝 tvOS 27.2 並重啟仍不夠，還須卸載再安裝應用。本輪未做產品實測，亦未獨立確認所有地區與帳號是否已恢復。不要把個別編輯的修復步驟寫成蘋果或 YouTube 的官方全面修復聲明。</p>
+    <p class="meta"><span class="outlet">The Verge</span><span class="src"> · <a href="https://www.theverge.com/tech/1033076/apple-tv-4k-youtube-error" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/14/tesla-opens-cybercab-pre-orders-for-personal-use-with-geo-restrictions-and-a-299-monthly-fee/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/10/tesla-cybercab-getty.jpg?resize=1200,834" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/14/tesla-opens-cybercab-pre-orders-for-personal-use-with-geo-restrictions-and-a-299-monthly-fee/" target="_blank" rel="noopener">Josh Edelson／AFP／Getty Images（TechCrunch）</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/14/tesla-opens-cybercab-pre-orders-for-personal-use-with-geo-restrictions-and-a-299-monthly-fee/" target="_blank" rel="noopener">TechCrunch：Tesla 稱將於明年停產 Cybertruck，把產能轉用於更多 Cybercab</a></h3>
+    <p class="dek">TechCrunch 在 Cybercab 預購報道中寫，Tesla 近期宣布，在銷售遠低於預期後，將於明年停止生產 Cybertruck，並把額外工廠產能用於建造更多 Cybercab。這是該刊對公司近期宣布的轉述，不是本輪打開的獨立停產新聞稿；細節與最後生產日期以公司官方說明為準，本輪未打開該官方頁。可與「個人使用」預購同日並讀，但停產宣布本身不是預購頁上的新條款。不要發明銷量數字或具體停線日期。</p>
+    <p class="meta"><span class="outlet">TechCrunch</span><span class="src"> · <a href="https://techcrunch.com/2026/11/14/tesla-opens-cybercab-pre-orders-for-personal-use-with-geo-restrictions-and-a-299-monthly-fee/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="product-rank">
+    <h2>消費電子／平台 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://www.theverge.com/tech/1033076/apple-tv-4k-youtube-error" target="_blank" rel="noopener">[B] 新款 Apple TV 4K 到貨日 YouTube 顯示「尚未提供」或測試版警告；需更新、重裝</a></li>
+    <li><a href="https://techcrunch.com/2026/11/14/tesla-opens-cybercab-pre-orders-for-personal-use-with-geo-restrictions-and-a-299-monthly-fee/" target="_blank" rel="noopener">[B] TechCrunch：Tesla 稱將於明年停產 Cybertruck，把產能轉用於更多 Cybercab</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="chips">
+  <header class="sec-head"><div class="flag">晶片</div><div><h2>晶片／硬體／地緣</h2><p class="sec-sub">Bessent 問 Nvidia 殼公司、AMD MEXT 自稱成績、Nvidia 十七日業績 · 3則</p></div></header>
+  <div class="grid">
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.cnbc.com/2026/11/13/cnbc-excerpts-us-treasury-secretary-scott-bessent-speaks-with-cnbcs-squawk-box-today.html" target="_blank" rel="noopener"><img src="https://cdn.mos.cms.futurecdn.net/jakBnPpBNjF9ncTK4KKtGG-1920-80.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.cnbc.com/2026/11/13/cnbc-excerpts-us-treasury-secretary-scott-bessent-speaks-with-cnbcs-squawk-box-today.html" target="_blank" rel="noopener">Getty Images（Tom's Hardware）</a>（外部連結）</p>
+    <h3><a href="https://www.cnbc.com/2026/11/13/cnbc-excerpts-us-treasury-secretary-scott-bessent-speaks-with-cnbcs-squawk-box-today.html" target="_blank" rel="noopener">財長 Bessent 問 Nvidia 是否把受限芯片賣給明顯的過手提殼公司；稱商務部握著 Megaspeed 清單的筆</a></h3>
+    <p class="dek">財政部長 Scott Bessent 十一月十三日在 CNBC《Squawk Box》稱，特朗普已表明中國不應獲得高於 H100 的 Nvidia 芯片，任何泄漏都令人沮喪。他說報道焦點一直在黃仁勳「個人醜聞」，真正的問題應是 Nvidia 是否認識客戶、有無穩健努力避免把芯片賣給「顯然是過手提的殼公司」，並稱公司裡任何與此有關的人都應被問責。他並稱財政部、國防部、貿易代表署與國務院數月來贊成把 Megaspeed 列入實體清單，但「商務部工業與安全局握著那枝針」。這是內閣追問，不是走私既遂判決。昨日因原訪未打開而放棄此條，今日已打開摘錄。Tom's 另述「數百萬顆」未出現在摘錄中，不用。</p>
+    <p class="meta"><span class="outlet">CNBC（非正式逐字稿；須歸屬 CNBC）</span><span class="src"> · <a href="https://www.cnbc.com/2026/11/13/cnbc-excerpts-us-treasury-secretary-scott-bessent-speaks-with-cnbcs-squawk-box-today.html" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.tomshardware.com/pc-components/cpus/amd-shares-how-it-can-retain-95-percent-of-server-performance-with-just-half-the-dram-sidestepping-memory-shortages-with-mext-tech-powers-over-100-servers-already-running-with-plans-to-expand-to-2-000-servers-in-2027" target="_blank" rel="noopener"><img src="https://cdn.mos.cms.futurecdn.net/CfkRhJPbi3HLoQoeJumTMi-1920-80.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.tomshardware.com/pc-components/cpus/amd-shares-how-it-can-retain-95-percent-of-server-performance-with-just-half-the-dram-sidestepping-memory-shortages-with-mext-tech-powers-over-100-servers-already-running-with-plans-to-expand-to-2-000-servers-in-2027" target="_blank" rel="noopener">AMD（Tom's Hardware）</a>（外部連結）</p>
+    <h3><a href="https://www.tomshardware.com/pc-components/cpus/amd-shares-how-it-can-retain-95-percent-of-server-performance-with-just-half-the-dram-sidestepping-memory-shortages-with-mext-tech-powers-over-100-servers-already-running-with-plans-to-expand-to-2-000-servers-in-2027" target="_blank" rel="noopener">AMD 展示 MEXT：公司自稱一半實體記憶體可保留約九成五效能；外部驗證仍缺</a></h3>
+    <p class="dek">Tom's Hardware 十一月十一日報道，AMD 進一步介紹預測記憶體引擎 MEXT：把冷頁面卸到快閃記憶體，再用人工智能模型預取。AMD 稱內部已部署一百四十五台伺服器，明年擬擴至二千台，並與 HPE 合作推出「MEXT Ready」機種；第一階段為預留 NVMe，第二階段授權與 RAM View 工具尚無時間表。公司稱在 Synopsys PrimeTime 上，一半實體記憶體可保留約百分之九十五效能；在 Azure 三節點 Spark SQL 與部分代理工作負載上自稱約百分之九十九。上述皆為廠商內部成績，Tom's 寫腳註尚未提供，無法核對測試方法。技術現為 EPYC 專用授權，廣泛供應時程未定。不要把自稱成績寫成獨立基準。</p>
+    <p class="meta"><span class="outlet">Tom's Hardware（引 AMD 宣稱）</span><span class="src"> · <a href="https://www.tomshardware.com/pc-components/cpus/amd-shares-how-it-can-retain-95-percent-of-server-performance-with-just-half-the-dram-sidestepping-memory-shortages-with-mext-tech-powers-over-100-servers-already-running-with-plans-to-expand-to-2-000-servers-in-2027" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.cnbc.com/2026/11/13/nvidia-huang-ceo-replacement-search.html" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2025/05/GettyImages-2216028442.jpg?w=1024" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 C</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.cnbc.com/2026/11/13/nvidia-huang-ceo-replacement-search.html" target="_blank" rel="noopener">Li Hongbo／VCG／Getty Images（TechCrunch）</a>（外部連結）</p>
+    <h3><a href="https://www.cnbc.com/2026/11/13/nvidia-huang-ceo-replacement-search.html" target="_blank" rel="noopener">Nvidia 定於十一月十七日公布第三季業績，將是 Kress 暫代執行長後首次亮相</a></h3>
+    <p class="dek">Nvidia 原定十一月十七日公布第三季業績。十一月十三日官方安排維持的表述已在本報專題與短項出現；今日只作週日日程提醒：若如期舉行，將是財務長 Colette Kress 暫代執行長後首次對市場講解業績。董事會仍在進行執行長遴選，CNBC 昨引董事會稱尚未選定獵頭、未正式接觸人選。不要把「即將公布」寫成已經公布的數字，亦不要預寫指引或股價。本則無新財務數字。</p>
+    <p class="meta"><span class="outlet">日程觀察（公司既定安排；昨日 CNBC 董事會搜尋稿為相關背景）</span><span class="src"> · <a href="https://www.cnbc.com/2026/11/13/nvidia-huang-ceo-replacement-search.html" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="chips-rank">
+    <h2>晶片／硬體／地緣 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://www.cnbc.com/2026/11/13/cnbc-excerpts-us-treasury-secretary-scott-bessent-speaks-with-cnbcs-squawk-box-today.html" target="_blank" rel="noopener">[A] 財長 Bessent 問 Nvidia 是否把受限芯片賣給明顯的過手提殼公司；稱商務部握著 Megaspeed 清單的筆</a></li>
+    <li><a href="https://www.tomshardware.com/pc-components/cpus/amd-shares-how-it-can-retain-95-percent-of-server-performance-with-just-half-the-dram-sidestepping-memory-shortages-with-mext-tech-powers-over-100-servers-already-running-with-plans-to-expand-to-2-000-servers-in-2027" target="_blank" rel="noopener">[B] AMD 展示 MEXT：公司自稱一半實體記憶體可保留約九成五效能；外部驗證仍缺</a></li>
+    <li><a href="https://www.cnbc.com/2026/11/13/nvidia-huang-ceo-replacement-search.html" target="_blank" rel="noopener">[C] Nvidia 定於十一月十七日公布第三季業績，將是 Kress 暫代執行長後首次亮相</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="policy">
+  <header class="sec-head"><div class="flag">政策</div><div><h2>政策／監管</h2><p class="sec-sub">NHTSA 審查 Cybercab、Lutnick 眾院情報作證 · 2則</p></div></header>
+  <div class="grid">
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/transportation/1033844/tesla-personal-cybercab-orders-299-subscription-fine-print" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/25670862/Robotaxi_89.png?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/transportation/1033844/tesla-personal-cybercab-orders-299-subscription-fine-print" target="_blank" rel="noopener">Tesla（The Verge）</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/transportation/1033844/tesla-personal-cybercab-orders-299-subscription-fine-print" target="_blank" rel="noopener">The Verge：NHTSA 已對無方向盤 Cybercab 的自我認證展開正式審查，Tesla 仍在收不可退還訂金</a></h3>
+    <p class="dek">The Verge 寫，國家公路交通安全管理局已對 Tesla 如何為一輛沒有方向盤、踏板與側鏡的車輛作自我認證，開啟正式審查。Tesla 於十月提交法律說明，並要求整份回應保密；在裁決仍待決之際，公司已向受邀顧客收取一千美元不可退還訂金。訂閱條款涵蓋自動駕駛、維修與拖吊，但明確不包括保險；該刊寫公司尚未說明個人車險如何承保、或事故責任如何在車主與 Tesla 之間劃分。這是監管程序，不是已作出的禁售或放行決定。</p>
+    <p class="meta"><span class="outlet">The Verge</span><span class="src"> · <a href="https://www.theverge.com/transportation/1033844/tesla-personal-cybercab-orders-299-subscription-fine-print" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.cnbc.com/2026/11/14/nvidia-investors-jensen-huang-return-board-letter.html" target="_blank" rel="noopener"><img src="https://image.cnbcfm.com/api/v1/image/108330861-1783348415168-gettyimages-2284894623-0d6a8687_71g2vgle.jpeg?v=1794673296&amp;w=1920&amp;h=1080" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.cnbc.com/2026/11/14/nvidia-investors-jensen-huang-return-board-letter.html" target="_blank" rel="noopener">Anna Moneymaker／Getty Images（CNBC）</a>（外部連結）</p>
+    <h3><a href="https://www.cnbc.com/2026/11/14/nvidia-investors-jensen-huang-return-board-letter.html" target="_blank" rel="noopener">CNBC：另有信件要求商務部長 Lutnick 就 Megaspeed 到眾院情報委員會作證</a></h3>
+    <p class="dek">這是作證日程的新補充，不是重寫昨日參院銀行委員會已邀請黃仁勳十二月三日、Lutnick 十二月十日作證且 Lutnick 已同意的主軸。CNBC 十一月十四日寫，另有一封週五發出的信件，要求 Lutnick 就 Megaspeed 到眾議院情報委員會作證。該刊並轉述《紐約時報》：商務部對 Megaspeed 的調查於二零二五年在 Nvidia 律師接洽一名商務部高層後轉至司法部——此為時報轉述，本輪未打開時報原文，只作背景、不作本報獨立核實。不要把「被要求作證」寫成已經出席或已經定性。</p>
+    <p class="meta"><span class="outlet">CNBC</span><span class="src"> · <a href="https://www.cnbc.com/2026/11/14/nvidia-investors-jensen-huang-return-board-letter.html" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="policy-rank">
+    <h2>政策／監管 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://www.theverge.com/transportation/1033844/tesla-personal-cybercab-orders-299-subscription-fine-print" target="_blank" rel="noopener">[B] The Verge：NHTSA 已對無方向盤 Cybercab 的自我認證展開正式審查，Tesla 仍在收不可退還訂金</a></li>
+    <li><a href="https://www.cnbc.com/2026/11/14/nvidia-investors-jensen-huang-return-board-letter.html" target="_blank" rel="noopener">[B] CNBC：另有信件要求商務部長 Lutnick 就 Megaspeed 到眾院情報委員會作證</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="opensource">
+  <header class="sec-head"><div class="flag">開源</div><div><h2>開源／開發</h2><p class="sec-sub">Linux 7.5 Radeon UVD 修復、Cloudflare 開源 Kitesurf · 2則</p></div></header>
+  <div class="grid">
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.phoronix.com/news/Codex-R600-UVD-FIx-Linux-7.5" target="_blank" rel="noopener"><img src="https://www.phoronix.com/phxcms7-css/phoronix.png" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.phoronix.com/news/Codex-R600-UVD-FIx-Linux-7.5" target="_blank" rel="noopener">Phoronix（網站標誌；正文無獨立新聞配圖）</a>（外部連結）</p>
+    <h3><a href="https://www.phoronix.com/news/Codex-R600-UVD-FIx-Linux-7.5" target="_blank" rel="noopener">Linux 7.5 合併窗口將納入 Radeon HD 2000／3000 世代 UVD 修復；貢獻者稱調查得助於 Codex</a></h3>
+    <p class="dek">Phoronix 十一月十二日報道，發往 Linux 7.5 合併窗口的 AMD 顯示驅動拉取請求，包含對 R6xx 世代（Radeon HD 2000／3000 一帶）Unified Video Decoder 的修復：當解碼器從系統記憶體讀取壓縮影片、同時 GPU 正在繪圖時會出現畫面損毀；把輸入留在顯示記憶體後，測試機可正確解碼。補丁涵蓋 RV610、RV620、RV630、RV635 與 RV670。貢獻者 Ted Bullock 寫，調查、測試與補丁得到 OpenAI Codex 協助，並在 Debian 與一台 iMac7,1 上驗證；他寫其他型號仍須有該硬體的人核對。這是已接受、將進入合併窗口的補丁，不是已發布的穩定版核心。不要寫成「人工智能獨自修好驅動」。</p>
+    <p class="meta"><span class="outlet">Phoronix</span><span class="src"> · <a href="https://www.phoronix.com/news/Codex-R600-UVD-FIx-Linux-7.5" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://blog.cloudflare.com/kitesurf-open-source/" target="_blank" rel="noopener"><img src="https://blog.cloudflare.com/_emdash/api/media/file/01M7B8M86AWYDHNF9C7R2V0CXH.png" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://blog.cloudflare.com/kitesurf-open-source/" target="_blank" rel="noopener">Cloudflare</a>（外部連結）</p>
+    <h3><a href="https://blog.cloudflare.com/kitesurf-open-source/" target="_blank" rel="noopener">Cloudflare 以 Apache 2.0 開源 Kitesurf：在 Workers 上運行、給人工智能代理用的無狀態瀏覽器引擎</a></h3>
+    <p class="dek">Cloudflare 十一月十三日宣布，八月推出的 Kitesurf 已在 GitHub 以 Apache 2.0 開源。官方稱它在 Cloudflare Workers 上解析 HTML、套用 CSS、執行頁面 JavaScript 並產生截圖，不必跑完整瀏覽器容器，並支援 Chrome DevTools Protocol，可接 Puppeteer。倉庫建立在 Blitz、Stylo、Boa 與 Linebender 等開源元件之上，第三方授權見 NOTICE。本地可以 pnpm run dev 啟動；部署到自家帳戶需 Workers Paid 方案，因使用 Dynamic Workers 為頁面建立隔離環境。官方寫引擎仍在大量開發，重點是兼容、可靠與效率，歡迎有測試與範圍清楚的貢獻。本輪未做獨立基準。</p>
+    <p class="meta"><span class="outlet">Cloudflare Blog</span><span class="src"> · <a href="https://blog.cloudflare.com/kitesurf-open-source/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="opensource-rank">
+    <h2>開源／開發 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://www.phoronix.com/news/Codex-R600-UVD-FIx-Linux-7.5" target="_blank" rel="noopener">[B] Linux 7.5 合併窗口將納入 Radeon HD 2000／3000 世代 UVD 修復；貢獻者稱調查得助於 Codex</a></li>
+    <li><a href="https://blog.cloudflare.com/kitesurf-open-source/" target="_blank" rel="noopener">[B] Cloudflare 以 Apache 2.0 開源 Kitesurf：在 Workers 上運行、給人工智能代理用的無狀態瀏覽器引擎</a></li>
+    </ol>
+  </div>
+</section>
+  <footer class="footer">
+    <p>每日 IT 報 · 2026-11-15（日）· 香港時間 · 共 20 則精選 + 4 篇人物專題 · 配圖直接 hotlink 外部 https 來源，無 base64 嵌圖、無本機 assets · 每則附熱度 A/B/C · 各分類欄附熱度排行。</p>
+    <p>來源涵蓋歐美主流科技／財經／資安媒體、公司通告與社群熱度交叉；摘要約 100–150 字繁中，事實以原文為準。專題以人物視角撰寫（Yuval Noah Harari／Edward Snowden／Elon Musk／Chris Miller）。例行每日（含週末）。</p>
+  </footer>
+</main>
+
+</body>
+</html>

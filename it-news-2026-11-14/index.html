@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>每日 IT 報｜2026年11月14日 · Pixel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --cream:#F5F5EC;
+  --paper:#FFFEF7;
+  --navy:#0A2558;
+  --navy2:#14356e;
+  --sky:#A3C1DA;
+  --sky2:#C5D9EA;
+  --sky3:#E8F1F8;
+  --ink:#0A2558;
+  --ink2:#1e3a66;
+  --muted:#5a6f8a;
+  --link:#0A2558;
+  --white:#fffef9;
+  --heat-a:#0A2558;
+  --heat-b:#3d5a80;
+  --heat-c:#7a8fa8;
+  --px:4px;
+}
+*{box-sizing:border-box}
+html{font-size:16.5px}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(163,193,218,.35) 0 2px, transparent 3px),
+    radial-gradient(circle at 88% 18%, rgba(10,37,88,.12) 0 2px, transparent 3px),
+    radial-gradient(circle at 70% 92%, rgba(163,193,218,.28) 0 2px, transparent 3px),
+    var(--cream);
+  background-size:28px 28px, 36px 36px, 24px 24px, auto;
+  color:var(--ink);
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  line-height:1.55;
+  image-rendering:auto;
+}
+a{color:var(--link); text-decoration:none; border-bottom:2px solid transparent}
+a:hover{border-bottom-color:var(--sky); background:var(--sky3)}
+
+/* pixel border helper — stepped corners via box-shadow */
+.pixel-border{
+  border:3px solid var(--navy);
+  box-shadow:
+    3px 0 0 0 var(--navy),
+    -3px 0 0 0 var(--navy),
+    0 3px 0 0 var(--navy),
+    0 -3px 0 0 var(--navy),
+    6px 6px 0 0 rgba(10,37,88,.18);
+  clip-path: polygon(
+    0 8px, 8px 8px, 8px 0,
+    calc(100% - 8px) 0, calc(100% - 8px) 8px, 100% 8px,
+    100% calc(100% - 8px), calc(100% - 8px) calc(100% - 8px), calc(100% - 8px) 100%,
+    8px 100%, 8px calc(100% - 8px), 0 calc(100% - 8px)
+  );
+}
+
+.wrap{
+  max-width:1000px; margin:1.25rem clamp(1rem,5vw,3rem) 2.5rem; padding:1.35rem clamp(1.75rem,7vw,3.75rem) 2.5rem;
+  background:var(--paper);
+  border:3px solid var(--navy);
+  position:relative;
+  box-shadow:
+    4px 4px 0 0 var(--navy),
+    8px 8px 0 0 var(--sky);
+}
+/* dither + decorations around wrap */
+.wrap::before,.wrap::after{
+  content:"+"; position:absolute; color:var(--sky); font-family:"Press Start 2P",monospace;
+  font-size:.55rem; line-height:1; pointer-events:none; opacity:.85;
+}
+.wrap::before{top:.55rem; left:.7rem}
+.wrap::after{bottom:.55rem; right:.7rem}
+
+/* ===== MASTHEAD ===== */
+.masthead{
+  text-align:center;
+  padding:1.6rem 1rem 1.25rem;
+  margin:0 0 1.15rem;
+  background:linear-gradient(180deg, var(--sky3) 0%, var(--paper) 70%);
+  border:3px solid var(--navy);
+  position:relative;
+  box-shadow:4px 4px 0 0 var(--navy);
+}
+.masthead::before{
+  content:"PLAY · WORK · CREATE · CONNECT";
+  position:absolute; left:.5rem; top:50%; transform:translateY(-50%) rotate(-90deg);
+  transform-origin:center; font-family:"Press Start 2P",monospace; font-size:.42rem;
+  letter-spacing:.08em; color:var(--sky); white-space:nowrap; opacity:.7;
+  display:none;
+}
+@media (min-width:860px){
+  .masthead::before{display:block}
+}
+.masthead .kicker{
+  font-family:"Press Start 2P",monospace;
+  font-size:.55rem; letter-spacing:.12em; color:var(--navy);
+  margin-bottom:.85rem;
+  display:inline-block;
+  background:var(--navy); color:#fff;
+  padding:.45rem .7rem;
+  box-shadow:3px 3px 0 0 var(--sky);
+}
+.masthead h1{
+  font-family:"Press Start 2P",monospace;
+  font-size:clamp(1.15rem, 4.2vw, 1.85rem);
+  margin:.35rem 0 .7rem; font-weight:400; letter-spacing:.06em;
+  color:var(--navy);
+  text-shadow: 3px 3px 0 var(--sky), 6px 6px 0 rgba(10,37,88,.15);
+  line-height:1.45;
+}
+.masthead .date{
+  font-family:"VT323",monospace;
+  font-size:1.35rem; color:var(--navy2); margin-top:.15rem; letter-spacing:.04em;
+}
+.masthead .tagline{
+  font-size:.8rem; color:var(--muted); margin:.55rem auto 0; max-width:46rem; line-height:1.5;
+}
+
+/* floating pluses in masthead */
+.masthead .date::before{content:"+  "; color:var(--sky); font-family:"Press Start 2P",monospace; font-size:.5rem}
+.masthead .date::after{content:"  +"; color:var(--sky); font-family:"Press Start 2P",monospace; font-size:.5rem}
+
+/* ===== TOC ===== */
+.toc{
+  display:flex; flex-wrap:wrap; gap:.45rem .55rem; justify-content:center;
+  margin:0 0 1.5rem; padding:.85rem .6rem;
+  border:3px solid var(--navy); background:var(--sky3);
+  box-shadow:3px 3px 0 0 var(--navy);
+  font-size:.82rem;
+}
+.toc a{
+  color:#fff; background:var(--navy); border:2px solid var(--navy);
+  padding:.28rem .55rem; font-weight:700; letter-spacing:.02em;
+  box-shadow:2px 2px 0 0 var(--sky);
+  border-bottom:2px solid var(--navy);
+}
+.toc a:hover{
+  background:var(--sky); color:var(--navy); border-bottom-color:var(--navy);
+}
+
+/* ===== REGIONS / SECTION HEADS ===== */
+.region{
+  margin:0 0 4.2rem; padding-bottom:2.7rem;
+  border-bottom:3px dashed var(--navy);
+}
+.region:last-of-type{border-bottom:none}
+.sec-head{display:flex; align-items:stretch; gap:.85rem; margin-bottom:.95rem}
+.flag{
+  background:var(--navy); color:#fff;
+  writing-mode:vertical-rl; text-orientation:mixed;
+  letter-spacing:.2em; font-weight:700; font-size:.88rem;
+  padding:.65rem .4rem; min-width:2.15rem;
+  display:flex; align-items:center; justify-content:center;
+  border:3px solid var(--navy);
+  box-shadow:3px 3px 0 0 var(--sky);
+  font-family:"Noto Sans TC",sans-serif;
+  position:relative;
+}
+.flag::after{
+  content:""; position:absolute; inset:-3px;
+  border:1px solid var(--sky); pointer-events:none; opacity:.6;
+}
+.sec-head h2{
+  margin:0; font-size:1.35rem; letter-spacing:.04em; line-height:1.35;
+  color:var(--navy); font-weight:700;
+}
+.sec-sub{margin:.2rem 0 0; color:var(--muted); font-size:.8rem}
+
+/* ===== FEATURE BOX ===== */
+.feature-box{
+  max-width:100%; margin:0 0 2rem; padding:0; overflow:hidden;
+  background:var(--white);
+  border:3px solid var(--navy);
+  box-shadow:4px 4px 0 0 var(--navy);
+  display:grid; grid-template-columns:minmax(220px,34%) 1fr; gap:0;
+  position:relative;
+}
+.feature-box::before{
+  content:"+"; position:absolute; top:.35rem; right:.5rem; z-index:2;
+  font-family:"Press Start 2P",monospace; font-size:.5rem; color:var(--sky); opacity:.9;
+}
+.feature-box .feature-media{
+  margin:0; background:var(--sky2); border-right:3px solid var(--navy); min-height:12rem; line-height:0;
+}
+.feature-box .feature-media a{display:block; line-height:0; height:100%; border:0}
+.feature-box .feature-media a:hover{background:transparent}
+.feature-box .feature-media img{width:100%; height:100%; min-height:12rem; object-fit:cover; display:block}
+.feature-box .feature-body{padding:1.1rem 1.2rem 1rem}
+.feature-box p{margin:0 0 .95rem; color:var(--ink2); font-size:.98rem; text-align:justify}
+.feature-box p.lead{font-size:1.05rem; color:var(--ink)}
+.feature-box p:last-child{margin-bottom:0}
+.feature-meta-row{display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; margin:0 0 .75rem}
+.drop::first-letter{
+  float:left; font-family:"Press Start 2P",monospace;
+  font-size:1.55rem; line-height:1.1; padding:.15rem .25rem 0 0;
+  font-weight:400; color:var(--navy);
+}
+
+/* satire accent */
+.feature-box.satire{
+  border-color:var(--navy);
+  background:linear-gradient(135deg, #fff9f0 0%, var(--white) 55%);
+  box-shadow:4px 4px 0 0 var(--sky), 8px 8px 0 0 var(--navy);
+}
+.feature-box.satire .sec-note{font-size:.76rem; color:var(--muted); margin:0 0 .75rem; font-style:italic}
+
+/* ===== STORY GRID ===== */
+.grid{display:grid; grid-template-columns:1fr 1fr; gap:2rem 1.15rem}
+.story{
+  padding:0; overflow:hidden;
+  background:var(--white);
+  border:3px solid var(--navy);
+  box-shadow:3px 3px 0 0 var(--sky);
+  display:flex; flex-direction:column;
+  position:relative;
+}
+.story::after{
+  content:"+"; position:absolute; bottom:.3rem; right:.4rem;
+  font-family:"Press Start 2P",monospace; font-size:.4rem; color:var(--sky); opacity:.75;
+  pointer-events:none;
+}
+.story.lead{grid-column:1 / -1; box-shadow:4px 4px 0 0 var(--navy)}
+.story.lead .story-media img{max-height:280px}
+.story-media{margin:0; background:var(--sky2); border-bottom:3px solid var(--navy); line-height:0}
+.story-media a{display:block; line-height:0; border:0}
+.story-media a:hover{background:transparent}
+.story-media img{width:100%; height:160px; object-fit:cover; display:block}
+.story.lead .story-media img{height:240px}
+.story-body{padding:.8rem .95rem .95rem; min-width:0; flex:1; display:flex; flex-direction:column}
+.story h3{margin:0 0 .35rem; font-size:1.02rem; line-height:1.35; font-weight:700; color:var(--navy)}
+.story.lead h3{font-size:1.28rem}
+.story h3 a{border:0; color:var(--navy)}
+.story h3 a:hover{background:var(--sky3); border:0}
+.story .dek{margin:0 0 .5rem; color:var(--ink2); font-size:.9rem; flex:1}
+.story.lead .dek{font-size:.98rem}
+.meta{margin:0; font-size:.72rem; color:var(--muted); font-family:"VT323",monospace; font-size:.95rem}
+.outlet{font-weight:700; color:var(--navy2); font-family:"Noto Sans TC",sans-serif; font-size:.72rem}
+.src{margin-left:.15rem}
+
+/* ===== HEAT BADGES — 90s window pop ===== */
+.heat{
+  display:inline-flex; align-items:stretch; gap:0;
+  padding:0; font-size:.68rem; font-weight:700; letter-spacing:.04em; line-height:1.2;
+  border:2px solid var(--navy);
+  background:var(--paper);
+  box-shadow:2px 2px 0 0 var(--navy);
+  overflow:hidden;
+  font-family:"Press Start 2P",monospace;
+  font-size:.48rem;
+  position:relative;
+}
+.heat::before{
+  content:"■";
+  background:var(--navy); color:#fff;
+  padding:.32rem .4rem;
+  display:inline-flex; align-items:center;
+  font-size:.42rem; letter-spacing:0;
+}
+/* put label text next to title bar */
+.heat{
+  color:var(--navy);
+  padding-right:.55rem;
+  align-items:center;
+}
+.heat::after{
+  content:"×";
+  margin-left:.35rem;
+  color:var(--navy);
+  font-size:.55rem;
+  line-height:1;
+  opacity:.7;
+}
+
+/* ===== THUMB CREDIT ===== */
+.thumb-credit{
+  margin:.1rem 0 .5rem; font-size:.65rem; color:var(--muted); line-height:1.35;
+  word-break:break-word;
+  padding:.35rem .5rem;
+  background:var(--sky3);
+  border-left:4px solid var(--sky);
+}
+.thumb-credit a{color:var(--muted); border-bottom:1px dotted var(--sky)}
+
+/* ===== RANK BOX — sky promo banner ===== */
+.rank-box{
+  margin:1.15rem 0 2rem; padding:1.1rem 1.2rem 1rem;
+  border:3px solid var(--navy);
+  background:var(--sky);
+  box-shadow:4px 4px 0 0 var(--navy);
+  position:relative;
+}
+.rank-box::before{
+  content:"LEVEL UP";
+  position:absolute; top:-.55rem; right:1rem;
+  font-family:"Press Start 2P",monospace; font-size:.42rem;
+  background:var(--navy); color:#fff; padding:.3rem .45rem;
+  box-shadow:2px 2px 0 0 var(--paper);
+}
+.rank-box h2{
+  margin:0 0 .3rem; font-size:1.15rem; letter-spacing:.04em; color:var(--navy);
+  font-family:"Press Start 2P",monospace; font-size:.72rem; line-height:1.55;
+}
+.rank-box .rank-sub{margin:0 0 .75rem; color:var(--navy2); font-size:.78rem}
+.rank-box ol{margin:0; padding-left:1.4rem; background:var(--paper); border:2px solid var(--navy); padding:.75rem 1rem .75rem 1.85rem}
+.rank-box li{margin:0 0 .45rem; font-size:.9rem; line-height:1.4; color:var(--navy)}
+.rank-box li a{font-weight:700; color:var(--navy); border-bottom:2px solid transparent}
+.rank-box li a:hover{border-bottom-color:var(--navy); background:var(--sky3)}
+
+/* ===== FOOTER ===== */
+.footer{
+  margin-top:1.4rem; padding:1rem 1rem .2rem;
+  border:3px solid var(--navy); background:var(--sky3);
+  box-shadow:3px 3px 0 0 var(--navy);
+  font-size:.76rem; color:var(--muted); line-height:1.6;
+}
+.footer p:first-child{
+  font-family:"VT323",monospace; font-size:1.05rem; color:var(--navy);
+}
+
+@media (max-width:720px){
+  .wrap{margin:.6rem .5rem 1.5rem; padding:1rem .85rem 1.75rem; box-shadow:3px 3px 0 0 var(--navy), 6px 6px 0 0 var(--sky)}
+  .grid{grid-template-columns:1fr}
+  .flag{writing-mode:horizontal-tb; min-width:auto; padding:.35rem .7rem; letter-spacing:.15em}
+  .sec-head{flex-direction:column; gap:.4rem}
+  .drop::first-letter{font-size:1.25rem}
+  .feature-box{grid-template-columns:1fr}
+  .feature-box .feature-media{border-right:none; border-bottom:3px solid var(--navy); min-height:10rem}
+  .feature-box .feature-media img{min-height:10rem; max-height:200px}
+  .story.lead .story-media img,.story-media img{height:180px}
+  .masthead h1{font-size:1.05rem}
+  .rank-box h2{font-size:.58rem}
+  .toc a{font-size:.75rem}
+}
+@media print{
+  body{background:#fff}
+  .wrap{box-shadow:none; max-width:none}
+  a{color:inherit; text-decoration:none}
+  .region{break-inside:avoid-page}
+}
+</style></head>
+<body>
+<main class="wrap">
+  <header class="masthead">
+    <div class="kicker">GROK BOT · IT DIGEST</div>
+    <h1>每日 IT 報</h1>
+    <div class="date">二零二六年十一月十四日　星期六　香港時間</div>
+    <p class="tagline">四篇人物專題（10 人池抽 4）· 約 30 則分類精選 · 外部配圖 hotlink · 摘要約 100–150 字</p>
+  </header>
+  <nav class="toc" aria-label="章節">
+    <a href="#f1">Thompson</a> <a href="#f2">Jobs</a> <a href="#f3">Musk</a> <a href="#f4">Miller</a> <a href="#hot">熱門話題</a> <a href="#ai">AI 與模型</a> <a href="#security">資安與基礎設施</a> <a href="#product">消費電子／平台</a> <a href="#chips">晶片／硬體／地緣</a> <a href="#policy">政策／監管</a> <a href="#opensource">開源／開發</a>
+  </nav>
+<section class="region" id="f1">
+  <header class="sec-head"><div class="flag">Thompson</div><div><h2>聚合：ChatGPT Wallet 要把結帳這一環收進代理層</h2><p class="sec-sub">人物：Ben Thompson · 舊零售把「決定買什麼」留給搜尋，把付錢留給卡組織；聚合者要佔領的是交易本身。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://openai.com/index/introducing-chatgpt-wallet" target="_blank" rel="noopener"><img src="https://images.ctfassets.net/kftzwdyauwt9/2xTvIZkcQhKk3VNFioQ4CR/4efb84a6adbddb41311f6b18158fad8b/introducing-chatgpt-wallet-social.png?w=1600&amp;h=900&amp;fit=fill" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://openai.com/index/introducing-chatgpt-wallet" target="_blank" rel="noopener">OpenAI</a>（外部連結）</p>
+<p class="lead drop">聚合者要佔領的不是又一個購物建議欄，而是結帳這一環。舊零售把「決定買什麼」留在搜尋，把付錢留給卡組織和商家後台；ChatGPT Wallet 要把交易收進代理層，同時沿用現有卡網絡，而不是另建一套支付系統。</p>
+<p>OpenAI 於十一月十三日官方宣布推出 ChatGPT Wallet，自稱是讓 agent 付款卻拿不到用戶真實卡資料、且每次購物都要安全檢查的首個錢包。合作方為美國運通、萬事達與 Visa，初期經 dots 向美國 ChatGPT Pro 訂戶開放。官方寫每周有十二億人使用 ChatGPT——這是公司自報，不是本輪獨立核實的活躍人數。用戶一次加卡，每次先審視商品、總額與所用卡，再用面容或指紋批准；其後網絡發出支付代幣，真實卡資料不與商家或 agent 共享。The Verge 補充須年滿十八歲並使用美國帳單地址，並點名部分合資格美國發行卡；已打開的官方頁未逐一點名發卡行。</p>
+<p>第二組證據在價值鏈的對岸。官方承認部分網站可能無意阻擋 agent，風控也可能拒單，並發布商務夥伴指引。The Verge 提醒，今年稍早亞馬遜曾阻擋 Meta Muse 代理。商家若不准代理進結帳頁，聚合就停在「幫你決定」，到不了「替你付款」。官方預期未來用戶可設定額度、類別或時段，預先授權更自主下單——這是公司對下一步的表述，不是已上線的全權委託。</p>
+<p>對照同一日 Google 官方的選擇：美國所有 Gemini 應用用戶可連接 Google Wallet，經 Plaid 連結銀行與信用卡以取得開支洞察，但官方強調 Gemini 只能讀取帳戶資訊，不能移動、管理或投資用戶的錢。一邊要代付，一邊只准讀帳。支付網絡、風控與網站門檻，才是這場聚合能否完成的關口。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="f2">
+  <header class="sec-head"><div class="flag">Jobs</div><div><h2>品味：開賣日的「家的中心」，先靠安全更新把門重新鎖上</h2><p class="sec-sub">人物：Steve Jobs · 缺乏品味的不是顏色不夠多，是把家庭中樞放在尚未補完的配對與群組權限上。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://www.apple.com/newsroom/2026/11/apple-homeview-available-today/" target="_blank" rel="noopener"><img src="https://www.apple.com/newsroom/images/2026/11/apple-homeview-available-today/tile/Apple-HomeView-available-3up-lp.jpg.og.jpg?202611131359" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://www.apple.com/newsroom/2026/11/apple-homeview-available-today/" target="_blank" rel="noopener">Apple</a>（外部連結）</p>
+<p class="lead drop">「家的中心」這種句子，掩蓋的是一款開賣日就靠安全更新把門重新鎖上的裝置。缺乏品味的不是顏色不夠多，是把訊息、日曆和面孔辨識，放到還沒補完配對與群組權限的殼裡。This is junk——不是因為七吋螢幕不夠大，而是把「中樞」賣成完整體驗，卻把最基本的門先開著。</p>
+<p>Apple 官方新聞稿寫，自十一月十三日起，HomeView 在澳洲、加拿大、印度、紐西蘭、新加坡、英國與美國開賣。桌面款四色、壁掛款兩色，售價均為二百九十九美元。官方稱它是家的中心，最多辨識六人面孔，並在訊息、視訊通話、日曆、提醒事項與尋找顯示個人內容；這些內容僅在面孔被辨識，且配對的 iPhone 或 iPad 在場並最近解鎖時出現。註腳寫明，語音助理在 27.2 版為測試版；部分依賴伺服器端模型的功能有每日用量限制，未來擴大使用將收費。這不是已經完成的助理，是帶限額、還要再收費的測試功能。</p>
+<p>第二組證據是開賣所依賴的同一版軟件。Apple 安全說明寫，HomeView 軟件 27.2 於十一月十二日發布，修復包括：惡意藍牙裝置可在無用戶互動下完成配對；藍牙範圍內攻擊者可繞過配對碼速率限制並在無互動下配對；遠端攻擊者可能加入 iMessage 群組並收到訊息。官方未在已打開頁面寫這些問題是否已在野外被利用。把「全屋共享」的螢幕，與「遠端加入群組並收到訊息」放在同一套開賣軟件上，不是細節修補，是產品還沒達到它自己宣傳的隱私標準。</p>
+<p>歐盟暫不開賣。官方理由是該語音助理目前無法在歐盟的 iOS 提供。產品被定義成離不開一項在主要市場無法出貨的功能，這不是監管的旁支，是把核心體驗綁死在單一助理上的後果。中樞賣的是完整，付的卻是限額，以及一張開賣前日才補上的安全清單。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="f3">
+  <header class="sec-head"><div class="flag">Musk</div><div><h2>泡沫：Nscale 把園區功率寫進合約，再在招股書承認錢可能不夠</h2><p class="sec-sub">人物：Elon Musk · 先下芯片訂單再找錢，不是什麼新範式；單位經濟還沒算完就上市。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://www.axios.com/2026/11/13/nscale-ipo-debt-nvidia-jensen-huang" target="_blank" rel="noopener"><img src="https://media.thenextweb.com/2026/11/nscale-billboard-mockup-ready-set-deploy.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://www.axios.com/2026/11/13/nscale-ipo-debt-nvidia-jensen-huang" target="_blank" rel="noopener">Nscale（The Next Web）</a>（外部連結）</p>
+<p class="lead drop">先把芯片訂單和園區功率寫進合約，再在修訂招股書裡承認錢可能不夠——這不是新範式，是單位經濟還沒算完就準備上市。業界把新興雲端算力商講成確定的管道，文件寫的是不能保證能按可接受條款拿到資本。</p>
+<p>Axios 與 The Next Web 均報道，英國 Nscale 在修訂招股文件中警告，需要更多資金應付二零二七年義務。Axios 寫，據新申報，債務由第二季末一億三千七百萬美元升至第三季末五十五億美元，並寫文件警告無法保證能按可接受條款取得資本。The Next Web 轉述初步數字：九月三十日總債務五十五億美元，二零二五年底為七千八百九十萬；六月底一億三千七百四十萬則標為彭博數字。該刊還轉述，前九個月預期收入三億零七百五十萬美元、淨虧損十六點九億美元，公司稱數字屬初步、可能改。本輪未打開申報原文，數字均為記者轉述。</p>
+<p>第二組證據是它最大客戶那一張帳單。The Next Web 寫，申報稱 Anthropic 的計算合約價值最高約四百四十六億美元。彭博社另述：六年、西維吉尼亞 Monarch 園區四百六十兆瓦，預計二零二七年底起陸續上線；Nscale 迄今對該址承諾約十億美元，還需至少三百億；若未能籌資購買 Nvidia 設備或按時交付，可能面臨罰款，Anthropic 可終止合約。合約可以寫到四百多億，工地仍缺一個數量級的資本。Axios 並寫，據申報，Nvidia 在已披露的十億美元之外再承諾十億美元融資。把供應商同時當成債權人，是同一條資金鏈上的循環。</p>
+<p>同一日，Anthropic 行政總裁把「先鎖定昂貴基礎設施、又不能買過頭」稱為最深的商業兩難，並稱傾向買少一點、用現金做緩衝。Nscale 計劃在紐交所上市，尚未給定價區間。先把債務攤開。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="f4">
+  <header class="sec-head"><div class="flag">Miller</div><div><h2>實體：路透盤點逾三十億美元專案，仍圍繞受限制的 Nvidia 處理器</h2><p class="sec-sub">人物：Chris Miller · 出口管制寫在紙上，不等於芯片從機櫃裡消失。本質是產能、標書與地緣，不是雲端空談。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://www.investing.com/news/stock-market-news/chinas-3-billionplus-pipeline-of-nvidiapowered-ai-data-centres-5024599" target="_blank" rel="noopener"><img src="https://content-media.investing.com/trkd-images/LYNXNPEMAC0K9_L.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://www.investing.com/news/stock-market-news/chinas-3-billionplus-pipeline-of-nvidiapowered-ai-data-centres-5024599" target="_blank" rel="noopener">Reuters（Investing.com 轉載路透 Factbox）</a>（外部連結）</p>
+<p class="lead drop">出口管制寫在紙上，不等於芯片從機櫃裡消失。本質是實體產能、標書文字與地緣政治，不是「已被擋在市場之外」的雲端空談。路透審查的是政府與企業文件，不是簡報上的出口合規口號。</p>
+<p>據 Investing.com 轉載的路透專題（路透主站本輪未能打開）：審查發現逾三十億美元的中國算力專案仍圍繞 Nvidia 受限制處理器而建，儘管 Nvidia 曾稱出口管制已實質把它擋在中國人工智能數據中心市場之外。主數字跟已打開正文的「逾三十億美元」，不用二手摘要裡的三十二億。具體項目包括：福建仙遊擬建六十二億元人民幣的計算中心，標明要 H100；陝西一項三十億元專案標明 H100 與 H200；甘肅七月建造合約計劃裝約三千零七十二顆處理器，標書指定 H100 與 H200，文件未證明芯片已交付。計畫不是交付證明，標書也不是海關放行單。</p>
+<p>已經宣稱投運的例子更硬。江蘇無錫市政府二零二五年三月稱，使用 H800 的計算集群已投入運作；福建上市公司大名城六月披露已建 H800 集群。路透另文報道、本報十一月十二日已用過的西北工業大學兩顆 H200，只作註，不是今日新主軸。路透強調，計畫未必說明如何買到芯片、或是否會全部建成。</p>
+<p>第二組證據是權重指紋，必須降級處理。前 OpenAI 工程師 Will DePue 稱，部分中國實驗室公開權重的初始化圖案可匹配受管制的 Blackwell，但他同時寫明：這不能證明芯片位於中國，也可能經海外雲。這是已發表的研究主張，不是政府認定，也不能單獨證明走私既遂。軟件派愛談「模型已經開源所以問題結束」；硬體現實是，初始化種子還留在權重裡，芯片卻不必出現在你以為的地址上。出口管制的縫，在標書、在已宣稱投運的機櫃，也在無法定位的雲租用。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="hot">
+  <header class="sec-head"><div class="flag">熱門</div><div><h2>熱門話題</h2><p class="sec-sub">FAA 全美禁飛、ChatGPT Wallet、M365 廣泛恢復、Nvidia 董事獵頭、路透逾三十億算力 · 5則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://arstechnica.com/tech-policy/2026/11/faa-orders-third-nationwide-ground-stop-in-its-history/" target="_blank" rel="noopener"><img src="https://media.wired.com/photos/6af77f75b0613b392083fb37/191:100/w_1280,c_limit/FAA-Grounds-All-Flights-Gear-970624408.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://arstechnica.com/tech-policy/2026/11/faa-orders-third-nationwide-ground-stop-in-its-history/" target="_blank" rel="noopener">Michael H／Getty Images（WIRED）</a>（外部連結）</p>
+    <h3><a href="https://arstechnica.com/tech-policy/2026/11/faa-orders-third-nationwide-ground-stop-in-its-history/" target="_blank" rel="noopener">FAA 因航管通訊故障下令全美禁飛起飛，史上第三次全國地面停飛</a></h3>
+    <p class="dek">FAA 週五下午因航管中心電信故障，下令全美出發航班地面停飛，空中班機可降落。Duffy 稱所有航路管制中心受影響。Mullin 稱暫無惡意攻擊跡象，也不認為與微軟故障有關，但尚未排除原因；SMART 承包商已否認有關。Ars 寫這是史上第三次。BBC 稱仍無解除時間表。不可把「網絡攻擊」搜尋熱寫成已證實歸因。</p>
+    <p class="meta"><span class="outlet">Ars Technica（並參 The Verge／WIRED／BBC Live）</span><span class="src"> · <a href="https://arstechnica.com/tech-policy/2026/11/faa-orders-third-nationwide-ground-stop-in-its-history/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://openai.com/index/introducing-chatgpt-wallet" target="_blank" rel="noopener"><img src="https://images.ctfassets.net/kftzwdyauwt9/2xTvIZkcQhKk3VNFioQ4CR/4efb84a6adbddb41311f6b18158fad8b/introducing-chatgpt-wallet-social.png?w=1600&amp;h=900&amp;fit=fill" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://openai.com/index/introducing-chatgpt-wallet" target="_blank" rel="noopener">OpenAI</a>（外部連結）</p>
+    <h3><a href="https://openai.com/index/introducing-chatgpt-wallet" target="_blank" rel="noopener">OpenAI 推出 ChatGPT Wallet：代理用不含真實卡號的支付代幣結帳，每次須生物識別批准</a></h3>
+    <p class="dek">OpenAI 十一月十三日宣布 ChatGPT Wallet 上線，與美國運通、萬事達、Visa 合作，初期經 dots 向美國 Pro 訂戶開放。每次購物須生物識別批准，再以支付代幣結帳，真實卡號不與商家或代理共享。官方承認部分網站可能擋代理。未來預先授權是下一步表述，不是已上線功能。本輪未做產品實測。</p>
+    <p class="meta"><span class="outlet">OpenAI（主）；The Verge</span><span class="src"> · <a href="https://openai.com/index/introducing-chatgpt-wallet" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/tech/1032862/microsoft-outlook-down-outage" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2025/10/STK153_MICROSOFT_OUTLOOK_A.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/tech/1032862/microsoft-outlook-down-outage" target="_blank" rel="noopener">The Verge</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/tech/1032862/microsoft-outlook-down-outage" target="_blank" rel="noopener">微軟稱 Microsoft 365／Outlook 已「廣泛恢復」，定性為網絡容量升級技術問題</a></h3>
+    <p class="dek">這是昨日故障的新狀態，不是重寫起因。The Verge 寫，週五近中午微軟稱已廣泛恢復，屬技術問題，與網絡攻擊或人工智能／代理無關；由較早網絡容量升級在近期變更後浮現。仍在恢復剩餘客戶與地區，並承諾事後報告。Tom Warren 消息源稱與虛擬網絡設定有關，非官方用詞。根因分析尚未發表。</p>
+    <p class="meta"><span class="outlet">The Verge（引微軟聲明）；並參 WIRED</span><span class="src"> · <a href="https://www.theverge.com/tech/1032862/microsoft-outlook-down-outage" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.cnbc.com/2026/11/13/nvidia-huang-ceo-replacement-search.html" target="_blank" rel="noopener"><img src="https://image.cnbcfm.com/api/v1/image/108550387-1794508343610-gettyimages-2304269560-nokings-sf1017.jpeg?v=1794508402&amp;w=1920&amp;h=1080" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.cnbc.com/2026/11/13/nvidia-huang-ceo-replacement-search.html" target="_blank" rel="noopener">Getty Images（CNBC；已打開頁面未列攝影師）</a>（外部連結）</p>
+    <h3><a href="https://www.cnbc.com/2026/11/13/nvidia-huang-ceo-replacement-search.html" target="_blank" rel="noopener">Nvidia 董事會：尚未選定獵頭、未正式接觸人選；FT 據報曾接觸 Arm 的 Haas</a></h3>
+    <p class="dek">這是辭職後的人事新進展，不是重寫交接。董事會週五向 CNBC 聲明，正在選定獵頭，尚未正式接觸任何人選，並稱針對個別人選的揣測過早。CNBC 寫《金融時報》據悉已接觸 Arm 的 Rene Haas——不是已提名。官方仍未說明辭職原因。CNBC 寫股價週五跌逾百分之二，市值跌破四萬億美元。</p>
+    <p class="meta"><span class="outlet">CNBC（含董事會聲明）；FT 原文本輪未打開</span><span class="src"> · <a href="https://www.cnbc.com/2026/11/13/nvidia-huang-ceo-replacement-search.html" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.investing.com/news/stock-market-news/chinas-3-billionplus-pipeline-of-nvidiapowered-ai-data-centres-5024599" target="_blank" rel="noopener"><img src="https://content-media.investing.com/trkd-images/LYNXNPEMAC0K9_L.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.investing.com/news/stock-market-news/chinas-3-billionplus-pipeline-of-nvidiapowered-ai-data-centres-5024599" target="_blank" rel="noopener">Reuters（Investing.com 轉載）</a>（外部連結）</p>
+    <h3><a href="https://www.investing.com/news/stock-market-news/chinas-3-billionplus-pipeline-of-nvidiapowered-ai-data-centres-5024599" target="_blank" rel="noopener">路透盤點：逾三十億美元中國算力專案仍圍繞受限制的 Nvidia 處理器</a></h3>
+    <p class="dek">路透審查文件，發現逾三十億美元中國算力專案圍繞受限制的 Nvidia 處理器，儘管公司曾稱管制已實質把它擋在該市場之外。主數字跟已打開正文的逾三十億，不用二手三十二億。項目涵蓋福建、陝西、甘肅等地規劃；無錫二零二五年三月稱 H800 集群已投運。計畫不等於已交付。西工大兩顆 H200 只作註。</p>
+    <p class="meta"><span class="outlet">Reuters Factbox（經 Investing.com 轉載；reuters.com 本輪未打開）</span><span class="src"> · <a href="https://www.investing.com/news/stock-market-news/chinas-3-billionplus-pipeline-of-nvidiapowered-ai-data-centres-5024599" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="hot-rank">
+    <h2>熱門話題 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://arstechnica.com/tech-policy/2026/11/faa-orders-third-nationwide-ground-stop-in-its-history/" target="_blank" rel="noopener">[A] FAA 因航管通訊故障下令全美禁飛起飛，史上第三次全國地面停飛</a></li>
+    <li><a href="https://openai.com/index/introducing-chatgpt-wallet" target="_blank" rel="noopener">[A] OpenAI 推出 ChatGPT Wallet：代理用不含真實卡號的支付代幣結帳，每次須生物識別批准</a></li>
+    <li><a href="https://www.theverge.com/tech/1032862/microsoft-outlook-down-outage" target="_blank" rel="noopener">[A] 微軟稱 Microsoft 365／Outlook 已「廣泛恢復」，定性為網絡容量升級技術問題</a></li>
+    <li><a href="https://www.cnbc.com/2026/11/13/nvidia-huang-ceo-replacement-search.html" target="_blank" rel="noopener">[A] Nvidia 董事會：尚未選定獵頭、未正式接觸人選；FT 據報曾接觸 Arm 的 Haas</a></li>
+    <li><a href="https://www.investing.com/news/stock-market-news/chinas-3-billionplus-pipeline-of-nvidiapowered-ai-data-centres-5024599" target="_blank" rel="noopener">[A] 路透盤點：逾三十億美元中國算力專案仍圍繞受限制的 Nvidia 處理器</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="ai">
+  <header class="sec-head"><div class="flag">AI</div><div><h2>AI 與模型</h2><p class="sec-sub">OpenAI 解散機器人團隊、Gemini 只讀 Wallet、LangChain C 輪、Mirendil A 輪、Amodei 算力兩難 · 5則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://fortune.com/2026/11/13/openai-disbands-robotics-team-as-its-general-models-start-running-robots/" target="_blank" rel="noopener"><img src="https://fortune.com/img-assets/wp-content/uploads/2026/11/GettyImages-2304572308-e1794587995495.jpg?resize=1200,600" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://fortune.com/2026/11/13/openai-disbands-robotics-team-as-its-general-models-start-running-robots/" target="_blank" rel="noopener">Huang Zhengwei／VCG via Getty Images（Fortune；圖為生產線上的人形機械人）</a>（外部連結）</p>
+    <h3><a href="https://fortune.com/2026/11/13/openai-disbands-robotics-team-as-its-general-models-start-running-robots/" target="_blank" rel="noopener">OpenAI 向 Fortune 確認解散獨立機器人團隊，改押注通用模型直接控機械人</a></h3>
+    <p class="dek">OpenAI 向 Fortune 確認解散獨立機器人團隊，稱是為加速而非放棄。研究改向 Mark Chen 匯報，應用與硬件編入 Greg Brockman 的 Applied。發言人稱通用模型已顯示可直接用於機器人。這不是取消該業務，也不是已完成二零二七年展示。文中上季一百零九億美元虧損為轉述，不是本輪打開的財報。</p>
+    <p class="meta"><span class="outlet">Fortune（公司向該刊確認）</span><span class="src"> · <a href="https://fortune.com/2026/11/13/openai-disbands-robotics-team-as-its-general-models-start-running-robots/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://blog.google/innovation-and-ai/products/gemini-app/google-wallet-gemini-app/" target="_blank" rel="noopener"><img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Personal_Intelligence_Wallet_2784x1566.width-1300.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://blog.google/innovation-and-ai/products/gemini-app/google-wallet-gemini-app/" target="_blank" rel="noopener">Google</a>（外部連結）</p>
+    <h3><a href="https://blog.google/innovation-and-ai/products/gemini-app/google-wallet-gemini-app/" target="_blank" rel="noopener">Google：美國 Gemini 用戶可連接 Wallet 做財務洞察，官方強調只能讀、不能動用資金</a></h3>
+    <p class="dek">Google 宣布，美國所有 Gemini 應用用戶可連接 Google Wallet，依消費習慣取得洞察，也可經 Plaid 連結銀行與信用卡。官方強調只能讀取帳戶資訊，不能移動、管理或投資用戶的錢，並可隨時開關。這與 ChatGPT Wallet 的代理代付不是同一類產品。本輪未實測開關。</p>
+    <p class="meta"><span class="outlet">Google The Keyword</span><span class="src"> · <a href="https://blog.google/innovation-and-ai/products/gemini-app/google-wallet-gemini-app/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.langchain.com/blog/series-c" target="_blank" rel="noopener"><img src="https://cdn.prod.website-files.com/65c81e88c254bb0f97633a71/6af52a0047907d0f9587a24f_Social%20Announcement.png" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.langchain.com/blog/series-c" target="_blank" rel="noopener">LangChain</a>（外部連結）</p>
+    <h3><a href="https://www.langchain.com/blog/series-c" target="_blank" rel="noopener">LangChain 官方宣布 C 輪三億美元、估值三十億，稱逾七千家組織使用 LangSmith</a></h3>
+    <p class="dek">LangChain 十一月十三日宣布 C 輪三億美元、估值三十億美元，由現有投資者 CapitalG 領投，新投資者包括 GIC 與 DFJ Growth。公司稱逾七千家組織已使用 LangSmith，並列出客戶例子，屬自稱而非本輪獨立審計。產品定位為不綁定單一模型或雲的中間層。官方預告十一月二十日發布會。</p>
+    <p class="meta"><span class="outlet">LangChain 官方（主）；TechCrunch</span><span class="src"> · <a href="https://www.langchain.com/blog/series-c" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://mirendil.com/news/series-a/" target="_blank" rel="noopener"><img src="https://mirendil.com/assets/news/series-a-og.png" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://mirendil.com/news/series-a/" target="_blank" rel="noopener">Mirendil</a>（外部連結）</p>
+    <h3><a href="https://mirendil.com/news/series-a/" target="_blank" rel="noopener">Mirendil 官方宣布十億美元 A 輪；技術成績為公司自稱，稿件未寫估值</a></h3>
+    <p class="dek">前 DeepMind／Anthropic 研究員創辦的 Mirendil，十一月十二日宣布十億美元 A 輪，由 Kleiner Perkins 與 Clearlake 領投，參與者包括 Google 等。公司自稱一名研究員在代理協助下，用三個半月、不足一千萬美元算力預訓練出編碼模型。官方稿未寫估值。技術成績為公司主張。</p>
+    <p class="meta"><span class="outlet">Mirendil 官方（主）；SiliconANGLE</span><span class="src"> · <a href="https://mirendil.com/news/series-a/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://finance.yahoo.com/markets/article/anthropic-ceo-dario-amodei-aims-to-underpromise-and-overdeliver-as-ipo-valuation-drops-below-2t-hopes-181234804.html" target="_blank" rel="noopener"><img src="https://s.yimg.com/lo/mysterio/api/d0938fc26860757b6d4f8b3b6bd95f36f6635d9ff3471ca898efd03825e4950d/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fd29szjachogqwa.cloudfront.net%2Fimages%2F2026-11%2F628345de-7f45-4a68-a0c8-a7a7e005b17c" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://finance.yahoo.com/markets/article/anthropic-ceo-dario-amodei-aims-to-underpromise-and-overdeliver-as-ipo-valuation-drops-below-2t-hopes-181234804.html" target="_blank" rel="noopener">Bhawika Chhabra／Reuters（Yahoo Finance；二零二六年二月新德里檔案照）</a>（外部連結）</p>
+    <h3><a href="https://finance.yahoo.com/markets/article/anthropic-ceo-dario-amodei-aims-to-underpromise-and-overdeliver-as-ipo-valuation-drops-below-2t-hopes-181234804.html" target="_blank" rel="noopener">Amodei 稱算力採購是「最深商業兩難」，IPO 想 underpromise and overdeliver</a></h3>
+    <p class="dek">Anthropic 行政總裁週五與 Jamie Dimon 直播，將「先鎖定昂貴基礎設施、又不能買過頭」稱為最深商業兩難，並稱傾向買少一點、用現金做緩衝。Yahoo 轉述 IPO 網站的籌資與估值，本輪未打開該站，故不把具體金額寫成已核實。這不是改定認購的公告。</p>
+    <p class="meta"><span class="outlet">Yahoo Finance（報道週五與 Jamie Dimon 直播）</span><span class="src"> · <a href="https://finance.yahoo.com/markets/article/anthropic-ceo-dario-amodei-aims-to-underpromise-and-overdeliver-as-ipo-valuation-drops-below-2t-hopes-181234804.html" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="ai-rank">
+    <h2>AI 與模型 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://fortune.com/2026/11/13/openai-disbands-robotics-team-as-its-general-models-start-running-robots/" target="_blank" rel="noopener">[B] OpenAI 向 Fortune 確認解散獨立機器人團隊，改押注通用模型直接控機械人</a></li>
+    <li><a href="https://blog.google/innovation-and-ai/products/gemini-app/google-wallet-gemini-app/" target="_blank" rel="noopener">[B] Google：美國 Gemini 用戶可連接 Wallet 做財務洞察，官方強調只能讀、不能動用資金</a></li>
+    <li><a href="https://www.langchain.com/blog/series-c" target="_blank" rel="noopener">[B] LangChain 官方宣布 C 輪三億美元、估值三十億，稱逾七千家組織使用 LangSmith</a></li>
+    <li><a href="https://mirendil.com/news/series-a/" target="_blank" rel="noopener">[B] Mirendil 官方宣布十億美元 A 輪；技術成績為公司自稱，稿件未寫估值</a></li>
+    <li><a href="https://finance.yahoo.com/markets/article/anthropic-ceo-dario-amodei-aims-to-underpromise-and-overdeliver-as-ipo-valuation-drops-below-2t-hopes-181234804.html" target="_blank" rel="noopener">[B] Amodei 稱算力採購是「最深商業兩難」，IPO 想 underpromise and overdeliver</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="security">
+  <header class="sec-head"><div class="flag">資安</div><div><h2>資安與基礎設施</h2><p class="sec-sub">Uber／Fireworks 駕照失竊、Windows SignDrop、CISA KEV、Check Point 熱修復、CVE 破十萬 · 5則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/13/uber-confirms-hackers-stole-thousands-of-drivers-license-information-in-data-breach/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2024/07/GettyImages-2043993878-e1722276196662.jpg?resize=1200,676" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/13/uber-confirms-hackers-stole-thousands-of-drivers-license-information-in-data-breach/" target="_blank" rel="noopener">Marek Antoni Iwanczuk／SOPA Images／LightRocket via Getty Images（TechCrunch）</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/13/uber-confirms-hackers-stole-thousands-of-drivers-license-information-in-data-breach/" target="_blank" rel="noopener">Uber 證實經第三方 Fireworks AI 失竊數千份駕照資料；全國總數未公布</a></h3>
+    <p class="dek">Uber 本週向多州檢察長通知：十月九日接獲供應商通報，入侵者竊取內部憑證並取用其數據。TechCrunch 查明供應商為 Fireworks AI。已見通知包括麻州二千五百六十七人、南卡三千四百三十人、羅德島一千八百七十三人的駕照資料；全國總數未公布。Fireworks 確認存在未經授權存取，但未答細節。</p>
+    <p class="meta"><span class="outlet">TechCrunch（引州通知與 Uber／Fireworks 發言）</span><span class="src"> · <a href="https://techcrunch.com/2026/11/13/uber-confirms-hackers-stole-thousands-of-drivers-license-information-in-data-breach/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://arstechnica.com/security/2026/11/windows-0-day-dropped-by-disgruntled-researcher-hands-hackers-system-rights/" target="_blank" rel="noopener"><img src="https://cdn.arstechnica.net/wp-content/uploads/2026/07/GettyImages-1237693734-1152x648-1783631068.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://arstechnica.com/security/2026/11/windows-0-day-dropped-by-disgruntled-researcher-hands-hackers-system-rights/" target="_blank" rel="noopener">Igor Golovniov／SOPA Images／LightRocket via Getty Images（Ars Technica）</a>（外部連結）</p>
+    <h3><a href="https://arstechnica.com/security/2026/11/windows-0-day-dropped-by-disgruntled-researcher-hands-hackers-system-rights/" target="_blank" rel="noopener">研究者公開 Windows SignDrop 本機提權問題；微軟稱正在調查、未見野外利用</a></h3>
+    <p class="dek">研究者公開名為 SignDrop 的 Windows 本機提權問題，涉及通用日誌檔案系統的認證緩解措施。獨立研究者向 Ars 稱可複現，但並非所有 Windows 11 都中。微軟回覆正在調查，未見野外利用，並稱 Defender 會阻擋潛在利用。研究者「八成易受影響」是其估計，不是微軟數字。已打開頁面尚無 CVE 與補丁。</p>
+    <p class="meta"><span class="outlet">Ars Technica（含微軟回應）；BleepingComputer</span><span class="src"> · <a href="https://arstechnica.com/security/2026/11/windows-0-day-dropped-by-disgruntled-researcher-hands-hackers-system-rights/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.cisa.gov/news-events/alerts/2026/11/13/cisa-adds-two-known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener"><img src="https://www.bleepstatic.com/content/hl-images/2026/09/18/Check-Point-headpic.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.cisa.gov/news-events/alerts/2026/11/13/cisa-adds-two-known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">BleepingComputer（Check Point 資料圖；CISA 告示頁無實用文章配圖）</a>（外部連結）</p>
+    <h3><a href="https://www.cisa.gov/news-events/alerts/2026/11/13/cisa-adds-two-known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">CISA 將 UnrealIRCd 與 Check Point 兩條已在利用的漏洞列入 KEV</a></h3>
+    <p class="dek">CISA 十一月十三日把兩條已在利用的漏洞列入已知被利用目錄：UnrealIRCd 的 CVE-2026-114713，以及 Check Point 的 CVE-2026-123039，並提醒聯邦機構優先修補。告示未給評分或受害者數字。UnrealIRCd 修復版為 6.2.7.1。Check Point 細節見下一則。</p>
+    <p class="meta"><span class="outlet">CISA（官方）</span><span class="src"> · <a href="https://www.cisa.gov/news-events/alerts/2026/11/13/cisa-adds-two-known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.bleepingcomputer.com/news/security/check-point-patches-zero-day-that-lets-hackers-get-root-access/" target="_blank" rel="noopener"><img src="https://www.bleepstatic.com/content/hl-images/2026/09/18/Check-Point-headpic.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.bleepingcomputer.com/news/security/check-point-patches-zero-day-that-lets-hackers-get-root-access/" target="_blank" rel="noopener">BleepingComputer</a>（外部連結）</p>
+    <h3><a href="https://www.bleepingcomputer.com/news/security/check-point-patches-zero-day-that-lets-hackers-get-root-access/" target="_blank" rel="noopener">Check Point：CVE-2026-123039 自十月下旬起被用於取得 root，緊急熱修復已出</a></h3>
+    <p class="dek">Check Point 釋出緊急熱修復，處理高嚴重性本地提權漏洞。通告稱 Gaia OS 的 DynamicCLI 以 root 運行、不驗證本地連線進程。公司稱已觀察到自十月下旬起、針對約數十名客戶的在野利用。「數十名」為公司自稱。無法立即修補者，廠商建議停止該服務並防止重啟。CISA 已於同日將此漏洞列入 KEV。</p>
+    <p class="meta"><span class="outlet">BleepingComputer（引廠商通告；通告原頁本輪未打開）</span><span class="src"> · <a href="https://www.bleepingcomputer.com/news/security/check-point-patches-zero-day-that-lets-hackers-get-root-access/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theregister.com/security/2026/11/13/this-years-bug-count-just-passed-100k/5309882" target="_blank" rel="noopener"><img src="https://image.theregister.com/262189.jpg?imageId=262189&amp;x=0&amp;y=0&amp;cropw=100&amp;croph=100&amp;panox=0&amp;panoy=0&amp;panow=100&amp;panoh=100&amp;width=1200&amp;height=683" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theregister.com/security/2026/11/13/this-years-bug-count-just-passed-100k/5309882" target="_blank" rel="noopener">The Register</a>（外部連結）</p>
+    <h3><a href="https://www.theregister.com/security/2026/11/13/this-years-bug-count-just-passed-100k/5309882" target="_blank" rel="noopener">VulnCheck：二零二六年已披露 CVE 突破十萬；其目錄約百分之一點四今年被標為已利用</a></h3>
+    <p class="dek">The Register 引 VulnCheck 稱，約協調世界時十六時今年已有十萬零二百二十二條 CVE，超過二零二五年全年一倍以上，並將增量主要歸因於用人工智能找漏洞。其已利用目錄中約百分之一點四、一千三百六十三條今年被加入。不同目錄口徑可能不同。本條主題是年度總量，不是重數昨日修補日清單。</p>
+    <p class="meta"><span class="outlet">The Register（訪問 VulnCheck；非 CISA 官方總數公告）</span><span class="src"> · <a href="https://www.theregister.com/security/2026/11/13/this-years-bug-count-just-passed-100k/5309882" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="security-rank">
+    <h2>資安與基礎設施 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://techcrunch.com/2026/11/13/uber-confirms-hackers-stole-thousands-of-drivers-license-information-in-data-breach/" target="_blank" rel="noopener">[B] Uber 證實經第三方 Fireworks AI 失竊數千份駕照資料；全國總數未公布</a></li>
+    <li><a href="https://arstechnica.com/security/2026/11/windows-0-day-dropped-by-disgruntled-researcher-hands-hackers-system-rights/" target="_blank" rel="noopener">[B] 研究者公開 Windows SignDrop 本機提權問題；微軟稱正在調查、未見野外利用</a></li>
+    <li><a href="https://www.cisa.gov/news-events/alerts/2026/11/13/cisa-adds-two-known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">[B] CISA 將 UnrealIRCd 與 Check Point 兩條已在利用的漏洞列入 KEV</a></li>
+    <li><a href="https://www.bleepingcomputer.com/news/security/check-point-patches-zero-day-that-lets-hackers-get-root-access/" target="_blank" rel="noopener">[B] Check Point：CVE-2026-123039 自十月下旬起被用於取得 root，緊急熱修復已出</a></li>
+    <li><a href="https://www.theregister.com/security/2026/11/13/this-years-bug-count-just-passed-100k/5309882" target="_blank" rel="noopener">[B] VulnCheck：二零二六年已披露 CVE 突破十萬；其目錄約百分之一點四今年被標為已利用</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="product">
+  <header class="sec-head"><div class="flag">產品</div><div><h2>消費電子／平台</h2><p class="sec-sub">HomeView 開賣、27.2 安全更新、Home Collection 預購、Apple TV 手語、Kindle Colorsoft · 5則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://www.apple.com/newsroom/2026/11/apple-homeview-available-today/" target="_blank" rel="noopener"><img src="https://www.apple.com/newsroom/images/2026/11/apple-homeview-available-today/tile/Apple-HomeView-available-3up-lp.jpg.og.jpg?202611131359" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.apple.com/newsroom/2026/11/apple-homeview-available-today/" target="_blank" rel="noopener">Apple</a>（外部連結）</p>
+    <h3><a href="https://www.apple.com/newsroom/2026/11/apple-homeview-available-today/" target="_blank" rel="noopener">Apple 官方：HomeView 十一月十三日起在指定地區開賣，售價二百九十九美元，歐盟暫不售</a></h3>
+    <p class="dek">這是昨日標定開賣、當時尚未核實店面的後續。官方確認自十一月十三日起，HomeView 在澳、加、印、紐、新、英、美開賣，桌面與壁掛均售二百九十九美元。最多辨識六人；個人內容須面孔被辨識且配對裝置在場並最近解鎖。歐盟暫不售，因該語音助理目前無法在歐盟 iOS 提供。27.2 為測試版，部分功能有每日限額。</p>
+    <p class="meta"><span class="outlet">Apple Newsroom</span><span class="src"> · <a href="https://www.apple.com/newsroom/2026/11/apple-homeview-available-today/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://support.apple.com/en-us/149851" target="_blank" rel="noopener"><img src="https://www.apple.com/newsroom/images/2026/11/apple-homeview-available-today/tile/Apple-HomeView-available-3up-lp.jpg.og.jpg?202611131359" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://support.apple.com/en-us/149851" target="_blank" rel="noopener">Apple（官方安全說明頁無獨立 og:image，改用開賣新聞稿圖）</a>（外部連結）</p>
+    <h3><a href="https://support.apple.com/en-us/149851" target="_blank" rel="noopener">HomeView 首個更新 27.2 修補無互動藍牙配對，以及遠端加入 iMessage 群組等問題</a></h3>
+    <p class="dek">Apple 安全說明寫，HomeView 軟件 27.2 於十一月十二日發布。修復包括：惡意藍牙裝置可在無用戶互動下完成配對；藍牙範圍內攻擊者可繞過配對碼速率限制並無互動配對；遠端攻擊者可能加入 iMessage 群組並收到訊息。官方未寫是否已在野外被利用。開賣日所依賴的版本，也是首個安全更新。</p>
+    <p class="meta"><span class="outlet">Apple Support（官方安全說明）</span><span class="src"> · <a href="https://support.apple.com/en-us/149851" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/tech/1032920/apple-smart-home-collection-release-ship-dates-available-pricing" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/11/applehome.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.752607989199%2C100%2C78.494784021602&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/tech/1032920/apple-smart-home-collection-release-ship-dates-available-pricing" target="_blank" rel="noopener">Apple（The Verge）</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/tech/1032920/apple-smart-home-collection-release-ship-dates-available-pricing" target="_blank" rel="noopener">Apple Home Collection 首批 LG 攝影機與門鈴開放預購，預計十二月十一至十七日發貨</a></h3>
+    <p class="dek">The Verge 報道，Apple Home Collection 首批配件已可網上預購。目前可訂的只有部分 LG 產品：戶外攝影機二百九十九點九五美元、室內攝影機一百九十九點九五美元、視訊門鈴二百四十九點九五美元，預計十二月十一至十七日發貨。其餘尚未開放預購。Verge 寫裝置沒有獨家功能。</p>
+    <p class="meta"><span class="outlet">The Verge（依網上商店列出；非新一則 Apple Newsroom 長稿）</span><span class="src"> · <a href="https://www.theverge.com/tech/1032920/apple-smart-home-collection-release-ship-dates-available-pricing" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.apple.com/newsroom/2026/11/apple-tv-introduces-new-sign-language-interpretation-feature/" target="_blank" rel="noopener"><img src="https://www.apple.com/newsroom/images/2026/11/apple-tv-introduces-new-sign-language-interpretation-feature/tile/Apple-TV-ASL-Sign-Language-interpretation-lp.jpg.og.jpg?202611131400" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 C</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.apple.com/newsroom/2026/11/apple-tv-introduces-new-sign-language-interpretation-feature/" target="_blank" rel="noopener">Apple</a>（外部連結）</p>
+    <h3><a href="https://www.apple.com/newsroom/2026/11/apple-tv-introduces-new-sign-language-interpretation-feature/" target="_blank" rel="noopener">Apple TV 手語解說原定昨日隨《Being Heumann》上線；本輪仍未獨立核實應用內按鈕</a></h3>
+    <p class="dek">這是昨日標定上線、當時未核實店面的官方日。功能隨《Being Heumann》首映推出，支援美國與英國手語，須 27.2 或更新系統。本輪仍無第三方「已在應用見到按鈕」的實測，不能寫成已在所有裝置確認出現。MacRumors 另寫第四代 Apple TV 4K 同日開賣，本輪未打開對應官稿，不另作主條。</p>
+    <p class="meta"><span class="outlet">Apple Newsroom（稿件日期十一月十日，功能日為十三日）</span><span class="src"> · <a href="https://www.apple.com/newsroom/2026/11/apple-tv-introduces-new-sign-language-interpretation-feature/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/13/amazons-new-kindle-colorsoft-is-a-premium-e-reader-with-a-premium-price/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/11/IMG_3403.jpg?resize=1200,925" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 C</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/13/amazons-new-kindle-colorsoft-is-a-premium-e-reader-with-a-premium-price/" target="_blank" rel="noopener">Aisha Malik／TechCrunch</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/13/amazons-new-kindle-colorsoft-is-a-premium-e-reader-with-a-premium-price/" target="_blank" rel="noopener">Amazon 更新彩色 Kindle Colorsoft，起價約二百九十美元</a></h3>
+    <p class="dek">Amazon 更新 Kindle、Paperwhite 與彩色 Colorsoft。TechCrunch 寫新 Colorsoft 起價二百九十美元，Signature 三百二十美元，七吋彩色電子墨水，黑白三百 ppi、彩色一百五十 ppi。官方稱單次充電最長約八週。評測認為若已有第一代，升級理由不大。</p>
+    <p class="meta"><span class="outlet">TechCrunch（本輪未打開 Amazon 新聞稿）</span><span class="src"> · <a href="https://techcrunch.com/2026/11/13/amazons-new-kindle-colorsoft-is-a-premium-e-reader-with-a-premium-price/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="product-rank">
+    <h2>消費電子／平台 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://www.apple.com/newsroom/2026/11/apple-homeview-available-today/" target="_blank" rel="noopener">[B] Apple 官方：HomeView 十一月十三日起在指定地區開賣，售價二百九十九美元，歐盟暫不售</a></li>
+    <li><a href="https://support.apple.com/en-us/149851" target="_blank" rel="noopener">[B] HomeView 首個更新 27.2 修補無互動藍牙配對，以及遠端加入 iMessage 群組等問題</a></li>
+    <li><a href="https://www.theverge.com/tech/1032920/apple-smart-home-collection-release-ship-dates-available-pricing" target="_blank" rel="noopener">[B] Apple Home Collection 首批 LG 攝影機與門鈴開放預購，預計十二月十一至十七日發貨</a></li>
+    <li><a href="https://www.apple.com/newsroom/2026/11/apple-tv-introduces-new-sign-language-interpretation-feature/" target="_blank" rel="noopener">[C] Apple TV 手語解說原定昨日隨《Being Heumann》上線；本輪仍未獨立核實應用內按鈕</a></li>
+    <li><a href="https://techcrunch.com/2026/11/13/amazons-new-kindle-colorsoft-is-a-premium-e-reader-with-a-premium-price/" target="_blank" rel="noopener">[C] Amazon 更新彩色 Kindle Colorsoft，起價約二百九十美元</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="chips">
+  <header class="sec-head"><div class="flag">晶片</div><div><h2>晶片／硬體／地緣</h2><p class="sec-sub">Nscale 招股債務、三星洽購 Modine、DePue Blackwell 指紋、Drogue 海洋發電、創投看 Nvidia 出資 · 5則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://www.axios.com/2026/11/13/nscale-ipo-debt-nvidia-jensen-huang" target="_blank" rel="noopener"><img src="https://media.thenextweb.com/2026/11/nscale-billboard-mockup-ready-set-deploy.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.axios.com/2026/11/13/nscale-ipo-debt-nvidia-jensen-huang" target="_blank" rel="noopener">Nscale（The Next Web）</a>（外部連結）</p>
+    <h3><a href="https://www.axios.com/2026/11/13/nscale-ipo-debt-nvidia-jensen-huang" target="_blank" rel="noopener">Nscale 修訂招股書：第三季末債務五十五億美元，Anthropic 園區仍需大量融資</a></h3>
+    <p class="dek">Axios 寫，據新申報，Nscale 債務由第二季末一億三千七百萬美元升至第三季末五十五億美元，並警告無法保證能按可接受條款取得資本。The Next Web 轉述前九個月預期收入三億零七百五十萬、淨虧損十六點九億；Anthropic 合約最高約四百四十六億。園區還需至少三百億等為彭博轉述。未打開申報原文。</p>
+    <p class="meta"><span class="outlet">Axios、The Next Web（轉述修訂申報；EDGAR 原文未打開）</span><span class="src"> · <a href="https://www.axios.com/2026/11/13/nscale-ipo-debt-nvidia-jensen-huang" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://thenextweb.com/news/samsung-modine-talks-data-centre-cooling" target="_blank" rel="noopener"><img src="https://media.thenextweb.com/2026/10/samsung-illuminated-logo-store-facade.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://thenextweb.com/news/samsung-modine-talks-data-centre-cooling" target="_blank" rel="noopener">Sybillla／Shutterstock.com（The Next Web）</a>（外部連結）</p>
+    <h3><a href="https://thenextweb.com/news/samsung-modine-talks-data-centre-cooling" target="_blank" rel="noopener">彭博：三星洽購數據中心冷卻商 Modine，交易可能數週內敲定，雙方拒評</a></h3>
+    <p class="dek">The Next Web 引彭博知情人士：三星電子正洽購威斯康辛冷卻商 Modine，交易可能數週內敲定，但尚未做最終決定，談判可能破裂。雙方均拒絕置評。稿寫 Modine 收市市值約五十六億美元，盤後一度漲約百分之二十八。這不是已宣布的成交。三星去年收購 FläktGroup 只作背景，不是本週新交易。</p>
+    <p class="meta"><span class="outlet">The Next Web 轉述 Bloomberg（英文原文未打開）</span><span class="src"> · <a href="https://thenextweb.com/news/samsung-modine-talks-data-centre-cooling" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/13/export-banned-nvidia-chips-are-behind-chinas-most-powerful-ai-models-uh-oh-jensen/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/11/GettyImages-2301327883.jpg?resize=1200,795" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/13/export-banned-nvidia-chips-are-behind-chinas-most-powerful-ai-models-uh-oh-jensen/" target="_blank" rel="noopener">Sean Gallup／Getty Images（TechCrunch）</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/13/export-banned-nvidia-chips-are-behind-chinas-most-powerful-ai-models-uh-oh-jensen/" target="_blank" rel="noopener">DePue 研究稱部分中國開源權重帶 Blackwell 指紋，並非已裁定走私</a></h3>
+    <p class="dek">前 OpenAI 工程師 Will DePue 稱，部分中國實驗室公開權重的初始化圖案可匹配受管制的 Blackwell，並自稱 MiniMax 與 Ant Group 首次被公開關聯。他寫明：這不能證明芯片位於中國，也可能經海外雲。屬已發表研究主張，不是政府認定，亦不能單獨證明走私既遂。本輪未獨立複現。</p>
+    <p class="meta"><span class="outlet">TechCrunch、The Register（報道研究；非政府結論）</span><span class="src"> · <a href="https://techcrunch.com/2026/11/13/export-banned-nvidia-chips-are-behind-chinas-most-powerful-ai-models-uh-oh-jensen/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/13/this-young-startup-wants-to-power-floating-data-centers-with-the-oceans-heat-and-investors-are-already-on-board/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/11/drogue-team.jpeg?resize=1200,900" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 C</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/13/this-young-startup-wants-to-power-floating-data-centers-with-the-oceans-heat-and-investors-are-already-on-board/" target="_blank" rel="noopener">Drogue（TechCrunch）</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/13/this-young-startup-wants-to-power-floating-data-centers-with-the-oceans-heat-and-investors-are-already-on-board/" target="_blank" rel="noopener">新創 Drogue 向 TechCrunch 稱已籌兩千萬美元，計劃用海洋溫差發電供應海上數據中心</a></h3>
+    <p class="dek">華盛頓特區新創 Drogue 成立約六個月，行政總裁向 TechCrunch 稱已籌兩千萬美元，計劃用海洋溫差發電供應船上數據中心，原型目標二零二八年初出海，並已獲美國船級社初步原則認可。融資與時間表未經第二份財務文件核對。這是早期原型故事，不是已商轉的發電容量。</p>
+    <p class="meta"><span class="outlet">TechCrunch 獨家（公司向該刊透露；非監管文件）</span><span class="src"> · <a href="https://techcrunch.com/2026/11/13/this-young-startup-wants-to-power-floating-data-centers-with-the-oceans-heat-and-investors-are-already-on-board/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/13/jensen-huangs-departure-blasts-big-hole-in-ai-startup-funding-vcs-and-founders-say/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/11/Jensen-Huang-nvidia.jpg?w=1024" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 C</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/13/jensen-huangs-departure-blasts-big-hole-in-ai-startup-funding-vcs-and-founders-say/" target="_blank" rel="noopener">Heather Diehl／Getty Images（TechCrunch）</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/13/jensen-huangs-departure-blasts-big-hole-in-ai-startup-funding-vcs-and-founders-say/" target="_blank" rel="noopener">創投稱黃仁勳卸任可能收緊 Nvidia 對初創的出資；這不是官方停投公告</a></h3>
+    <p class="dek">不宜當 Nvidia 已宣布停止投資來寫。TechCrunch 引 PitchBook：Nvidia 今年已參與一百零五輪融資，常常是最大投資者。對臨時執行長將更保守的評價來自匿名投資人，不是她本人發言。文中既有交易只作生態影響分析，須標明不是官方政策變更。</p>
+    <p class="meta"><span class="outlet">TechCrunch（訪問；引 PitchBook）</span><span class="src"> · <a href="https://techcrunch.com/2026/11/13/jensen-huangs-departure-blasts-big-hole-in-ai-startup-funding-vcs-and-founders-say/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="chips-rank">
+    <h2>晶片／硬體／地緣 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://www.axios.com/2026/11/13/nscale-ipo-debt-nvidia-jensen-huang" target="_blank" rel="noopener">[A] Nscale 修訂招股書：第三季末債務五十五億美元，Anthropic 園區仍需大量融資</a></li>
+    <li><a href="https://thenextweb.com/news/samsung-modine-talks-data-centre-cooling" target="_blank" rel="noopener">[B] 彭博：三星洽購數據中心冷卻商 Modine，交易可能數週內敲定，雙方拒評</a></li>
+    <li><a href="https://techcrunch.com/2026/11/13/export-banned-nvidia-chips-are-behind-chinas-most-powerful-ai-models-uh-oh-jensen/" target="_blank" rel="noopener">[B] DePue 研究稱部分中國開源權重帶 Blackwell 指紋，並非已裁定走私</a></li>
+    <li><a href="https://techcrunch.com/2026/11/13/this-young-startup-wants-to-power-floating-data-centers-with-the-oceans-heat-and-investors-are-already-on-board/" target="_blank" rel="noopener">[C] 新創 Drogue 向 TechCrunch 稱已籌兩千萬美元，計劃用海洋溫差發電供應海上數據中心</a></li>
+    <li><a href="https://techcrunch.com/2026/11/13/jensen-huangs-departure-blasts-big-hole-in-ai-startup-funding-vcs-and-founders-say/" target="_blank" rel="noopener">[C] 創投稱黃仁勳卸任可能收緊 Nvidia 對初創的出資；這不是官方停投公告</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="policy">
+  <header class="sec-head"><div class="flag">政策</div><div><h2>政策／監管</h2><p class="sec-sub">參院邀黃仁勳作證、非營利起訴凍結模型、Starship 第十五次試飛、Meta Takes 內測 · 4則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://www.nbcnews.com/politics/congress/commerce-secretary-howard-lutnick-testify-pressure-nvidia-scandal-rcna609093" target="_blank" rel="noopener"><img src="https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/rockcms/2026-11/261113-lutnik-rs-8047a9.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.nbcnews.com/politics/congress/commerce-secretary-howard-lutnick-testify-pressure-nvidia-scandal-rcna609093" target="_blank" rel="noopener">NBC News（頁面另有資料圖署名 Nathan Posner／Anadolu via Getty、Kiyoshi Ota／Bloomberg via Getty）</a>（外部連結）</p>
+    <h3><a href="https://www.nbcnews.com/politics/congress/commerce-secretary-howard-lutnick-testify-pressure-nvidia-scandal-rcna609093" target="_blank" rel="noopener">參院銀行委員會邀黃仁勳十二月三日、Lutnick 十二月十日作證；Lutnick 已同意</a></h3>
+    <p class="dek">這是辭職後的國會程序新事實，不是重寫辭職本身。NBC 報道，參院銀行委員會主席 Tim Scott 要求黃仁勳十二月三日、商務部長 Lutnick 十二月十日自願公開作證。Lutnick 發言人確認已同意出席。NBC 稱黃仁勳方面未即時回應該信。Mast 另要求十二月一日閉門問詢。未打開信件原件，日期仍為記者轉述。</p>
+    <p class="meta"><span class="outlet">NBC News（Lutnick 發言人確認；信件原件未打開）</span><span class="src"> · <a href="https://www.nbcnews.com/politics/congress/commerce-secretary-howard-lutnick-testify-pressure-nvidia-scandal-rcna609093" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.citizen.org/news/coalition-of-nonprofits-files-landmark-lawsuit-to-stop-development-of-advanced-ai-systems-at-anthropic-google-meta-openai-and-spacexsi-that-proliferate-bioweapons-and-cyberattacks/" target="_blank" rel="noopener"><img src="https://dims.apnews.com/dims4/default/4e44ba9/2147483647/strip/true/crop/4662x3108+0+0/resize/1200x800!/quality/90/?url=https%3A%2F%2Fassets.apnews.com%2F30%2F0e%2Fef26d3feddcef8b768b205a106a9%2F4fd0f97a72934b7eb0c5305851250919" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.citizen.org/news/coalition-of-nonprofits-files-landmark-lawsuit-to-stop-development-of-advanced-ai-systems-at-anthropic-google-meta-openai-and-spacexsi-that-proliferate-bioweapons-and-cyberattacks/" target="_blank" rel="noopener">Jeff Chiu／AP Photo（檔案照片，二零二六年九月二十九日 OpenAI DevDay）</a>（外部連結）</p>
+    <h3><a href="https://www.citizen.org/news/coalition-of-nonprofits-files-landmark-lawsuit-to-stop-development-of-advanced-ai-systems-at-anthropic-google-meta-openai-and-spacexsi-that-proliferate-bioweapons-and-cyberattacks/" target="_blank" rel="noopener">四個非營利組織起訴要求凍結更強模型，尚未判決；已打開稿未見被告立即回應</a></h3>
+    <p class="dek">四個非營利組織十一月十二日在舊金山縣優越法院起訴 Anthropic、Google、Meta、OpenAI 與 SpaceXSI，依加州不當競爭法要求凍結更先進系統的開發。這是已立案的原告主張，不是已判決事實，也不是已頒禁制令。訴狀 PDF 本輪未完整打開。不宜與學校 Gemini 私訟混為同一事件。</p>
+    <p class="meta"><span class="outlet">Public Citizen（原告稿）；AP</span><span class="src"> · <a href="https://www.citizen.org/news/coalition-of-nonprofits-files-landmark-lawsuit-to-stop-development-of-advanced-ai-systems-at-anthropic-google-meta-openai-and-spacexsi-that-proliferate-bioweapons-and-cyberattacks/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.cnbc.com/2026/11/13/spacex-launches-starship-in-key-test-flight-of-massive-rocket.html" target="_blank" rel="noopener"><img src="https://image.cnbcfm.com/api/v1/image/108551491-1794611116156-gettyimages-2304487605-AFP_D7FF9MN.jpeg?v=1794611301&amp;w=1920&amp;h=1080" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.cnbc.com/2026/11/13/spacex-launches-starship-in-key-test-flight-of-massive-rocket.html" target="_blank" rel="noopener">Ricardo Arduengo／AFP／Getty Images（CNBC）</a>（外部連結）</p>
+    <h3><a href="https://www.cnbc.com/2026/11/13/spacex-launches-starship-in-key-test-flight-of-massive-rocket.html" target="_blank" rel="noopener">SpaceX Starship 第十五次試飛升空；助推器改為海上濺落，衛星釋放結果待補</a></h3>
+    <p class="dek">Starship 第十五次試飛於當地時間十一月十三日下午四時四十七分從德州 Starbase 升空，首次嘗試同時回收助推器與上層。公司後來放棄回收助推器，改為海上濺落。FAA 發言人稱此次飛行執照未受稍後全國禁飛令影響。已打開頁面尚未寫完上層或衛星釋放結果。不要與全美停飛寫成同一事件。</p>
+    <p class="meta"><span class="outlet">CNBC（FAA 發言人置評）</span><span class="src"> · <a href="https://www.cnbc.com/2026/11/13/spacex-launches-starship-in-key-test-flight-of-massive-rocket.html" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.investing.com/news/stock-market-news/meta-employees-test-predictionmarket-app-wsj-reports-5026444" target="_blank" rel="noopener"><img src="https://content-media.investing.com/trkd-images/LYNXNPEMAC1SJ_L.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 C</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.investing.com/news/stock-market-news/meta-employees-test-predictionmarket-app-wsj-reports-5026444" target="_blank" rel="noopener">Reuters（Investing.com 轉載）</a>（外部連結）</p>
+    <h3><a href="https://www.investing.com/news/stock-market-news/meta-employees-test-predictionmarket-app-wsj-reports-5026444" target="_blank" rel="noopener">WSJ：Meta 員工內測預測市場應用 Takes，用點數而非真錢下注；公司拒評</a></h3>
+    <p class="dek">路透轉述《華爾街日報》：Meta 員工已開始測試名為 Takes 的預測市場應用，可用名為 cred 的點數對事件結果下注，而非真錢。應用尚未對公眾開放，是否或何時發布不明。Meta 拒絕置評。這是內測傳聞，無官方產品稿。不要寫成已推出的真錢博彩產品。</p>
+    <p class="meta"><span class="outlet">Reuters 轉述 WSJ（原文未打開）；The Block</span><span class="src"> · <a href="https://www.investing.com/news/stock-market-news/meta-employees-test-predictionmarket-app-wsj-reports-5026444" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="policy-rank">
+    <h2>政策／監管 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://www.nbcnews.com/politics/congress/commerce-secretary-howard-lutnick-testify-pressure-nvidia-scandal-rcna609093" target="_blank" rel="noopener">[A] 參院銀行委員會邀黃仁勳十二月三日、Lutnick 十二月十日作證；Lutnick 已同意</a></li>
+    <li><a href="https://www.citizen.org/news/coalition-of-nonprofits-files-landmark-lawsuit-to-stop-development-of-advanced-ai-systems-at-anthropic-google-meta-openai-and-spacexsi-that-proliferate-bioweapons-and-cyberattacks/" target="_blank" rel="noopener">[B] 四個非營利組織起訴要求凍結更強模型，尚未判決；已打開稿未見被告立即回應</a></li>
+    <li><a href="https://www.cnbc.com/2026/11/13/spacex-launches-starship-in-key-test-flight-of-massive-rocket.html" target="_blank" rel="noopener">[B] SpaceX Starship 第十五次試飛升空；助推器改為海上濺落，衛星釋放結果待補</a></li>
+    <li><a href="https://www.investing.com/news/stock-market-news/meta-employees-test-predictionmarket-app-wsj-reports-5026444" target="_blank" rel="noopener">[C] WSJ：Meta 員工內測預測市場應用 Takes，用點數而非真錢下注；公司拒評</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="opensource">
+  <header class="sec-head"><div class="flag">開源</div><div><h2>開源／開發</h2><p class="sec-sub">llama.cpp v1.0.0、Mozilla 關閉 Solo · 2則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://huggingface.co/blog/ggml-org/llama-cpp-v1" target="_blank" rel="noopener"><img src="https://cdn-uploads.huggingface.co/production/uploads/63148d3b996c52bf0142cdbe/2PgU1GxpJX_LVORaP2RRy.png" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://huggingface.co/blog/ggml-org/llama-cpp-v1" target="_blank" rel="noopener">ggml-org／Hugging Face</a>（外部連結）</p>
+    <h3><a href="https://huggingface.co/blog/ggml-org/llama-cpp-v1" target="_blank" rel="noopener">llama.cpp 與 ggml 發布 v1.0.0，往後不相容的公開介面將升主要版本號</a></h3>
+    <p class="dek">llama.cpp 團隊十一月十三日宣布函式庫 v1.0.0，同時發布 ggml v1.0.0。官方寫，專案已運作三年半，下游依賴其介面；往後公開應用程式或二進位介面不相容時，將以主要版本號標示。網誌稱目前支援逾一百五十種架構變體。這是版本治理里程碑，不是新模型發表。已有官方錨。</p>
+    <p class="meta"><span class="outlet">Hugging Face 官方網誌（ggml-org）；發行頁見 GitHub</span><span class="src"> · <a href="https://huggingface.co/blog/ggml-org/llama-cpp-v1" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theregister.com/software/2026/11/13/mozilla-leaves-solo-website-owners-to-go-it-alone-as-hosting-shuts-down/5309632" target="_blank" rel="noopener"><img src="https://image.theregister.com/260756.jpg?imageId=260756&amp;x=0&amp;y=0&amp;cropw=100&amp;croph=100&amp;panox=0&amp;panoy=0&amp;panow=100&amp;panoh=100&amp;width=1200&amp;height=683" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 C</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theregister.com/software/2026/11/13/mozilla-leaves-solo-website-owners-to-go-it-alone-as-hosting-shuts-down/5309632" target="_blank" rel="noopener">The Register</a>（外部連結）</p>
+    <h3><a href="https://www.theregister.com/software/2026/11/13/mozilla-leaves-solo-website-owners-to-go-it-alone-as-hosting-shuts-down/5309632" target="_blank" rel="noopener">Mozilla 關閉 LLM 建站服務 Solo，十一月三十日刪站與數據，稱十月一日已通知</a></h3>
+    <p class="dek">Mozilla 的 Solo 建站與託管服務將關閉，所有網站與數據於十一月三十日刪除。The Register 寫約五萬四千人用過。Mozilla 對該刊稱，十月一日已通知客戶，提供六十天過渡，並協助下載網站數據、把經其購買的域名遷至 Name.com。這是產品下線，不是安全事故。</p>
+    <p class="meta"><span class="outlet">The Register（含 Mozilla 聲明）</span><span class="src"> · <a href="https://www.theregister.com/software/2026/11/13/mozilla-leaves-solo-website-owners-to-go-it-alone-as-hosting-shuts-down/5309632" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="opensource-rank">
+    <h2>開源／開發 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://huggingface.co/blog/ggml-org/llama-cpp-v1" target="_blank" rel="noopener">[B] llama.cpp 與 ggml 發布 v1.0.0，往後不相容的公開介面將升主要版本號</a></li>
+    <li><a href="https://www.theregister.com/software/2026/11/13/mozilla-leaves-solo-website-owners-to-go-it-alone-as-hosting-shuts-down/5309632" target="_blank" rel="noopener">[C] Mozilla 關閉 LLM 建站服務 Solo，十一月三十日刪站與數據，稱十月一日已通知</a></li>
+    </ol>
+  </div>
+</section>
+  <footer class="footer">
+    <p>每日 IT 報 · 2026-11-14（六）· 香港時間 · 共 31 則精選 + 4 篇人物專題 · 配圖直接 hotlink 外部 https 來源，無 base64 嵌圖、無本機 assets · 每則附熱度 A/B/C · 各分類欄附熱度排行。</p>
+    <p>來源涵蓋歐美主流科技／財經／資安媒體、公司通告與社群熱度交叉；摘要約 100–150 字繁中，事實以原文為準。專題以人物視角撰寫（Ben Thompson／Steve Jobs／Elon Musk／Chris Miller）。例行每日（含週末）。</p>
+  </footer>
+</main>
+
+</body>
+</html>

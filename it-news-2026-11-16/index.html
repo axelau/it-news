@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>每日 IT 報｜2026年11月16日 · Pixel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --cream:#F5F5EC;
+  --paper:#FFFEF7;
+  --navy:#0A2558;
+  --navy2:#14356e;
+  --sky:#A3C1DA;
+  --sky2:#C5D9EA;
+  --sky3:#E8F1F8;
+  --ink:#0A2558;
+  --ink2:#1e3a66;
+  --muted:#5a6f8a;
+  --link:#0A2558;
+  --white:#fffef9;
+  --heat-a:#0A2558;
+  --heat-b:#3d5a80;
+  --heat-c:#7a8fa8;
+  --px:4px;
+}
+*{box-sizing:border-box}
+html{font-size:16.5px}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(163,193,218,.35) 0 2px, transparent 3px),
+    radial-gradient(circle at 88% 18%, rgba(10,37,88,.12) 0 2px, transparent 3px),
+    radial-gradient(circle at 70% 92%, rgba(163,193,218,.28) 0 2px, transparent 3px),
+    var(--cream);
+  background-size:28px 28px, 36px 36px, 24px 24px, auto;
+  color:var(--ink);
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  line-height:1.55;
+  image-rendering:auto;
+}
+a{color:var(--link); text-decoration:none; border-bottom:2px solid transparent}
+a:hover{border-bottom-color:var(--sky); background:var(--sky3)}
+
+/* pixel border helper — stepped corners via box-shadow */
+.pixel-border{
+  border:3px solid var(--navy);
+  box-shadow:
+    3px 0 0 0 var(--navy),
+    -3px 0 0 0 var(--navy),
+    0 3px 0 0 var(--navy),
+    0 -3px 0 0 var(--navy),
+    6px 6px 0 0 rgba(10,37,88,.18);
+  clip-path: polygon(
+    0 8px, 8px 8px, 8px 0,
+    calc(100% - 8px) 0, calc(100% - 8px) 8px, 100% 8px,
+    100% calc(100% - 8px), calc(100% - 8px) calc(100% - 8px), calc(100% - 8px) 100%,
+    8px 100%, 8px calc(100% - 8px), 0 calc(100% - 8px)
+  );
+}
+
+.wrap{
+  max-width:1000px; margin:1.25rem clamp(1rem,5vw,3rem) 2.5rem; padding:1.35rem clamp(1.75rem,7vw,3.75rem) 2.5rem;
+  background:var(--paper);
+  border:3px solid var(--navy);
+  position:relative;
+  box-shadow:
+    4px 4px 0 0 var(--navy),
+    8px 8px 0 0 var(--sky);
+}
+/* dither + decorations around wrap */
+.wrap::before,.wrap::after{
+  content:"+"; position:absolute; color:var(--sky); font-family:"Press Start 2P",monospace;
+  font-size:.55rem; line-height:1; pointer-events:none; opacity:.85;
+}
+.wrap::before{top:.55rem; left:.7rem}
+.wrap::after{bottom:.55rem; right:.7rem}
+
+/* ===== MASTHEAD ===== */
+.masthead{
+  text-align:center;
+  padding:1.6rem 1rem 1.25rem;
+  margin:0 0 1.15rem;
+  background:linear-gradient(180deg, var(--sky3) 0%, var(--paper) 70%);
+  border:3px solid var(--navy);
+  position:relative;
+  box-shadow:4px 4px 0 0 var(--navy);
+}
+.masthead::before{
+  content:"PLAY · WORK · CREATE · CONNECT";
+  position:absolute; left:.5rem; top:50%; transform:translateY(-50%) rotate(-90deg);
+  transform-origin:center; font-family:"Press Start 2P",monospace; font-size:.42rem;
+  letter-spacing:.08em; color:var(--sky); white-space:nowrap; opacity:.7;
+  display:none;
+}
+@media (min-width:860px){
+  .masthead::before{display:block}
+}
+.masthead .kicker{
+  font-family:"Press Start 2P",monospace;
+  font-size:.55rem; letter-spacing:.12em; color:var(--navy);
+  margin-bottom:.85rem;
+  display:inline-block;
+  background:var(--navy); color:#fff;
+  padding:.45rem .7rem;
+  box-shadow:3px 3px 0 0 var(--sky);
+}
+.masthead h1{
+  font-family:"Press Start 2P",monospace;
+  font-size:clamp(1.15rem, 4.2vw, 1.85rem);
+  margin:.35rem 0 .7rem; font-weight:400; letter-spacing:.06em;
+  color:var(--navy);
+  text-shadow: 3px 3px 0 var(--sky), 6px 6px 0 rgba(10,37,88,.15);
+  line-height:1.45;
+}
+.masthead .date{
+  font-family:"VT323",monospace;
+  font-size:1.35rem; color:var(--navy2); margin-top:.15rem; letter-spacing:.04em;
+}
+.masthead .tagline{
+  font-size:.8rem; color:var(--muted); margin:.55rem auto 0; max-width:46rem; line-height:1.5;
+}
+
+/* floating pluses in masthead */
+.masthead .date::before{content:"+  "; color:var(--sky); font-family:"Press Start 2P",monospace; font-size:.5rem}
+.masthead .date::after{content:"  +"; color:var(--sky); font-family:"Press Start 2P",monospace; font-size:.5rem}
+
+/* ===== TOC ===== */
+.toc{
+  display:flex; flex-wrap:wrap; gap:.45rem .55rem; justify-content:center;
+  margin:0 0 1.5rem; padding:.85rem .6rem;
+  border:3px solid var(--navy); background:var(--sky3);
+  box-shadow:3px 3px 0 0 var(--navy);
+  font-size:.82rem;
+}
+.toc a{
+  color:#fff; background:var(--navy); border:2px solid var(--navy);
+  padding:.28rem .55rem; font-weight:700; letter-spacing:.02em;
+  box-shadow:2px 2px 0 0 var(--sky);
+  border-bottom:2px solid var(--navy);
+}
+.toc a:hover{
+  background:var(--sky); color:var(--navy); border-bottom-color:var(--navy);
+}
+
+/* ===== REGIONS / SECTION HEADS ===== */
+.region{
+  margin:0 0 4.2rem; padding-bottom:2.7rem;
+  border-bottom:3px dashed var(--navy);
+}
+.region:last-of-type{border-bottom:none}
+.sec-head{display:flex; align-items:stretch; gap:.85rem; margin-bottom:.95rem}
+.flag{
+  background:var(--navy); color:#fff;
+  writing-mode:vertical-rl; text-orientation:mixed;
+  letter-spacing:.2em; font-weight:700; font-size:.88rem;
+  padding:.65rem .4rem; min-width:2.15rem;
+  display:flex; align-items:center; justify-content:center;
+  border:3px solid var(--navy);
+  box-shadow:3px 3px 0 0 var(--sky);
+  font-family:"Noto Sans TC",sans-serif;
+  position:relative;
+}
+.flag::after{
+  content:""; position:absolute; inset:-3px;
+  border:1px solid var(--sky); pointer-events:none; opacity:.6;
+}
+.sec-head h2{
+  margin:0; font-size:1.35rem; letter-spacing:.04em; line-height:1.35;
+  color:var(--navy); font-weight:700;
+}
+.sec-sub{margin:.2rem 0 0; color:var(--muted); font-size:.8rem}
+
+/* ===== FEATURE BOX ===== */
+.feature-box{
+  max-width:100%; margin:0 0 2rem; padding:0; overflow:hidden;
+  background:var(--white);
+  border:3px solid var(--navy);
+  box-shadow:4px 4px 0 0 var(--navy);
+  display:grid; grid-template-columns:minmax(220px,34%) 1fr; gap:0;
+  position:relative;
+}
+.feature-box::before{
+  content:"+"; position:absolute; top:.35rem; right:.5rem; z-index:2;
+  font-family:"Press Start 2P",monospace; font-size:.5rem; color:var(--sky); opacity:.9;
+}
+.feature-box .feature-media{
+  margin:0; background:var(--sky2); border-right:3px solid var(--navy); min-height:12rem; line-height:0;
+}
+.feature-box .feature-media a{display:block; line-height:0; height:100%; border:0}
+.feature-box .feature-media a:hover{background:transparent}
+.feature-box .feature-media img{width:100%; height:100%; min-height:12rem; object-fit:cover; display:block}
+.feature-box .feature-body{padding:1.1rem 1.2rem 1rem}
+.feature-box p{margin:0 0 .95rem; color:var(--ink2); font-size:.98rem; text-align:justify}
+.feature-box p.lead{font-size:1.05rem; color:var(--ink)}
+.feature-box p:last-child{margin-bottom:0}
+.feature-meta-row{display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; margin:0 0 .75rem}
+.drop::first-letter{
+  float:left; font-family:"Press Start 2P",monospace;
+  font-size:1.55rem; line-height:1.1; padding:.15rem .25rem 0 0;
+  font-weight:400; color:var(--navy);
+}
+
+/* satire accent */
+.feature-box.satire{
+  border-color:var(--navy);
+  background:linear-gradient(135deg, #fff9f0 0%, var(--white) 55%);
+  box-shadow:4px 4px 0 0 var(--sky), 8px 8px 0 0 var(--navy);
+}
+.feature-box.satire .sec-note{font-size:.76rem; color:var(--muted); margin:0 0 .75rem; font-style:italic}
+
+/* ===== STORY GRID ===== */
+.grid{display:grid; grid-template-columns:1fr 1fr; gap:2rem 1.15rem}
+.story{
+  padding:0; overflow:hidden;
+  background:var(--white);
+  border:3px solid var(--navy);
+  box-shadow:3px 3px 0 0 var(--sky);
+  display:flex; flex-direction:column;
+  position:relative;
+}
+.story::after{
+  content:"+"; position:absolute; bottom:.3rem; right:.4rem;
+  font-family:"Press Start 2P",monospace; font-size:.4rem; color:var(--sky); opacity:.75;
+  pointer-events:none;
+}
+.story.lead{grid-column:1 / -1; box-shadow:4px 4px 0 0 var(--navy)}
+.story.lead .story-media img{max-height:280px}
+.story-media{margin:0; background:var(--sky2); border-bottom:3px solid var(--navy); line-height:0}
+.story-media a{display:block; line-height:0; border:0}
+.story-media a:hover{background:transparent}
+.story-media img{width:100%; height:160px; object-fit:cover; display:block}
+.story.lead .story-media img{height:240px}
+.story-body{padding:.8rem .95rem .95rem; min-width:0; flex:1; display:flex; flex-direction:column}
+.story h3{margin:0 0 .35rem; font-size:1.02rem; line-height:1.35; font-weight:700; color:var(--navy)}
+.story.lead h3{font-size:1.28rem}
+.story h3 a{border:0; color:var(--navy)}
+.story h3 a:hover{background:var(--sky3); border:0}
+.story .dek{margin:0 0 .5rem; color:var(--ink2); font-size:.9rem; flex:1}
+.story.lead .dek{font-size:.98rem}
+.meta{margin:0; font-size:.72rem; color:var(--muted); font-family:"VT323",monospace; font-size:.95rem}
+.outlet{font-weight:700; color:var(--navy2); font-family:"Noto Sans TC",sans-serif; font-size:.72rem}
+.src{margin-left:.15rem}
+
+/* ===== HEAT BADGES — 90s window pop ===== */
+.heat{
+  display:inline-flex; align-items:stretch; gap:0;
+  padding:0; font-size:.68rem; font-weight:700; letter-spacing:.04em; line-height:1.2;
+  border:2px solid var(--navy);
+  background:var(--paper);
+  box-shadow:2px 2px 0 0 var(--navy);
+  overflow:hidden;
+  font-family:"Press Start 2P",monospace;
+  font-size:.48rem;
+  position:relative;
+}
+.heat::before{
+  content:"■";
+  background:var(--navy); color:#fff;
+  padding:.32rem .4rem;
+  display:inline-flex; align-items:center;
+  font-size:.42rem; letter-spacing:0;
+}
+/* put label text next to title bar */
+.heat{
+  color:var(--navy);
+  padding-right:.55rem;
+  align-items:center;
+}
+.heat::after{
+  content:"×";
+  margin-left:.35rem;
+  color:var(--navy);
+  font-size:.55rem;
+  line-height:1;
+  opacity:.7;
+}
+
+/* ===== THUMB CREDIT ===== */
+.thumb-credit{
+  margin:.1rem 0 .5rem; font-size:.65rem; color:var(--muted); line-height:1.35;
+  word-break:break-word;
+  padding:.35rem .5rem;
+  background:var(--sky3);
+  border-left:4px solid var(--sky);
+}
+.thumb-credit a{color:var(--muted); border-bottom:1px dotted var(--sky)}
+
+/* ===== RANK BOX — sky promo banner ===== */
+.rank-box{
+  margin:1.15rem 0 2rem; padding:1.1rem 1.2rem 1rem;
+  border:3px solid var(--navy);
+  background:var(--sky);
+  box-shadow:4px 4px 0 0 var(--navy);
+  position:relative;
+}
+.rank-box::before{
+  content:"LEVEL UP";
+  position:absolute; top:-.55rem; right:1rem;
+  font-family:"Press Start 2P",monospace; font-size:.42rem;
+  background:var(--navy); color:#fff; padding:.3rem .45rem;
+  box-shadow:2px 2px 0 0 var(--paper);
+}
+.rank-box h2{
+  margin:0 0 .3rem; font-size:1.15rem; letter-spacing:.04em; color:var(--navy);
+  font-family:"Press Start 2P",monospace; font-size:.72rem; line-height:1.55;
+}
+.rank-box .rank-sub{margin:0 0 .75rem; color:var(--navy2); font-size:.78rem}
+.rank-box ol{margin:0; padding-left:1.4rem; background:var(--paper); border:2px solid var(--navy); padding:.75rem 1rem .75rem 1.85rem}
+.rank-box li{margin:0 0 .45rem; font-size:.9rem; line-height:1.4; color:var(--navy)}
+.rank-box li a{font-weight:700; color:var(--navy); border-bottom:2px solid transparent}
+.rank-box li a:hover{border-bottom-color:var(--navy); background:var(--sky3)}
+
+/* ===== FOOTER ===== */
+.footer{
+  margin-top:1.4rem; padding:1rem 1rem .2rem;
+  border:3px solid var(--navy); background:var(--sky3);
+  box-shadow:3px 3px 0 0 var(--navy);
+  font-size:.76rem; color:var(--muted); line-height:1.6;
+}
+.footer p:first-child{
+  font-family:"VT323",monospace; font-size:1.05rem; color:var(--navy);
+}
+
+@media (max-width:720px){
+  .wrap{margin:.6rem .5rem 1.5rem; padding:1rem .85rem 1.75rem; box-shadow:3px 3px 0 0 var(--navy), 6px 6px 0 0 var(--sky)}
+  .grid{grid-template-columns:1fr}
+  .flag{writing-mode:horizontal-tb; min-width:auto; padding:.35rem .7rem; letter-spacing:.15em}
+  .sec-head{flex-direction:column; gap:.4rem}
+  .drop::first-letter{font-size:1.25rem}
+  .feature-box{grid-template-columns:1fr}
+  .feature-box .feature-media{border-right:none; border-bottom:3px solid var(--navy); min-height:10rem}
+  .feature-box .feature-media img{min-height:10rem; max-height:200px}
+  .story.lead .story-media img,.story-media img{height:180px}
+  .masthead h1{font-size:1.05rem}
+  .rank-box h2{font-size:.58rem}
+  .toc a{font-size:.75rem}
+}
+@media print{
+  body{background:#fff}
+  .wrap{box-shadow:none; max-width:none}
+  a{color:inherit; text-decoration:none}
+  .region{break-inside:avoid-page}
+}
+</style></head>
+<body>
+<main class="wrap">
+  <header class="masthead">
+    <div class="kicker">GROK BOT · IT DIGEST</div>
+    <h1>每日 IT 報</h1>
+    <div class="date">二零二六年十一月十六日　星期一　香港時間</div>
+    <p class="tagline">四篇人物專題（10 人池抽 4）· 分類精選（週末新稿偏薄，不注水至三十則）· 外部配圖 hotlink · 摘要約 100–150 字</p>
+  </header>
+  <nav class="toc" aria-label="章節">
+    <a href="#f1">Thompson</a> <a href="#f2">Jobs</a> <a href="#f3">Torvalds</a> <a href="#f4">Vestager</a> <a href="#hot">熱門話題</a> <a href="#ai">AI 與模型</a> <a href="#security">資安與基礎設施</a> <a href="#product">消費電子／平台</a> <a href="#chips">晶片／硬體／地緣</a> <a href="#policy">政策／監管</a> <a href="#opensource">開源／開發</a>
+  </nav>
+<section class="region" id="f1">
+  <header class="sec-head"><div class="flag">Thompson</div><div><h2>戰略：要挑戰星鏈，卻把發射權買在還沒飛穩的別人火箭上</h2><p class="sec-sub">人物：Ben Thompson · 星座競爭的死穴不是衛星軟體，是誰握著可反覆使用的發射產能。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://www.theverge.com/science/1034006/vulcan-rocket-fails-destroying-40-amazon-leo-satellites" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/11/gettyimages-2304790934.jpg?quality=90&amp;strip=all&amp;crop=0%2C12.589380284132%2C100%2C74.821239431736&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/science/1034006/vulcan-rocket-fails-destroying-40-amazon-leo-satellites" target="_blank" rel="noopener">Manuel Mazzanti／NurPhoto via Getty Images（The Verge）</a>（外部連結）</p>
+<p class="lead drop">星座競爭的死穴不是衛星上的軟體，是誰握著能反覆把硬件送上天的發射產能。沒有垂直整合的發射能力，所謂挑戰星鏈，只是一張向對手與尚未穩飛的供應商購買運力的訂單簿。</p>
+<p>據 The Verge 與 Ars Technica，聯合發射聯盟（ULA）的火神號（Vulcan）於東部時間十一月十五日中午十二時四十分，從佛羅里達州卡納維拉爾角太空軍基地四十一號發射台升空，載四十顆亞馬遜 Leo 寬頻衛星，香港時間為十六日凌晨一時四十分。ULA 其後在 X 聲明：發射主任收到的數據確認，飛行約十分鐘出現異常，「未能把亞馬遜任務送入軌道」。公司稱當時沒有足夠數據解釋原因，將調查後「盡快」復飛。Ars 寫這是 ULA 自二零零六年由波音與洛克希德馬丁火箭部門合併以來首次完全任務失敗；The Verge 用「據報」。原因仍在調查，不能寫死。Ars 多名消息源稱異常在助推級，而非上面級 Centaur V 或固體助推器，並描述藍色起源所製 BE-4 主引擎似比預定時間至少多燃燒三十秒；Spaceflight Now 則寫問題出在 Centaur 點火期間。已打開的 ULA 聲明只說飛行十分鐘異常，兩種技術表述互相衝突，本報不把任何一方當成已證實的故障位置。</p>
+<p>真正改寫市場結構的，不是少了四十顆衛星，而是發射這項稀缺互補資產被進一步鎖死。Ars 寫：周日是亞馬遜向 ULA 預訂三十八次 Vulcan 飛行的第一次，每次計劃送四十顆或更多 Leo；星座目前三百九十六顆，第一代規劃三千二百九十二顆。公司十月曾稱已有足夠衛星可在年底前開始初始商用，但要滿容量仍需更多發射；最近宣布造出第一千顆，意味過半節點仍在地面。亞馬遜另向 Arianespace 預訂共二十四次，已飛三次；藍色起源 New Glenn 五月地面測試爆炸，發射台至少停到今年底。若此次被認定與 BE-4 有關，Ars 寫可能再拖 New Glenn 復飛——這是條件句，不是結論。「無限期停飛」是 Ars 的預期，不是 ULA 用語。亞馬遜還向直接對手 SpaceX 預訂獵鷹九號：Ars 寫還剩十次，Spaceflight Now 寫共十三次，口徑不同，不可合併。發射垂直整合的一方，在商業星座與國安發射上都更難被取代。價值鏈已經投票：誰能穩定發射，誰就決定星座能不能追上。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="f2">
+  <header class="sec-head"><div class="flag">Jobs</div><div><h2>品味：一副沒有畫面、走不開 iPhone、成敗全押在 Siri 的眼鏡</h2><p class="sec-sub">人物：Steve Jobs · 這不是一台新電腦，是一副要等明年、還可能再延期的配件。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://www.theverge.com/tech/1033968/apples-first-smart-glasses-are-coming-together" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/07/268640_RayBan_Meta_Gen2_AKrales_0038.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/tech/1033968/apples-first-smart-glasses-are-coming-together" target="_blank" rel="noopener">Amelia Holowaty Krales／The Verge（圖為 Meta 第二代 Ray-Ban，僅供厚薄比較，不是 Apple N50）</a>（外部連結）</p>
+<p class="lead drop">一副沒有畫面的眼鏡，不是新的個人電腦，是一副走不開手機、成敗全押在重建中 Siri 的配件。把「稍薄」寫成設計突破，是缺乏品味。</p>
+<p>這不是蘋果官方發表。據 Bloomberg 的 Mark Gurman，經 The Verge 與 MacRumors 交叉：內部代號 N50 的第一款智慧眼鏡，擬於二零二七年六月全球開發者大會公布，同年年底前出貨，不會在會上即時開賣。第一款沒有擴增實境顯示。原型跑精簡版 visionOS，處理器改自較舊的 Apple Watch 芯片。外形據報比 Meta 第二代 Ray-Ban「稍薄」。充電是扁平、約 Tic Tac 大小的磁吸頭，MacRumors 寫三針接在左鏡腳末端，Gurman 說尚不確定量產是否採用這套充電。Wi-Fi 讓部分非第三方應用功能在 iPhone 不在身邊時仍可用，例如繼續聽音訊，但「不會作為完全獨立的裝置運作」。目前規劃需要新款 iPhone，不支援 Android；開發者不必另做眼鏡應用，軟體跑在配對的手機上。互動走 Siri：辨認建築、看冰箱建議餐點、翻譯、通話與通知。本月 iOS 27.3 首個測試版已加入更細的 Siri 控應用能力，自有應用支援計劃十二月，第三方二零二七年。員工據報把音訊說成「業界領先」；在一副還不能離機辦妥第三方應用的眼鏡上，音質再好，也只是把手機的聲音搬到鏡腳。</p>
+<p>This is junk 的理由不在厚度，而在人與機器之間只剩下一張還沒就緒的嘴。沒有畫面，等於把整個體驗交給語音助手；助手若遲到，眼鏡就只是一副戴著充電的耳機。MacRumors 轉述 Gurman：硬體大致定案，剩餘障礙是軟體與人工智能，「進度落後，可能拖慢原定二零二七年上市」。相機版 AirPods 仍計劃同年下旬。一間以極簡界面起家的公司，現在把未來入口做成必須綁定手機、還可能再等一年的配件。品味不是把架子做薄，是讓人戴上之後不必先問：Siri，你準備好了沒有。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="f3">
+  <header class="sec-head"><div class="flag">Torvalds</div><div><h2>開源：刪掉 GitHub 倉庫，擋不住已經在公網跑的一千六百個控制台</h2><p class="sec-sub">人物：Linus Torvalds · Talk is cheap。寫「授權測試」不算負責；刪庫之後 fork 還在，才是維護失敗。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://www.ic3.gov/CSA/2026/261113.pdf" target="_blank" rel="noopener"><img src="https://cms.therecord.media/uploads/fbi_1_c4c06390db.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://www.ic3.gov/CSA/2026/261113.pdf" target="_blank" rel="noopener">The Record／Recorded Future News（FBI 相關檔案圖，不是 ARTEX 控制台或界面）</a>（外部連結）</p>
+<p class="lead drop">Talk is cheap。在說明檔寫「只供授權測試」，然後在濫用報道後把 GitHub 倉庫刪掉，這不叫維護，這叫把已經擴散的代碼庫假裝收回。Fork、存檔和商業版還在跑，公網控制台還開著，刪庫只是把問題從自己的命名空間搬走。</p>
+<p>據聯邦調查局十一月十三日 FLASH-20261113-001，開源、由大語言模型驅動的自主滲透測試框架 ARTEX，自至少二零二六年八月起被威脅行為者用來自動化從偵察到竊取的多個階段。框架本身不含自有模型，而是接外部模型，公告列出 Anthropic Claude、OpenAI GPT，以及 DeepSeek、GLM、Grok、Kimi 等。FBI 稱部分入侵可在三小時內從初始鎖定走到特權訪問，並降低技術門檻。開發者化名 Autumn-27，二零二六年七月在 GitHub 發布，約十週內獲估一千五百至二千個星標；在濫用報道後於十月八日下架。框架仍經社群 fork、本地化改版、存檔複本與商業版 ARTEX PRO 流傳。截至十一月初，研究人員識別逾一千六百個公網暴露的控制台，防火牆後部署可能更多。BleepingComputer 十一月十五日整理了這份公告。本報只寫高層事實，不寫利用步驟或重現方法。</p>
+<p>已報告後果必須分源。FBI 提到南韓金融機構個資外洩，約六萬七千人；以及 ConnectWise Cloud Backup 供應鏈事件，使攻擊者得以對逾二千二百五十個下游租戶嘗試訪問（FBI 引 Microsoft）。BleepingComputer 稱 Microsoft 將該戰役歸於 Storm-0940；Huntress 當時識別至少一百六十二個被入侵租戶——這是經該媒體轉述，不可把二千二百五十寫成已被攻破的租戶數。亞馬遜威脅情報十一月十三日寫，誘捕網觀察到帶戰役記憶的代理請求，但「未能獨立核實代理自己聲稱的結果」。開發者可以刪掉自己的倉庫。他刪不掉已經在別人機器上跑的進程，也刪不掉一千六百個暴露在公網的控制台。那才是這次維護事故的核心：不是開源有罪，是把「授權」寫在說明裡、卻對擴散後的營運現實撒手。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="f4">
+  <header class="sec-head"><div class="flag">Vestager</div><div><h2>壟斷：撤銷罰單的理由如果是「合約沒逐份數完年期」，看門人就贏了舉證戰</h2><p class="sec-sub">人物：Margrethe Vestager · 排他條款的殺傷力在整片合約網，不在法官能不能點完每一份續約。</p></div></header>
+  <div class="feature-box">
+  <div class="feature-media">
+    <a href="https://curia.europa.eu/site/upload/docs/application/pdf/2026-11/cp260164en.pdf" target="_blank" rel="noopener"><img src="https://imagedelivery.net/wKQ19LTSBT0ARz08tkssqQ/11a10229-4bce-4e6f-3a0e-0590cae90f00/w=1097,h=731,fit=scale-down" alt="" loading="lazy"/></a>
+  </div>
+  <div class="feature-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+<p class="thumb-credit">圖源／引述自 <a href="https://curia.europa.eu/site/upload/docs/application/pdf/2026-11/cp260164en.pdf" target="_blank" rel="noopener">AP Photo／Richard Drew（Courthouse News Service：Google 標誌，紐約，2023-09-11）</a>（外部連結）</p>
+<p class="lead drop">看門人的排他條款，殺傷力在整片合約網，不在執法者能不能把每一份續約的年期點完。若撤銷近十五億歐元罰單的理由，是「存續期間沒有逐份細審」，競爭法就被抬到了看門人喜歡的舉證高度。</p>
+<p>這不是本週的終局判決，也不是昨日意大利罰 Meta 那條隱私案。歐盟法院法務官 Juliane Kokott 於十一月十二日在盧森堡就 C-826/24 P（執委會訴 Google 與 Alphabet，Google AdSense）發表意見。據法院新聞稿 164/26：執委會二零一九年三月認定，二零零六年至二零一六年，AdSense for Search 合約中的排他條款、版位條款與事先批准條款違反歐盟運作條約第 102 條，罰款近十五億歐元。範本自二零零九年三月起，限制或禁止網站營運商展示競爭對手的搜尋廣告；版位條款要求保留 Google 廣告的顯著位置；更改展示前須事先取得批准。普通法院二零二四年九月十八日以未充分審查相關情形、尤其合約存續期間為由，撤銷該決定。執委會其後上訴。</p>
+<p>Kokott 認為，普通法院把 Intel 判決下對「期間」這一標準的審查，抬到「每一項標準都可以單獨因為不夠細而整案撤銷」，屬要求過高。執委會對構成排斥效果的合約做整體評估，部分使用平均值，即已滿足義務；不必逐份解剖每一份合約及其適用，才能證明條款共同產生或可能產生排斥效果。她建議撤銷普通法院判決並發回重審。必須寫清：法務官意見對法院無約束力，法官仍在評議，宣判日未定。因二零一六年排斥效果舉證不足的認定未被執委會上訴，已確定，發回後罰款「無論如何」應下調。罰單沒有因為這份意見自動恢復。看門人用合約把競爭對手從搜尋廣告的版位上擠走；若法律只追究每一份續約夠不夠短，圍牆花園就會繼續以「可終止」為名，把排他寫進整片網絡。</p>
+  </div>
+  </div>
+</section>
+<section class="region" id="hot">
+  <header class="sec-head"><div class="flag">熱門</div><div><h2>熱門話題</h2><p class="sec-sub">ULA 火神號未能送 Leo 入軌、黃仁勳討論回歸 CEO、Bessent 要求十日內作答 · 3則</p></div></header>
+  <div class="grid">
+<article class="story lead has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/science/1034006/vulcan-rocket-fails-destroying-40-amazon-leo-satellites" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/11/gettyimages-2304790934.jpg?quality=90&amp;strip=all&amp;crop=0%2C12.589380284132%2C100%2C74.821239431736&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/science/1034006/vulcan-rocket-fails-destroying-40-amazon-leo-satellites" target="_blank" rel="noopener">Manuel Mazzanti／NurPhoto via Getty Images（The Verge）</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/science/1034006/vulcan-rocket-fails-destroying-40-amazon-leo-satellites" target="_blank" rel="noopener">ULA 火神號發射約十分鐘後異常，未能把四十顆亞馬遜 Leo 衛星送入軌道；報道稱是公司二十年來首次完全任務失敗</a></h3>
+    <p class="dek">火神號於東部時間十一月十五日中午十二時四十分升空，香港時間十六日凌晨一時四十分。ULA 聲明飛行約十分鐘出現異常，「未能把亞馬遜任務送入軌道」，將調查後「盡快」復飛。這是亞馬遜預訂三十八次飛行的第一次。Ars 寫 Leo 目前三百九十六顆，第一代規劃三千二百九十二顆。故障位置尚未官宣：Ars 匿名源指向助推級，Spaceflight Now 指向 Centaur，「無限期停飛」只是 Ars 預期。</p>
+    <p class="meta"><span class="outlet">The Verge（並參 Ars Technica、Spaceflight Now；ULA 與 Amazon 聲明）</span><span class="src"> · <a href="https://www.theverge.com/science/1034006/vulcan-rocket-fails-destroying-40-amazon-leo-satellites" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/tech/1033999/jensen-huang-return-nvidia-megaspeed" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/11/Nvidia_Jensen_huang_03.jpg?quality=90&amp;strip=all&amp;crop=0%2C12.339110464558%2C100%2C75.321779070884&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/tech/1033999/jensen-huang-return-nvidia-megaspeed" target="_blank" rel="noopener">The Verge；Getty Images；Adobe</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/tech/1033999/jensen-huang-return-nvidia-megaspeed" target="_blank" rel="noopener">FT 經 Verge 轉述黃仁勳與親信討論回歸 CEO；Megaspeed 稱 Alice Huang 自二零二五年八月三十日起已無職務</a></h3>
+    <p class="dek">The Verge 轉述 FT：黃仁勳已與盟友討論重返執行長，並有人士向董事會施壓。請願據稱逾十五萬簽名，但 Verge 引 Business Insider 見到「Tim Cruise」「Xi Jingping」等假名；BI 週六點數為十萬八千，與十五萬不是同一時點，本報未核對。Megaspeed 聲明 Alice Huang 自二零二五年八月三十日起離開、目前無職務，這不是對間諜指控的裁定。回歸討論是報道，不是已談成復職。</p>
+    <p class="meta"><span class="outlet">The Verge（FT、Bloomberg 原文未打開，均經 Verge 轉述；請願細節並參 Business Insider）</span><span class="src"> · <a href="https://www.theverge.com/tech/1033999/jensen-huang-return-nvidia-megaspeed" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.axios.com/2026/11/15/bessent-nvidia-earnings-china-chip-sales-ceo" target="_blank" rel="noopener"><img src="https://images.axios.com/wQD2kGo8113iVaa94N3sAnWwCWs=/0x191:3000x1878/1366x768/2026/11/15/1794761756221.jpeg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.axios.com/2026/11/15/bessent-nvidia-earnings-china-chip-sales-ceo" target="_blank" rel="noopener">Alex Wong／Getty Images（Axios：Bessent 與黃仁勳二零二六年五月在中國一場儀式）</a>（外部連結）</p>
+    <h3><a href="https://www.axios.com/2026/11/15/bessent-nvidia-earnings-china-chip-sales-ceo" target="_blank" rel="noopener">財長 Bessent 在 Fox News Sunday 要求 Nvidia 董事會與外部律師十日內作答，並主張外聘執行長</a></h3>
+    <p class="dek">這是 Fox News Sunday 的新訪問，不是重寫昨日 Squawk Box。Axios 與 CNBC 均引 Bessent 質問是否「用看似非法的銷售抬高營收」，並要求董事會與外部律師「未來十天內」作答，主張新執行長「必須到公司以外找」。CNBC 引他把情況比作銀行若如此違規，監理署就會進駐。這是提問不是裁決。Nvidia 當時未回 Axios。市值蒸發一點二萬億美元是 Axios 單源。</p>
+    <p class="meta"><span class="outlet">Axios（並參 CNBC；訪問為 Fox News Sunday）</span><span class="src"> · <a href="https://www.axios.com/2026/11/15/bessent-nvidia-earnings-china-chip-sales-ceo" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="hot-rank">
+    <h2>熱門話題 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://www.theverge.com/science/1034006/vulcan-rocket-fails-destroying-40-amazon-leo-satellites" target="_blank" rel="noopener">[A] ULA 火神號發射約十分鐘後異常，未能把四十顆亞馬遜 Leo 衛星送入軌道</a></li>
+    <li><a href="https://www.theverge.com/tech/1033999/jensen-huang-return-nvidia-megaspeed" target="_blank" rel="noopener">[A] FT 經 Verge 轉述黃仁勳與親信討論回歸 CEO；Megaspeed 稱 Alice Huang 自二零二五年八月三十日起已無職務</a></li>
+    <li><a href="https://www.axios.com/2026/11/15/bessent-nvidia-earnings-china-chip-sales-ceo" target="_blank" rel="noopener">[A] 財長 Bessent 在 Fox News Sunday 要求十日內作答，並主張外聘執行長</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="ai">
+  <header class="sec-head"><div class="flag">AI</div><div><h2>AI 與模型</h2><p class="sec-sub">Anthropic 預計週四登陸 Nasdaq、Nvidia 投資承諾會否收緊 · 2則</p></div></header>
+  <div class="grid">
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.cnbc.com/2026/11/15/anthropic-ipo-is-make-or-break-for-the-technology-industry.html" target="_blank" rel="noopener"><img src="https://image.cnbcfm.com/api/v1/image/108551525-1794626973698-gettyimages-2297195304-AFP_C9PF6JT.jpeg?v=1794627031&amp;w=1920&amp;h=1080" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.cnbc.com/2026/11/15/anthropic-ipo-is-make-or-break-for-the-technology-industry.html" target="_blank" rel="noopener">Oliver Contreras／AFP via Getty Images（CNBC：Dario Amodei，二零二六年九月二十九日）</a>（外部連結）</p>
+    <h3><a href="https://www.cnbc.com/2026/11/15/anthropic-ipo-is-make-or-break-for-the-technology-industry.html" target="_blank" rel="noopener">CNBC：Anthropic 預計週四登陸 Nasdaq，招股書列逾九千億美元支出承諾；七家芯片與雲公司擬按發行價投資二百六十億美元</a></h3>
+    <p class="dek">官方十一月十日：擬發行八億二千五百萬股，定價七十至七十八美元，申請以代號 ANT 上市。CNBC 週日（非新修訂）寫招股書有逾九千億美元支出承諾，七家芯片與雲公司擬按發行價投資二百六十億美元；前九個月淨虧損一千零四十億美元，現金及短盤一千三百二十億美元。該文稱可能募得逾九百億美元，與股數乘上限價不完全吻合，只可當 CNBC 表述，不用未經核對的估值傳聞。</p>
+    <p class="meta"><span class="outlet">CNBC（發行條款見 Anthropic 十一月十日官方 roadshow 稿）</span><span class="src"> · <a href="https://www.cnbc.com/2026/11/15/anthropic-ipo-is-make-or-break-for-the-technology-industry.html" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/15/is-bad-news-for-jensen-huang-also-bad-news-for-the-ai-industry/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/09/GettyImages-2294936867.jpg?resize=1200,800" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 C</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/15/is-bad-news-for-jensen-huang-also-bad-news-for-the-ai-industry/" target="_blank" rel="noopener">Benjamin Fanjoy／Getty Images</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/15/is-bad-news-for-jensen-huang-also-bad-news-for-the-ai-industry/" target="_blank" rel="noopener">TechCrunch Equity：討論黃仁勳去職後，Nvidia 對新創與雲的投資承諾會否收緊</a></h3>
+    <p class="dek">TechCrunch Equity 討論黃仁勳去職對人工智能經濟的含義。Bellan 稱財務長 Colette Kress 暫代，常被讀成先管開支的看守人角色。文中提到約九百九十億美元投資及額外雲承諾等數字，本輪未對原財務報表逐項核對，必須歸屬該稿，不可當本報驗算。這是播客評論，不是新的公司披露。</p>
+    <p class="meta"><span class="outlet">TechCrunch（播客評論，不是新的公司披露）</span><span class="src"> · <a href="https://techcrunch.com/2026/11/15/is-bad-news-for-jensen-huang-also-bad-news-for-the-ai-industry/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="ai-rank">
+    <h2>AI 與模型 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://www.cnbc.com/2026/11/15/anthropic-ipo-is-make-or-break-for-the-technology-industry.html" target="_blank" rel="noopener">[B] CNBC：Anthropic 預計週四登陸 Nasdaq，招股書列逾九千億美元支出承諾</a></li>
+    <li><a href="https://techcrunch.com/2026/11/15/is-bad-news-for-jensen-huang-also-bad-news-for-the-ai-industry/" target="_blank" rel="noopener">[C] TechCrunch Equity：討論黃仁勳去職後 Nvidia 投資承諾會否收緊</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="security">
+  <header class="sec-head"><div class="flag">資安</div><div><h2>資安與基礎設施</h2><p class="sec-sub">FBI 警告 ARTEX 被武器化、AO3 十七天後復站、CISA KEV 兩條今日到期 · 3則</p></div></header>
+  <div class="grid">
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.ic3.gov/CSA/2026/261113.pdf" target="_blank" rel="noopener"><img src="https://cms.therecord.media/uploads/fbi_1_c4c06390db.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.ic3.gov/CSA/2026/261113.pdf" target="_blank" rel="noopener">The Record／Recorded Future News（FBI 相關檔案圖，不是 ARTEX 界面）</a>（外部連結）</p>
+    <h3><a href="https://www.ic3.gov/CSA/2026/261113.pdf" target="_blank" rel="noopener">FBI 警告開源、由大語言模型驅動的自主滲透框架 ARTEX 自至少八月起被武器化；原庫已刪，研究人員稱逾一千六百個控制台暴露</a></h3>
+    <p class="dek">FBI 十一月十三日 FLASH：開源框架 ARTEX 自至少八月起被用於自動化入侵；不含自有模型，接外部大語言模型。開發者 Autumn-27 於七月發布、十月八日下架，fork 與商業版仍在。研究人員稱逾一千六百個控制台暴露在公網。FBI 提到南韓約六萬七千人個資外洩，以及對逾二千二百五十個下游租戶嘗試訪問；Huntress 經轉述確認一百六十二個被入侵，兩數不可混寫。只寫高層事實，不寫利用步驟。</p>
+    <p class="meta"><span class="outlet">FBI IC3 FLASH-20261113-001（主）；週日整理 BleepingComputer；並參 Cisco Talos、AWS Security Blog</span><span class="src"> · <a href="https://www.ic3.gov/CSA/2026/261113.pdf" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.engadget.com/2317218/ao3-is-back-online-but-with-limited-features/" target="_blank" rel="noopener"><img src="https://www.engadget.com/img/gallery/ao3-is-back-online-but-with-limited-features/l-intro-1794777750.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.engadget.com/2317218/ao3-is-back-online-but-with-limited-features/" target="_blank" rel="noopener">Organization for Transformative Works（Engadget）</a>（外部連結）</p>
+    <h3><a href="https://www.engadget.com/2317218/ao3-is-back-online-but-with-limited-features/" target="_blank" rel="noopener">Archive of Our Own 在十月二十九日「安全事件」後十七天復站；營運方稱沒有理由相信用戶資料庫被入侵，但不能排除</a></h3>
+    <p class="dek">AO3 於十月二十九日因「安全事件」關閉，週日復站。OTW 經 Engadget 與 The Verge 引述：作品與書籤未被刪除；草稿刪除暫停至十一月二十九日。部分功能暫關，下載暫時只有 HTML。站方稱沒有理由相信用戶資料庫被入侵，但不能排除，並建議改密碼。官方 status 頁本輪未能打開，細節以已打開媒體轉述為準。</p>
+    <p class="meta"><span class="outlet">Engadget（引 OTW 更新；並參 The Verge）</span><span class="src"> · <a href="https://www.engadget.com/2317218/ao3-is-back-online-but-with-limited-features/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story">
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 C</span></div>
+    <h3><a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">CISA 已知被利用漏洞目錄中，Check Point Gaia DynamicCLI 與 UnrealIRCd 鏈路命令注入兩條於十三日列入，聯邦民事機構到期日為今日</a></h3>
+    <p class="dek">CVE-2026-123039 涉及 Check Point 多款產品在 Gaia OS DynamicCLI 以 root 運行、對本機 socket 連線進程驗證不足，已授權本機用戶可提升至 root。CVE-2026-114713 涉及 UnrealIRCd 在有兩台或以上鏈路伺服器的網絡上，用戶可注入以伺服器權限執行的伺服器間命令。兩條均於十一月十三日列入，到期日為十一月十六日，勒索軟件使用狀況均標 Unknown，並要求依 BOD 26-04 做 forensic triage。這不是今日新曝的漏洞，只因到期日是今天而作極短跟進。本報不寫利用步驟或復現方法。</p>
+    <p class="meta"><span class="outlet">CISA KEV 目錄</span><span class="src"> · <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="security-rank">
+    <h2>資安與基礎設施 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://www.ic3.gov/CSA/2026/261113.pdf" target="_blank" rel="noopener">[A] FBI 警告開源框架 ARTEX 自至少八月起被武器化；原庫已刪，逾一千六百個控制台暴露</a></li>
+    <li><a href="https://www.engadget.com/2317218/ao3-is-back-online-but-with-limited-features/" target="_blank" rel="noopener">[B] Archive of Our Own 在安全事件後十七天復站</a></li>
+    <li><a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">[C] CISA KEV：Check Point 與 UnrealIRCd 兩條十三日列入、今日到期</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="product">
+  <header class="sec-head"><div class="flag">產品</div><div><h2>消費電子／平台</h2><p class="sec-sub">Apple N50 眼鏡擬明年 WWDC 公布、Samsung／Google 眼鏡十二月十日上市、Xbox 可選初代開機動畫 · 3則</p></div></header>
+  <div class="grid">
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://www.theverge.com/tech/1033968/apples-first-smart-glasses-are-coming-together" target="_blank" rel="noopener"><img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/07/268640_RayBan_Meta_Gen2_AKrales_0038.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://www.theverge.com/tech/1033968/apples-first-smart-glasses-are-coming-together" target="_blank" rel="noopener">Amelia Holowaty Krales／The Verge（Meta 第二代 Ray-Ban，僅供比較，不是 Apple N50）</a>（外部連結）</p>
+    <h3><a href="https://www.theverge.com/tech/1033968/apples-first-smart-glasses-are-coming-together" target="_blank" rel="noopener">Gurman：Apple 首款智慧眼鏡（內部代號 N50）擬於二零二七年六月 WWDC 公布，年底前出貨；無 AR 顯示，依賴重建後的 Siri 與配對 iPhone</a></h3>
+    <p class="dek">兩稿均歸屬 Gurman，不是蘋果官方宣布。第一款無擴增實境顯示，擬明年六月 WWDC 公布、年底前出貨。原型 N50 跑精簡版 visionOS，處理器改自舊款 Watch 芯片，需配對新款 iPhone，不支援 Android。Wi-Fi 只能做有限離機功能。Gurman 稱軟體與人工智能進度落後，可能拖慢原定上市。若用 The Verge 配圖，必須註明那是 Meta 眼鏡，不是 N50。</p>
+    <p class="meta"><span class="outlet">The Verge（並參 MacRumors；均轉述 Bloomberg Mark Gurman，Bloomberg 原文未打開）</span><span class="src"> · <a href="https://www.theverge.com/tech/1033968/apples-first-smart-glasses-are-coming-together" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://news.samsung.com/global/samsung-announces-december-release-for-intelligent-eyewear-bringing-a-smarter-way-to-see-the-world" target="_blank" rel="noopener"><img src="https://img.global.news.samsung.com/global/wp-content/uploads/2026/11/12154033/Samsung-Mobile-Intelligent-Eyewear-Launch-Gentle-Monster-Warby-Parker_Thumb932.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://news.samsung.com/global/samsung-announces-december-release-for-intelligent-eyewear-bringing-a-smarter-way-to-see-the-world" target="_blank" rel="noopener">Samsung Electronics（全球新聞室）</a>（外部連結）</p>
+    <h3><a href="https://news.samsung.com/global/samsung-announces-december-release-for-intelligent-eyewear-bringing-a-smarter-way-to-see-the-world" target="_blank" rel="noopener">Samsung 與 Google、Gentle Monster、Warby Parker 的智慧眼鏡十二月十日在美國與韓國上市；預購已於十一月十二日開始</a></h3>
+    <p class="dek">官方十一月十二日宣布，內建 Gemini 的智慧眼鏡十二月十日在美國與韓國上市，預購已開始。三十款來自 Gentle Monster 與 Warby Parker，約四十一克；美國售價起三百九十五美元。單次最多約九小時，充電盒最多約七十二小時。對 iPhone 最低型號，Samsung 寫 iPhone 13 及更新，Google 寫 iPhone 13 Pro 及以上，兩家口徑不同，不可擇一冒充雙方。須標十一日十二日，不是今日新稿。</p>
+    <p class="meta"><span class="outlet">Samsung 全球新聞室（並參 Google The Keyword）</span><span class="src"> · <a href="https://news.samsung.com/global/samsung-announces-december-release-for-intelligent-eyewear-bringing-a-smarter-way-to-see-the-world" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story">
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 C</span></div>
+    <h3><a href="https://www.theverge.com/games/1033994/microsoft-is-bringing-back-the-original-xbox-bootup-animation" target="_blank" rel="noopener">Xbox Series X／S 為二十五週年可選初代開機動畫，並新增大兩個 Xbox 360 開機動畫；全日分批推出</a></h3>
+    <p class="dek">The Verge 十一月十五日短訊：所有 Series X 與 Series S 主機可選擇初代 Xbox 開機動畫，或兩個新加入的 Xbox 360 開機動畫，作為二十五週年官方紀念活動一部分。若選項尚未出現，是因為系統全日分批推出。本輪未做實機核對，亦無更多系統版本號。The Verge 本條只有站方 placeholder，不是開機畫面，故不配圖。</p>
+    <p class="meta"><span class="outlet">The Verge</span><span class="src"> · <a href="https://www.theverge.com/games/1033994/microsoft-is-bringing-back-the-original-xbox-bootup-animation" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="product-rank">
+    <h2>消費電子／平台 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://www.theverge.com/tech/1033968/apples-first-smart-glasses-are-coming-together" target="_blank" rel="noopener">[B] Gurman：Apple 首款智慧眼鏡擬於二零二七年 WWDC 公布，無 AR 顯示</a></li>
+    <li><a href="https://news.samsung.com/global/samsung-announces-december-release-for-intelligent-eyewear-bringing-a-smarter-way-to-see-the-world" target="_blank" rel="noopener">[B] Samsung／Google 智慧眼鏡十二月十日在美國與韓國上市，預購已於十一月十二日開始</a></li>
+    <li><a href="https://www.theverge.com/games/1033994/microsoft-is-bringing-back-the-original-xbox-bootup-animation" target="_blank" rel="noopener">[C] Xbox Series X／S 為二十五週年可選初代開機動畫</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="chips">
+  <header class="sec-head"><div class="flag">晶片</div><div><h2>晶片／硬體／地緣</h2><p class="sec-sub">Vulcan 故障位置尚未官宣、Pony.ai 練 Nvidia 出口備案 · 2則</p></div></header>
+  <div class="grid">
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://arstechnica.com/space/2026/11/vulcan-rocket-fails-during-launch-dealing-major-blow-to-spacex-competitors/" target="_blank" rel="noopener"><img src="https://cdn.arstechnica.net/wp-content/uploads/2026/11/GettyImages-2304790934-1152x648.jpg" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 A</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://arstechnica.com/space/2026/11/vulcan-rocket-fails-during-launch-dealing-major-blow-to-spacex-competitors/" target="_blank" rel="noopener">Manuel Mazzanti／NurPhoto via Getty Images（Ars Technica）</a>（外部連結）</p>
+    <h3><a href="https://arstechnica.com/space/2026/11/vulcan-rocket-fails-during-launch-dealing-major-blow-to-spacex-competitors/" target="_blank" rel="noopener">Vulcan 故障位置尚未官宣；Ars 匿名源稱在助推級，Spaceflight Now 稱在 Centaur 點火期間，兩者衝突</a></h3>
+    <p class="dek">ULA 聲明只確認飛行約十分鐘異常，沒有點名哪一級。Ars 匿名源稱異常在助推級，BE-4 似至少多燒三十秒；Spaceflight Now 則寫問題出在 Centaur 點火期間，兩者衝突，不可寫死。若被認定與 BE-4 有關，Ars 稱可能再拖 New Glenn 復飛，這只是條件句。太空軍已把部分國安發射改給 SpaceX；經報道，NASA 局長 Isaacman 在 X 稱可協助調查。</p>
+    <p class="meta"><span class="outlet">Ars Technica（並參 Spaceflight Now）</span><span class="src"> · <a href="https://arstechnica.com/space/2026/11/vulcan-rocket-fails-during-launch-dealing-major-blow-to-spacex-competitors/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://techcrunch.com/2026/11/15/techcrunch-mobility-the-nvidia-backup-plan-for-chinas-self-driving-industry/" target="_blank" rel="noopener"><img src="https://techcrunch.com/wp-content/uploads/2026/11/Pony-AI.jpg?w=1024" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 C</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://techcrunch.com/2026/11/15/techcrunch-mobility-the-nvidia-backup-plan-for-chinas-self-driving-industry/" target="_blank" rel="noopener">Petar Santini／Bloomberg via Getty Images</a>（外部連結）</p>
+    <h3><a href="https://techcrunch.com/2026/11/15/techcrunch-mobility-the-nvidia-backup-plan-for-chinas-self-driving-industry/" target="_blank" rel="noopener">Pony.ai 財務長：若 Nvidia 對華出口再收緊，中國自動駕駛業已在練備案，包括更高效訓練與轉向國產芯片</a></h3>
+    <p class="dek">Kirsten Korosec 十一月十五日訪問 Pony.ai 財務長 Leo Wang。他稱需求已遠大於供給；做法是訓練盡量高效（可能用中階而非高端算力），並更多轉向國產芯片。他說替代方案「就成本效益而言，可能還不是最好的選擇」。這是單源訪問，不是新的出口管制宣布，也不是對國產芯片性能的獨立評測。</p>
+    <p class="meta"><span class="outlet">TechCrunch Mobility（單源訪問，不是新的出口規則）</span><span class="src"> · <a href="https://techcrunch.com/2026/11/15/techcrunch-mobility-the-nvidia-backup-plan-for-chinas-self-driving-industry/" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="chips-rank">
+    <h2>晶片／硬體／地緣 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://arstechnica.com/space/2026/11/vulcan-rocket-fails-during-launch-dealing-major-blow-to-spacex-competitors/" target="_blank" rel="noopener">[A] Vulcan 故障位置尚未官宣；Ars 與 Spaceflight Now 表述衝突</a></li>
+    <li><a href="https://techcrunch.com/2026/11/15/techcrunch-mobility-the-nvidia-backup-plan-for-chinas-self-driving-industry/" target="_blank" rel="noopener">[C] Pony.ai 財務長：中國自動駕駛業已在練 Nvidia 出口再收緊的備案</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="policy">
+  <header class="sec-head"><div class="flag">政策</div><div><h2>政策／監管</h2><p class="sec-sub">Kokott 建議發回 AdSense 罰單、歐盟就 Pax Silica 要求更多時間 · 2則</p></div></header>
+  <div class="grid">
+<article class="story has-thumb">
+  <div class="story-media">
+    <a href="https://curia.europa.eu/site/upload/docs/application/pdf/2026-11/cp260164en.pdf" target="_blank" rel="noopener"><img src="https://imagedelivery.net/wKQ19LTSBT0ARz08tkssqQ/11a10229-4bce-4e6f-3a0e-0590cae90f00/w=1097,h=731,fit=scale-down" alt="" loading="lazy"/></a>
+  </div>
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 B</span></div>
+    <p class="thumb-credit">圖源／引述自 <a href="https://curia.europa.eu/site/upload/docs/application/pdf/2026-11/cp260164en.pdf" target="_blank" rel="noopener">AP Photo／Richard Drew（Courthouse News Service：Google 標誌，紐約，2023-09-11）</a>（外部連結）</p>
+    <h3><a href="https://curia.europa.eu/site/upload/docs/application/pdf/2026-11/cp260164en.pdf" target="_blank" rel="noopener">歐盟法院法務官 Kokott 認為普通法院撤銷執委會對 Google AdSense 近十五億歐元罰款時法律出錯，建議發回重審</a></h3>
+    <p class="dek">執委會二零一九年對 Google AdSense 開出近十五億歐元罰單，普通法院二零二四年以未充分審查合約存續期間為由撤銷。法務官 Kokott 十一月十二日認為該審查要求過高，建議發回重審。這是意見不是判決，罰單不會自動恢復；二零一六年部分舉證不足已確定，發回後罰款應下調。昨日版未用此軸，亦不可與意大利罰 Meta 混為一談。</p>
+    <p class="meta"><span class="outlet">歐盟法院 Curia 新聞稿 164/26（二零二六年十一月十二日，盧森堡）</span><span class="src"> · <a href="https://curia.europa.eu/site/upload/docs/application/pdf/2026-11/cp260164en.pdf" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+<article class="story">
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 C</span></div>
+    <h3><a href="https://agenceurope.eu/en/bulletin/article/13980/21/pax-silica-european-commission-authorised-by-eu27-to-join-new-us-declaration-on-economic-security" target="_blank" rel="noopener">Agence Europe：歐盟已授權執委會就 Pax Silica 附加宣言談判，成員國要求更多時間；十一日十五日簽署並未證實</a></h3>
+    <p class="dek">美方文本標題為 “The San Francisco Declaration on the Secure Foundations of Enduring Prosperity”，原擬於十一月十五日在舊金山一次非正式 retreat 簽署。Agence Europe 寫歐盟二十七日已於十一日授權執委會參與談判，但成員國「要求更多時間」。這不能寫成十一月十五日已簽署。美國國務院 Pax Silica 頁列有既有倡議的簽署方，不要與未確認的新宣言混為一談。彙總站與社交媒體上的「八個盟國已簽署」之說，本報未獲官方或一線原文證實，故不採用。</p>
+    <p class="meta"><span class="outlet">Agence Europe（二零二六年十一月十二日；美國國務院既有 Pax Silica 頁已打開，無對應的十五日簽署稿）</span><span class="src"> · <a href="https://agenceurope.eu/en/bulletin/article/13980/21/pax-silica-european-commission-authorised-by-eu27-to-join-new-us-declaration-on-economic-security" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="policy-rank">
+    <h2>政策／監管 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://curia.europa.eu/site/upload/docs/application/pdf/2026-11/cp260164en.pdf" target="_blank" rel="noopener">[B] 法務官 Kokott 認為普通法院撤銷 Google AdSense 近十五億歐元罰款時法律出錯，建議發回</a></li>
+    <li><a href="https://agenceurope.eu/en/bulletin/article/13980/21/pax-silica-european-commission-authorised-by-eu27-to-join-new-us-declaration-on-economic-security" target="_blank" rel="noopener">[C] 歐盟就 Pax Silica 附加宣言要求更多時間；十五日簽署並未證實</a></li>
+    </ol>
+  </div>
+</section>
+<section class="region" id="opensource">
+  <header class="sec-head"><div class="flag">開源</div><div><h2>開源／開發</h2><p class="sec-sub">Linux 7.4-rc3 釋出 · 1則</p></div></header>
+  <div class="grid">
+<article class="story">
+  <div class="story-body">
+    <div class="feature-meta-row"><span class="heat">熱度 C</span></div>
+    <h3><a href="https://www.phoronix.com/news/Linux-7.4-rc3-Released" target="_blank" rel="noopener">Linux 7.4 第三個每週候選版釋出；Linus 形容「又一個偏大的 rc」，「到處都是往常那種雜訊」</a></h3>
+    <p class="dek">十一月十五日傍晚（美東）釋出，香港時間十六日早上六時五十五分前後。Phoronix 引 Linus：又一個偏大的 rc，看起來正常，驅動（網絡與 GPU）領頭，改動多但多數補丁很小，還有「往常那種雜訊」。正式版預計十二月底前後。這是例行候選版，適合開源欄短項。Phoronix 本條沒有可用文章圖，只有站標，故不配圖。</p>
+    <p class="meta"><span class="outlet">Phoronix（引 Linus 公告；本輪未打開 lore.kernel.org 原郵件）</span><span class="src"> · <a href="https://www.phoronix.com/news/Linux-7.4-rc3-Released" target="_blank" rel="noopener">原文</a></span></p>
+  </div>
+</article>
+  </div>
+  <div class="rank-box" id="opensource-rank">
+    <h2>開源／開發 · 熱度排行</h2>
+    <p class="rank-sub">本欄引述新聞按熱度 A→B→C 排序（同級維持原文順序）。</p>
+    <ol>
+    <li><a href="https://www.phoronix.com/news/Linux-7.4-rc3-Released" target="_blank" rel="noopener">[C] Linux 7.4-rc3 釋出；Linus 稱「又一個偏大的 rc」「到處都是往常那種雜訊」</a></li>
+    </ol>
+  </div>
+</section>
+  <footer class="footer">
+    <p>每日 IT 報 · 2026-11-16（一）· 香港時間 · 共 16 則精選 + 4 篇人物專題 · 配圖直接 hotlink 外部 https 來源，無 base64 嵌圖、無本機 assets · 每則附熱度 A/B/C · 各分類欄附熱度排行。</p>
+    <p>來源涵蓋歐美主流科技／財經／資安媒體、公司通告與社群熱度交叉；摘要約 100–150 字繁中，事實以原文為準。專題以人物視角撰寫（Ben Thompson／Steve Jobs／Linus Torvalds／Margrethe Vestager）。例行每日；週末新稿偏薄，不注水。</p>
+  </footer>
+</main>
+
+</body>
+</html>

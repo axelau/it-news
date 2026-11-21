@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>收市 88.91，證明還在編譯｜2026年11月21日</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F5F2E8;
+  --ink: #1B263B;
+  --ink-soft: #3A4558;
+  --muted: #6B7280;
+  --line: #D9D4C8;
+  --orange: #F06428;
+  --navy: #1B263B;
+  --gray: #A8ADB8;
+  --gray-light: #C8CDD6;
+  --card: #FFFCF5;
+  --max: 760px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Noto Sans TC", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--ink); }
+a:hover { color: var(--orange); }
+.wrapper {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+}
+.header { margin-bottom: 2.75rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--line); }
+.kicker {
+  margin: 0 0 0.85rem;
+  color: var(--orange);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.header h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.85rem, 5vw, 2.55rem);
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+.deck {
+  margin: 0 0 1.35rem;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+.topnav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0;
+  align-items: center;
+  font-size: 0.82rem;
+}
+.topnav a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding: 0.15rem 0.55rem;
+  border-right: 1px solid var(--line);
+}
+.topnav a:last-child { border-right: none; }
+.topnav a:hover { color: var(--orange); }
+
+section {
+  padding: 2.4rem 0;
+  border-bottom: 1px solid var(--line);
+}
+section:last-of-type { border-bottom: none; }
+.section-head {
+  display: flex;
+  gap: 0.85rem;
+  align-items: baseline;
+  margin-bottom: 1.35rem;
+}
+.section-no {
+  color: var(--orange);
+  font-family: "Inter", "Noto Sans TC", sans-serif;
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+.section-head h2 {
+  margin: 0;
+  font-size: clamp(1.2rem, 3.2vw, 1.45rem);
+  font-weight: 800;
+  line-height: 1.35;
+}
+.intro {
+  margin: 0 0 1.25rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+/* Hero number block */
+.hero {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  margin: 0 0 1.5rem;
+  padding: 1.1rem 0;
+}
+.hero-number {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(3.2rem, 10vw, 4.4rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+}
+.hero-number small {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  margin-bottom: 0.2rem;
+}
+.hero-number > span {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-left: 0.15rem;
+}
+.hero-copy {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+.hero-copy small {
+  display: block;
+  margin-top: 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* Case cards */
+.cases {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+  margin: 1.25rem 0 1rem;
+}
+@media (max-width: 680px) {
+  .cases { grid-template-columns: 1fr; }
+  .hero { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+}
+.case {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1rem 1.05rem 1.1rem;
+}
+.case .state {
+  margin: 0;
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+.case .place {
+  margin: 0.15rem 0 0.55rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+.case-num {
+  margin: 0 0 0.55rem;
+  font-family: "Inter", sans-serif;
+  font-size: 1.85rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--orange);
+  line-height: 1;
+}
+.case-num small {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-right: 0.15rem;
+  color: var(--muted);
+}
+.case p:last-child {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.case strong { color: var(--ink); font-weight: 700; }
+.case-note {
+  margin: 0.55rem 0 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.case-note a { color: var(--ink-soft); text-underline-offset: 2px; }
+
+/* Charts */
+.two-charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem 1.75rem;
+}
+@media (max-width: 640px) {
+  .two-charts { grid-template-columns: 1fr; }
+}
+.chart-title {
+  margin: 0 0 0.7rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+.stack {
+  display: flex;
+  width: 100%;
+  height: 2.15rem;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--line);
+}
+.seg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  min-width: 0;
+}
+.seg.orange { background: var(--orange); }
+.seg.dark { background: var(--navy); }
+.seg.gray { background: var(--gray); }
+.seg.muted-blue { background: #5C6B82; }
+.seg.pale { background: var(--gray-light); color: var(--ink-soft); }
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1rem;
+  margin-top: 0.65rem;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+.legend i {
+  display: inline-block;
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 2px;
+  margin-right: 0.35rem;
+  vertical-align: middle;
+}
+.legend i.orange { background: var(--orange); }
+.legend i.dark { background: var(--navy); }
+.legend i.gray { background: var(--gray); }
+.legend i.muted-blue { background: #5C6B82; }
+.legend i.pale { background: var(--gray-light); }
+
+.big-split {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  margin: 0 0 1.35rem;
+}
+.big-percent {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(3rem, 9vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  color: var(--ink);
+  flex-shrink: 0;
+}
+.big-percent small {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0;
+}
+.big-split > p {
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.5;
+}
+@media (max-width: 520px) {
+  .big-split { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+}
+
+.factor-labels {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+.factor-labels > div {
+  padding-right: 0.4rem;
+  border-right: 1px solid var(--line);
+}
+.factor-labels > div:last-child { border-right: none; }
+.factor-labels strong {
+  display: block;
+  font-family: "Inter", sans-serif;
+  font-size: 1.05rem;
+  color: var(--ink);
+  margin-bottom: 0.15rem;
+}
+@media (max-width: 520px) {
+  .factor-labels { grid-template-columns: 1fr 1fr; }
+  .factor-labels > div:nth-child(2) { border-right: none; }
+}
+
+/* Rank rows */
+.rank-list { margin: 1rem 0 0.5rem; }
+.rank-row {
+  display: grid;
+  grid-template-columns: minmax(7.5rem, 32%) 1fr auto;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.rank-row:last-child { border-bottom: none; }
+.rank-row.focus .rank-label { font-weight: 800; color: var(--ink); }
+.rank-row.focus .rank-track::after {
+  background: var(--orange);
+}
+.rank-label {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+.rank-track {
+  position: relative;
+  height: 6px;
+  background: #E6E1D4;
+  border-radius: 999px;
+}
+.rank-track::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: var(--w, 0%);
+  background: var(--navy);
+  border-radius: 999px;
+}
+.rank-track .dot {
+  position: absolute;
+  top: 50%;
+  left: var(--w, 0%);
+  width: 14px;
+  height: 14px;
+  margin-left: -7px;
+  margin-top: -7px;
+  border-radius: 50%;
+  background: var(--navy);
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 0 1px rgba(27,38,59,0.15);
+}
+.rank-row.focus .dot { background: var(--orange); box-shadow: 0 0 0 1px rgba(240,100,40,0.25); }
+.rank-value {
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  min-width: 2.6rem;
+  text-align: right;
+}
+.scale {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.35rem;
+  font-size: 0.7rem;
+  color: var(--muted);
+  padding: 0 3.2rem 0 0;
+}
+@media (max-width: 520px) {
+  .rank-row {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+  }
+  .rank-label { grid-column: 1; }
+  .rank-value { grid-column: 2; grid-row: 1; }
+  .rank-track { grid-column: 1 / -1; }
+  .scale { padding-right: 0; }
+}
+
+.footnote {
+  margin: 0.85rem 0 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+.callout {
+  margin: 1.25rem 0 0;
+  padding: 0.95rem 1.05rem;
+  background: var(--card);
+  border-left: 3px solid var(--orange);
+  border-radius: 0 8px 8px 0;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+.callout strong { color: var(--ink); }
+
+.mobile-summary {
+  margin: 0 0 1rem;
+  padding: 0.85rem 1rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-size: 0.92rem;
+}
+.mobile-summary p { margin: 0.35rem 0; }
+.mobile-summary b { font-family: "Inter", "Noto Sans TC", sans-serif; font-weight: 800; }
+
+details.expandable {
+  margin: 0.5rem 0 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--card);
+  padding: 0.35rem 1rem 1rem;
+}
+details.expandable > summary {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 0.75rem 0;
+  list-style: none;
+}
+details.expandable > summary::-webkit-details-marker { display: none; }
+details.expandable > summary::before {
+  content: "▾ ";
+  color: var(--orange);
+}
+details.expandable:not([open]) > summary::before { content: "▸ "; }
+.group-title {
+  margin: 1.1rem 0 0.65rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.vote-key { margin-bottom: 0.85rem; }
+.vote-row {
+  display: grid;
+  grid-template-columns: minmax(6.5rem, 28%) 1fr;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+.row-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+.row-label small {
+  display: block;
+  font-weight: 400;
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: 0.1rem;
+}
+@media (max-width: 520px) {
+  .vote-row { grid-template-columns: 1fr; gap: 0.3rem; }
+}
+
+
+.party-row {
+  display: grid;
+  grid-template-columns: minmax(6.5rem, 28%) 1fr;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+.party-row.focus .row-label { color: var(--ink); font-weight: 800; }
+.party-row.focus .stack { outline: 2px solid var(--orange); outline-offset: 2px; border-radius: 6px; }
+.sort-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem 0.85rem;
+  margin: 0.35rem 0 1rem;
+}
+.sort-row label { font-size: 0.78rem; color: var(--muted); font-weight: 600; }
+.sorts { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.sorts button {
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+.sorts button[aria-pressed="true"] {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
+}
+@media (max-width: 520px) {
+  .party-row { grid-template-columns: 1fr; gap: 0.3rem; }
+}
+
+.pending-box {
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.35);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.site-foot {
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* Scroll reveal — minimal */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+/* Section media */
+.section-media { margin: 0 0 1.35rem; }
+.section-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.section-media figcaption,
+.media-credit {
+  margin: 0.45rem 0 0;
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.essay p {
+  margin: 0 0 1rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+.essay p:last-child { margin-bottom: 0; }
+
+/* Layout B — left image, right narrative */
+.layout-b {
+  display: grid;
+  grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+  gap: 1.35rem 1.2rem;
+  align-items: start;
+  margin: 0 0 1.25rem;
+}
+.layout-b .section-media {
+  margin: 0;
+  position: sticky;
+  top: 1rem;
+}
+.hero-aside {
+  margin: 0 0 1rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--line);
+}
+.hero-aside .hero-number { font-size: clamp(2.6rem, 8vw, 3.6rem); }
+.hero-aside .hero-copy { font-size: 0.95rem; font-weight: 600; margin: 0.55rem 0 0; }
+.hero-aside .hero-copy small {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+.fact-rail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem 0.75rem;
+  margin: 1.2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.fact-rail li {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.75rem 0.85rem;
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.fact-rail .n {
+  display: block;
+  font-family: "Inter", "Noto Sans TC", sans-serif;
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--ink);
+  letter-spacing: -0.03em;
+  margin-bottom: 0.2rem;
+}
+
+/* Layout B wide — banner image above essay */
+.layout-b-wide .section-media { margin: 0 0 1.35rem; }
+.num-rail {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem 0.65rem;
+  margin: 0 0 1.25rem;
+  padding: 0.95rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.num-rail > div { padding-right: 0.4rem; }
+.num-rail strong {
+  display: block;
+  font-family: "Inter", "Noto Sans TC", sans-serif;
+  font-size: clamp(1.05rem, 3vw, 1.35rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  line-height: 1.15;
+  margin-bottom: 0.25rem;
+}
+.num-rail span {
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.term-list {
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.term-list li {
+  margin: 0 0 0.55rem;
+  padding: 0.7rem 0.9rem 0.7rem 1rem;
+  background: var(--card);
+  border-left: 3px solid var(--orange);
+  border-radius: 0 8px 8px 0;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+/* Layout C — quote well + horizontal collage */
+.quote-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem 1rem;
+  margin: 1.35rem 0 1.25rem;
+}
+.pull-quote {
+  margin: 0;
+  padding: 0.85rem 0 0.85rem 1rem;
+  border-left: 3px solid var(--orange);
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.pull-quote.span-2 { grid-column: 1 / -1; }
+.pull-quote cite {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--muted);
+}
+.collage {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 0.85rem;
+  margin: 1.25rem 0 1rem;
+  align-items: stretch;
+}
+.collage-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.collage-card img {
+  display: block;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border: 0;
+  border-radius: 0;
+}
+.collage-card:nth-child(2) img { height: 190px; }
+.collage-card .pad { padding: 0.85rem 0.95rem 1rem; flex: 1; }
+.collage-card h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.35;
+}
+.collage-card p {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+/* Layout C mosaic — uneven image cards */
+.mosaic {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 0.85rem;
+  margin: 1.25rem 0 1rem;
+  align-items: start;
+}
+.mosaic-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.mosaic-card.wide {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.15fr);
+}
+.mosaic-card img {
+  display: block;
+  width: 100%;
+  height: 148px;
+  object-fit: cover;
+}
+.mosaic-card:nth-child(even):not(.wide) img { height: 198px; }
+.mosaic-card:nth-child(5n):not(.wide) { margin-top: 1.35rem; }
+.mosaic-card.wide img {
+  height: 100%;
+  min-height: 220px;
+  object-fit: cover;
+}
+.mosaic-card .pad { padding: 0.8rem 0.9rem 1rem; }
+.mosaic-card h3 {
+  margin: 0.3rem 0 0.4rem;
+  font-size: 0.95rem;
+  font-weight: 800;
+  line-height: 1.35;
+}
+.mosaic-card h3 a { text-decoration: none; }
+.mosaic-card h3 a:hover { color: var(--orange); }
+.mosaic-card .summary {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.mosaic-card .outlet {
+  margin: 0 0 0.15rem;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+.heat {
+  display: inline-block;
+  font-family: "Inter", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 999px;
+  padding: 0.08rem 0.45rem;
+  vertical-align: middle;
+}
+
+@media (max-width: 680px) {
+  .layout-b,
+  .layout-b .section-media { position: static; }
+  .layout-b,
+  .mosaic-card.wide,
+  .collage,
+  .quote-row { grid-template-columns: 1fr; }
+  .mosaic { grid-template-columns: 1fr; }
+  .mosaic-card:nth-child(5n):not(.wide) { margin-top: 0; }
+  .mosaic-card.wide img,
+  .mosaic-card:nth-child(even):not(.wide) img { height: 180px; min-height: 0; }
+  .num-rail { grid-template-columns: 1fr 1fr; }
+  .fact-rail { grid-template-columns: 1fr; }
+  .pull-quote.span-2 { grid-column: auto; }
+}
+
+/* Edition additions: persona, category blocks, heat ranking, layout-c evidence strip */
+.section-head { align-items: flex-start; }
+.section-head .titles { min-width: 0; }
+.persona {
+  margin: 0.35rem 0 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--orange);
+  letter-spacing: 0.02em;
+}
+.section-head .heat { margin-top: 0.4rem; margin-left: auto; flex-shrink: 0; }
+.cat-block {
+  margin: 2.1rem 0 0.4rem;
+  padding-top: 0.4rem;
+}
+.cat-block:first-of-type { margin-top: 0.35rem; }
+.cat-head {
+  margin: 0 0 1rem;
+  font-size: 1.02rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+.heat-rank {
+  margin: 0.85rem 0 0.25rem;
+  padding: 0.95rem 1.05rem 1rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.heat-rank h4 {
+  margin: 0 0 0.55rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+.heat-rank ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.heat-rank li {
+  display: grid;
+  grid-template-columns: 1.5rem auto 1fr;
+  gap: 0.55rem;
+  align-items: center;
+  padding: 0.48rem 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.86rem;
+  line-height: 1.4;
+  color: var(--ink-soft);
+}
+.heat-rank li:last-child { border-bottom: none; }
+.heat-rank .idx {
+  font-family: "Inter", "Noto Sans TC", sans-serif;
+  font-weight: 800;
+  color: var(--orange);
+  font-size: 0.85rem;
+}
+.heat-rank a { text-decoration: none; color: var(--ink); }
+.heat-rank a:hover { color: var(--orange); }
+.evidence-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin: 1.25rem 0 1rem;
+}
+.evidence-strip article {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.9rem 1rem 1rem;
+}
+.evidence-strip .label {
+  margin: 0;
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+.evidence-strip .n {
+  margin: 0.2rem 0 0.4rem;
+  font-family: "Inter", "Noto Sans TC", sans-serif;
+  font-size: 1.7rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  line-height: 1;
+}
+.evidence-strip p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+@media (max-width: 680px) {
+  .evidence-strip { grid-template-columns: 1fr; }
+  .section-head .heat { margin-left: 0; }
+}
+
+</style>
+</head>
+<body>
+<main class="wrapper">
+<header class="header">
+  <p class="kicker">2026年11月21日 · 星期六科技要聞</p>
+  <h1>收市 88.91，<br>證明還在編譯</h1>
+  <p class="deck">Anthropic 綠鞋關帳，上市第二日收 88.91 美元；研究員宣稱與 Claude 證明黎曼猜想，Lean 已通過編譯、比較器仍未完成；眾議院公布對華核準 87 萬 9,868 顆 AI 晶片；nginx 被揭五個高危漏洞。數字分源呈現，不合併。</p>
+  <nav class="topnav" aria-label="章節導覽">
+    <a href="#f1">第二日收市</a>
+    <a href="#f2">黎曼編譯</a>
+    <a href="#f3">核準清單</a>
+    <a href="#f4">修補重啟</a>
+    <a href="#briefs">其餘精選</a>
+  </nav>
+</header>
+
+<div class="content">
+<section id="f1" class="layout-a">
+  <div class="section-head">
+    <span class="section-no">01</span>
+    <div class="titles">
+      <h2>一千一百九十五億已經進帳，帳單在上市前就寫好了</h2>
+      <p class="persona">人物：Elon Musk</p>
+    </div>
+    <span class="heat">A</span>
+  </div>
+  <div class="hero reveal">
+    <div class="hero-number"><small>週五收市</small>88.91<span>美元</span></div>
+    <p class="hero-copy">Yahoo Finance 歷史報價：跌 8.26 美元，或 8.50%；開 89.86、高 92.56、低 83.05，成交 399,629,474 股
+      <small>Yahoo Finance</small>
+    </p>
+  </div>
+  <figure class="section-media reveal">
+    <img src="assets/f1-anthropic-ipo.jpg" alt="Anthropic（ANT）上市第二日現場畫面" loading="lazy" decoding="async">
+    <figcaption>Brendan McDermid／Reuters（CNBC）</figcaption>
+  </figure>
+  <div class="essay reveal">
+    <p>開盤那天有人把公司寫成兩兆美元。第二個交易日，價格把氣氛還了回去。</p>
+    <p>據 Yahoo Finance 歷史報價表，Anthropic（ANT）週五收市 88.91 美元，跌 8.26 美元，或 8.50%；當日最低 83.05 美元，只比發行價 83 美元高出五美分，成交約四億股。週四它曾以 111.50 美元開盤，收市 97.17 美元。同一天，公司發布關帳聲明：A 類普通股首次公開發售合共 11.27 億股、每股 83.00 美元，包括承銷商全數行使額外 1.47 億股的選擇權；其中公司出售約 11.03 億股，售股股東出售約 2,365 萬股。發售所得款項總額約 935 億美元，公司收到約 916 億美元。同期，它向 AMD、Broadcom、Google、Micron、Microsoft、NVIDIA 與 TSMC Partners 私募出售約 3.13 億股 N 類普通股，同樣每股 83.00 美元，總代價約 260 億美元。官方把公開發售（含售股股東）與私募加總，寫成扣除費用前約 1,195 億美元。那是進帳，不是市值。把這筆現金和任何一個交易日的估值寫成同一個數字，就是在偷換單位。</p>
+    <p>第一性原理更乾脆。Yahoo Finance 早在十一月二日就根據當時修訂後的招股文件寫道：承諾支出約 8,950 億美元，幾乎全與運算和數據中心有關，約 700 億美元一年內到期；同一份文件把第三季營運虧損寫成 5.67 億美元。那不是今日才爆出的醜聞，是上市前已經印在紙上的約束。一千一百九十五億美元進帳是真的，收市 88.91 美元也是真的；電網、機櫃和晶片交期不會因為綠鞋被行使就自動縮短。你要買的是能落地的產能，不是開盤那天被折現到無限遠的氣氛。</p>
+  </div>
+  <div class="cases reveal">
+    <article class="case">
+      <p class="state">公開發售所得（官方關帳）</p>
+      <p class="place">A 類含綠鞋</p>
+      <p class="case-num"><small>約</small>935億<span>美元</span></p>
+      <p>A 類合共 1,127,000,000 股、每股 83.00 美元，含承銷商全數行使額外 147,000,000 股。公司出售 1,103,351,354 股，售股股東 23,648,646 股；公司收到約 916 億美元，股東出售部分公司未收款。<br><strong>效力：發售所得款項，不是市值。</strong></p>
+    </article>
+    <article class="case">
+      <p class="state">N 類私募（官方關帳）</p>
+      <p class="place">AMD、Broadcom、Google、Micron、Microsoft、NVIDIA、TSMC Partners</p>
+      <p class="case-num"><small>約</small>260億<span>美元</span></p>
+      <p>N 類私募 313,253,007 股、每股 83.00 美元，總代價約 260 億美元。這是私募所得，不要與公開發售 935 億或收市價合併成估值。<br><strong>效力：私募所得款項，不是市值。</strong></p>
+    </article>
+    <article class="case">
+      <p class="state">公私募合計所得（官方）</p>
+      <p class="place">扣除費用前</p>
+      <p class="case-num"><small>約</small>1,195億<span>美元</span></p>
+      <p>官方把首次公開發售（含售股股東）與私募加總為扣除費用前約 1,195 億美元。這是所得款項合計，不是市值，不可與週五收市 88.91 美元折算成同一筆估值。<br><strong>效力：進帳合計，不是市值。</strong></p>
+    </article>
+  </div>
+  <p class="case-note">週五收市以 Yahoo Finance 歷史報價為準：88.91 美元，跌 8.26 美元（8.50%），開 89.86、高 92.56、低 83.05，成交 399,629,474 股。盤後 88.80 美元不是收市。MarketWatch／道瓊斯稿寫 88.30 美元、跌約 9%、週四估值 1.29 兆、週五 1.16 兆，與 88.91 不一致，禁止合併，亦不要用該稿推算今日市值。CNBC 盤前跌 12% 是盤前，不是收市。首日開盤逾兩兆、收市流通近 1.3 兆、完全稀釋 1.75 至 1.8 兆只作對照，不是今日主軸。約 8,950 億美元運算承諾是 Yahoo Finance 11 月 2 日報道的修訂招股文件數字，不是今日新披露。</p>
+  <p class="case-note">來源：<a href="https://www.anthropic.com/news/ipo-close" target="_blank" rel="noopener noreferrer">Anthropic 官方關帳</a>；<a href="https://finance.yahoo.com/quote/ANT/history/" target="_blank" rel="noopener noreferrer">Yahoo Finance 歷史報價</a>；<a href="https://www.cnbc.com/2026/11/20/anthropic-ipo-greenshoe.html" target="_blank" rel="noopener noreferrer">CNBC 綠鞋稿</a>；<a href="https://finance.yahoo.com/markets/article/anthropics-new-ipo-filing-puts-its-computing-bill-near-900-billion-151830444.html" target="_blank" rel="noopener noreferrer">Yahoo Finance（11 月 2 日，修訂招股文件）</a>。圖源：Brendan McDermid／Reuters（CNBC）。</p>
+</section>
+<section id="f2" class="layout-b-section">
+  <div class="section-head">
+    <span class="section-no">02</span>
+    <div class="titles">
+      <h2>千禧年難題在上市翌日被「解決」，比較器還在排隊</h2>
+      <p class="persona">人物：The Register</p>
+    </div>
+    <span class="heat">A</span>
+  </div>
+  <div class="layout-b">
+    <figure class="section-media reveal">
+      <img src="assets/f2-riemann.jpg" alt="同類相關圖，非該則新聞原圖：Anthropic 上市畫面，非證明文件" loading="lazy" decoding="async">
+      <figcaption>同類相關圖，非該則新聞原圖。Getty Images（The Verge；Anthropic 上市畫面，非證明文件）</figcaption>
+    </figure>
+    <div>
+      <div class="essay reveal">
+        <p>最省事的突破，總是趕在股票代碼還新鮮的時候出現。四頁速寫配上「AI 解決了百年難題」的標題，新聞稿比證明好讀得多。</p>
+        <p>據 The Verge，Anthropic 數學家 Levent Alpöge 宣稱與 Claude 合作發現了黎曼猜想的證明，並說方法可延伸至廣義黎曼猜想；證明以 Lean 形式化，放在他的網站。這是他個人宣布，不是公司新聞稿。該刊寫，Anthropic 截稿前未置評；Alpöge 稱曾把公布推遲到週四上市之後。Clay 千禧年獎要求發表後至少兩年、且獲數學社群普遍接受——在那之前，任何「已經解決」都只是標題寫法。The Verge 還寫，Anthropic 八月曾表示，不預期當時技術會通向證明黎曼猜想。</p>
+        <p>形式化並非無用。Scientific American 引麻省理工學院的 Andrew Sutherland 說，這份 Lean 證明已經編譯，並由 Lean kernel、只用三個標準公理獨立覆核：「Honestly the chance that anything is fishy here is approximately zero。」同一篇寫，研究人員仍在等待 comparator run，以確認程式沒有重定義題目符號，並能在多個獨立 kernel 上通過。Nature 引蒙特利爾大學的 Andrew Granville 批評那四頁寫法「garbled」，並質疑時點就在上市之後；Alpöge 則寫：「There is an obvious cynical view, to do with the timing, but it is false。」編譯通過很重要，它仍不是裁判報告，更不是支票。數學界要的是能讀的論證和過關的比較器，不是再多一則趕在週末前的歷史宣言。</p>
+      </div>
+      <ul class="term-list reveal">
+        <li>宣布者是 Anthropic 數學家 Levent Alpöge 個人，不是公司官方聲明</li>
+        <li>Lean 已通過編譯；comparator run 仍待完成</li>
+        <li>Clay 千禧年獎須發表後至少兩年，並獲數學社群普遍接受</li>
+        <li>這是個人宣布與 Lean 編譯，不是公司聲明，也不是已被社群接受的正式解決</li>
+      </ul>
+    </div>
+  </div>
+  <p class="case-note">來源：<a href="https://www.theverge.com/ai-artificial-intelligence/1010051/anthropic-riemann-hypothesis-millennium-prize-problem" target="_blank" rel="noopener noreferrer">The Verge</a>；<a href="https://www.scientificamerican.com/article/the-ai-riemann-hypothesis-proof-is-almost-certainly-true-independent-mathematicians-attest/" target="_blank" rel="noopener noreferrer">Scientific American</a>；<a href="https://www.nature.com/articles/d41586-026-03812-7" target="_blank" rel="noopener noreferrer">Nature</a>。圖源：同類相關圖，非該則新聞原圖。Getty Images（The Verge；Anthropic 上市畫面，非證明文件）。</p>
+</section>
+<section id="f3" class="layout-c">
+  <div class="section-head">
+    <span class="section-no">03</span>
+    <div class="titles">
+      <h2>核準了八十七萬顆，又揚言對境外機房課重稅</h2>
+      <p class="persona">人物：Chris Miller</p>
+    </div>
+    <span class="heat">A</span>
+  </div>
+  <figure class="section-media reveal">
+    <img src="assets/f3-chip-licenses.jpg" alt="眾議員 Mast 畫面，配眾議院公開對華 AI 晶片許可摘要" loading="lazy" decoding="async">
+    <figcaption>Getty Images（CNBC；眾議員 Mast，非許可文件本身）</figcaption>
+  </figure>
+  <div class="essay reveal">
+    <p>算力不是雲端上的口號，是會過海關的矽，也是會佔地、吃電的機房。</p>
+    <p>據眾議院外交事務委員會十九日公開的 BIS 摘要，截至二零二六年五月十一日，商務部工業與安全局收到向中國公司出售 344 萬 4,160 顆受規管積體電路的申請，產品定義為 Nvidia H200 與 AMD MI325X；同一截止日，當局核準 87 萬 9,868 顆，涵蓋 21 份許可，其中阿里巴巴 75,000 顆、騰訊及其子公司 150,000 顆、百度 43,000 顆、比亞迪 4,000 顆。申請量與核準量不是同一欄：摘要把阿里巴巴及其子公司的申請量寫成 94 萬 8,950 顆，遠高於獲准的 75,000 顆。許可不是出貨單。Nvidia 對 CNBC 說，當時跟從商務部有效規則，並稱「Despite receiving some licenses, we have since stopped shipping H200s to China」；該公司又說，中國 H200 出貨佔截至七月那一季數據中心收入不足百分之一，中國與香港客戶約佔全部收入 9.5%。把「核準近八十八萬顆」寫成「已經運到」是偷換。</p>
+    <p>二十日，特朗普在記者會上另開一條邊境。據 The Verge 刊出的談話，他說不會允許美國公司在境外建數據中心，「If they do that, they can, but we're going to put a tremendous tax on them」；他又說自己還沒向幕僚提過。沒有稅率，沒有條文，課稅權仍在國會。CNBC 調查顯示，六成四登記選民反對住家十英里內出現 AI 數據中心。矽的出口許可與水泥的選址限制，是同一場產能戰爭的兩端：晶片要留在可追蹤的地方，機房要留在本國電網，電從哪來卻還沒說清楚。</p>
+  </div>
+  <div class="quote-row">
+    <blockquote class="pull-quote reveal span-2">申請量與核準量不是同一欄。許可不是出貨單。<cite>眾議院外交事務委員會公開的 BIS 2026-05-11 摘要。1260H 清單中的 948,950（阿里巴巴）等是申請量，不是核準。</cite></blockquote>
+    <blockquote class="pull-quote reveal">「If they do that, they can, but we're going to put a tremendous tax on them。」<cite>特朗普二十日記者會，經 The Verge 刊出的談話。沒有稅率、機制或法律授權，不是已立法。</cite></blockquote>
+    <blockquote class="pull-quote reveal">「Despite receiving some licenses, we have since stopped shipping H200s to China。」<cite>Nvidia 對 CNBC。核準不等於出貨。</cite></blockquote>
+  </div>
+  <div class="evidence-strip">
+    <article class="reveal">
+      <p class="label">申請量（BIS 2026-05-11 摘要）</p>
+      <p class="n">3,444,160</p>
+      <p>向中國公司出售受規管積體電路（Nvidia H200 與 AMD MI325X）的申請顆數。不是核準量。</p>
+    </article>
+    <article class="reveal">
+      <p class="label">核準量（同一截止日）</p>
+      <p class="n">879,868</p>
+      <p>涵蓋 21 份許可。核準不是出貨單；摘要沒有交代核準後的出貨狀態。</p>
+    </article>
+    <article class="reveal">
+      <p class="label">個別公司核準（同一摘要）</p>
+      <p class="n">分列</p>
+      <p>阿里巴巴 75,000、騰訊及其子公司 150,000、百度 43,000、比亞迪 4,000。阿里巴巴申請量 948,950 不可寫成核準。</p>
+    </article>
+  </div>
+  <p class="case-note">來源：<a href="https://democrats-foreignaffairs.house.gov/wp-content/uploads/2026/11/11.19.26-ECRA-Information-Disclosure-HFAC-Summary.pdf" target="_blank" rel="noopener noreferrer">眾議院外交事務委員會 ECRA 摘要 PDF</a>；<a href="https://foreignaffairs.house.gov/news/press-releases/chairman-brian-mast-exercises-legislative-authority-to-publicly-release-ai-chip-license-information-for-china" target="_blank" rel="noopener noreferrer">共和黨主席 Mast 新聞稿</a>；<a href="https://www.cnbc.com/2026/11/19/nvidia-amd-china-chip-sales-congress.html" target="_blank" rel="noopener noreferrer">CNBC</a>；<a href="https://www.theverge.com/policy/1038892/trump-foreign-data-centers-tax" target="_blank" rel="noopener noreferrer">The Verge（特朗普稅）</a>。圖源：Getty Images（CNBC；眾議員 Mast，非許可文件本身）。</p>
+</section>
+<section id="f4" class="layout-b-section">
+  <div class="section-head">
+    <span class="section-no">04</span>
+    <div class="titles">
+      <h2>修補包已經在，還在討論防護敘事的人先重啟 worker</h2>
+      <p class="persona">人物：Linus Torvalds</p>
+    </div>
+    <span class="heat">A</span>
+  </div>
+  <div class="layout-b-wide">
+    <figure class="section-media reveal">
+      <img src="assets/f4-nginx2root.jpg" alt="Cloudflare 官方網誌：nginx2root 配圖" loading="lazy" decoding="async">
+      <figcaption>Cloudflare（官方網誌配圖）</figcaption>
+    </figure>
+    <div class="num-rail reveal">
+      <div><strong>1.30.7 或 1.31.9</strong><span>修補版本並重啟（或供應商對應修正版）</span></div>
+      <div><strong>CVE-2026-123007</strong><span>F5：High（CVSS 3.1：8.1）與 Critical（CVSS 4.0：9.2）；自 1.9.5 起影響啟用 HTTP/2 的安裝</span></div>
+      <div><strong>5,670萬</strong><span>Shodan 11 月 10 日 product:nginx 主機；有版本字串的 1,194 萬部中 98.9% 落在受影響範圍</span></div>
+      <div><strong>約880萬</strong><span>Censys 11 月 19 日可能受影響且啟用 HTTP/2 的服務；版本字串不能證明一定可被利用</span></div>
+    </div>
+    <div class="essay reveal">
+      <p>Talk is cheap. 修補版本號已經寫在公告上，還在比較誰的邊緣防護比較動聽的人，先回去重啟你的 worker。</p>
+      <p>據 Cloudflare 二十日網誌，F5 與 nginx.org 在十八日披露 nginx 的十個漏洞。其中五個由 Xint 研究團隊以 nginx2root 為名公布，屬記憶體損毀：未經認證的攻擊者可以讓 nginx worker 崩潰，或按該團隊的研究在伺服器上執行命令。Xint 還發現 Linux 核心 SCTP 發送路徑的釋放後使用問題，可把這個立足點提升為主機 root，包括從 Docker 容器裡面。最需要先處理的是 CVE-2026-123007：它只要求啟用 HTTP/2，自二零一五年的 1.9.5 起就在發行版裡。F5 評為 High 與 Critical。同一批發行版還修了 CVE-2026-118899 等另外五個問題，可在 TLS 1.3 讀取請求主體時把 worker 卡死。正確動作是更新到 nginx 1.30.7 或 1.31.9——或你發行版提供的對應修正——然後重啟。</p>
+      <p>規模也不允許再裝睡。Xint 在披露前的十一月十日用 Shodan 搜 product:nginx，找到 5,670 萬部主機；在報了版本的 1,194 萬部裡，98.9% 落在受影響範圍。Censys 到十九日仍數出約 880 萬個可能受影響、且啟用了 HTTP/2 的服務。版本字串不能證明每一台都可以被打穿，但這不是角落案例。開源被放在網際網路入口，並不自動等於有人在修。Talk is cheap。把套件更新推出去，比再寫一篇「我們的邊緣不受影響」有用。</p>
+    </div>
+  </div>
+  <p class="case-note">來源：<a href="https://blog.cloudflare.com/nginx2root/" target="_blank" rel="noopener noreferrer">Cloudflare</a>；<a href="https://www.sysdig.com/blog/nginx2root" target="_blank" rel="noopener noreferrer">Sysdig</a>。圖源：Cloudflare（官方網誌配圖）。本報只寫高階影響與修補路徑。</p>
+</section>
+<section id="briefs" class="layout-c-mosaic">
+  <div class="section-head">
+    <span class="section-no">05</span>
+    <div class="titles">
+      <h2>其餘精選：二十七則，按欄排列</h2>
+    </div>
+  </div>
+  <p class="intro">平日稿，分類精選二十七則，含專題在所屬欄重出的短項。各欄底部為該欄熱度排行；同級熱度依內容包原序。圖源註寫在各卡內文區。</p>
+  <div class="cat-block" id="hot">
+    <h3 class="cat-head">熱門話題</h3>
+    <div class="mosaic">
+  <article class="mosaic-card wide reveal" id="h1">
+    <img src="assets/f1-anthropic-ipo.jpg" alt="Anthropic 綠鞋關帳募資約 935 億美元，週五收 88.91 美元（見專題）" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">Anthropic 官方；並參 Yahoo Finance、CNBC</p>
+      <h3><a href="https://www.anthropic.com/news/ipo-close" target="_blank" rel="noopener noreferrer">Anthropic 綠鞋關帳募資約 935 億美元，週五收 88.91 美元（見專題）</a></h3>
+      <p class="summary">Anthropic 二十日宣布完成上市關帳：A 類合共 11.27 億股、每股 83 美元，含承銷商全數行使 1.47 億股綠鞋，發售所得約 935 億美元，公司實收約 916 億美元。另向 AMD、Google、Microsoft、Nvidia 等私募 N 類約 260 億美元，官方把兩筆加總為扣除費用前約 1,195 億美元，這是進帳不是市值。Yahoo Finance 報價表寫週五收 88.91 美元，跌 8.50%，最低 83.05 美元。詳見專題。</p>
+      <p class="media-credit">Brendan McDermid／Reuters（CNBC）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="h2">
+    <img src="assets/h2-nvidia-sec.jpg" alt="同類相關圖，非該則新聞原圖：Reuters 獨家：SEC 執法部門據消息來源正審視 Nvidia 潛在會計問題" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">Reuters（獨家，消息來源）</p>
+      <h3><a href="https://www.reuters.com/5f374b32b07b/world/us-secs-nvidia-probe-is-examining-potential-accounting-issues-sources-say-2026-11-20/" target="_blank" rel="noopener noreferrer">Reuters 獨家：SEC 執法部門據消息來源正審視 Nvidia 潛在會計問題</a></h3>
+      <p class="summary">Reuters 二十日引消息來源報道，美國證監會執法部門人員正審視 Nvidia 的潛在會計問題；SEC 拒評，Nvidia 截稿前未回覆。該社寫，未能確定調查何時展開、具體爭點為何，並強調調查本身不是違規證據。報道刊出後，LSEG 數據顯示 Nvidia 週五一度跌約 13%，此前已跌逾 6%。文中並提到地區收入改按客戶總部列報，以及循環融資安排引發的質疑，均須標明為報道而非已認定事實。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Bloomberg／Getty Images（WIRED 配圖，同類相關圖，非該則 Reuters 原圖）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="h3">
+    <img src="assets/h3-trump-tax.jpg" alt="特朗普揚言對美國公司在境外建數據中心課「重稅」，但未提稅率與授權" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">The Verge；並參 AP、CNBC、Axios</p>
+      <h3><a href="https://www.theverge.com/policy/1038892/trump-foreign-data-centers-tax" target="_blank" rel="noopener noreferrer">特朗普揚言對美國公司在境外建數據中心課「重稅」，但未提稅率與授權</a></h3>
+      <p class="summary">特朗普二十日在記者會稱，不會允許美國公司在境外興建數據中心，若仍要興建將課「tremendous tax」。The Verge 刊出談話紀錄，他說自己還沒向幕僚提過這件事。沒有稅率、機制或法律授權；Axios 指出聯邦課稅權在國會。CNBC 調查顯示，64% 登記選民反對住家十英里內有 AI 數據中心。這是口頭威脅，不是已立法。詳見 Miller 專題。</p>
+      <p class="media-credit">AFP／Getty Images（CNBC）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="h4">
+    <img src="assets/h4-gta-vi.jpg" alt="Rockstar 稱 GTA VI 首日零售銷售 37.9 億美元，預購 3,250 萬套" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">The Verge（轉述 Rockstar／Take-Two）</p>
+      <h3><a href="https://www.theverge.com/games/1036279/gta-vi-sales" target="_blank" rel="noopener noreferrer">Rockstar 稱 GTA VI 首日零售銷售 37.9 億美元，預購 3,250 萬套</a></h3>
+      <p class="summary">The Verge 轉述 Rockstar 宣布，Grand Theft Auto VI 首日零售銷售 37.9 億美元，並稱這是「任何媒介娛樂」的新紀錄；預購 3,250 萬套，遊戲於週四發行。本報嘗試打開 Take-Two 投資者關係直鏈得到 404，故數字以已打開的 The Verge 轉述為準。娛樂熱度高，但不作為今日 IT 專題主軸。</p>
+      <p class="media-credit">Cath Virginia／The Verge，Rockstar Games</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="h5">
+    <img src="assets/h2-nvidia-sec.jpg" alt="WIRED 引知情人士：Nvidia 董事會最終因「缺乏坦誠」與「說謊」而推動黃仁勳去職" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">WIRED（知情人士）</p>
+      <h3><a href="https://www.wired.com/story/jensen-huangs-lying-alarmed-nvidia-board-ahead-of-his-resignation/" target="_blank" rel="noopener noreferrer">WIRED 引知情人士：Nvidia 董事會最終因「缺乏坦誠」與「說謊」而推動黃仁勳去職</a></h3>
+      <p class="summary">WIRED 二十日引兩名知情人士報道，在婚外關係與國安指控之外，最終讓 Nvidia 董事會採取行動的，是黃仁勳的「lack of candor」與「lying」，並稱相關問題橫跨二零二五年十月至近期。報道寫，董事會在《紐約時報》二零二五年十月有關 Megaspeed 的報道後曾詢問，當時他否認不當關係。代表黃仁勳的 John Fisher 對該刊稱他是自願辭職；Nvidia 拒評。這是董事會動機的新鉤，不是復職聲明重寫。</p>
+      <p class="media-credit">Bloomberg／Getty Images（WIRED）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="h6">
+    <img src="assets/h2-nvidia-sec.jpg" alt="同類相關圖，非該則新聞原圖：《紐約時報》刊出黃仁勳管理風格調查，本報未打開原文故不轉述具體用語" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">題目據 Techmeme 轉載列表；《紐約時報》原頁本輪逾時未打開</p>
+      <h3><a href="https://www.techmeme.com/261120/h1430" target="_blank" rel="noopener noreferrer">《紐約時報》刊出黃仁勳管理風格調查，本報未打開原文故不轉述具體用語</a></h3>
+      <p class="summary">Techmeme 二十日首頁大量轉載《紐約時報》題為 Threats, Insults, Settlements: How Jensen Huang Made Humiliation Routine 的調查報道。本報嘗試打開紐約時報頁面逾時，因此不轉述未經核對的具體指控或引語。此條只作熱度標記，不作事實認定。董事會動機的可核對新鉤見上方已打開的 WIRED 報道。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Bloomberg／Getty Images（WIRED 配圖，同類相關圖，因紐約時報原頁未打開）</p>
+    </div>
+  </article>
+    </div>
+    <aside class="heat-rank" aria-label="熱門話題熱度排行">
+      <h4>本欄熱度排行（A → B → C，同級依原序）</h4>
+      <ol>
+      <li><span class="idx">1</span><span class="heat">A</span><a href="#h1">Anthropic 綠鞋關帳／週五收市</a></li>
+      <li><span class="idx">2</span><span class="heat">A</span><a href="#h2">Reuters：SEC 審視 Nvidia 會計</a></li>
+      <li><span class="idx">3</span><span class="heat">A</span><a href="#h3">特朗普境外數據中心「重稅」</a></li>
+      <li><span class="idx">4</span><span class="heat">A</span><a href="#h4">GTA VI 首日銷售</a></li>
+      <li><span class="idx">5</span><span class="heat">B</span><a href="#h5">WIRED：董事會動機是坦誠問題</a></li>
+      <li><span class="idx">6</span><span class="heat">B</span><a href="#h6">《紐約時報》職場調查（原文未打開）</a></li>
+      </ol>
+    </aside>
+  </div>
+  <div class="cat-block" id="ai">
+    <h3 class="cat-head">AI 與模型</h3>
+    <div class="mosaic">
+  <article class="mosaic-card wide reveal" id="a1">
+    <img src="assets/f2-riemann.jpg" alt="同類相關圖，非該則新聞原圖：Alpöge 宣稱與 Claude 證明黎曼猜想，Lean 已編譯、比較器仍未完成（見專題）" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">The Verge；並參 Scientific American、Nature</p>
+      <h3><a href="https://www.theverge.com/ai-artificial-intelligence/1010051/anthropic-riemann-hypothesis-millennium-prize-problem" target="_blank" rel="noopener noreferrer">Alpöge 宣稱與 Claude 證明黎曼猜想，Lean 已編譯、比較器仍未完成（見專題）</a></h3>
+      <p class="summary">Anthropic 數學家 Levent Alpöge 宣稱與 Claude 合作證明黎曼猜想，並以 Lean 形式化；這是個人宣布，公司截稿前未置評。Scientific American 引 MIT 的 Andrew Sutherland 稱 Lean 證明已編譯，並由只用三個標準公理的 kernel 獨立覆核。比較器檢查仍在進行，以確認程式沒有重定義題目本身。Clay 千禧年獎須發表後至少兩年並獲普遍接受。不要寫成難題已被正式解決。詳見專題。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Getty Images（The Verge；同類相關圖，上市畫面而非證明文件）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="a2">
+    <img src="assets/a2-openai-distillation.jpg" alt="OpenAI 公布對抗惡意蒸餾措施，內部測試稱先前請求推理擷取成功率由 54.0% 降至 0.2%" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">OpenAI 官方</p>
+      <h3><a href="https://openai.com/index/combatting-adversarial-distillation/" target="_blank" rel="noopener noreferrer">OpenAI 公布對抗惡意蒸餾措施，內部測試稱先前請求推理擷取成功率由 54.0% 降至 0.2%</a></h3>
+      <p class="summary">OpenAI 二十日發表文章，說明如何偵測與阻斷未經授權的對抗性蒸餾，並加強保護模型的受保護推理（思維鏈）。官方寫，在針對 GPT-6.2 Astra 與 GPT-6.2 Sol 的內部自適應測試中，攻擊者從先前提示擷取受保護推理的平均成功率，由原防護下的 GPT-6 Astra 的 54.0%，降至更新防護後 GPT-6.2 Astra 的 0.2%。文章把蒸餾視為安全風險，尤其在網絡安全與生物等雙用途領域。數字以官方頁為準，屬內部評測。</p>
+      <p class="media-credit">OpenAI</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="a3">
+    <img src="assets/a3-signal.jpg" alt="Signal 在 iOS 與 Android 限制截圖，阻止 Gemini 與 Siri AI 讀取畫面" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">The Verge；並參 Signal 支援頁、The Register</p>
+      <h3><a href="https://www.theverge.com/ai-artificial-intelligence/1038390/signal-blocking-ai-agent-screenshots-mobile-app" target="_blank" rel="noopener noreferrer">Signal 在 iOS 與 Android 限制截圖，阻止 Gemini 與 Siri AI 讀取畫面</a></h3>
+      <p class="summary">Signal 在 Android 8.35.1 與 iPhone 8.37（需 iOS 27）加入畫面安全措施，限制截圖並阻止裝置上的 Gemini、Siri AI 等助理讀取畫面。官方支援頁寫，iPhone 預設開啟「Block Siri AI」；Android 則在助理首次嘗試讀取畫面時自動開啟。總裁 Meredith Whittaker 稱 AI 代理人「hostile to privacy」，並說截圖封鎖並不完整，因代理人仍可能經檔案系統取數；macOS 目前無法實作同等保護。用戶可在設定關閉，但會削弱隱私保證。</p>
+      <p class="media-credit">Signal（The Verge）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="a4">
+    <img src="assets/a4-cursor-models.jpg" alt="同類相關圖，非該則新聞原圖：眾議院報告：Cursor 考慮因地緣風險逐步停用中國開源權重模型" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">眾議院國土安全委員會；並參 CNBC</p>
+      <h3><a href="https://homeland.house.gov/2026/11/20/chairmen-garbarino-moolenaar-release-joint-investigative-report-urging-removal-of-prc-open-weight-models-from-federal-systems-high-risk-critical-infrastructure/" target="_blank" rel="noopener noreferrer">眾議院報告：Cursor 考慮因地緣風險逐步停用中國開源權重模型</a></h3>
+      <p class="summary">國土安全委員會主席 Garbarino 與中國事務特設委員會主席 Moolenaar 二十日發布聯合調查報告，審視美國公司採用中國開源權重模型的風險，並提出十二項政策建議，包括禁止聯邦系統與聯邦合約使用、從高風險關鍵基礎設施移除。調查對象包括 Airbnb、Anysphere／Cursor 與 DoorDash。CNBC 寫，Cursor 的 Composer 2 建於 Moonshot 的 Kimi K2.5，公司正考慮逐步停用，屬評估而非已完成切換；SpaceX 於八月完成收購 Cursor。報告中的判斷是委員會表述。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Getty Images（CNBC；資料照，非聽證會現場）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="a5">
+    <img src="assets/a5-gemini-gif.jpg" alt="同類相關圖，非該則新聞原圖：Gemini 應用程式開始用 Omni 1.2 Flash 產生約三秒循環的 GIF" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">C</span>
+      <p class="outlet">The Verge</p>
+      <h3><a href="https://www.theverge.com/tech/1038771/googles-gemini-app-can-now-make-gifs" target="_blank" rel="noopener noreferrer">Gemini 應用程式開始用 Omni 1.2 Flash 產生約三秒循環的 GIF</a></h3>
+      <p class="summary">The Verge 二十日報道，Google 的 Gemini 應用程式開始支援產生 GIF，使用 Gemini Omni 1.2 Flash，循環長度約三秒。功能向美國、加拿大、英國、日本、韓國、澳洲、德國與法國用戶推出。該刊頁面較短，細節以已打開段落為準。這是產品增量，不是新的 computer use 功能重寫。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。The Verge（頁面占位圖，同類相關圖，非功能示範）</p>
+    </div>
+  </article>
+    </div>
+    <aside class="heat-rank" aria-label="AI 與模型熱度排行">
+      <h4>本欄熱度排行（A → B → C，同級依原序）</h4>
+      <ol>
+      <li><span class="idx">1</span><span class="heat">A</span><a href="#a1">黎曼猜想 Lean 證明宣稱</a></li>
+      <li><span class="idx">2</span><span class="heat">A</span><a href="#a2">OpenAI 對抗蒸餾</a></li>
+      <li><span class="idx">3</span><span class="heat">A</span><a href="#a3">Signal 封鎖 AI 讀取畫面</a></li>
+      <li><span class="idx">4</span><span class="heat">A</span><a href="#a4">眾議院報告／Cursor 模型</a></li>
+      <li><span class="idx">5</span><span class="heat">C</span><a href="#a5">Gemini GIF</a></li>
+      </ol>
+    </aside>
+  </div>
+  <div class="cat-block" id="security">
+    <h3 class="cat-head">資安與基礎設施</h3>
+    <div class="mosaic">
+  <article class="mosaic-card wide reveal" id="s1">
+    <img src="assets/f4-nginx2root.jpg" alt="nginx2root：五個高危漏洞可致崩潰或按研究執行命令，須更新並重啟（見專題）" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">Cloudflare；並參 Sysdig</p>
+      <h3><a href="https://blog.cloudflare.com/nginx2root/" target="_blank" rel="noopener noreferrer">nginx2root：五個高危漏洞可致崩潰或按研究執行命令，須更新並重啟（見專題）</a></h3>
+      <p class="summary">Cloudflare 寫，F5 與 nginx.org 十八日披露十個 nginx 漏洞，其中五個以 nginx2root 為名公布，屬記憶體損毀，未經認證攻擊者可令 worker 崩潰，或按 Xint 研究執行命令；另有 Linux 核心 SCTP 問題可提升至主機 root，包括從容器內。修補版本為 1.30.7 或 1.31.9 並重啟。CVE-2026-123007 自 1.9.5 起影響啟用 HTTP/2 的安裝。披露前 Shodan 錄得 5,670 萬部 nginx 主機，有版本字串者中 98.9% 落在受影響範圍。詳見專題。本報不提供利用步驟。</p>
+      <p class="media-credit">Cloudflare</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="s2">
+    <img src="assets/s2-visa-mastercard.jpg" alt="研究人員稱 n0n 公布的 Visa／Mastercard 檔案無卡號，但足以用於釣魚" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">The Register</p>
+      <h3><a href="https://www.theregister.com/cyber-crime/2026/11/20/visa-mastercard-theft-included-info-useful-for-phishing-but-not-draining-bank-accounts-say-researchers/5311478" target="_blank" rel="noopener noreferrer">研究人員稱 n0n 公布的 Visa／Mastercard 檔案無卡號，但足以用於釣魚</a></h3>
+      <p class="summary">Visa、Mastercard 與 JPMorgan Chase 向 The Register 確認，正調查可能涉及客戶資料的第三方事件。SOCRadar 掃描勒索組織 n0n 公布的 14 個 Visa／Mastercard 檔案，稱未見卡號、有效期、CVV、密碼、出生日期或住址，但有手機號碼、BIN 前綴與訂房、機票等紀錄，可用於偽冒客服或銀行的釣魚。公布檔約佔該組織聲稱竊取量的 0.4%。時點與 Wiz／Mandiant／Sentra 披露的 Qubole 活動相近，檔案本身未點名供應商，不能寫成已確認。</p>
+      <p class="media-credit">The Register</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="s3">
+    <img src="assets/s3-php.jpg" alt="PHP 8.6 發布，預設收緊 session 設定，並與舊分支一併修補七個遠端程式執行漏洞" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">The Register</p>
+      <h3><a href="https://www.theregister.com/devops/2026/11/20/php-86-things-are-gonna-get-a-lot-more-strict-around-here/5311486" target="_blank" rel="noopener noreferrer">PHP 8.6 發布，預設收緊 session 設定，並與舊分支一併修補七個遠端程式執行漏洞</a></h3>
+      <p class="summary">The Register 報道，PHP 8.6 於週四按年度時程發布。核心團隊與 PHP Foundation 同時釋出 8.5.13、8.4.28、8.3.37、8.2.36 與 8.6，一口氣修補七個嚴重遠端程式執行漏洞。8.6 並採納 Jörg Sowa 的建議，把 session 的 Strict Mode、HttpOnly 與 SameSite 改為更安全的預設值，以降低工作階段劫持與跨站請求偽造風險。這不能取代更新舊分支，也不等於修掉所有新的 CVE。</p>
+      <p class="media-credit">The Register</p>
+    </div>
+  </article>
+    </div>
+    <aside class="heat-rank" aria-label="資安與基礎設施熱度排行">
+      <h4>本欄熱度排行（A → B → C，同級依原序）</h4>
+      <ol>
+      <li><span class="idx">1</span><span class="heat">A</span><a href="#s1">nginx2root</a></li>
+      <li><span class="idx">2</span><span class="heat">A</span><a href="#s2">Visa／Mastercard 外洩樣本</a></li>
+      <li><span class="idx">3</span><span class="heat">B</span><a href="#s3">PHP 8.6 與七個 RCE 修補</a></li>
+      </ol>
+    </aside>
+  </div>
+  <div class="cat-block" id="consumer">
+    <h3 class="cat-head">消費電子／平台</h3>
+    <div class="mosaic">
+  <article class="mosaic-card wide reveal" id="c1">
+    <img src="assets/a3-signal.jpg" alt="Signal 預設在 iPhone 封鎖 Siri AI 讀取畫面，Android 於首次偵測時開啟（見 a3）" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">Signal 支援頁；並參 The Verge</p>
+      <h3><a href="https://support.signal.org/hc/en-us/articles/11338514641306-Screen-security-blocking-Google-Gemini-and-Siri-AI" target="_blank" rel="noopener noreferrer">Signal 預設在 iPhone 封鎖 Siri AI 讀取畫面，Android 於首次偵測時開啟（見 a3）</a></h3>
+      <p class="summary">Signal 官方支援頁列出畫面安全的具體行為：iPhone 預設開啟，並提供「關閉十分鐘」以便臨時截圖；Android 可在設定中預先開啟，或在助理首次嘗試讀取時自動開啟，若在提示中關閉則九十日後會再開。功能只影響截圖與裝置上掃描，不改變訊息加密本身。Whittaker 強調，作業系統層的 AI 代理人若無可供開發者使用的限制工具，會削弱應用層隱私。詳見 a3。</p>
+      <p class="media-credit">Signal（The Verge）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="c2">
+    <img src="assets/c2-samsung.jpg" alt="Samsung 宣布記憶體業務由 Hwang Sang Joon 出任社長，Choi 掌管 MX" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">Samsung 官方新聞室</p>
+      <h3><a href="https://news.samsung.com/global/samsung-electronics-announces-new-leadership-5" target="_blank" rel="noopener noreferrer">Samsung 宣布記憶體業務由 Hwang Sang Joon 出任社長，Choi 掌管 MX</a></h3>
+      <p class="summary">三星電子二十日宣布新一輪人事：Hwang Sang Joon 升任社長並成為記憶體業務負責人，此前主管包括 DRAM 與 HBM 在內的記憶體開發；Sangyeun Cho 升任社長掌管 System LSI；Jong Myeong Lee 升任社長並出任 DS 部門技術長。Won-Joon Choi 出任 MX 流動業務負責人。副會長 Young Hyun Jun 繼續掌管 DS，TM Roh 繼續掌管 DX，兩人仍任聯席執行長。官方把此輪調整與半導體競爭力掛鉤。</p>
+      <p class="media-credit">Samsung</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="c3">
+    <img src="assets/a5-gemini-gif.jpg" alt="同類相關圖，非該則新聞原圖：Gemini 應用程式在多國推出 GIF 產生功能（見 a5）" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">C</span>
+      <p class="outlet">The Verge</p>
+      <h3><a href="https://www.theverge.com/tech/1038771/googles-gemini-app-can-now-make-gifs" target="_blank" rel="noopener noreferrer">Gemini 應用程式在多國推出 GIF 產生功能（見 a5）</a></h3>
+      <p class="summary">Google 為 Gemini 應用程式加入約三秒循環的 GIF 產生，模型為 Gemini Omni 1.2 Flash，先在美、加、英、日、韓、澳、德、法推出。詳見 a5。這是消費功能增量，不是 Mac computer use 的延續報道。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。The Verge（占位圖，同類相關圖）</p>
+    </div>
+  </article>
+    </div>
+    <aside class="heat-rank" aria-label="消費電子／平台熱度排行">
+      <h4>本欄熱度排行（A → B → C，同級依原序）</h4>
+      <ol>
+      <li><span class="idx">1</span><span class="heat">A</span><a href="#c1">Signal 畫面安全設定</a></li>
+      <li><span class="idx">2</span><span class="heat">B</span><a href="#c2">三星記憶體／MX 人事</a></li>
+      <li><span class="idx">3</span><span class="heat">C</span><a href="#c3">Gemini GIF</a></li>
+      </ol>
+    </aside>
+  </div>
+  <div class="cat-block" id="chips">
+    <h3 class="cat-head">晶片／硬體／地緣</h3>
+    <div class="mosaic">
+  <article class="mosaic-card wide reveal" id="ch1">
+    <img src="assets/f3-chip-licenses.jpg" alt="眾議院公開 BIS 摘要：截至五月十一日核準向中國公司出口 87 萬 9,868 顆 H200／MI325X（見專題）" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">眾議院外交事務委員會摘要；並參 CNBC</p>
+      <h3><a href="https://democrats-foreignaffairs.house.gov/wp-content/uploads/2026/11/11.19.26-ECRA-Information-Disclosure-HFAC-Summary.pdf" target="_blank" rel="noopener noreferrer">眾議院公開 BIS 摘要：截至五月十一日核準向中國公司出口 87 萬 9,868 顆 H200／MI325X（見專題）</a></h3>
+      <p class="summary">委員會公開的 BIS 五月十一日摘要顯示，當局收到向中國公司出售 344 萬 4,160 顆受規管積體電路的申請，並核準 87 萬 9,868 顆、涵蓋 21 份許可，產品為 Nvidia H200 與 AMD MI325X。核準明細包括阿里巴巴 75,000、騰訊及其子公司 150,000、百度 43,000、比亞迪 4,000；申請量不可與核準量對調。Nvidia 對 CNBC 稱其後已停止向中國出貨 H200，並稱中國 H200 出貨佔截至七月那一季數據中心收入不足 1%。核準不等於出貨。詳見專題。</p>
+      <p class="media-credit">Getty Images（CNBC）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="ch2">
+    <img src="assets/ch2-apollo-spacex.jpg" alt="Apollo 與高盛宣布為 SpaceX 地面運算定價約 440 億美元 GPU 融資" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">Apollo 官方</p>
+      <h3><a href="https://ir.apollo.com/news-events/press-releases/detail/662/apollo-and-goldman-sachs-announce-pricing-of-44-billion" target="_blank" rel="noopener noreferrer">Apollo 與高盛宣布為 SpaceX 地面運算定價約 440 億美元 GPU 融資</a></h3>
+      <p class="summary">Apollo 與高盛二十日宣布，成功定價約 440 億美元優先及次級票據，為 SpaceX 地面運算建置購買 GPU 及相關設備，晶片為 NVIDIA Vera Rubin，稱是迄今最大規模 GPU 融資，並因需求超額認購而擴大。租賃期預計在二零二七年上半年設備交付後開始。錨定承諾包括 BlackRock、Goldman Sachs Asset Management 與 KKR 顧問帳戶。這是官方關帳數字，取代昨日 Semafor 約 400 億美元的獨家口徑；不要與《金融時報》所寫的約 430 億合併。</p>
+      <p class="media-credit">Apollo</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="ch3">
+    <img src="assets/ch3-starship.jpg" alt="同類相關圖，非該則新聞原圖：《金融時報》稱貸款人試圖禁止 SpaceX 把抵押晶片射上軌道，最終文件是否寫入未定" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">Ars Technica（轉載 Financial Times）</p>
+      <h3><a href="https://arstechnica.com/space/2026/11/spacex-lenders-dont-want-elon-musk-launching-their-collateral-into-space/" target="_blank" rel="noopener noreferrer">《金融時報》稱貸款人試圖禁止 SpaceX 把抵押晶片射上軌道，最終文件是否寫入未定</a></h3>
+      <p class="summary">Ars 轉載《金融時報》報道，為 SpaceX 以先進 AI 晶片作抵押的債務融資提供資金的貸款人，曾試圖禁止把這些抵押品用於軌道數據中心，理由是違約後難以收回與轉售。該稿寫 SpaceX 表示相關晶片計劃用於地面，並註明不確定該限制是否寫入最終文件；總額寫成約 430 億美元，與 Apollo 官方的約 440 億美元不要合併。知情人士、Apollo 與高盛拒評，SpaceX 未回覆置評請求。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。SpaceX（Ars／FT 配圖，Starship 資料照）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="ch4">
+    <img src="assets/ch4-pcb.jpg" alt="全球電子協會警告 PCB 供應吃緊，有意義紓緩或要到二零二八年中" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">The Register</p>
+      <h3><a href="https://www.theregister.com/systems/2026/11/20/ai-boom-threatens-circuit-board-crunch-to-rival-pandemic-era-chip-shortage/5311335" target="_blank" rel="noopener noreferrer">全球電子協會警告 PCB 供應吃緊，有意義紓緩或要到二零二八年中</a></h3>
+      <p class="summary">The Register 轉述全球電子協會報告《The PCB Squeeze》，稱 AI 伺服器電路板可達 40 至 60 層或以上，需求規模超出供應鏈原有設計，汽車、醫療與國防訂單被擠佔，有意義紓緩不太可能早於二零二八年中。北美數據顯示，二零二六年首九個月 PCB 訂單按年升 56.1%，出貨只升 13.3%。報告稱九月層壓板漲價 30%，部分電子級玻璃布漲 300%，銅價一年升 37%。超過九成電路板在亞洲生產。Gartner 分析師 Cori Masters 稱上游材料限制已持續數季。</p>
+      <p class="media-credit">The Register</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="ch5">
+    <img src="assets/c2-samsung.jpg" alt="三星提拔 HBM／DRAM 開發主管掌管記憶體業務（見 c2）" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">Samsung 官方新聞室</p>
+      <h3><a href="https://news.samsung.com/global/samsung-electronics-announces-new-leadership-5" target="_blank" rel="noopener noreferrer">三星提拔 HBM／DRAM 開發主管掌管記憶體業務（見 c2）</a></h3>
+      <p class="summary">三星二十日宣布 Hwang Sang Joon 升任社長並成為記憶體業務負責人，官方預期他將加強 AI 時代記憶體產品競爭力；System LSI 與 DS 技術長同步調整，副會長 Jun 不再兼任記憶體一線主管、專注 DS。詳見 c2。這是人事與產能競爭的硬體消息，不是新的製程節點宣布。</p>
+      <p class="media-credit">Samsung</p>
+    </div>
+  </article>
+    </div>
+    <aside class="heat-rank" aria-label="晶片／硬體／地緣熱度排行">
+      <h4>本欄熱度排行（A → B → C，同級依原序）</h4>
+      <ol>
+      <li><span class="idx">1</span><span class="heat">A</span><a href="#ch1">眾議院公布 879,868 顆核準</a></li>
+      <li><span class="idx">2</span><span class="heat">A</span><a href="#ch2">Apollo／高盛 440 億美元 SpaceX GPU 融資</a></li>
+      <li><span class="idx">3</span><span class="heat">A</span><a href="#ch3">FT：抵押晶片軌道限制未定</a></li>
+      <li><span class="idx">4</span><span class="heat">A</span><a href="#ch4">PCB 供應警示</a></li>
+      <li><span class="idx">5</span><span class="heat">B</span><a href="#ch5">三星記憶體人事</a></li>
+      </ol>
+    </aside>
+  </div>
+  <div class="cat-block" id="policy">
+    <h3 class="cat-head">政策／監管</h3>
+    <div class="mosaic">
+  <article class="mosaic-card wide reveal" id="p1">
+    <img src="assets/p1-trump-axios.jpg" alt="特朗普「重稅」威脅沒有稅率與法律授權，選民調查顯示數據中心在地不受歡迎（見專題）" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">Axios；並參 The Verge、CNBC</p>
+      <h3><a href="https://www.axios.com/2026/11/20/us-ai-trump-data-centers-overseas" target="_blank" rel="noopener noreferrer">特朗普「重稅」威脅沒有稅率與法律授權，選民調查顯示數據中心在地不受歡迎（見專題）</a></h3>
+      <p class="summary">Axios 寫，特朗普二十日提出阻止或重罰美國公司在境外建數據中心，但未說明會否尋求國會批准，而聯邦課稅權在國會。The Verge 記錄他自稱尚未告知幕僚。Axios 引 Ballotpedia：截至二零二六年十一月，13 州 53 項相關選票措施中，有 52 項傾向限制開發。CNBC All-America 調查則顯示 64% 登記選民反對住家十英里內出現 AI 數據中心，13% 支持。口頭政策與選民抗拒同時存在。詳見 Miller 專題。</p>
+      <p class="media-credit">Yuri Gripas／CNP／Bloomberg via Getty Images（Axios）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="p2">
+    <img src="assets/a4-cursor-models.jpg" alt="同類相關圖，非該則新聞原圖：眾議院建議禁止聯邦系統與高風險關鍵基礎設施使用中國開源權重模型（見 a4）" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">眾議院國土安全委員會</p>
+      <h3><a href="https://homeland.house.gov/2026/11/20/chairmen-garbarino-moolenaar-release-joint-investigative-report-urging-removal-of-prc-open-weight-models-from-federal-systems-high-risk-critical-infrastructure/" target="_blank" rel="noopener noreferrer">眾議院建議禁止聯邦系統與高風險關鍵基礎設施使用中國開源權重模型（見 a4）</a></h3>
+      <p class="summary">聯合報告建議在國土安全部已排除 DeepSeek 的基礎上，禁止聯邦資訊系統與聯邦合約履行使用「中國開發的 AI 模型」，並從關鍵基礎設施的高風險功能中移除，且不得用聯邦網絡安全補助金購買。主席前言稱，聯邦調查發現大型中國開發商用代理網絡與欺詐帳戶擷取美國前沿模型輸出——這是委員會表述，不是本報獨立認定。詳見 a4。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Getty Images（CNBC；同類相關圖）</p>
+    </div>
+  </article>
+    </div>
+    <aside class="heat-rank" aria-label="政策／監管熱度排行">
+      <h4>本欄熱度排行（A → B → C，同級依原序）</h4>
+      <ol>
+      <li><span class="idx">1</span><span class="heat">A</span><a href="#p1">特朗普稅與選民調查</a></li>
+      <li><span class="idx">2</span><span class="heat">A</span><a href="#p2">聯邦系統移除中國開源權重模型建議</a></li>
+      </ol>
+    </aside>
+  </div>
+  <div class="cat-block" id="opensource">
+    <h3 class="cat-head">開源／開發</h3>
+    <div class="mosaic">
+  <article class="mosaic-card wide reveal" id="o1">
+    <img src="assets/f4-nginx2root.jpg" alt="nginx 須更新至 1.30.7 或 1.31.9 並重啟，以修補 nginx2root 等漏洞（見專題）" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">Cloudflare</p>
+      <h3><a href="https://blog.cloudflare.com/nginx2root/" target="_blank" rel="noopener noreferrer">nginx 須更新至 1.30.7 或 1.31.9 並重啟，以修補 nginx2root 等漏洞（見專題）</a></h3>
+      <p class="summary">開源 nginx 的修補版本已公布：1.30.7 或 1.31.9，或各發行版對應修正，之後必須重啟。五個 nginx2root 漏洞與另五個問題（包括 TLS 1.3 無限迴圈）同批修復。版本字串不能證明每台主機都可被利用，因為發行版會回溯修補，但曝光面很大。詳見 Torvalds 專題。不要轉載利用細節。</p>
+      <p class="media-credit">Cloudflare</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="o2">
+    <img src="assets/s3-php.jpg" alt="PHP 8.6 把 Strict Mode、HttpOnly、SameSite 改為更安全的預設值（見 s3）" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">The Register</p>
+      <h3><a href="https://www.theregister.com/devops/2026/11/20/php-86-things-are-gonna-get-a-lot-more-strict-around-here/5311486" target="_blank" rel="noopener noreferrer">PHP 8.6 把 Strict Mode、HttpOnly、SameSite 改為更安全的預設值（見 s3）</a></h3>
+      <p class="summary">PHP 8.6 採納核心開發者 Jörg Sowa 的提案，不再接受伺服器未曾建立的未初始化 session ID，預設為 session cookie 加上 HttpOnly，並在跨站 POST、子請求與 iframe 中停止發送 session cookie。The Register 寫，這些改動有助降低工作階段劫持與 CSRF，但不能單獨阻止遠端程式執行。同日舊分支亦釋出修補七個嚴重漏洞的版本。詳見 s3。</p>
+      <p class="media-credit">The Register</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="o3">
+    <img src="assets/a2-openai-distillation.jpg" alt="OpenAI 以分類器與 API 控制保護思維鏈，對抗未經授權蒸餾（見 a2）" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">OpenAI 官方</p>
+      <h3><a href="https://openai.com/index/combatting-adversarial-distillation/" target="_blank" rel="noopener noreferrer">OpenAI 以分類器與 API 控制保護思維鏈，對抗未經授權蒸餾（見 a2）</a></h3>
+      <p class="summary">OpenAI 把對抗性蒸餾防禦寫成與生物、網絡安全防護更對齊的分層措施，包括對抗測試、模型訓練、分類器與 API 層保護，並調查有協調的能力擷取活動。官方強調受保護推理可能包含最終答案沒有的資訊，因此成為蒸餾目標。內部數字見 a2。這是封閉模型的防護公告，不是開源權重發布。</p>
+      <p class="media-credit">OpenAI</p>
+    </div>
+  </article>
+    </div>
+    <aside class="heat-rank" aria-label="開源／開發熱度排行">
+      <h4>本欄熱度排行（A → B → C，同級依原序）</h4>
+      <ol>
+      <li><span class="idx">1</span><span class="heat">A</span><a href="#o1">nginx 修補版本</a></li>
+      <li><span class="idx">2</span><span class="heat">B</span><a href="#o2">PHP 8.6 預設收緊</a></li>
+      <li><span class="idx">3</span><span class="heat">B</span><a href="#o3">OpenAI 蒸餾防護</a></li>
+      </ol>
+    </aside>
+  </div>
+</section>
+
+</div>
+
+<p class="site-foot">每日 IT 報 · 2026年11月21日 · 星期六<br>資料視覺專題版。選稿窗約 2026-11-20 07:45 HKT 至 2026-11-21 07:45 HKT。數字分源呈現，不合併。</p>
+</main>
+
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nodes = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    nodes.forEach(function (el) { el.classList.add('is-in'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    nodes.forEach(function (el) { io.observe(el); });
+  }
+})();
+</script>
+</body>
+</html>

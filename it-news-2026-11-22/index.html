@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>零保留只是標籤，條約還在延期｜2026年11月22日</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F5F2E8;
+  --ink: #1B263B;
+  --ink-soft: #3A4558;
+  --muted: #6B7280;
+  --line: #D9D4C8;
+  --orange: #F06428;
+  --navy: #1B263B;
+  --gray: #A8ADB8;
+  --gray-light: #C8CDD6;
+  --card: #FFFCF5;
+  --max: 760px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Noto Sans TC", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--ink); }
+a:hover { color: var(--orange); }
+.wrapper {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+}
+.header { margin-bottom: 2.75rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--line); }
+.kicker {
+  margin: 0 0 0.85rem;
+  color: var(--orange);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.header h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.85rem, 5vw, 2.55rem);
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+.deck {
+  margin: 0 0 1.35rem;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+.topnav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0;
+  align-items: center;
+  font-size: 0.82rem;
+}
+.topnav a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding: 0.15rem 0.55rem;
+  border-right: 1px solid var(--line);
+}
+.topnav a:last-child { border-right: none; }
+.topnav a:hover { color: var(--orange); }
+
+section {
+  padding: 2.4rem 0;
+  border-bottom: 1px solid var(--line);
+}
+section:last-of-type { border-bottom: none; }
+.section-head {
+  display: flex;
+  gap: 0.85rem;
+  align-items: baseline;
+  margin-bottom: 1.35rem;
+}
+.section-no {
+  color: var(--orange);
+  font-family: "Inter", "Noto Sans TC", sans-serif;
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+.section-head h2 {
+  margin: 0;
+  font-size: clamp(1.2rem, 3.2vw, 1.45rem);
+  font-weight: 800;
+  line-height: 1.35;
+}
+.intro {
+  margin: 0 0 1.25rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+/* Hero number block */
+.hero {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  margin: 0 0 1.5rem;
+  padding: 1.1rem 0;
+}
+.hero-number {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(3.2rem, 10vw, 4.4rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+}
+.hero-number small {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  margin-bottom: 0.2rem;
+}
+.hero-number > span {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-left: 0.15rem;
+}
+.hero-copy {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+.hero-copy small {
+  display: block;
+  margin-top: 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* Case cards */
+.cases {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+  margin: 1.25rem 0 1rem;
+}
+@media (max-width: 680px) {
+  .cases { grid-template-columns: 1fr; }
+  .hero { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+}
+.case {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1rem 1.05rem 1.1rem;
+}
+.case .state {
+  margin: 0;
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+.case .place {
+  margin: 0.15rem 0 0.55rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+.case-num {
+  margin: 0 0 0.55rem;
+  font-family: "Inter", sans-serif;
+  font-size: 1.85rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--orange);
+  line-height: 1;
+}
+.case-num small {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-right: 0.15rem;
+  color: var(--muted);
+}
+.case p:last-child {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.case strong { color: var(--ink); font-weight: 700; }
+.case-note {
+  margin: 0.55rem 0 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.case-note a { color: var(--ink-soft); text-underline-offset: 2px; }
+
+/* Charts */
+.two-charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem 1.75rem;
+}
+@media (max-width: 640px) {
+  .two-charts { grid-template-columns: 1fr; }
+}
+.chart-title {
+  margin: 0 0 0.7rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+.stack {
+  display: flex;
+  width: 100%;
+  height: 2.15rem;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--line);
+}
+.seg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  min-width: 0;
+}
+.seg.orange { background: var(--orange); }
+.seg.dark { background: var(--navy); }
+.seg.gray { background: var(--gray); }
+.seg.muted-blue { background: #5C6B82; }
+.seg.pale { background: var(--gray-light); color: var(--ink-soft); }
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1rem;
+  margin-top: 0.65rem;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+.legend i {
+  display: inline-block;
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 2px;
+  margin-right: 0.35rem;
+  vertical-align: middle;
+}
+.legend i.orange { background: var(--orange); }
+.legend i.dark { background: var(--navy); }
+.legend i.gray { background: var(--gray); }
+.legend i.muted-blue { background: #5C6B82; }
+.legend i.pale { background: var(--gray-light); }
+
+.big-split {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  margin: 0 0 1.35rem;
+}
+.big-percent {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(3rem, 9vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  color: var(--ink);
+  flex-shrink: 0;
+}
+.big-percent small {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0;
+}
+.big-split > p {
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.5;
+}
+@media (max-width: 520px) {
+  .big-split { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+}
+
+.factor-labels {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+.factor-labels > div {
+  padding-right: 0.4rem;
+  border-right: 1px solid var(--line);
+}
+.factor-labels > div:last-child { border-right: none; }
+.factor-labels strong {
+  display: block;
+  font-family: "Inter", sans-serif;
+  font-size: 1.05rem;
+  color: var(--ink);
+  margin-bottom: 0.15rem;
+}
+@media (max-width: 520px) {
+  .factor-labels { grid-template-columns: 1fr 1fr; }
+  .factor-labels > div:nth-child(2) { border-right: none; }
+}
+
+/* Rank rows */
+.rank-list { margin: 1rem 0 0.5rem; }
+.rank-row {
+  display: grid;
+  grid-template-columns: minmax(7.5rem, 32%) 1fr auto;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.rank-row:last-child { border-bottom: none; }
+.rank-row.focus .rank-label { font-weight: 800; color: var(--ink); }
+.rank-row.focus .rank-track::after {
+  background: var(--orange);
+}
+.rank-label {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+.rank-track {
+  position: relative;
+  height: 6px;
+  background: #E6E1D4;
+  border-radius: 999px;
+}
+.rank-track::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: var(--w, 0%);
+  background: var(--navy);
+  border-radius: 999px;
+}
+.rank-track .dot {
+  position: absolute;
+  top: 50%;
+  left: var(--w, 0%);
+  width: 14px;
+  height: 14px;
+  margin-left: -7px;
+  margin-top: -7px;
+  border-radius: 50%;
+  background: var(--navy);
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 0 1px rgba(27,38,59,0.15);
+}
+.rank-row.focus .dot { background: var(--orange); box-shadow: 0 0 0 1px rgba(240,100,40,0.25); }
+.rank-value {
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  min-width: 2.6rem;
+  text-align: right;
+}
+.scale {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.35rem;
+  font-size: 0.7rem;
+  color: var(--muted);
+  padding: 0 3.2rem 0 0;
+}
+@media (max-width: 520px) {
+  .rank-row {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+  }
+  .rank-label { grid-column: 1; }
+  .rank-value { grid-column: 2; grid-row: 1; }
+  .rank-track { grid-column: 1 / -1; }
+  .scale { padding-right: 0; }
+}
+
+.footnote {
+  margin: 0.85rem 0 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+.callout {
+  margin: 1.25rem 0 0;
+  padding: 0.95rem 1.05rem;
+  background: var(--card);
+  border-left: 3px solid var(--orange);
+  border-radius: 0 8px 8px 0;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+.callout strong { color: var(--ink); }
+
+.mobile-summary {
+  margin: 0 0 1rem;
+  padding: 0.85rem 1rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-size: 0.92rem;
+}
+.mobile-summary p { margin: 0.35rem 0; }
+.mobile-summary b { font-family: "Inter", "Noto Sans TC", sans-serif; font-weight: 800; }
+
+details.expandable {
+  margin: 0.5rem 0 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--card);
+  padding: 0.35rem 1rem 1rem;
+}
+details.expandable > summary {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 0.75rem 0;
+  list-style: none;
+}
+details.expandable > summary::-webkit-details-marker { display: none; }
+details.expandable > summary::before {
+  content: "▾ ";
+  color: var(--orange);
+}
+details.expandable:not([open]) > summary::before { content: "▸ "; }
+.group-title {
+  margin: 1.1rem 0 0.65rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.vote-key { margin-bottom: 0.85rem; }
+.vote-row {
+  display: grid;
+  grid-template-columns: minmax(6.5rem, 28%) 1fr;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+.row-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+.row-label small {
+  display: block;
+  font-weight: 400;
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: 0.1rem;
+}
+@media (max-width: 520px) {
+  .vote-row { grid-template-columns: 1fr; gap: 0.3rem; }
+}
+
+
+.party-row {
+  display: grid;
+  grid-template-columns: minmax(6.5rem, 28%) 1fr;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+.party-row.focus .row-label { color: var(--ink); font-weight: 800; }
+.party-row.focus .stack { outline: 2px solid var(--orange); outline-offset: 2px; border-radius: 6px; }
+.sort-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem 0.85rem;
+  margin: 0.35rem 0 1rem;
+}
+.sort-row label { font-size: 0.78rem; color: var(--muted); font-weight: 600; }
+.sorts { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.sorts button {
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+.sorts button[aria-pressed="true"] {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
+}
+@media (max-width: 520px) {
+  .party-row { grid-template-columns: 1fr; gap: 0.3rem; }
+}
+
+.pending-box {
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.35);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.site-foot {
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* Scroll reveal — minimal */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+/* Section media */
+.section-media { margin: 0 0 1.35rem; }
+.section-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.section-media figcaption,
+.media-credit {
+  margin: 0.45rem 0 0;
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.essay p {
+  margin: 0 0 1rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+.essay p:last-child { margin-bottom: 0; }
+
+/* Layout B — left image, right narrative */
+.layout-b {
+  display: grid;
+  grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+  gap: 1.35rem 1.2rem;
+  align-items: start;
+  margin: 0 0 1.25rem;
+}
+.layout-b .section-media {
+  margin: 0;
+  position: sticky;
+  top: 1rem;
+}
+.hero-aside {
+  margin: 0 0 1rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--line);
+}
+.hero-aside .hero-number { font-size: clamp(2.6rem, 8vw, 3.6rem); }
+.hero-aside .hero-copy { font-size: 0.95rem; font-weight: 600; margin: 0.55rem 0 0; }
+.hero-aside .hero-copy small {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+.fact-rail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem 0.75rem;
+  margin: 1.2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.fact-rail li {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.75rem 0.85rem;
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.fact-rail .n {
+  display: block;
+  font-family: "Inter", "Noto Sans TC", sans-serif;
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--ink);
+  letter-spacing: -0.03em;
+  margin-bottom: 0.2rem;
+}
+
+/* Layout B wide — banner image above essay */
+.layout-b-wide .section-media { margin: 0 0 1.35rem; }
+.num-rail {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem 0.65rem;
+  margin: 0 0 1.25rem;
+  padding: 0.95rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.num-rail > div { padding-right: 0.4rem; }
+.num-rail strong {
+  display: block;
+  font-family: "Inter", "Noto Sans TC", sans-serif;
+  font-size: clamp(1.05rem, 3vw, 1.35rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  line-height: 1.15;
+  margin-bottom: 0.25rem;
+}
+.num-rail span {
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.term-list {
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.term-list li {
+  margin: 0 0 0.55rem;
+  padding: 0.7rem 0.9rem 0.7rem 1rem;
+  background: var(--card);
+  border-left: 3px solid var(--orange);
+  border-radius: 0 8px 8px 0;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+/* Layout C — quote well + horizontal collage */
+.quote-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem 1rem;
+  margin: 1.35rem 0 1.25rem;
+}
+.pull-quote {
+  margin: 0;
+  padding: 0.85rem 0 0.85rem 1rem;
+  border-left: 3px solid var(--orange);
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.pull-quote.span-2 { grid-column: 1 / -1; }
+.pull-quote cite {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--muted);
+}
+.collage {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 0.85rem;
+  margin: 1.25rem 0 1rem;
+  align-items: stretch;
+}
+.collage-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.collage-card img {
+  display: block;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border: 0;
+  border-radius: 0;
+}
+.collage-card:nth-child(2) img { height: 190px; }
+.collage-card .pad { padding: 0.85rem 0.95rem 1rem; flex: 1; }
+.collage-card h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.35;
+}
+.collage-card p {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+/* Layout C mosaic — uneven image cards */
+.mosaic {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 0.85rem;
+  margin: 1.25rem 0 1rem;
+  align-items: start;
+}
+.mosaic-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.mosaic-card.wide {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.15fr);
+}
+.mosaic-card img {
+  display: block;
+  width: 100%;
+  height: 148px;
+  object-fit: cover;
+}
+.mosaic-card:nth-child(even):not(.wide) img { height: 198px; }
+.mosaic-card:nth-child(5n):not(.wide) { margin-top: 1.35rem; }
+.mosaic-card.wide img {
+  height: 100%;
+  min-height: 220px;
+  object-fit: cover;
+}
+.mosaic-card .pad { padding: 0.8rem 0.9rem 1rem; }
+.mosaic-card h3 {
+  margin: 0.3rem 0 0.4rem;
+  font-size: 0.95rem;
+  font-weight: 800;
+  line-height: 1.35;
+}
+.mosaic-card h3 a { text-decoration: none; }
+.mosaic-card h3 a:hover { color: var(--orange); }
+.mosaic-card .summary {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.mosaic-card .outlet {
+  margin: 0 0 0.15rem;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+.heat {
+  display: inline-block;
+  font-family: "Inter", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 999px;
+  padding: 0.08rem 0.45rem;
+  vertical-align: middle;
+}
+
+@media (max-width: 680px) {
+  .layout-b,
+  .layout-b .section-media { position: static; }
+  .layout-b,
+  .mosaic-card.wide,
+  .collage,
+  .quote-row { grid-template-columns: 1fr; }
+  .mosaic { grid-template-columns: 1fr; }
+  .mosaic-card:nth-child(5n):not(.wide) { margin-top: 0; }
+  .mosaic-card.wide img,
+  .mosaic-card:nth-child(even):not(.wide) img { height: 180px; min-height: 0; }
+  .num-rail { grid-template-columns: 1fr 1fr; }
+  .fact-rail { grid-template-columns: 1fr; }
+  .pull-quote.span-2 { grid-column: auto; }
+}
+
+/* Edition additions: persona, category blocks, heat ranking, layout-c evidence strip */
+.section-head { align-items: flex-start; }
+.section-head .titles { min-width: 0; }
+.persona {
+  margin: 0.35rem 0 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--orange);
+  letter-spacing: 0.02em;
+}
+.section-head .heat { margin-top: 0.4rem; margin-left: auto; flex-shrink: 0; }
+.cat-block {
+  margin: 2.1rem 0 0.4rem;
+  padding-top: 0.4rem;
+}
+.cat-block:first-of-type { margin-top: 0.35rem; }
+.cat-head {
+  margin: 0 0 1rem;
+  font-size: 1.02rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+.heat-rank {
+  margin: 0.85rem 0 0.25rem;
+  padding: 0.95rem 1.05rem 1rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.heat-rank h4 {
+  margin: 0 0 0.55rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+.heat-rank ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.heat-rank li {
+  display: grid;
+  grid-template-columns: 1.5rem auto 1fr;
+  gap: 0.55rem;
+  align-items: center;
+  padding: 0.48rem 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.86rem;
+  line-height: 1.4;
+  color: var(--ink-soft);
+}
+.heat-rank li:last-child { border-bottom: none; }
+.heat-rank .idx {
+  font-family: "Inter", "Noto Sans TC", sans-serif;
+  font-weight: 800;
+  color: var(--orange);
+  font-size: 0.85rem;
+}
+.heat-rank a { text-decoration: none; color: var(--ink); }
+.heat-rank a:hover { color: var(--orange); }
+.evidence-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin: 1.25rem 0 1rem;
+}
+.evidence-strip article {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.9rem 1rem 1rem;
+}
+.evidence-strip .label {
+  margin: 0;
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+.evidence-strip .n {
+  margin: 0.2rem 0 0.4rem;
+  font-family: "Inter", "Noto Sans TC", sans-serif;
+  font-size: 1.7rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  line-height: 1;
+}
+.evidence-strip p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+@media (max-width: 680px) {
+  .evidence-strip { grid-template-columns: 1fr; }
+  .section-head .heat { margin-left: 0; }
+}
+
+</style>
+</head>
+<body>
+<main class="wrapper">
+<header class="header">
+  <p class="kicker">2026年11月22日 · 星期日科技要聞</p>
+  <h1>零保留只是標籤，<br>條約還在延期</h1>
+  <p class="deck">Dragos 兩百萬金絲雀證明推理供應鏈會漏；OpenRouter 通知 MiniMax 提示可能已被讀。聯合國自主武器談判在日內瓦破裂，只留下「以共識闡述」的弱授權。Google 將於二零二七年一月起全球推行 Android 開發者驗證。微軟宣告 To Do 於二零二七年六月三十日退役，個人帳戶沒有 Planner 可去。</p>
+  <nav class="topnav" aria-label="章節導覽">
+    <a href="#f1">金絲雀</a>
+    <a href="#f2">自主武器</a>
+    <a href="#f3">開發者驗證</a>
+    <a href="#f4">To Do 退役</a>
+    <a href="#briefs">其餘精選</a>
+  </nav>
+</header>
+
+<div class="content">
+<section id="f1" class="layout-a">
+  <div class="section-head">
+    <span class="section-no">01</span>
+    <div class="titles">
+      <h2>零保留是標籤，提示還是被人讀了</h2>
+      <p class="persona">人物：Edward Snowden</p>
+    </div>
+    <span class="heat">A</span>
+  </div>
+  <div class="hero reveal">
+    <div class="hero-number"><small>金絲雀提示</small>約200<span>萬條</span></div>
+    <p class="hero-copy">Dragos 於二零二六年七月至十一月，向廣泛使用的 AI 服務提交約兩百萬條帶獨一無二可追蹤祕密的提示
+      <small>Dragos／HD Moore</small>
+    </p>
+  </div>
+  <figure class="section-media reveal">
+    <img src="assets/f1-canary.jpg" alt="Dragos 金絲雀測試揭推理供應鏈外洩，約兩百萬條提示被用來追蹤資料流向" loading="lazy" decoding="async">
+    <figcaption>Ars Technica</figcaption>
+  </figure>
+  <div class="essay reveal">
+    <p>零保留不是物理定律，只是供應商自己掛上的標籤。你把祕密送進推理市集，等於把金絲雀放進一條誰都不肯畫完的供應鏈。</p>
+    <p>據 Dragos 首席研究官 HD Moore 十一月十九日的報告，該團隊在二零二六年七月至十一月向廣泛使用的 AI 服務提交約兩百萬條帶有獨一無二可追蹤祕密的提示，再看這些祕密在何處浮現。報告寫出三項發現：至少三家 AI 供應商的資料遭到暴露，誘餌提示被用來嘗試進入受控測試系統與金絲雀 AWS 帳戶；多家推理市集轉售商用普通日誌功能查看並保留客戶提示，不必利用漏洞或繞過平台控制；多家供應商看來沒有遵守客戶隱私設定或已公布政策。</p>
+    <p>最清楚的例子是一家未具名的中國 AI 實驗室。該實驗室的系統在七月至十月間，擷取了團隊發給其模型的提示中一半以上的祕密網址，其中包括約三分之二標示為「不收集資料」或零資料保留（ZDR）的請求；爬蟲通常在請求兩到三天後出現。這不限於直接發給該實驗室的請求：多家美國託管商轉售其模型，發到那些託管商的提示觸發了同一套爬蟲——提示流回了實驗室。一個特意選擇美國供應商、希望資料留在美國的客戶，並沒有得到他付過錢的東西。更離奇的一宗：一條提示發出二十四天後，其中的祕密連結被貼進飛書類頻道；兩分鐘內，北京與上海的三部桌面與三部手機打開了連結。團隊向該供應商披露時只給了該連結前八個字元，因此分享者是在讀一份完整提示的存檔——而且那次請求是發到一家掛了 ZDR 旗標的美國供應商。Moore 寫：「Zero Data Retention is supposed to mean something. In practice, these prompts were retained, shared with other companies, and read by people。」</p>
+    <p>十一月二十一日，Ars Technica 更新報道，OpenRouter 已向客戶發郵件，稱發到中國模型商 MiniMax 的部分提示可能已被閱讀；無論直接發給 MiniMax，或經 AtlasCloud、Novita、StreamLake 三家轉售商，研究人員埋下的網址都被存取。OpenRouter 已從 MiniMax 模型端點撤下「零資料保留」標籤。已打開的 Ars 與 Dragos 文本，都沒有把那家未具名實驗室直接寫成 MiniMax，兩者不要合併成同一件事。標籤可以撕掉。資料流向不會因為你勾選了方塊，就自動停在邊境。</p>
+  </div>
+  <div class="cases reveal">
+    <article class="case">
+      <p class="state">Dragos／HD Moore（2026-11-19）</p>
+      <p class="place">七月至十一月提交的提示</p>
+      <p class="case-num"><small>約</small>200萬<span>條</span></p>
+      <p>帶有獨一無二可追蹤祕密的提示，用來觀察這些祕密在何處浮現。這是測試規模，不是被盜用的帳戶數。<br><strong>效力：已核對的測試規模，分源單列。</strong></p>
+    </article>
+    <article class="case">
+      <p class="state">同一份 Dragos 報告</p>
+      <p class="place">遭暴露的 AI 供應商</p>
+      <p class="case-num"><small>至少</small>3<span>家</span></p>
+      <p>誘餌提示被用來嘗試進入受控測試系統與金絲雀 AWS 帳戶。本報只用已核對的「至少三家」，以及普通日誌即可看到提示；「幾十個」級別的 AWS 金鑰被盜用，部分來自尚未跑模型就被拒的請求。<br><strong>效力：供應商暴露數，不與提示總數加總。</strong></p>
+    </article>
+    <article class="case">
+      <p class="state">未具名中國 AI 實驗室（Dragos；七月至十月）</p>
+      <p class="place">標示「不收集資料」或 ZDR 仍被爬取</p>
+      <p class="case-num"><small>約</small>2/3</p>
+      <p>該實驗室擷取發給其模型的提示中一半以上的祕密網址，其中約三分之二帶「不收集資料」或零資料保留旗標。這是未具名實驗室的發現，與十一月二十一日 OpenRouter 就 MiniMax（及 AtlasCloud、Novita、StreamLake）發出的通知不是同一件事，不可寫成同一個行為者。<br><strong>效力：ZDR 被爬取的比例，來自該實驗室案例，不是 MiniMax 通知。</strong></p>
+    </article>
+  </div>
+  <p class="case-note">飛書事件是提示發出二十四天後被貼進頻道，披露只給前八個字元，該次請求發到掛了 ZDR 旗標的美國供應商。OpenRouter 已撤下 MiniMax 端點的零保留標籤。</p>
+  <p class="case-note">來源：<a href="https://arstechnica.com/security/2026/11/a-leaky-ai-supply-chain-is-exposing-secret-user-data-at-an-alarming-rate/" target="_blank" rel="noopener noreferrer">Ars Technica（含 11-21 更新）</a>；<a href="https://www.dragos.com/blog/ai-supply-chain-security-canary-tokens" target="_blank" rel="noopener noreferrer">Dragos／HD Moore</a>。圖源：Ars Technica。</p>
+</section>
+<section id="f2" class="layout-c">
+  <div class="section-head">
+    <span class="section-no">02</span>
+    <div class="titles">
+      <h2>屠宰機器人已經在場，各國同意再談兩年</h2>
+      <p class="persona">人物：Yuval Noah Harari</p>
+    </div>
+    <span class="heat">A</span>
+  </div>
+  <figure class="section-media reveal">
+    <img src="assets/f2-autonomous-weapons.jpg" alt="聯合國在日內瓦舉行自主武器談判，會議在接近清晨五時破裂" loading="lazy" decoding="async">
+    <figcaption>Fabrice Coffrini／AFP／Getty（《衛報》）</figcaption>
+  </figure>
+  <div class="essay reveal">
+    <p>各國又談了一星期，然後在清晨五點前同意：先不要訂有約束力的規則。把殺傷的決定交給機器，這不是未來寓言，是已經在用的武器；而人類選擇再延期。</p>
+    <p>據《衛報》十一月二十一日日內瓦報道，聯合國《特定常規武器公約》（CCW）為期一週的談判，在徹夜會議未能克服俄羅斯反對後、接近清晨五時破裂，未能確立一項有法律約束力的自主武器條約談判授權。儘管壓倒性多數締約國希望達成導向有約束力條約的談判授權，但共識規則迫使會議通過弱得多的方案：授權各國「以共識闡述」（to elaborate by consensus）一份「未必帶有任何法律義務」的文書。該公約有一百二十八個締約方，須全體一致才能通過聲明。《衛報》寫，俄羅斯帶頭以阻撓戰術反對；美國等已投入 AI 戰爭的軍事大國，也不願承諾有約束力的議定書。韓國、日本、土耳其、英國、法國與德國等國亦表達抗拒被新法約束，轉而主張不具約束力的協議。超過一百個國家一直推動新法。歐洲與北約國家（包括烏克蘭），以及中國與伊朗，表達了支持或願意接受新議定書。美國則稱，人類對自主武器的控制已在本週亞太經合組織會議上、在習近平與特朗普的會晤中討論，但美國仍不願接受有約束力條約。</p>
+    <p>生命未來研究所主席 Max Tegmark 說，世界領袖未能把握這一刻：「Slaughterbots are already here. Yet states have agreed it is sufficient to just talk about this for the 14th year.」巴西代表週三在會上說，這些不是未來的武器，已經在使用並繼續開發，「我們在制定規範上已經晚了。」一個由奧地利、比利時、巴西、愛爾蘭、墨西哥、紐西蘭與巴拿馬組成的七國集團，曾主導要求在一年內談判有約束力條約。人權觀察資深軍備顧問 Bonnie Docherty 指出，條約可以在十五個月內談成，並反對用五年才整理授權的方案。Politico Europe 報道，這項努力被延至二零二八年。《衛報》並轉述調查性報道稱，美國軍方目標是每小時作出一千個 AI 輔助的目標選定決定——那是該報轉述，不是本報獨立核實。談了十三年，最後剩下的是「再談下去」的授權。把生死判斷讓渡給演算法，不是技術還沒準備好，是政治意志已經先繳械。</p>
+  </div>
+  <div class="quote-row">
+    <blockquote class="pull-quote reveal span-2">「Slaughterbots are already here. Yet states have agreed it is sufficient to just talk about this for the 14th year.」<cite>生命未來研究所主席 Max Tegmark，經《衛報》報道。</cite></blockquote>
+    <blockquote class="pull-quote reveal">這些不是未來的武器，已經在使用並繼續開發，「我們在制定規範上已經晚了。」<cite>巴西代表週三在會上的發言，經《衛報》報道。</cite></blockquote>
+    <blockquote class="pull-quote reveal">美國軍方目標是每小時作出一千個 AI 輔助的目標選定決定。<cite>《衛報》轉述調查性報道，不是本報獨立核實。</cite></blockquote>
+  </div>
+  <div class="evidence-strip">
+    <article class="reveal">
+      <p class="label">締約方（須共識通過）</p>
+      <p class="n">128</p>
+      <p>《特定常規武器公約》有一百二十八個締約方，須全體一致才能通過聲明。這是共識門檻，不是贊成新法的票數。</p>
+    </article>
+    <article class="reveal">
+      <p class="label">會議通過的弱授權</p>
+      <p class="n">以共識闡述</p>
+      <p>授權各國「to elaborate by consensus」一份「未必帶有任何法律義務」的文書。這不是有約束力的條約談判授權。</p>
+    </article>
+    <article class="reveal">
+      <p class="label">Politico Europe 第二源</p>
+      <p class="n">再談到2028</p>
+      <p>該社報道這項努力被延至二零二八年。這是第二源的時間表述，不要寫成會議已通過有約束力的時間表。</p>
+    </article>
+  </div>
+  <p class="case-note">來源：<a href="https://www.theguardian.com/technology/2026/nov/21/international-talks-control-ai-autonomous-weapons-collapse" target="_blank" rel="noopener noreferrer">The Guardian</a>；<a href="https://www.politico.eu/article/effort-regulate-killer-robots-delayed-until-2028-ai-un/" target="_blank" rel="noopener noreferrer">Politico Europe</a>。圖源：Fabrice Coffrini／AFP／Getty（《衛報》）。</p>
+</section>
+<section id="f3" class="layout-b-section">
+  <div class="section-head">
+    <span class="section-no">03</span>
+    <div class="titles">
+      <h2>要在自己的電話安裝軟體，先向 Google 交證件</h2>
+      <p class="persona">人物：Linus Torvalds</p>
+    </div>
+    <span class="heat">A</span>
+  </div>
+  <div class="layout-b">
+    <figure class="section-media reveal">
+      <img src="assets/f3-android-io.jpg" alt="同類相關圖，非該則新聞原圖：Google I/O 資料圖片，非該則開發者驗證宣布原圖" loading="lazy" decoding="async">
+      <figcaption>同類相關圖，非該則新聞原圖。Ars Technica（Google I/O 資料圖片；同類相關圖，非該則宣布原圖）</figcaption>
+    </figure>
+    <div>
+      <div class="essay reveal">
+        <p>Talk is cheap. 你要在自己的電話上安裝自己寫的軟體，現在先向 Google 交身分證。所謂開放，變成一套要連回總部才能通過的門禁。</p>
+        <p>據 Google 安卓開發者部落格，全球推行開發者驗證將於二零二七年一月開始，合作商店包括 Google Play、Galaxy Store、Honor、Oppo、Xiaomi、Transsion 與 Vivo；在認證安卓裝置上，用戶保護將在數月內逐步擴展到所有國家、涵蓋所有安裝來源。官方寫，自三月向所有人開放驗證以來，全球已有「數百萬」款應用完成註冊，佔全球安卓應用安裝量逾百分之九十九；註冊一款應用「不到十分鐘」。Ars Technica 十一月十九日報道，驗證須提供政府身分證件並支付二十五美元費用；今年秋季已在巴西、印尼、新加坡與泰國開始阻擋未註冊應用的安裝。驗證系統服務已部署到運行 Android 8 Oreo 或更新版本的 Google 認證裝置，涵蓋除中國與俄羅斯外幾乎所有安卓裝置。系統級驗證器負責阻擋安裝，上述商店在 Google「翻開關」後將只上架已驗證應用。</p>
+        <p>Google 確實聽進了一部分反對。官方把學生與業餘開發者的「有限分發帳戶」分享上限從二十台擴到五十台授權裝置，無需註冊費或驗證政府證件；並提供「進階流程」，讓有經驗的用戶在接受風險後安裝未註冊應用。但 Ars 寫，這不是簡單開關：選項會被藏起來，伴隨大量恐嚇式警告，而且要等二十四小時才能完全啟用。這項設定現已上線。更要緊的是門在誰手裡：受制裁國家的開發者將無法驗證身分，因而被鎖在分發之外；側載有時還需要連上 Google 伺服器，只有熱門應用識別碼會緩存在裝置上，其餘必須先向 Google 查詢才能安裝。Ars 引述 Google 指南，顯示公司預期驗證在二零二七年三月一日前全面上線。</p>
+        <p>開源的意義不是「百分之九十九已經就範」。是那個還沒登記、只想在五十台以外多裝一台的人，仍能把自己的程式跑在自己的機器上。把這扇門做成預設關閉，再丟一個要等一天的進階流程當慈悲，不是安全工程，是把安裝權收歸平台。代碼要拿出來，門也不該先鎖死。</p>
+      </div>
+      <ul class="term-list reveal">
+        <li>全球推行於二零二七年一月開始；合作商店為 Google Play、Galaxy Store、Honor、Oppo、Xiaomi、Transsion 與 Vivo，其後數月內擴至所有國家與所有安裝來源</li>
+        <li>有限分發帳戶由二十台擴至五十台授權裝置（以官方部落格為準）</li>
+        <li>進階流程可安裝未註冊應用，但選項被隱藏且須等待二十四小時；驗證須政府證件與二十五美元費用（Ars）</li>
+        <li>Ars 引 Google 指南，顯示公司預期在二零二七年三月一日前全面上線；這是指南表述，不是已立法</li>
+      </ul>
+    </div>
+  </div>
+  <p class="case-note">來源：<a href="https://developer.android.com/blog/posts/android-developer-verification-2027" target="_blank" rel="noopener noreferrer">Android 官方部落格</a>；<a href="https://arstechnica.com/gadgets/2026/11/google-will-launch-android-app-verification-requirement-globally-in-january-2027/" target="_blank" rel="noopener noreferrer">Ars Technica</a>。圖源：同類相關圖，非該則新聞原圖。Ars Technica（Google I/O 資料圖片；同類相關圖，非該則宣布原圖）。</p>
+</section>
+<section id="f4" class="layout-b-section">
+  <div class="section-head">
+    <span class="section-no">04</span>
+    <div class="titles">
+      <h2>好用的清單被退役，換成沒有桌面應用的專案板</h2>
+      <p class="persona">人物：Steve Jobs</p>
+    </div>
+    <span class="heat">A</span>
+  </div>
+  <div class="layout-b-wide">
+    <figure class="section-media reveal">
+      <img src="assets/f4-microsoft-todo.jpg" alt="Microsoft To Do 介面，該應用將於二零二七年六月三十日退役" loading="lazy" decoding="async">
+      <figcaption>Microsoft（The Verge）</figcaption>
+    </figure>
+    <div class="num-rail reveal">
+      <div><strong>2027-06-30</strong><span>官方支援頁：To Do 網頁與 Windows、Mac、iOS、Android 應用退役，適用於工作或學校帳戶以及個人微軟帳戶</span></div>
+      <div><strong>不自動遷移</strong><span>既有 To Do 任務與清單將不會遷移到 Planner；六月三十日後也不能再在 Planner 中檢視或管理</span></div>
+      <div><strong>個人帳戶無 Planner</strong><span>包括 Microsoft 365 Personal 與 Family，必須另選應用</span></div>
+      <div><strong>匯出≠匯入</strong><span>微軟說會在退役前提供匯出方式，但細節未定，且寫明匯出並不意味著可以匯入 Planner 或其他應用</span></div>
+    </div>
+    <div class="essay reveal">
+      <p>這不是簡化產品線，是把好用的東西殺掉，換上更醜、更企業、更不完整的替代品。缺乏品味的公司會把「統一」當成藉口，把人每天要勾的清單，做成一張專案管理板。</p>
+      <p>據微軟官方支援頁，Microsoft To Do 應用將於二零二七年六月三十日退役，包括網頁版、Windows、Mac、iOS 與 Android，適用於工作或學校帳戶以及個人微軟帳戶。工作或學校帳戶的目的地是 Planner；更新後的「我的任務」體驗將於二零二六年十二月開始推出。但同一頁寫明：既有 To Do 任務與清單「將不會遷移到 Planner」。這些任務在二零二七年六月三十日前仍可在 Planner 裡查看，之後不能再在 Planner 中檢視或管理，資料也不會遷入新的私密 Planner 計劃。個人微軟帳戶——包括 Microsoft 365 Personal 與 Family——沒有 Planner 可用，必須另選應用。微軟說會在退役前提供匯出方式，但細節尚未定案，且寫明匯出「並不意味著內容可以匯入 Planner 或其他應用」。官方對照表還列出缺口：沒有計劃推出取代 To Do 桌面應用的 Windows 與 Mac 原生 Planner 應用；網頁與 Teams 體驗沒有同等離線功能；新的 Planner 私密計劃任務目前不支援檔案附件；既有 To Do 共享清單的成員、指派與權限不會轉移。</p>
+      <p>The Verge 的 David Pierce 十一月十九日寫，微軟二零一五年收購 Wunderlist，傳聞價格高達兩億美元，後來把它變成 To Do，並且「出乎意料地當了個好管家」；現在則把退役消息埋在一篇關於 Copilot 與 Microsoft 365「統一任務與計劃」的部落格深處。個人用戶的下場，用他的句子說，就是 don't let the door hit you。GeekWire 報道，Wunderlist 創辦人 Christian Reber 在二零一九年微軟準備關閉 Wunderlist 時，曾公開要求 Satya Nadella 賣回；微軟留下它，再改成 To Do。Reber 二零二零年創辦的 Superlist 現在自稱「自然繼承人」，並已有匯入工具。曾負責 Windows 95 的前微軟主管 Brad Silverberg 在 X 上說，自己每天使用 To Do，之前用的就是 Wunderlist。</p>
+      <p>你花重金買來一個受人喜歡的產品，關掉一次，再養七年，然後告訴個人用戶自己想辦法。清單應該是清單，不是一張等 Copilot 來填的專案板。This is junk。</p>
+    </div>
+  </div>
+  <p class="case-note">來源：<a href="https://www.theverge.com/tech/1037558/microsoft-to-do-shutdown-planner" target="_blank" rel="noopener noreferrer">The Verge</a>；<a href="https://support.microsoft.com/en-us/planner/to-do-to-planner" target="_blank" rel="noopener noreferrer">微軟支援頁</a>；<a href="https://www.geekwire.com/2026/microsoft-to-do-users-make-a-big-to-do-over-popular-task-apps-retirement/" target="_blank" rel="noopener noreferrer">GeekWire</a>。圖源：Microsoft（The Verge）。收購價僅寫「傳聞高達兩億美元」，不是已確認成交價。</p>
+</section>
+<section id="briefs" class="layout-c-mosaic">
+  <div class="section-head">
+    <span class="section-no">05</span>
+    <div class="titles">
+      <h2>其餘精選：二十一則，按欄排列</h2>
+    </div>
+  </div>
+  <p class="intro">週末稿，分類精選二十一則，含專題在所屬欄重出的短項。各欄底部為該欄熱度排行；同級熱度依內容包原序。圖源註寫在各卡內文區。</p>
+  <div class="cat-block" id="hot">
+    <h3 class="cat-head">熱門話題</h3>
+    <div class="mosaic">
+  <article class="mosaic-card wide reveal" id="h1">
+    <img src="assets/f1-canary.jpg" alt="OpenRouter 通知 MiniMax 提示可能已被讀，Dragos 兩百萬金絲雀揭推理供應鏈外洩（見專題）" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">Ars Technica；並參 Dragos</p>
+      <h3><a href="https://arstechnica.com/security/2026/11/a-leaky-ai-supply-chain-is-exposing-secret-user-data-at-an-alarming-rate/" target="_blank" rel="noopener noreferrer">OpenRouter 通知 MiniMax 提示可能已被讀，Dragos 兩百萬金絲雀揭推理供應鏈外洩（見專題）</a></h3>
+      <p class="summary">Dragos 的 HD Moore 報告，七月至十一月提交約兩百萬條帶可追蹤祕密的提示，發現至少三家供應商資料暴露、轉售商用普通日誌查看提示，以及隱私設定未被遵守。一家未具名中國實驗室擷取一半以上發給其模型的祕密網址，約三分之二帶零資料保留旗標。十一月二十一日 Ars 更新：OpenRouter 電郵稱發到 MiniMax 的提示可能已被讀，經 AtlasCloud、Novita、StreamLake 亦然，並已撤下零保留標籤。未具名實驗室與 MiniMax 不可合併。詳見專題。</p>
+      <p class="media-credit">Ars Technica</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="h2">
+    <img src="assets/h2-fbi-hq.jpg" alt="同類相關圖，非該則新聞原圖：FBI 調查全國犯罪資料庫疑遭入侵，農業部支付農民系統同週被攻破" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">NBC News；並參 The Verge</p>
+      <h3><a href="https://www.nbcnews.com/politics/justice-department/fbi-investigating-potential-breach-crime-database-rcna610536" target="_blank" rel="noopener noreferrer">FBI 調查全國犯罪資料庫疑遭入侵，農業部支付農民系統同週被攻破</a></h3>
+      <p class="summary">NBC 引兩名知情人士報道，聯邦調查局正調查全國犯罪資訊中心（NCIC）明顯遭入侵；該庫供聯邦、州與地方執法機關共享通緝與失蹤人口等資訊。FBI 週五晚未置評。同週美國農業部用於向農民付款的系統遭攻擊，員工週四獲告知。The Verge 引 CNN 稱這是數月內 FBI 第二次遇襲，並轉述特朗普對 Fox News 稱「也許能從中得知選民舞弊」，屬其評論而非調查結論。入侵範圍與失竊內容尚未由當局確認。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。NBC News（聯邦調查局總部配圖；同類相關圖，非入侵現場照片）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="h3">
+    <img src="assets/f2-autonomous-weapons.jpg" alt="聯合國自主武器談判在日內瓦破裂，只留下未必有約束力的弱授權（見專題）" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">The Guardian；並參 Politico Europe</p>
+      <h3><a href="https://www.theguardian.com/technology/2026/nov/21/international-talks-control-ai-autonomous-weapons-collapse" target="_blank" rel="noopener noreferrer">聯合國自主武器談判在日內瓦破裂，只留下未必有約束力的弱授權（見專題）</a></h3>
+      <p class="summary">《衛報》報道，聯合國《特定常規武器公約》談判在接近清晨五時破裂，未能確立有約束力的自主武器條約談判授權。一百二十八個締約方須共識通過，改為授權「以共識闡述」一份未必帶法律義務的文書。俄羅斯被指阻撓，美國不願接受有約束力條約，韓日土英法德主張非約束性協議。Tegmark 稱屠宰機器人已經在場，各國同意第十四年繼續談。Politico Europe 報道努力被延至二零二八年。詳見專題。</p>
+      <p class="media-credit">Fabrice Coffrini／AFP／Getty（《衛報》）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="h4">
+    <img src="assets/h4-nasdaq.jpg" alt="Nasdaq 全週跌一成，為疫情封鎖以來最差；標普與道指進入回調" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">NPR</p>
+      <h3><a href="https://www.npr.org/2026/11/21/nx-s1-6048729/ai-stock-markets-anthropic-nvidia" target="_blank" rel="noopener noreferrer">Nasdaq 全週跌一成，為疫情封鎖以來最差；標普與道指進入回調</a></h3>
+      <p class="summary">NPR 十一月二十一日整理，投資人原指望 Anthropic 上市提振市場，週五反而拖累整體股市。Nasdaq 全週跌百分之十，為二零二零年三月疫情封鎖以來最差；標普 500 與道指週五收市進入回調，即較近期高點跌百分之十。Anthropic 首日升百分之十七，週五跌逾百分之八、收近發行價。NPR 並提到民主黨期中選舉後揚言收緊 AI 監管，以及 Nvidia 領導層動盪與企業互相持股、放貸的風險。本報未打開其財報，不補營收數字。</p>
+      <p class="media-credit">Spencer Platt／Getty Images（NPR）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="h5">
+    <img src="assets/f4-microsoft-todo.jpg" alt="微軟宣告 To Do 於二零二七年六月三十日退役，個人帳戶沒有 Planner 可去（見專題）" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">The Verge；並參微軟支援頁、GeekWire</p>
+      <h3><a href="https://www.theverge.com/tech/1037558/microsoft-to-do-shutdown-planner" target="_blank" rel="noopener noreferrer">微軟宣告 To Do 於二零二七年六月三十日退役，個人帳戶沒有 Planner 可去（見專題）</a></h3>
+      <p class="summary">微軟官方支援頁寫明，To Do 網頁與各平台應用將於二零二七年六月三十日退役，工作或學校帳戶改用 Planner，但既有任務與清單不會自動遷移；個人微軟帳戶（包括 365 Personal 與 Family）沒有 Planner，須另選應用。匯出工具細節未定，且匯出不代表可匯入 Planner。The Verge 指消息埋在 Copilot 統一任務部落格裡；GeekWire 追溯 Wunderlist 被收購後再關再改的歷史，以及 Superlist 等對手已準備匯入工具。詳見專題。</p>
+      <p class="media-credit">Microsoft（The Verge）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="h6">
+    <img src="assets/h6-signal.jpg" alt="Signal 預設限制手機截圖，稱作業系統內建 AI 代理人是應用層隱私的「存在性威脅」" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">Signal 官方；並參 The Verge、TechCrunch</p>
+      <h3><a href="https://signal.org/blog/protecting-your-privacy/" target="_blank" rel="noopener noreferrer">Signal 預設限制手機截圖，稱作業系統內建 AI 代理人是應用層隱私的「存在性威脅」</a></h3>
+      <p class="summary">Signal 總裁 Meredith Whittaker 十一月二十日在官方部落格宣布，將在 iOS 27 於應用內阻止截圖，並在 Android 偵測到 AI 助理試圖擷取螢幕資料時啟用螢幕保安，以對應 Google Gemini Intelligence 與蘋果 Siri AI 的 Onscreen Awareness。用戶可在設定關閉保護，但官方警告這可能讓對話暴露給 AI 代理人，並破壞隱私保證。文章承認措施「不完整」，且因缺乏清楚 API，無法在 macOS 可靠阻擋 Siri AI。她把作業系統整合 AI、卻不提供應用層救濟，稱為對應用層隱私的存在性威脅。</p>
+      <p class="media-credit">Signal（官方部落格設定截圖）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="h7">
+    <img src="assets/h7-waymo.jpg" alt="同類相關圖，非該則新聞原圖：Waymo 對 3,871 輛 Robotaxi 發出兩項軟體召回，以回應加州禁上高速公路" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">The Verge</p>
+      <h3><a href="https://www.theverge.com/transportation/1039153/waymo-issues-recalls-to-fix-its-highway-problems" target="_blank" rel="noopener noreferrer">Waymo 對 3,871 輛 Robotaxi 發出兩項軟體召回，以回應加州禁上高速公路</a></h3>
+      <p class="summary">The Verge 十一月二十日報道，Waymo 正對車隊 3,871 輛 Robotaxi 推出兩項軟體召回：一項阻止車輛進入已封閉的高速公路施工區，一項改善對警察與緊急人員指揮交通的反應。稿件寫，此舉是在多宗闖入施工區、無視警員訊號的事件之後；這些事件最近促使加州禁止 Waymo 上高速公路，並迫使公司暫停全國高速公路營運。本報打開的該頁較短，細節以已讀段落為準，不補未核對的個別事故日期。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。The Verge（Waymo One I-PACE 高速公路車隊資料圖，非該則召回原圖）</p>
+    </div>
+  </article>
+    </div>
+    <aside class="heat-rank" aria-label="熱門話題熱度排行">
+      <h4>本欄熱度排行（A → B → C，同級依原序）</h4>
+      <ol>
+      <li><span class="idx">1</span><span class="heat">A</span><a href="#h1">OpenRouter／Dragos 金絲雀</a></li>
+      <li><span class="idx">2</span><span class="heat">A</span><a href="#h2">FBI NCIC 與農業部</a></li>
+      <li><span class="idx">3</span><span class="heat">A</span><a href="#h3">聯合國自主武器談判破裂</a></li>
+      <li><span class="idx">4</span><span class="heat">A</span><a href="#h4">Nasdaq 全週跌 10%／標普與道指回調</a></li>
+      <li><span class="idx">5</span><span class="heat">A</span><a href="#h5">微軟 To Do 退役</a></li>
+      <li><span class="idx">6</span><span class="heat">A</span><a href="#h6">Signal 限制截圖</a></li>
+      <li><span class="idx">7</span><span class="heat">B</span><a href="#h7">Waymo 軟體召回</a></li>
+      </ol>
+    </aside>
+  </div>
+  <div class="cat-block" id="ai">
+    <h3 class="cat-head">AI 與模型</h3>
+    <div class="mosaic">
+  <article class="mosaic-card wide reveal" id="a1">
+    <img src="assets/a1-openai-distill.jpg" alt="OpenAI 公布對抗性蒸餾防線，內部評估攻擊成功率由 54.0% 降至 0.2%" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">OpenAI 官方</p>
+      <h3><a href="https://openai.com/index/combatting-adversarial-distillation/" target="_blank" rel="noopener noreferrer">OpenAI 公布對抗性蒸餾防線，內部評估攻擊成功率由 54.0% 降至 0.2%</a></h3>
+      <p class="summary">OpenAI 十一月二十日說明如何偵測與打斷對抗性蒸餾，重點保護模型內部思維鏈。官方稱在內部自適應紅隊評估中，平均攻擊成功率由 GPT-6 Astra 原有防護下的 54.0%，降至 GPT-6.2 Astra 更新防護下的 0.2%。措施包括對抗訓練、分類器、把受保護推理綁定在產生它的對話上，以及調查協同提取帳戶。這些數字是公司內部評估，不是第三方覆核。</p>
+      <p class="media-credit">OpenAI</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="a2">
+    <img src="assets/a2-google-search.jpg" alt="Google 搜尋首頁改版：去掉搜尋按鈕，加上 Gemini 側欄與 AI 對話紀錄" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">Ars Technica</p>
+      <h3><a href="https://arstechnica.com/ai/2026/11/googles-latest-search-page-redesign-drops-the-search-button-adds-ai-sidebar/" target="_blank" rel="noopener noreferrer">Google 搜尋首頁改版：去掉搜尋按鈕，加上 Gemini 側欄與 AI 對話紀錄</a></h3>
+      <p class="summary">Ars Technica 報道，Google 正全球推出桌面搜尋首頁改版：撤下「Google Search」按鈕，改放與 Gemini 相關的快捷方式，用於生成圖像、分析檔案與腦力激盪，並加上可收合的側欄顯示近期 AI Mode 對話。用戶仍可按 Enter 或選自動完成建議來搜尋。這是把搜尋框進一步改成 AI 入口的介面選擇，不是關閉傳統搜尋本身；但首屏不再有那顆最熟悉的按鈕。</p>
+      <p class="media-credit">Google（Ars Technica；稿內「現行（舊）搜尋首頁」截圖）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="a3">
+    <img src="assets/f3-android-io.jpg" alt="同類相關圖，非該則新聞原圖：Google 將於二零二七年一月起全球推行 Android 開發者驗證（見專題）" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">Android Developers' Blog；並參 Ars Technica</p>
+      <h3><a href="https://developer.android.com/blog/posts/android-developer-verification-2027" target="_blank" rel="noopener noreferrer">Google 將於二零二七年一月起全球推行 Android 開發者驗證（見專題）</a></h3>
+      <p class="summary">官方宣布全球推行將於二零二七年一月開始，合作商店包括 Play、Galaxy Store、Honor、Oppo、Xiaomi、Transsion 與 Vivo，並在數月內擴至認證裝置上的所有國家與安裝來源。Google 稱已註冊應用佔全球安裝量逾百分之九十九。Ars 寫驗證須政府證件與二十五美元費用；業餘帳戶上限五十台裝置；「進階流程」可安裝未註冊應用，但選項被隱藏且須等待二十四小時。詳見專題。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Ars Technica（Google I/O 資料圖片；同類相關圖，非該則宣布原圖）</p>
+    </div>
+  </article>
+    </div>
+    <aside class="heat-rank" aria-label="AI 與模型熱度排行">
+      <h4>本欄熱度排行（A → B → C，同級依原序）</h4>
+      <ol>
+      <li><span class="idx">1</span><span class="heat">A</span><a href="#a3">Android 開發者驗證（見專題）</a></li>
+      <li><span class="idx">2</span><span class="heat">B</span><a href="#a1">OpenAI 對抗性蒸餾</a></li>
+      <li><span class="idx">3</span><span class="heat">B</span><a href="#a2">Google 搜尋首頁去按鈕</a></li>
+      </ol>
+    </aside>
+  </div>
+  <div class="cat-block" id="security">
+    <h3 class="cat-head">資安與基礎設施</h3>
+    <div class="mosaic">
+  <article class="mosaic-card wide reveal" id="s1">
+    <img src="assets/s1-tigerfish.jpg" alt="同類相關圖，非該則新聞原圖：舊金山轉錄公司 Tigerfish 的 S3 桶未設密碼，曝光警方問話與隨身影像" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">TechCrunch（Zack Whittaker）</p>
+      <h3><a href="https://techcrunch.com/2026/11/20/a-transcription-firm-used-by-police-prosecutors-and-tech-giants-exposed-customer-data-online/" target="_blank" rel="noopener noreferrer">舊金山轉錄公司 Tigerfish 的 S3 桶未設密碼，曝光警方問話與隨身影像</a></h3>
+      <p class="summary">TechCrunch 報道，服務執法機關、政府部門與矽谷科技巨頭的舊金山轉錄公司 Tigerfish，在公開可猜到的 Amazon S3 位址存放客戶資料，無需密碼。安全研究員 Anurag Sen 發現其中有警方問話逐字稿、隨身攝影機畫面、客戶原始影音，以及包括警察局與檢察官辦公室在內的客戶發票。該公司在 TechCrunch 聯絡後已阻止公開存取。本報已讀段落未列出可核對的科技巨頭名稱，不臆測客戶名單。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。MirageC／Getty Images（TechCrunch；同類相關圖，非該次外洩檔案畫面）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="s2">
+    <img src="assets/s2-gpgme.jpg" alt="同類相關圖，非該則新聞原圖：GnuPG 發布 GPGME 2.3.1，修復可外洩資料、不能排除 RCE 的雙重釋放漏洞" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">GnuPG 官方通告</p>
+      <h3><a href="https://lists.gnupg.org/pipermail/gnupg-announce/2026q4/000517.html" target="_blank" rel="noopener noreferrer">GnuPG 發布 GPGME 2.3.1，修復可外洩資料、不能排除 RCE 的雙重釋放漏洞</a></h3>
+      <p class="summary">GnuPG 十一月二十日因其他漏洞披露時程提前公布 CVE-2026-129975：使用帶有特製超長使用者識別的 OpenPGP 金鑰，可觸發 GPGME 雙重釋放，進而例如透過簽章資料從應用外洩資料；通告寫「不能排除」遠端程式碼執行，因此強烈建議立即更新。所有 2.3.0 之前的 GPGME（含靜態連結）受影響，例子包括 Gpg4win 與 GnuPG Desktop。請更新至 GPGME 2.3.1 或對應的 Gpg4win。這不是「已確認遭廣泛利用」的聲明。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。GnuPG 官方標誌</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="s3">
+    <img src="assets/s3-whitehouse.jpg" alt="同類相關圖，非該則新聞原圖：白宮任命五角大廈資訊長 Kirsten Davies 出任國家網路總監，接替離職的 Cairncross" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">白宮聲明；並參 NBC News</p>
+      <h3><a href="https://www.whitehouse.gov/releases/2026/11/president-trump-taps-pentagon-cyber-chief-kirsten-davies-as-national-cyber-director/" target="_blank" rel="noopener noreferrer">白宮任命五角大廈資訊長 Kirsten Davies 出任國家網路總監，接替離職的 Cairncross</a></h3>
+      <p class="summary">白宮十一月二十日聲明，特朗普任命國防部資訊長 Kirsten A. Davies 領導國家網路總監辦公室。NBC 引官員週四確認，原任 Sean Cairncross 將離職，並把他放在一連串中斷與疑似入侵的背景中，稱其曾參與今夏要求 Anthropic 下架兩套最強模型的討論。NSA 一條機密內網本週中斷，NBC 消息來源稱是維護故障、無攻擊跡象，週五前已恢復。聲明未寫參議院確認程序。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。白宮（聲明分享圖；同類相關圖，非任命現場照片）</p>
+    </div>
+  </article>
+    </div>
+    <aside class="heat-rank" aria-label="資安與基礎設施熱度排行">
+      <h4>本欄熱度排行（A → B → C，同級依原序）</h4>
+      <ol>
+      <li><span class="idx">1</span><span class="heat">B</span><a href="#s1">Tigerfish S3 外洩</a></li>
+      <li><span class="idx">2</span><span class="heat">B</span><a href="#s2">GPGME CVE-2026-129975</a></li>
+      <li><span class="idx">3</span><span class="heat">B</span><a href="#s3">國家網路總監換人</a></li>
+      </ol>
+    </aside>
+  </div>
+  <div class="cat-block" id="consumer">
+    <h3 class="cat-head">消費電子／平台</h3>
+    <div class="mosaic">
+  <article class="mosaic-card wide reveal" id="c1">
+    <img src="assets/c1-mozilla.jpg" alt="Mozilla：蘋果規則仍使 iOS 幾乎不可能出現非 WebKit 瀏覽器" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">Mozilla 官方部落格</p>
+      <h3><a href="https://blog.mozilla.org/en/mozilla/internet-policy/apple-ios-browser-engine-rules/" target="_blank" rel="noopener noreferrer">Mozilla：蘋果規則仍使 iOS 幾乎不可能出現非 WebKit 瀏覽器</a></h3>
+      <p class="summary">Mozilla 政策部落格寫，蘋果對替代瀏覽器引擎的規則仍然難以執行：非 WebKit 瀏覽器必須是僅限歐盟或日本的獨立應用，不能作為現有瀏覽器的更新，且未經明確許可不能與其他應用共享 Cookie 或狀態。這迫使用戶另載第二個瀏覽器，並手動遷移書籤、密碼與歷史，形成高摩擦。稿件解釋為何時至今日 iOS 上仍看不到真正的非 WebKit 瀏覽器。這是政策評論，不是新的法庭判決。</p>
+      <p class="media-credit">Mozilla（該文配圖）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="c2">
+    <img src="assets/c2-archive.jpg" alt="同類相關圖，非該則新聞原圖：The Verge 轉述 WIRED：Internet Archive 美國僱員超多數投票加入通訊工會" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">The Verge（轉述 WIRED）</p>
+      <h3><a href="https://www.theverge.com/tech/1038968/the-internet-archives-staff-votes-to-unionize" target="_blank" rel="noopener noreferrer">The Verge 轉述 WIRED：Internet Archive 美國僱員超多數投票加入通訊工會</a></h3>
+      <p class="summary">The Verge 十一月二十日轉述 WIRED 報道，Internet Archive 美國僱員以超多數投票加入加州奧克蘭的通訊工會 CWA Local 9415，並已要求管理層自願承認工會。籌組委員會成員 Danielle Leard 說，他們組織是因為深切關心 Archive、其使用者，以及它在互聯網生態中的位置，希望它能延續到下一代。本報打開 WIRED 直鏈得到 404，故人數等細節以 The Verge 已寫的「超多數」為準，不採用未核對的具體票數。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Internet Archive 官方網誌（Democracy’s Library 活動照片，非該則工會投票原圖）</p>
+    </div>
+  </article>
+    </div>
+    <aside class="heat-rank" aria-label="消費電子／平台熱度排行">
+      <h4>本欄熱度排行（A → B → C，同級依原序）</h4>
+      <ol>
+      <li><span class="idx">1</span><span class="heat">B</span><a href="#c1">Mozilla／iOS 非 WebKit 規則</a></li>
+      <li><span class="idx">2</span><span class="heat">B</span><a href="#c2">Internet Archive 工會</a></li>
+      </ol>
+    </aside>
+  </div>
+  <div class="cat-block" id="chips">
+    <h3 class="cat-head">晶片／硬體／地緣</h3>
+    <div class="mosaic">
+  <article class="mosaic-card wide reveal" id="ch1">
+    <img src="assets/ch1-loudoun.jpg" alt="同類相關圖，非該則新聞原圖：維珍尼亞 Loudoun 郡暫停資料中心與變電站立法案的監事會表決，最多十二個月" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">Loudoun 郡府；並參 Virginia Mercury</p>
+      <h3><a href="https://www.loudoun.gov/m/NewsFlash/home/detail/10993" target="_blank" rel="noopener noreferrer">維珍尼亞 Loudoun 郡暫停資料中心與變電站立法案的監事會表決，最多十二個月</a></h3>
+      <p class="summary">Loudoun 郡監事會十一月十七日以多數通過，暫停對資料中心與變電站立法申請採取行動，最長十二個月。郡府寫明開發商仍可提交申請，職員繼續審理，但監事會暫停自身聽證與表決；估計影響三十三宗在途申請，電網可靠性或審限將屆滿者可例外。Virginia Mercury 報道表決為七比一、一票其他，並引述今年僅資料中心稅收已逾十億美元。暫停的是表決，不是停止收件。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Virginia Mercury（資料中心相關配圖）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="ch2">
+    <img src="assets/ch2-meta-emissions.jpg" alt="Meta 永續報告：排放從 1,560 萬公噸升至逾 2,170 萬，正重新評估二零三零淨零時程" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">Ars Technica（轉述 Meta 2026 永續報告）</p>
+      <h3><a href="https://arstechnica.com/tech-policy/2026/11/meta-reconsiders-2030-net-zero-goal-amid-record-emissions-from-ai-data-centers/" target="_blank" rel="noopener noreferrer">Meta 永續報告：排放從 1,560 萬公噸升至逾 2,170 萬，正重新評估二零三零淨零時程</a></h3>
+      <p class="summary">Ars 報道，Meta 二零二六年永續報告承認正重新評估時程與中期目標，包括二零三零年淨零的時間框。資料中心副總裁 Rachel Peterson 與淨零負責人 Blair Swedeen 寫，長期抱負沒變，但 AI 基礎設施需求增長快過幾乎所有人的預測。總排放由二零二四年 1,560 萬公噸二氧化碳當量，升至二零二五年逾 2,170 萬公噸。這是重新評估，不是宣布放棄；Ars 指亞馬遜、Google 與微軟目前仍維持原目標。</p>
+      <p class="media-credit">Brandon Bell／Getty Images（Ars：德州埃爾帕索、斥資一百億美元的 Meta 資料中心工地，攝於 2026-08-13）</p>
+    </div>
+  </article>
+    </div>
+    <aside class="heat-rank" aria-label="晶片／硬體／地緣熱度排行">
+      <h4>本欄熱度排行（A → B → C，同級依原序）</h4>
+      <ol>
+      <li><span class="idx">1</span><span class="heat">B</span><a href="#ch1">Loudoun 暫停資料中心表決</a></li>
+      <li><span class="idx">2</span><span class="heat">B</span><a href="#ch2">Meta 重新評估淨零時程</a></li>
+      </ol>
+    </aside>
+  </div>
+  <div class="cat-block" id="policy">
+    <h3 class="cat-head">政策／監管</h3>
+    <div class="mosaic">
+  <article class="mosaic-card wide reveal" id="p1">
+    <img src="assets/p1-att.jpg" alt="同類相關圖，非該則新聞原圖：特朗普任內 FCC 命令加州停止對 AT&amp;T 執行「最後承運人」電話服務規則" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">Ars Technica</p>
+      <h3><a href="https://arstechnica.com/tech-policy/2026/11/fcc-orders-california-to-stop-enforcing-phone-service-rules-against-att/" target="_blank" rel="noopener noreferrer">特朗普任內 FCC 命令加州停止對 AT&amp;T 執行「最後承運人」電話服務規則</a></h3>
+      <p class="summary">Ars 報道，FCC 命令加州停止對 AT&amp;T 執行「最後承運人」規則。AT&amp;T 擬停止接受新的基本電話用戶，並於二零二七年六月一日中斷 18.4 萬住宅與 1.5 萬商業用戶服務；七月聯邦法官曾駁回它在法庭推翻州規的請求。主席 Carr 稱規則屬於「逝去的時代」。委員 Gomez 投反對票，指應讓加州程序走完。加州可能起訴。AT&amp;T 在其有線服務的二十一州中，已有二十州獲類似寬免。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Joan Cros Garcia-Corbis／Getty Images（Ars：2023 年巴塞隆拿世界移動通訊大會 AT&amp;T 展位；同類相關圖，非該命令原圖）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="p2">
+    <img src="assets/p2-gun-alert.jpg" alt="同類相關圖，非該則新聞原圖：四名巴爾的摩郡學生起訴校方與警察：AI 槍枝警報把玉米片袋當成槍" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">Ars Technica</p>
+      <h3><a href="https://arstechnica.com/tech-policy/2026/11/traumatized-teens-sue-school-cops-after-doritos-bag-triggers-ai-gun-alert/" target="_blank" rel="noopener noreferrer">四名巴爾的摩郡學生起訴校方與警察：AI 槍枝警報把玉米片袋當成槍</a></h3>
+      <p class="summary">Ars 報道，四名黑人高中生起訴巴爾的摩郡公立學校、Omnilert 與到場警員。訴訟稱二零二五年十月二十日，AI 槍枝偵測把訓練後分享玉米片的學生標成持槍；校方兩分鐘內看過畫面並取消警報，卻仍召來警察，至少六輛巡邏車抵達，部分警員拔槍，學生被喝令跪地上手銬。訴訟指該學區逾百分之九十九此類警報為誤報，屬指控不是本報核實。Omnilert 向 Ars 稱正審閱訴狀，並對學生所受恐懼致歉。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Getty Images（Ars Technica；同類相關圖，非當事學生照片）</p>
+    </div>
+  </article>
+    </div>
+    <aside class="heat-rank" aria-label="政策／監管熱度排行">
+      <h4>本欄熱度排行（A → B → C，同級依原序）</h4>
+      <ol>
+      <li><span class="idx">1</span><span class="heat">B</span><a href="#p1">FCC 預佔加州電話規則</a></li>
+      <li><span class="idx">2</span><span class="heat">B</span><a href="#p2">巴爾的摩郡 AI 槍枝警報訴訟</a></li>
+      </ol>
+    </aside>
+  </div>
+  <div class="cat-block" id="opensource">
+    <h3 class="cat-head">開源／開發</h3>
+    <div class="mosaic">
+  <article class="mosaic-card wide reveal" id="o1">
+    <img src="assets/s2-gpgme.jpg" alt="同類相關圖，非該則新聞原圖：GPGME 雙重釋放漏洞影響郵件客戶端等依賴庫，官方促更新至 2.3.1（見 s2）" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">GnuPG 官方通告</p>
+      <h3><a href="https://lists.gnupg.org/pipermail/gnupg-announce/2026q4/000517.html" target="_blank" rel="noopener noreferrer">GPGME 雙重釋放漏洞影響郵件客戶端等依賴庫，官方促更新至 2.3.1（見 s2）</a></h3>
+      <p class="summary">這則與資安欄同一通告，焦點改在維護鏈。官方寫，根因是 GPGME 讀取 gpg 狀態列與金鑰列表的內部函數；初始緩衝區一千零二十四位元組，特製超長使用者識別可導致釋放後再釋放。受影響的是以共享庫、DLL 或靜態連結使用 2.3.0 之前 GPGME 的所有軟體。通告提到因 Ruby2Shell 迫使 GitLab 提前更新，故於十一月二十日一併披露。沒有公開利用報告；正確動作是更新庫，而不是爭論「開源比較安全」的口號。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。GnuPG 官方標誌</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="o2">
+    <img src="assets/f3-android-io.jpg" alt="同類相關圖，非該則新聞原圖：安卓側載將被收進 Google 驗證門禁，業餘上限五十台、進階流程須等二十四小時（見專題）" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">Ars Technica；並參 Android 官方部落格</p>
+      <h3><a href="https://arstechnica.com/gadgets/2026/11/google-will-launch-android-app-verification-requirement-globally-in-january-2027/" target="_blank" rel="noopener noreferrer">安卓側載將被收進 Google 驗證門禁，業餘上限五十台、進階流程須等二十四小時（見專題）</a></h3>
+      <p class="summary">對側載社群而言，重點不只是「百分之九十九已註冊」，而是剩餘安裝路徑的門在誰手裡。Ars 寫，受制裁國家開發者將無法通過身分驗證；側載有時需連 Google 伺服器，只有熱門應用識別碼會緩存在裝置上。業餘分發上限為五十台裝置，進階流程可裝未註冊應用，但須等二十四小時。指南顯示預期二零二七年三月一日前全面上線。詳見專題。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Ars Technica（Google I/O 資料圖片；同類相關圖，非該則宣布原圖）</p>
+    </div>
+  </article>
+    </div>
+    <aside class="heat-rank" aria-label="開源／開發熱度排行">
+      <h4>本欄熱度排行（A → B → C，同級依原序）</h4>
+      <ol>
+      <li><span class="idx">1</span><span class="heat">A</span><a href="#o2">安卓側載驗證門禁（見專題）</a></li>
+      <li><span class="idx">2</span><span class="heat">B</span><a href="#o1">GPGME 更新</a></li>
+      </ol>
+    </aside>
+  </div>
+</section>
+</div>
+<p class="site-foot">每日 IT 報 · 2026年11月22日 · 星期日<br>資料視覺專題版。選稿窗約 2026-11-21 07:45 HKT 至 2026-11-22 07:45 HKT。數字分源呈現，不合併。</p>
+</main>
+
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nodes = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    nodes.forEach(function (el) { el.classList.add('is-in'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    nodes.forEach(function (el) { io.observe(el); });
+  }
+})();
+</script>
+</body>
+</html>

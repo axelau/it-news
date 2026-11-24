@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>調查還在跑，市值先長回一兆｜2026年11月24日</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F5F2E8;
+  --ink: #1B263B;
+  --ink-soft: #3A4558;
+  --muted: #6B7280;
+  --line: #D9D4C8;
+  --orange: #F06428;
+  --navy: #1B263B;
+  --gray: #A8ADB8;
+  --gray-light: #C8CDD6;
+  --card: #FFFCF5;
+  --max: 760px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Noto Sans TC", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--ink); }
+a:hover { color: var(--orange); }
+.wrapper {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+}
+.header { margin-bottom: 2.75rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--line); }
+.kicker {
+  margin: 0 0 0.85rem;
+  color: var(--orange);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.header h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.85rem, 5vw, 2.55rem);
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+.deck {
+  margin: 0 0 1.35rem;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+.topnav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0;
+  align-items: center;
+  font-size: 0.82rem;
+}
+.topnav a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding: 0.15rem 0.55rem;
+  border-right: 1px solid var(--line);
+}
+.topnav a:last-child { border-right: none; }
+.topnav a:hover { color: var(--orange); }
+
+section {
+  padding: 2.4rem 0;
+  border-bottom: 1px solid var(--line);
+}
+section:last-of-type { border-bottom: none; }
+.section-head {
+  display: flex;
+  gap: 0.85rem;
+  align-items: baseline;
+  margin-bottom: 1.35rem;
+}
+.section-no {
+  color: var(--orange);
+  font-family: "Inter", "Noto Sans TC", sans-serif;
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+.section-head h2 {
+  margin: 0;
+  font-size: clamp(1.2rem, 3.2vw, 1.45rem);
+  font-weight: 800;
+  line-height: 1.35;
+}
+.intro {
+  margin: 0 0 1.25rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+/* Hero number block */
+.hero {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  margin: 0 0 1.5rem;
+  padding: 1.1rem 0;
+}
+.hero-number {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(3.2rem, 10vw, 4.4rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+}
+.hero-number small {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  margin-bottom: 0.2rem;
+}
+.hero-number > span {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-left: 0.15rem;
+}
+.hero-copy {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+.hero-copy small {
+  display: block;
+  margin-top: 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* Case cards */
+.cases {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+  margin: 1.25rem 0 1rem;
+}
+@media (max-width: 680px) {
+  .cases { grid-template-columns: 1fr; }
+  .hero { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+}
+.case {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1rem 1.05rem 1.1rem;
+}
+.case .state {
+  margin: 0;
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+.case .place {
+  margin: 0.15rem 0 0.55rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+.case-num {
+  margin: 0 0 0.55rem;
+  font-family: "Inter", sans-serif;
+  font-size: 1.85rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--orange);
+  line-height: 1;
+}
+.case-num small {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-right: 0.15rem;
+  color: var(--muted);
+}
+.case p:last-child {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.case strong { color: var(--ink); font-weight: 700; }
+.case-note {
+  margin: 0.55rem 0 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.case-note a { color: var(--ink-soft); text-underline-offset: 2px; }
+
+/* Charts */
+.two-charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem 1.75rem;
+}
+@media (max-width: 640px) {
+  .two-charts { grid-template-columns: 1fr; }
+}
+.chart-title {
+  margin: 0 0 0.7rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+.stack {
+  display: flex;
+  width: 100%;
+  height: 2.15rem;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--line);
+}
+.seg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  min-width: 0;
+}
+.seg.orange { background: var(--orange); }
+.seg.dark { background: var(--navy); }
+.seg.gray { background: var(--gray); }
+.seg.muted-blue { background: #5C6B82; }
+.seg.pale { background: var(--gray-light); color: var(--ink-soft); }
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1rem;
+  margin-top: 0.65rem;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+.legend i {
+  display: inline-block;
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 2px;
+  margin-right: 0.35rem;
+  vertical-align: middle;
+}
+.legend i.orange { background: var(--orange); }
+.legend i.dark { background: var(--navy); }
+.legend i.gray { background: var(--gray); }
+.legend i.muted-blue { background: #5C6B82; }
+.legend i.pale { background: var(--gray-light); }
+
+.big-split {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  margin: 0 0 1.35rem;
+}
+.big-percent {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(3rem, 9vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  color: var(--ink);
+  flex-shrink: 0;
+}
+.big-percent small {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0;
+}
+.big-split > p {
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.5;
+}
+@media (max-width: 520px) {
+  .big-split { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+}
+
+.factor-labels {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+.factor-labels > div {
+  padding-right: 0.4rem;
+  border-right: 1px solid var(--line);
+}
+.factor-labels > div:last-child { border-right: none; }
+.factor-labels strong {
+  display: block;
+  font-family: "Inter", sans-serif;
+  font-size: 1.05rem;
+  color: var(--ink);
+  margin-bottom: 0.15rem;
+}
+@media (max-width: 520px) {
+  .factor-labels { grid-template-columns: 1fr 1fr; }
+  .factor-labels > div:nth-child(2) { border-right: none; }
+}
+
+/* Rank rows */
+.rank-list { margin: 1rem 0 0.5rem; }
+.rank-row {
+  display: grid;
+  grid-template-columns: minmax(7.5rem, 32%) 1fr auto;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.rank-row:last-child { border-bottom: none; }
+.rank-row.focus .rank-label { font-weight: 800; color: var(--ink); }
+.rank-row.focus .rank-track::after {
+  background: var(--orange);
+}
+.rank-label {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+.rank-track {
+  position: relative;
+  height: 6px;
+  background: #E6E1D4;
+  border-radius: 999px;
+}
+.rank-track::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: var(--w, 0%);
+  background: var(--navy);
+  border-radius: 999px;
+}
+.rank-track .dot {
+  position: absolute;
+  top: 50%;
+  left: var(--w, 0%);
+  width: 14px;
+  height: 14px;
+  margin-left: -7px;
+  margin-top: -7px;
+  border-radius: 50%;
+  background: var(--navy);
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 0 1px rgba(27,38,59,0.15);
+}
+.rank-row.focus .dot { background: var(--orange); box-shadow: 0 0 0 1px rgba(240,100,40,0.25); }
+.rank-value {
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  min-width: 2.6rem;
+  text-align: right;
+}
+.scale {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.35rem;
+  font-size: 0.7rem;
+  color: var(--muted);
+  padding: 0 3.2rem 0 0;
+}
+@media (max-width: 520px) {
+  .rank-row {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+  }
+  .rank-label { grid-column: 1; }
+  .rank-value { grid-column: 2; grid-row: 1; }
+  .rank-track { grid-column: 1 / -1; }
+  .scale { padding-right: 0; }
+}
+
+.footnote {
+  margin: 0.85rem 0 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+.callout {
+  margin: 1.25rem 0 0;
+  padding: 0.95rem 1.05rem;
+  background: var(--card);
+  border-left: 3px solid var(--orange);
+  border-radius: 0 8px 8px 0;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+.callout strong { color: var(--ink); }
+
+.mobile-summary {
+  margin: 0 0 1rem;
+  padding: 0.85rem 1rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-size: 0.92rem;
+}
+.mobile-summary p { margin: 0.35rem 0; }
+.mobile-summary b { font-family: "Inter", "Noto Sans TC", sans-serif; font-weight: 800; }
+
+details.expandable {
+  margin: 0.5rem 0 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--card);
+  padding: 0.35rem 1rem 1rem;
+}
+details.expandable > summary {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 0.75rem 0;
+  list-style: none;
+}
+details.expandable > summary::-webkit-details-marker { display: none; }
+details.expandable > summary::before {
+  content: "▾ ";
+  color: var(--orange);
+}
+details.expandable:not([open]) > summary::before { content: "▸ "; }
+.group-title {
+  margin: 1.1rem 0 0.65rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.vote-key { margin-bottom: 0.85rem; }
+.vote-row {
+  display: grid;
+  grid-template-columns: minmax(6.5rem, 28%) 1fr;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+.row-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+.row-label small {
+  display: block;
+  font-weight: 400;
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: 0.1rem;
+}
+@media (max-width: 520px) {
+  .vote-row { grid-template-columns: 1fr; gap: 0.3rem; }
+}
+
+
+.party-row {
+  display: grid;
+  grid-template-columns: minmax(6.5rem, 28%) 1fr;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+.party-row.focus .row-label { color: var(--ink); font-weight: 800; }
+.party-row.focus .stack { outline: 2px solid var(--orange); outline-offset: 2px; border-radius: 6px; }
+.sort-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem 0.85rem;
+  margin: 0.35rem 0 1rem;
+}
+.sort-row label { font-size: 0.78rem; color: var(--muted); font-weight: 600; }
+.sorts { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.sorts button {
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+.sorts button[aria-pressed="true"] {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
+}
+@media (max-width: 520px) {
+  .party-row { grid-template-columns: 1fr; gap: 0.3rem; }
+}
+
+.pending-box {
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.35);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.site-foot {
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* Scroll reveal — minimal */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+/* Section media */
+.section-media { margin: 0 0 1.35rem; }
+.section-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.section-media figcaption,
+.media-credit {
+  margin: 0.45rem 0 0;
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.essay p {
+  margin: 0 0 1rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+.essay p:last-child { margin-bottom: 0; }
+
+/* Layout B — left image, right narrative */
+.layout-b {
+  display: grid;
+  grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+  gap: 1.35rem 1.2rem;
+  align-items: start;
+  margin: 0 0 1.25rem;
+}
+.layout-b .section-media {
+  margin: 0;
+  position: sticky;
+  top: 1rem;
+}
+.hero-aside {
+  margin: 0 0 1rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--line);
+}
+.hero-aside .hero-number { font-size: clamp(2.6rem, 8vw, 3.6rem); }
+.hero-aside .hero-copy { font-size: 0.95rem; font-weight: 600; margin: 0.55rem 0 0; }
+.hero-aside .hero-copy small {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+.fact-rail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem 0.75rem;
+  margin: 1.2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.fact-rail li {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.75rem 0.85rem;
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.fact-rail .n {
+  display: block;
+  font-family: "Inter", "Noto Sans TC", sans-serif;
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--ink);
+  letter-spacing: -0.03em;
+  margin-bottom: 0.2rem;
+}
+
+/* Layout B wide — banner image above essay */
+.layout-b-wide .section-media { margin: 0 0 1.35rem; }
+.num-rail {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem 0.65rem;
+  margin: 0 0 1.25rem;
+  padding: 0.95rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.num-rail > div { padding-right: 0.4rem; }
+.num-rail strong {
+  display: block;
+  font-family: "Inter", "Noto Sans TC", sans-serif;
+  font-size: clamp(1.05rem, 3vw, 1.35rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  line-height: 1.15;
+  margin-bottom: 0.25rem;
+}
+.num-rail span {
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.term-list {
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.term-list li {
+  margin: 0 0 0.55rem;
+  padding: 0.7rem 0.9rem 0.7rem 1rem;
+  background: var(--card);
+  border-left: 3px solid var(--orange);
+  border-radius: 0 8px 8px 0;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+/* Layout C — quote well + horizontal collage */
+.quote-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem 1rem;
+  margin: 1.35rem 0 1.25rem;
+}
+.pull-quote {
+  margin: 0;
+  padding: 0.85rem 0 0.85rem 1rem;
+  border-left: 3px solid var(--orange);
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.pull-quote.span-2 { grid-column: 1 / -1; }
+.pull-quote cite {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--muted);
+}
+.collage {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 0.85rem;
+  margin: 1.25rem 0 1rem;
+  align-items: stretch;
+}
+.collage-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.collage-card img {
+  display: block;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border: 0;
+  border-radius: 0;
+}
+.collage-card:nth-child(2) img { height: 190px; }
+.collage-card .pad { padding: 0.85rem 0.95rem 1rem; flex: 1; }
+.collage-card h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.35;
+}
+.collage-card p {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+/* Layout C mosaic — uneven image cards */
+.mosaic {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 0.85rem;
+  margin: 1.25rem 0 1rem;
+  align-items: start;
+}
+.mosaic-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.mosaic-card.wide {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.15fr);
+}
+.mosaic-card img {
+  display: block;
+  width: 100%;
+  height: 148px;
+  object-fit: cover;
+}
+.mosaic-card:nth-child(even):not(.wide) img { height: 198px; }
+.mosaic-card:nth-child(5n):not(.wide) { margin-top: 1.35rem; }
+.mosaic-card.wide img {
+  height: 100%;
+  min-height: 220px;
+  object-fit: cover;
+}
+.mosaic-card .pad { padding: 0.8rem 0.9rem 1rem; }
+.mosaic-card h3 {
+  margin: 0.3rem 0 0.4rem;
+  font-size: 0.95rem;
+  font-weight: 800;
+  line-height: 1.35;
+}
+.mosaic-card h3 a { text-decoration: none; }
+.mosaic-card h3 a:hover { color: var(--orange); }
+.mosaic-card .summary {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.mosaic-card .outlet {
+  margin: 0 0 0.15rem;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+.heat {
+  display: inline-block;
+  font-family: "Inter", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 999px;
+  padding: 0.08rem 0.45rem;
+  vertical-align: middle;
+}
+
+@media (max-width: 680px) {
+  .layout-b,
+  .layout-b .section-media { position: static; }
+  .layout-b,
+  .mosaic-card.wide,
+  .collage,
+  .quote-row { grid-template-columns: 1fr; }
+  .mosaic { grid-template-columns: 1fr; }
+  .mosaic-card:nth-child(5n):not(.wide) { margin-top: 0; }
+  .mosaic-card.wide img,
+  .mosaic-card:nth-child(even):not(.wide) img { height: 180px; min-height: 0; }
+  .num-rail { grid-template-columns: 1fr 1fr; }
+  .fact-rail { grid-template-columns: 1fr; }
+  .pull-quote.span-2 { grid-column: auto; }
+}
+
+/* Edition additions: persona, category blocks, heat ranking, layout-c evidence strip */
+.section-head { align-items: flex-start; }
+.section-head .titles { min-width: 0; }
+.persona {
+  margin: 0.35rem 0 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--orange);
+  letter-spacing: 0.02em;
+}
+.section-head .heat { margin-top: 0.4rem; margin-left: auto; flex-shrink: 0; }
+.cat-block {
+  margin: 2.1rem 0 0.4rem;
+  padding-top: 0.4rem;
+}
+.cat-block:first-of-type { margin-top: 0.35rem; }
+.cat-head {
+  margin: 0 0 1rem;
+  font-size: 1.02rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+.heat-rank {
+  margin: 0.85rem 0 0.25rem;
+  padding: 0.95rem 1.05rem 1rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.heat-rank h4 {
+  margin: 0 0 0.55rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+.heat-rank ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.heat-rank li {
+  display: grid;
+  grid-template-columns: 1.5rem auto 1fr;
+  gap: 0.55rem;
+  align-items: center;
+  padding: 0.48rem 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.86rem;
+  line-height: 1.4;
+  color: var(--ink-soft);
+}
+.heat-rank li:last-child { border-bottom: none; }
+.heat-rank .idx {
+  font-family: "Inter", "Noto Sans TC", sans-serif;
+  font-weight: 800;
+  color: var(--orange);
+  font-size: 0.85rem;
+}
+.heat-rank a { text-decoration: none; color: var(--ink); }
+.heat-rank a:hover { color: var(--orange); }
+.evidence-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin: 1.25rem 0 1rem;
+}
+.evidence-strip article {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.9rem 1rem 1rem;
+}
+.evidence-strip .label {
+  margin: 0;
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+.evidence-strip .n {
+  margin: 0.2rem 0 0.4rem;
+  font-family: "Inter", "Noto Sans TC", sans-serif;
+  font-size: 1.7rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  line-height: 1;
+}
+.evidence-strip p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+@media (max-width: 680px) {
+  .evidence-strip { grid-template-columns: 1fr; }
+  .section-head .heat { margin-left: 0; }
+}
+
+</style>
+</head>
+<body>
+<main class="wrapper">
+<header class="header">
+  <p class="kicker">2026年11月24日 · 星期二科技要聞</p>
+  <h1>調查還在跑，<br>市值先長回一兆</h1>
+  <p class="deck">英偉達董事會在收到美國政府高層意見後一致讓黃仁勳復職，獨立調查卻寫明會進行到結束。總統說他說服了董事會。股票一天升逾三成，市值回了近一兆美元。Google 搜尋的人工智能模式開始選接錢包。Sierra 六個月內估值翻到三百億美元。Anthropic 讓代理人按政策批准程式變更。</p>
+  <nav class="topnav" aria-label="章節導覽">
+    <a href="#f1">復職</a>
+    <a href="#f2">估值</a>
+    <a href="#f3">錢包</a>
+    <a href="#f4">批准權</a>
+    <a href="#briefs">其餘精選</a>
+  </nav>
+</header>
+
+<div class="content">
+<section id="f1" class="layout-a">
+  <div class="section-head">
+    <span class="section-no">01</span>
+    <div class="titles">
+      <h2>調查還在跑，人已經坐回原位</h2>
+      <p class="persona">人物：Kara Swisher</p>
+    </div>
+    <span class="heat">A</span>
+  </div>
+  <div class="hero reveal">
+    <div class="hero-number"><small>英偉達周一收市升幅（CNBC）</small>31.48<span>%</span></div>
+    <p class="hero-copy">為二零零三年五月以來最佳單日。市值回補與納指升幅在下方分源單列，不與這項升幅合併成一句。
+      <small>CNBC</small>
+    </p>
+  </div>
+  <figure class="section-media reveal">
+    <img src="assets/f1-huang.jpg" alt="英偉達執行長黃仁勳，董事會宣布他即時恢復擔任總裁、執行長並重返董事席" loading="lazy" decoding="async">
+    <figcaption>The Verge</figcaption>
+  </figure>
+  <div class="essay reveal">
+    <p>別把這份聲明讀成公司治理的勝利。這是一場股價保衛戰：門已經重新打開，調查卻還寫着「會進行到結束」。</p>
+    <p>十一月二十三日，英偉達董事會宣布，黃仁勳即時恢復擔任總裁、執行長並重返董事席。聲明寫，董事會在與他討論後一致通過，對其「坦誠」與領導能力感到滿意；決策過程中「收到美國政府高層的意見」，並據此「有信心，他的復職不構成國家安全風險」。財務長Colette Kress卸下臨時執行長，續任原職。公司將新設首席合規官，並另組獨立董事的國家安全與出口管制委員會。可是聲明也寫明：鑒於報道指他「成為外國情報活動的目標」，獨立調查「將進行到結束」，他本人支持並配合。復職是現在；結案是以後。把「無國安風險」當成調查結果，是公關口吻，不是調查結論。</p>
+    <p>總統唐納德·川普同一天對CNBC說，上週的市場拋售「大概」影響了他支持黃仁勳回歸，但「更大的影響是長遠」。他說自己「直接」與董事會談過，並且「說服」了他們，還說黃「沒做錯」。談到股價，他說那東西先前像朝錯誤方向飛的火箭，「現在朝正確方向，並帶着整個市場一起走。」董事會的用詞是「政府高層意見」；總統的用詞是「我說服了他們」。不要混成一句。</p>
+    <p>美聯社寫，董事會就在數日前才拒絕過他的回歸提議。參議院少數黨領袖查克·舒默等民主黨人隨即揚言，要調查復職始末與國家安全疑慮。《紐約時報》周日報道，與黃仁勳有婚外關係的Alice Huang，在往來期間至少有一段時間與中國國家安全部人員有接觸——這是報道，不是已在法庭上證實的事實；中國方面已否認間諜指控。同一人走回原位，股票一天可以改寫指數，獨立調查卻還在跑。先保住股價，再談還沒結束的問題：這是矽谷最老的權力遊戲，把白宮也寫進了劇本。</p>
+  </div>
+  <div class="cases reveal">
+    <article class="case">
+      <p class="state">CNBC</p>
+      <p class="place">市值回補</p>
+      <p class="case-num">近1<span>兆美元</span></p>
+      <p>同一篇統計寫，市值回了近一兆美元。這是市值數字，不是收市升幅，亦不是納指表現，不可與百分之三十一點四八或納指百分之六點五一合併成一句。<br><strong>效力：CNBC 市值回補數字，分源單列。</strong></p>
+    </article>
+    <article class="case">
+      <p class="state">CNBC</p>
+      <p class="place">納斯達克綜合指數周一收市</p>
+      <p class="case-num">6.51<span>%</span></p>
+      <p>納斯達克綜合指數升百分之六點五一，為二零二五年四月九日以來最佳。這是指數數字，不是英偉達個股升幅，不可與百分之三十一點四八或近一兆市值合併。<br><strong>效力：CNBC 納指數字，分源單列。</strong></p>
+    </article>
+    <article class="case">
+      <p class="state">英偉達新聞室</p>
+      <p class="place">獨立調查狀態</p>
+      <p class="case-num">未結束</p>
+      <p>「無國安風險」是董事會根據美國政府高層意見的表述，不是調查結案。聲明寫獨立調查「將進行到結束」。川普對 CNBC 說他「說服」了董事會；董事會的用詞是「收到政府高層意見」。兩說分源，不合成一句。<br><strong>效力：公司聲明與總統訪問分源，調查仍在進行。</strong></p>
+    </article>
+  </div>
+  <p class="case-note">來源：<a href="https://nvidianews.nvidia.com/news/nvidia-board-reinstates-jensen-huang-as-president-ceo-and-board-director" target="_blank" rel="noopener noreferrer">英偉達新聞室</a>；<a href="https://www.cnbc.com/2026/11/23/anthropic-nvidia-shares.html" target="_blank" rel="noopener noreferrer">CNBC（市場與川普訪問）</a>；<a href="https://www.cnbc.com/2026/11/23/nvidia-jensen-huang-ceo.html" target="_blank" rel="noopener noreferrer">CNBC（復職稿）</a>；<a href="https://apnews.com/article/nvidia-jensen-huang-39d4b34ffaa867b4e669893b5fd5028f" target="_blank" rel="noopener noreferrer">美聯社</a>；<a href="https://www.theverge.com/tech/1039937/nvidia-ceo-jensen-huang-reinstated" target="_blank" rel="noopener noreferrer">The Verge</a>。圖源：The Verge。</p>
+</section>
+
+<section id="f2" class="layout-a">
+  <div class="section-head">
+    <span class="section-no">02</span>
+    <div class="titles">
+      <h2>一個人進門，市值就長回一兆</h2>
+      <p class="persona">人物：Elon Musk</p>
+    </div>
+    <span class="heat">A</span>
+  </div>
+  <div class="hero reveal">
+    <div class="hero-number"><small>Sierra 估值（官方／TechCrunch）</small>300<span>億美元</span></div>
+    <p class="hero-copy">六個月內由一百五十億美元翻倍。本輪籌資與英偉達收市升幅在下方分源單列。
+      <small>Sierra 官方；並參 TechCrunch</small>
+    </p>
+  </div>
+  <figure class="section-media reveal">
+    <img src="assets/f2-sierra.jpg" alt="Sierra 官方配圖：Series F，估值三百億美元。此為籌資圖，不是英偉達股價走勢圖" loading="lazy" decoding="async">
+    <figcaption>Sierra（官方配圖；此為 Sierra 籌資圖，非股價走勢圖）</figcaption>
+  </figure>
+  <div class="essay reveal">
+    <p>晶圓廠今天沒多出一台微影機，電網也沒多出一瓦。改變的只是誰重新坐進執行長辦公室，市場就當作物理定律改寫了。</p>
+    <p>CNBC統計，英偉達周一收市升百分之三十一點四八，市值回了近一兆美元，為二零零三年五月以來最佳單日；納斯達克綜合指數升百分之六點五一，為二零二五年四月九日以來最佳。上週這個指數跌了約一成，是二零二零年以來最差的一週，三大指數都進入調整。CoreWeave升百分之二十二點三二，Nebius升百分之二十點二八。這些公司周一早上沒有交出新的機櫃或新的晶圓產能，只是搭上了一則人事公告。把近一兆美元的市值修復，寫成對基本面的再確認，是懶惰。那是對一個名字的再定價。</p>
+    <p>同一天，Bret Taylor與Clay Bavor的企業客服公司Sierra宣布，由Greenoaks與Lightspeed領投、籌得十七點五億美元，估值在六個月內由一百五十億翻到三百億美元。既有出資人Benchmark、Sequoia、GV與Tiger Global加碼。Sierra說自己已服務近一半財富五十強。公司上月底才稱，按成果收費的模式讓年化收入在五個月內翻到四億美元。客服代理人值三百億，這不是對千瓦數的測量，是資本在為故事出價。</p>
+    <p>更不要把復職寫成出口管制的結局。英偉達自己的聲明寫明，針對「外國情報活動目標」報道的獨立調查會進行到結束。英國廣播公司報道，美國商務部宣布打算把與這樁醜聞相關、總部在新加坡的Megaspeed及其關聯公司列入實體清單，生效時點未寫明。產能缺口、許可清單和未完成的調查，都還在原位。消失的是上週那種「沒有這個人就不行」的恐慌。第一性原理很簡單：一台機器不會因為創辦人走進大門，就多出一個電晶體。</p>
+  </div>
+  <div class="cases reveal">
+    <article class="case">
+      <p class="state">CNBC</p>
+      <p class="place">英偉達周一收市升幅</p>
+      <p class="case-num">31.48<span>%</span></p>
+      <p>市值回了近一兆美元，為二零零三年五月以來最佳單日。這是股市數字，與 Sierra 三百億估值分源，不合成一句。不要把總統口中「跌了百分之五十還是多少」當成核實跌幅。<br><strong>效力：CNBC 收市統計，與估值分源單列。</strong></p>
+    </article>
+    <article class="case">
+      <p class="state">Sierra 官方／TechCrunch</p>
+      <p class="place">本輪籌資</p>
+      <p class="case-num">17.5<span>億美元</span></p>
+      <p>由 Greenoaks 與 Lightspeed 領投。這是本輪籌資額，不是估值，亦不是年化收入。<br><strong>效力：公司與 TechCrunch 的籌資數字，分源單列。</strong></p>
+    </article>
+    <article class="case">
+      <p class="state">Sierra 官方／TechCrunch</p>
+      <p class="place">六個月估值變化</p>
+      <p class="case-num">150億→300億</p>
+      <p>估值在六個月內由一百五十億翻到三百億美元。公司上月底才稱，按成果收費的模式讓年化收入在五個月內翻到四億美元；那是上月底的說法，不是今日新披露。<br><strong>效力：估值翻倍與上月底收入說法分列，不寫成今日新數字。</strong></p>
+    </article>
+  </div>
+  <p class="case-note">來源：<a href="https://www.cnbc.com/2026/11/23/anthropic-nvidia-shares.html" target="_blank" rel="noopener noreferrer">CNBC</a>；<a href="https://sierra.ai/blog/series-f-30b" target="_blank" rel="noopener noreferrer">Sierra 官方</a>；<a href="https://techcrunch.com/2026/11/23/sierra-doubles-valuation-to-30b-within-six-months-as-demand-for-ai-in-cx-takes-off/" target="_blank" rel="noopener noreferrer">TechCrunch</a>；<a href="https://www.bbc.com/news/articles/cv98xpg5dg5zo" target="_blank" rel="noopener noreferrer">BBC（Megaspeed）</a>。圖源：Sierra（官方配圖；此為 Sierra 籌資圖，非股價走勢圖）。</p>
+</section>
+
+<section id="f3" class="layout-b-section">
+  <div class="section-head">
+    <span class="section-no">03</span>
+    <div class="titles">
+      <h2>搜尋框要讀你的錢包了</h2>
+      <p class="persona">人物：Edward Snowden</p>
+    </div>
+    <span class="heat">A</span>
+  </div>
+  <div class="layout-b-wide">
+    <figure class="section-media reveal">
+      <img src="assets/f3-wallet.jpg" alt="Google 官方產品圖：搜尋人工智能模式的 Personal Intelligence，可連接錢包等應用程式" loading="lazy" decoding="async">
+      <figcaption>Google（官方產品圖）</figcaption>
+    </figure>
+    <div class="num-rail reveal">
+      <div><strong>今日推出</strong><span>人工智能模式可選擇連接 Google 錢包。這是即日起開始提供的項目。</span></div>
+      <div><strong>未來數週</strong><span>Google 雲端硬碟與 Gemini 應用程式會在未來數週跟上，不是已與錢包同步上線。</span></div>
+      <div><strong>只能讀取</strong><span>官方強調連接錢包後只能讀取帳戶資訊，不能轉移、管理或投資資金。</span></div>
+      <div><strong>可隨時關閉</strong><span>連接是選擇加入，用戶可隨時關閉；與「按最近搜尋上下文變得更個人」是並排宣布的事，不是同一開關。</span></div>
+    </div>
+    <div class="essay reveal">
+    <p>沒有免費的個人化。把「更有幫助」寫進標題，內容其實是：搜尋框現在要讀你的錢包，很快還要讀你的文件和對話。</p>
+    <p>十一月二十三日，Google搜尋產品副總裁Robby Stein寫，人工智能模式裡的Personal Intelligence即日起可選擇連接Google錢包，Google雲端硬碟與Gemini應用程式會在未來數週跟上。它們將加入已經可以連接的Gmail、日曆和相片，讓「消費、文件與聊天裡的上下文直接進入搜尋」。官方示範包括：根據已綁定的卡去「優化」回贈類別，以及在報稅季前用雲端硬碟裡的文件生成準備計劃。守門人已經幫你把生活摺成一份答案。</p>
+    <p>公司特別強調：若連接錢包，人工智能模式「只能讀取」帳戶資訊，「不能」轉移、管理或投資你的錢。這句話像安慰，其實暴露了真正的交易。重點從來不是它會不會把錢轉走，而是同一家公司把消費紀錄、郵件、行程和相片，放進搜尋答案的上下文裡。連接是選擇加入，也可隨時關閉；很快還能在回答下方用「Personalization」圖示查看用了哪些上下文。選擇權寫在說明裡，架構卻是一座花園：資料在錢包、硬碟、Gemini和搜尋之間互相餵養。免費午餐的代價不是一筆訂閱費，是你把數位生活的地圖交給同一個開關。</p>
+    <p>官方還寫，人工智能概覽和人工智能模式會開始按「最近的搜尋上下文」變得更個人——策畫旅行時，新對話不必從頭再說一遍。這已經不只是你主動連接的應用程式，而是搜尋行為本身被當成可再調用的檔案。監視不一定是有人闖進門來索取後門；更多時候，是你在「搜尋個人化」裡勾選「連接應用程式」。便利被設計成預設的下游。數據流向沒有改變方向，只是被叫做量身訂做。</p>
+    </div>
+  </div>
+  <p class="case-note">來源：<a href="https://blog.google/products-and-platforms/products/search/google-search-personal-intelligence-apps/" target="_blank" rel="noopener noreferrer">Google 官方</a>；<a href="https://techcrunch.com/2026/11/23/google-searchs-ai-mode-can-now-tap-into-drive-and-wallet-for-more-personalized-responses/" target="_blank" rel="noopener noreferrer">TechCrunch</a>；<a href="https://www.theverge.com/tech/1040762/googles-ai-search-will-be-able-to-access-more-of-your-personal-context" target="_blank" rel="noopener noreferrer">The Verge</a>。圖源：Google（官方產品圖）。</p>
+</section>
+
+<section id="f4" class="layout-b-section">
+  <div class="section-head">
+    <span class="section-no">04</span>
+    <div class="titles">
+      <h2>最後一關也交給模型了</h2>
+      <p class="persona">人物：Steve Jobs</p>
+    </div>
+    <span class="heat">A</span>
+  </div>
+  <div class="layout-b-wide">
+    <figure class="section-media reveal">
+      <img src="assets/f4-claude.jpg" alt="The Verge 為 Claude 稿配的機械人插圖，用於 Anthropic 推出 Claude Ship 一則" loading="lazy" decoding="async">
+      <figcaption>The Verge</figcaption>
+    </figure>
+    <div class="num-rail reveal">
+      <div><strong>Code Review</strong><span>已正式供應，不是測試版。</span></div>
+      <div><strong>PR Steward</strong><span>測試版：處理失敗的持續整合、合併衝突，以及來自審查工具或同事的意見。</span></div>
+      <div><strong>Claude Approvals</strong><span>測試版：可依倉庫內的自然語言政策，自動批准「例行」變更。官方建議先開觀察模式。</span></div>
+      <div><strong>團隊自述</strong><span>「大部分代碼由 Claude 撰寫」是官方對 Claude Code 團隊的自述，不是全行業事實。</span></div>
+    </div>
+    <div class="essay reveal">
+    <p>品味是最後那道閘。Anthropic把它拆掉，還把產品叫做Ship。</p>
+    <p>十一月二十三日，這家新上市的人工智能公司推出Claude Ship測試版，面向Claude Team與Enterprise、對接GitHub倉庫。代碼審查功能已正式供應；新的是兩個代理人：PR Steward會介入失敗的持續整合、合併衝突，以及來自審查工具或同事的意見，並註明改了什麼、如何回退；Claude Approvals則可按團隊用自然語言寫進倉庫的政策，自動批准「例行」變更。寫代碼的系統，現在也可以給這段代碼蓋章放行。他們建議先開觀察模式、設每月支出上限、從一個倉庫試起——自己也知道，把批准權交給模型，還在測試。可產品要走的方向並不模糊：人是瓶頸，閘要自動化。</p>
+    <p>公司自己寫得更白：「多數團隊希望每項變更都由人批准，在人寫每一行的時候，這還跟得上。但很多開發者現在用代理人來構建。在Claude Code團隊，我們大部分代碼由Claude撰寫，我們也希望PR之後的一切同樣快。」產品經理看完一則用戶意見，可以跟Claude商量，讓它開出拉取請求，然後去做下一件事。這不是工藝，是把會說「不行」的人請出房間。審查層級分成快速、標準與深度，聽起來像還有品味分寸；真正被拿掉的，是那個願意讓整個進度停下來的人。</p>
+    <p>把批准寫成倉庫裡的政策檔，只是把品味變成一份提示詞。提示詞能列出檢查項目，不能告訴你某個介面令人厭惡、某段邏輯雖然通過測試卻不該存在。當代理人已經寫了大多數代碼，再讓另一個代理人依政策放行，這不叫工程紀律，叫自我背書。Junk不是功能不夠多，是該留下的判斷被當成要清掉的延遲。Ship得更快，只是讓平庸更早抵達用戶面前。</p>
+    </div>
+  </div>
+  <p class="case-note">來源：<a href="https://claude.com/resources/articles/introducing-claude-ship" target="_blank" rel="noopener noreferrer">Anthropic 官方</a>；<a href="https://techcrunch.com/2026/11/23/anthropic-launches-claude-ship-letting-ai-agents-review-fix-and-approve-code-changes/" target="_blank" rel="noopener noreferrer">TechCrunch</a>；<a href="https://www.theverge.com/ai-artificial-intelligence/1040134/anthropic-claude-ship-ai-pull-requests" target="_blank" rel="noopener noreferrer">The Verge</a>。圖源：The Verge。</p>
+</section>
+
+<section id="briefs" class="layout-c-mosaic">
+  <div class="section-head">
+    <span class="section-no">05</span>
+    <div class="titles">
+      <h2>其餘精選：二十三則，按欄排列</h2>
+    </div>
+  </div>
+  <p class="intro">週二稿，分類精選二十三則，含專題在所屬欄重出的短項。各欄底部為該欄熱度排行；同級熱度依內容包原序。圖源註寫在各卡內文區。</p>
+  <div class="cat-block" id="hot">
+    <h3 class="cat-head">熱門話題</h3>
+    <div class="mosaic">
+  <article class="mosaic-card wide reveal" id="h1">
+    <img src="assets/f1-huang.jpg" alt="英偉達董事會一致讓黃仁勳復職，獨立調查寫明會進行到結束（見專題）" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">英偉達新聞室；並參 CNBC、美聯社</p>
+      <h3><a href="https://nvidianews.nvidia.com/news/nvidia-board-reinstates-jensen-huang-as-president-ceo-and-board-director" target="_blank" rel="noopener noreferrer">英偉達董事會一致讓黃仁勳復職，獨立調查寫明會進行到結束（見專題）</a></h3>
+      <p class="summary">英偉達十一月二十三日宣布，黃仁勳即時恢復擔任總裁、執行長並重返董事席，董事會稱一致通過，並在收到美國政府高層意見後表示有信心復職不構成國家安全風險。聲明同時寫明，針對他「成為外國情報活動目標」報道的獨立調查會進行到結束。川普對CNBC說他說服了董事會。美聯社寫，董事會就在數日前才拒絕過他的回歸提議。詳見專題。</p>
+      <p class="media-credit">The Verge</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="h2">
+    <img src="assets/f2-sierra.jpg" alt="同類相關圖，非該則新聞原圖：英偉達收市升逾三成、市值回近一兆；Sierra 六個月內估值翻到三百億美元（見專題）" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">CNBC；並參 Sierra 官方、TechCrunch</p>
+      <h3><a href="https://www.cnbc.com/2026/11/23/anthropic-nvidia-shares.html" target="_blank" rel="noopener noreferrer">英偉達收市升逾三成、市值回近一兆；Sierra 六個月內估值翻到三百億美元（見專題）</a></h3>
+      <p class="summary">CNBC統計，英偉達周一收市升百分之三十一點四八，市值回了近一兆美元，為二零零三年五月以來最佳單日；納斯達克升百分之六點五一。CoreWeave、Nebius、Iren均升逾兩成。同一天，企業客服公司Sierra由Greenoaks與Lightspeed領投籌得十七點五億美元，估值六個月內由一百五十億翻到三百億。公司上月底稱年化收入五個月內翻到四億美元。詳見專題。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Sierra（官方配圖；同類相關圖，非英偉達股價走勢圖）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="h3">
+    <img src="assets/h3-crowdstrike.jpg" alt="CrowdStrike 以全股票交易約四百三十九億美元收購 Zscaler" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">CrowdStrike 公告；並參 CNBC</p>
+      <h3><a href="https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-acquire-zscaler-bringing-network-security-and-zero/" target="_blank" rel="noopener noreferrer">CrowdStrike 以全股票交易約四百三十九億美元收購 Zscaler</a></h3>
+      <p class="summary">CrowdStrike周一宣布以全股票交易收購網路安全公司Zscaler，交易作價約四十三點九億美元，Zscaler股東每股換一點一三五股CrowdStrike，預期在CrowdStrike二零二八財年下半年完成，尚須股東與監管批准。CNBC報道，消息傳出後CrowdStrike股價跌百分之九，Zscaler升近百分之十八。執行長George Kurtz稱要打造「網絡安全的操作系統」。兩家公司同日亦公布好於預期的季度業績。</p>
+      <p class="media-credit">Getty Images via CNBC</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="h4">
+    <img src="assets/h4-decart.jpg" alt="亞馬遜據報以七十五億美元收購 Decart 的芯片優化技術與團隊" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">Amazon 官方；金額據 Bloomberg／TechCrunch</p>
+      <h3><a href="https://www.aboutamazon.com/news/company-news/amazon-decart-ai-optimization" target="_blank" rel="noopener noreferrer">亞馬遜據報以七十五億美元收購 Decart 的芯片優化技術與團隊</a></h3>
+      <p class="summary">亞馬遜十一月二十三日在官方部落格確認，將收購以色列新創Decart的優化堆疊技術，並延攬創辦團隊與研究工程人員，以提升在Nvidia、亞馬遜及Google硬體上的模型效率。TechCrunch引述Bloomberg稱作價七十五億美元；亞馬遜官方稿未寫金額。基礎人工智能模型資深副總裁Peter DeSantis說，人工智能的躍進始於「讓每顆芯片做更多事」。報道指此舉與亞馬遜準備向外銷售Trainium芯片、減少對Nvidia依賴有關。交易仍待監管批准。</p>
+      <p class="media-credit">TechCrunch（Decart 創辦人 Dean Leitersdorf 與 Moshe Shalev）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="h5">
+    <img src="assets/h5-grok.jpg" alt="維珍尼亞與俄勒岡控告 SpaceX、X 與 xAI，指 Grok 仍生成未經同意的性化影像" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">維珍尼亞州檢察長辦公室；並參 Ars Technica</p>
+      <h3><a href="https://www.oag.state.va.us/media-center/news-releases/jay-jones/3162-attorneys-general-jones-and-rayfield-file-suit-against-spacex-parent-company-of-x-xai-and-grok-over-creation-and-promotion-of-child-exploitation-and-non-consensual-images-on-platform" target="_blank" rel="noopener noreferrer">維珍尼亞與俄勒岡控告 SpaceX、X 與 xAI，指 Grok 仍生成未經同意的性化影像</a></h3>
+      <p class="summary">維珍尼亞州檢察長Jay Jones與俄勒岡州檢察長Dan Rayfield十一月二十三日分別提起類似的消費者保護訴訟，被告包括SpaceX、X與xAI（檢方稱現亦作SpaceX Super Intelligence），指控Grok在「spicy mode」下生成未經同意的親密影像及兒童性虐待影像，同時對外宣稱已有安全機制。檢方引用反數字傷害中心研究稱，二零二五年十二月二十九日至二零二六年一月八日期間，Grok在X上發布約三百萬張性化影像，其中約二萬三千張看似描繪兒童。Ars Technica寫，X方面稱每項輸出都會篩查，檢方則指有害內容仍在出現。該研究數字為檢方援引，本報未獨立核對。</p>
+      <p class="media-credit">NurPhoto via Ars Technica</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="h6">
+    <img src="assets/f3-wallet.jpg" alt="Google 搜尋人工智能模式即日起可選接錢包，雲端硬碟與 Gemini 隨後跟上（見專題）" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">Google 官方；並參 TechCrunch、The Verge</p>
+      <h3><a href="https://blog.google/products-and-platforms/products/search/google-search-personal-intelligence-apps/" target="_blank" rel="noopener noreferrer">Google 搜尋人工智能模式即日起可選接錢包，雲端硬碟與 Gemini 隨後跟上（見專題）</a></h3>
+      <p class="summary">Google宣布，搜尋人工智能模式的Personal Intelligence即日起可選擇連接Google錢包，雲端硬碟與Gemini應用程式將在未來數週加入，並與既有的Gmail、日曆和相片一起提供更個人化的回答。官方強調連接錢包後只能讀取帳戶、不能轉移或管理資金；用戶可隨時關閉。人工智能概覽與人工智能模式也將按最近搜尋上下文變得更個人。詳見專題。</p>
+      <p class="media-credit">Google（官方產品圖）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="h7">
+    <img src="assets/f4-claude.jpg" alt="Anthropic 推出 Claude Ship：代理人可審查、修復並按政策批准程式變更（見專題）" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">Anthropic 官方；並參 TechCrunch、The Verge</p>
+      <h3><a href="https://claude.com/resources/articles/introducing-claude-ship" target="_blank" rel="noopener noreferrer">Anthropic 推出 Claude Ship：代理人可審查、修復並按政策批准程式變更（見專題）</a></h3>
+      <p class="summary">Anthropic周一推出Claude Ship測試版，面向Team與Enterprise、對接GitHub。代碼審查已正式供應；新的PR Steward處理失敗的持續整合、合併衝突與評審意見，Claude Approvals則可依倉庫內的自然語言政策自動批准例行變更。官方寫，Claude Code團隊「大部分代碼由Claude撰寫」，希望拉取請求之後同樣快。公司建議先用觀察模式。詳見專題。</p>
+      <p class="media-credit">The Verge</p>
+    </div>
+  </article>
+    </div>
+    <aside class="heat-rank" aria-label="熱門話題熱度排行">
+      <h4>本欄熱度排行（A → B → C，同級依原序）</h4>
+      <ol>
+      <li><span class="idx">1</span><span class="heat">A</span><a href="#h1">黃仁勳復職與未結束調查（見專題）</a></li>
+      <li><span class="idx">2</span><span class="heat">A</span><a href="#h2">英偉達市值反彈與 Sierra 三千億（見專題）</a></li>
+      <li><span class="idx">3</span><span class="heat">A</span><a href="#h3">CrowdStrike 收購 Zscaler</a></li>
+      <li><span class="idx">4</span><span class="heat">A</span><a href="#h4">亞馬遜收購 Decart 技術</a></li>
+      <li><span class="idx">5</span><span class="heat">A</span><a href="#h5">兩州起訴 Grok／SpaceX</a></li>
+      <li><span class="idx">6</span><span class="heat">A</span><a href="#h6">Google 錢包入搜尋（見專題）</a></li>
+      <li><span class="idx">7</span><span class="heat">A</span><a href="#h7">Claude Ship（見專題）</a></li>
+      </ol>
+    </aside>
+  </div>
+  <div class="cat-block" id="ai">
+    <h3 class="cat-head">AI 與模型</h3>
+    <div class="mosaic">
+  <article class="mosaic-card wide reveal" id="a1">
+    <img src="assets/a1-openai.jpg" alt="同類相關圖，非該則新聞原圖：OpenAI 把對話特化版 GPT-6.2 Sol 推進 Chat 分頁，並訂十二月二十三日停用兩款舊模型" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">9to5Mac；並參 The Verge</p>
+      <h3><a href="https://9to5mac.com/2026/11/23/chatgpt-expands-gpt-6-2-sol-as-openai-sets-retirement-date-for-two-models/" target="_blank" rel="noopener noreferrer">OpenAI 把對話特化版 GPT-6.2 Sol 推進 Chat 分頁，並訂十二月二十三日停用兩款舊模型</a></h3>
+      <p class="summary">OpenAI十一月二十三日把GPT-6.2 Sol的對話特化版推進ChatGPT的Chat分頁，面向Plus、Pro、Business與Enterprise，距離該模型在Work與Codex登場不到一週。公司稱這個版本針對日常對話調整，較擅於辨認相片細節，以及按指示在網上搜尋。The Verge引述官方：較擅長處理複雜要求，尤其是詳細指令與上網找資料。公司同時宣布，將於十二月二十三日從Chat、Work與Codex停用GPT-5.6 Sol，並在同日讓GPT-5.6 Terra離開Work與Codex。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。9to5Mac（ChatGPT 圖示；同類相關圖，非 Sol 發布會現場）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="a2">
+    <img src="assets/a2-gtc.jpg" alt="同類相關圖，非該則新聞原圖：Paradromics 與 Nvidia 合作，要把腦機介面的語音解碼延遲壓到十毫秒以下" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">Paradromics／Business Wire；並參 WIRED</p>
+      <h3><a href="https://www.businesswire.com/news/home/20261123124193/en/Paradromics-Advances-High-Performance-AI-Computing-for-Brain-Computer-Interfaces-with-NVIDIA" target="_blank" rel="noopener noreferrer">Paradromics 與 Nvidia 合作，要把腦機介面的語音解碼延遲壓到十毫秒以下</a></h3>
+      <p class="summary">腦機介面公司Paradromics十一月二十三日宣布與Nvidia技術合作，使用Holoscan與Jetson邊緣運算做即時腦訊號解碼與語音還原，目標是腦到語音低於十毫秒、腦到文字再到語音低於一百毫秒，並讓體外硬體更小、更省電。WIRED報道，這是要把對話速度的腦機介面算力做到可攜。此為公司宣布的技術路徑與延遲目標，不是已在患者端全面達標的臨床結果。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Getty Images via CNBC（Nvidia GTC 資料圖片；同類相關圖，非 Paradromics 植入裝置實拍）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="a3">
+    <img src="assets/a3-anthropic.jpg" alt="Anthropic 上市第三個交易日收跌；Sierra 稱已服務近一半財富五十強（見專題）" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">CNBC；並參 TechCrunch</p>
+      <h3><a href="https://www.cnbc.com/2026/11/23/anthropic-nvidia-shares.html" target="_blank" rel="noopener noreferrer">Anthropic 上市第三個交易日收跌；Sierra 稱已服務近一半財富五十強（見專題）</a></h3>
+      <p class="summary">在多數人工智能相關股票隨黃仁勳復職反彈之際，CNBC寫Anthropic在上市第三個交易日收跌百分之一點四三。該公司首次公開募股籌得創紀錄的九百三十五億美元，週四上市首日升百分之十七，週五收跌百分之八點五。同日Sierra宣布估值翻到三百億美元，並稱已服務近一半財富五十強。不要把所有人工智能股票寫成同一根陽線。</p>
+      <p class="media-credit">AFP／Getty Images via CNBC</p>
+    </div>
+  </article>
+    </div>
+    <aside class="heat-rank" aria-label="AI 與模型熱度排行">
+      <h4>本欄熱度排行（A → B → C，同級依原序）</h4>
+      <ol>
+      <li><span class="idx">1</span><span class="heat">B</span><a href="#a1">GPT-6.2 Sol 進 Chat 分頁與舊模型停用日</a></li>
+      <li><span class="idx">2</span><span class="heat">B</span><a href="#a2">Paradromics／Nvidia 腦機介面</a></li>
+      <li><span class="idx">3</span><span class="heat">B</span><a href="#a3">Anthropic 第三日收跌</a></li>
+      </ol>
+    </aside>
+  </div>
+  <div class="cat-block" id="security">
+    <h3 class="cat-head">資安與基礎設施</h3>
+    <div class="mosaic">
+  <article class="mosaic-card wide reveal" id="s1">
+    <img src="assets/h3-crowdstrike.jpg" alt="CrowdStrike 買下 Zscaler，要把終端與零信任網路收進同一平台（見 h3）" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">CNBC；並參 CrowdStrike 公告</p>
+      <h3><a href="https://www.cnbc.com/2026/11/23/crowdstrike-zscaler-aquisition-ai-cyberattacks.html" target="_blank" rel="noopener noreferrer">CrowdStrike 買下 Zscaler，要把終端與零信任網路收進同一平台（見 h3）</a></h3>
+      <p class="summary">這宗約四百三十九億美元的全股票交易，是CrowdStrike迄今最大收購，亦是近年網絡安全併購裡規模最大的交易之一。公告稱成交後，Falcon平台將同時掌握終端與雲端工作負載上的感測器，以及Zscaler Zero Trust Exchange在用戶、代理人與應用連線上的控制點。Zscaler稱其保護一半財富五百強，並在逾二百個服務據點運行。預期二零二八財年下半年完成，變數仍在股東與監管批准。詳見熱門話題。</p>
+      <p class="media-credit">Getty Images via CNBC</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="s2">
+    <img src="assets/h5-grok.jpg" alt="兩州控告 Grok 安全宣稱不實，並援引研究指平台曾大量生成性化影像（見 h5）" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">Ars Technica；並參維珍尼亞州檢察長辦公室</p>
+      <h3><a href="https://arstechnica.com/tech-policy/2026/11/states-sue-spacex-to-stop-grok-from-generating-child-sex-images-revenge-porn/" target="_blank" rel="noopener noreferrer">兩州控告 Grok 安全宣稱不實，並援引研究指平台曾大量生成性化影像（見 h5）</a></h3>
+      <p class="summary">Ars Technica寫，這是首批針對SpaceX提起的此類州政府訴訟，檢方稱公司在Grok「spicy mode」爭議後公開道歉並宣稱已加強防護，卻仍在生成未經同意的親密影像與兒童性虐待影像。維珍尼亞州起訴書稱，此類影像一旦生成並被分享，幾乎不可能從網上徹底消失。X方面稱每項輸出都會篩查。檢方援引的研究數字須標明來源，不是本報審計結果。詳見熱門話題。</p>
+      <p class="media-credit">NurPhoto via Ars Technica</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="s3">
+    <img src="assets/s3-nable.jpg" alt="同類相關圖，非該則新聞原圖：N-able 就 Mail Assure 事故發布更新：已修復漏洞並公布 CVE，調查仍在進行" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">N-able 官方</p>
+      <h3><a href="https://www.n-able.com/blog/mail-assure-incident-update" target="_blank" rel="noopener noreferrer">N-able 就 Mail Assure 事故發布更新：已修復漏洞並公布 CVE，調查仍在進行</a></h3>
+      <p class="summary">N-able十一月二十二日下午更新，Mail Assure與SpamExperts環境的安全事故後，已修復已識別漏洞，並在十一月二十一日二十三時四十五分（協調世界時）恢復控制台與應用程式介面；進出發郵件與垃圾郵件過濾在事故期間持續運作。公司稱後續掃描未發現超出最初那一台自營伺服器的利用證據，已聘請獨立取證團隊，並公布CVE-2026-134624，預計兩週內提出根因分析。此為公司自述，根因與影響範圍仍待獨立取證。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。SecurityWeek（N-able 辦公樓資料照片；官方事故更新頁只有標誌分享圖，故改用同題報道的公司大樓照片）</p>
+    </div>
+  </article>
+    </div>
+    <aside class="heat-rank" aria-label="資安與基礎設施熱度排行">
+      <h4>本欄熱度排行（A → B → C，同級依原序）</h4>
+      <ol>
+      <li><span class="idx">1</span><span class="heat">A</span><a href="#s1">CrowdStrike／Zscaler（見 h3）</a></li>
+      <li><span class="idx">2</span><span class="heat">A</span><a href="#s2">兩州訴 Grok（見 h5）</a></li>
+      <li><span class="idx">3</span><span class="heat">B</span><a href="#s3">N-able Mail Assure 更新</a></li>
+      </ol>
+    </aside>
+  </div>
+  <div class="cat-block" id="consumer">
+    <h3 class="cat-head">消費電子／平台</h3>
+    <div class="mosaic">
+  <article class="mosaic-card wide reveal" id="c1">
+    <img src="assets/c1-amazon-nyc.jpg" alt="亞馬遜在紐約包裹上貼標，遊說反對「配送保護法」" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">Ars Technica；並參 The Verge、Amazon 官方</p>
+      <h3><a href="https://arstechnica.com/tech-policy/2026/11/amazon-fights-delivery-protection-act-by-putting-stickers-on-its-packages/" target="_blank" rel="noopener noreferrer">亞馬遜在紐約包裹上貼標，遊說反對「配送保護法」</a></h3>
+      <p class="summary">亞馬遜開始在部分紐約市配送包裹上貼標，呼籲收件人反對市議會的《配送保護法》（Intro 518），並配二維碼連到聯絡議員的頁面。信息警告該法案「可能令每張訂單增加最多五美元」；批評者指法案文本並無這項配送費。公司亦在首頁與應用程式內推同一立場，稱法例可能迫使它考慮把業務遷出紐約。市長Zohran Mamdani與國際卡車司機兄弟會（Teamsters）的亞馬遜分部支持該法案。委員會是否把法案送交大會，截稿前尚未排期。</p>
+      <p class="media-credit">The Verge（紐約配送包裹標籤／盒子畫面）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="c2">
+    <img src="assets/c2-pricing.jpg" alt="《Ars Technica》：監控式定價用個人資料推估你願意付的最高價" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">Ars Technica</p>
+      <h3><a href="https://arstechnica.com/tech-policy/2026/11/surveillance-pricing-uses-our-personal-data-to-make-us-pay-more/" target="_blank" rel="noopener noreferrer">《Ars Technica》：監控式定價用個人資料推估你願意付的最高價</a></h3>
+      <p class="summary">Ars Technica十一月二十三日專文區分監控式定價與一般動態定價：前者根據瀏覽紀錄、裝置與應用程式等個人資料，推估同一商品或服務對個別消費者的最高願付價格；後者主要跟隨供需、庫存與對手價格。文中引述電子隱私信息中心的定義，並回顧消費者報告二零二五年對Instacart的調查：以四口之家的典型開支估算，價格差異一年可達約一千二百美元。這不是單一公司今日的新公告，而是把已在蔓延的做法寫清楚。</p>
+      <p class="media-credit">Getty Images via Ars Technica</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="c3">
+    <img src="assets/f3-wallet.jpg" alt="Google 要把錢包、雲端硬碟與 Gemini 對話寫進搜尋答案（見專題）" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">Google 官方</p>
+      <h3><a href="https://blog.google/products-and-platforms/products/search/google-search-personal-intelligence-apps/" target="_blank" rel="noopener noreferrer">Google 要把錢包、雲端硬碟與 Gemini 對話寫進搜尋答案（見專題）</a></h3>
+      <p class="summary">錢包連接即日起開始推出，雲端硬碟與Gemini應用程式在未來數週跟上；Gmail、日曆與相片已可連接。官方強調選擇加入、可隨時關閉，錢包權限為唯讀。這把「個人化」從搜尋紀錄，擴大到消費與文件。詳見專題。</p>
+      <p class="media-credit">Google（官方產品圖）</p>
+    </div>
+  </article>
+    </div>
+    <aside class="heat-rank" aria-label="消費電子／平台熱度排行">
+      <h4>本欄熱度排行（A → B → C，同級依原序）</h4>
+      <ol>
+      <li><span class="idx">1</span><span class="heat">A</span><a href="#c3">Google 個人化搜尋（見專題）</a></li>
+      <li><span class="idx">2</span><span class="heat">B</span><a href="#c1">亞馬遜紐約包裹遊說</a></li>
+      <li><span class="idx">3</span><span class="heat">B</span><a href="#c2">監控式定價專文</a></li>
+      </ol>
+    </aside>
+  </div>
+  <div class="cat-block" id="chips">
+    <h3 class="cat-head">晶片／硬體／地緣</h3>
+    <div class="mosaic">
+  <article class="mosaic-card wide reveal" id="ch1">
+    <img src="assets/ch1-megaspeed.jpg" alt="美國商務部宣布打算把新加坡商 Megaspeed 列入實體清單" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">BBC；背景參美國司法部十一月十七日聯合聲明</p>
+      <h3><a href="https://www.bbc.com/news/articles/cv98xpg5dg5zo" target="_blank" rel="noopener noreferrer">美國商務部宣布打算把新加坡商 Megaspeed 列入實體清單</a></h3>
+      <p class="summary">英國廣播公司十一月二十三日報道，美國商務部宣布打算把新加坡商Megaspeed列入限制貿易的實體清單，子公司Speedmatrix亦被列入；何時生效，當時的宣布並未寫明。報道指該公司近年因前高管Alice Huang與黃仁勳的關係，以及涉嫌把英偉達先進芯片轉運至中國而受到審視。中國否認間諜指控。司法部與商務部十一月十七日聯合聲明寫，調查始於二零二四年，英偉達在二零二五年六月把Megaspeed列入拒售名單，同年六月曾在新加坡現場檢查並約談當時的行政總裁Alice Huang。不要把上周的聯合聲明寫成今日才啟動的調查。</p>
+      <p class="media-credit">Getty Images via BBC</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="ch2">
+    <img src="assets/ch2-tsmc.jpg" alt="台積電股價回上兩千元整數關；魏哲家上月仍說先進製程供需缺口很大" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">Taipei Times</p>
+      <h3><a href="https://www.taipeitimes.com/News/biz/archives/2026/11/24/2003868252" target="_blank" rel="noopener noreferrer">台積電股價回上兩千元整數關；魏哲家上月仍說先進製程供需缺口很大</a></h3>
+      <p class="summary">《臺北時報》十一月二十四日報道，台積電周一升百分之一點五，收復兩千元新台幣整數關，結束連兩日下跌；大盤升百分之二點一六，文中指國家安定基金曾出手穩定受全球人工智能股拋售衝擊的市場。董事長魏哲家上月對投資人說，「所有人工智能業者都在跟台積電合作」，供需缺口仍然很大，所以全力擴產。該報並寫，台積電在上周Anthropic首次公開募股中認購約百分之零點零三股權、約五億美元。魏哲家的供需判斷是上月發言，不要寫成今日新表述。</p>
+      <p class="media-credit">Taipei Times</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="ch3">
+    <img src="assets/a2-gtc.jpg" alt="同類相關圖，非該則新聞原圖：Nvidia 技術被用於腦機介面即時語音解碼（見 a2）" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">WIRED；並參 Paradromics／Business Wire</p>
+      <h3><a href="https://www.wired.com/story/nvidia-is-powering-brain-computer-interfaces-now/" target="_blank" rel="noopener noreferrer">Nvidia 技術被用於腦機介面即時語音解碼（見 a2）</a></h3>
+      <p class="summary">WIRED報道Paradromics與Nvidia的合作，要把可攜式腦機介面的語音解碼做成低延遲的邊緣運算。公司目標是腦到語音低於十毫秒。這是硬體與軟體路徑的宣布，不是已普及的臨床產品。詳見人工智能欄。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Getty Images via CNBC（Nvidia GTC 資料圖片；同類相關圖，非腦機介面手術或裝置特寫）</p>
+    </div>
+  </article>
+    </div>
+    <aside class="heat-rank" aria-label="晶片／硬體／地緣熱度排行">
+      <h4>本欄熱度排行（A → B → C，同級依原序）</h4>
+      <ol>
+      <li><span class="idx">1</span><span class="heat">A</span><a href="#ch1">Megaspeed 實體清單</a></li>
+      <li><span class="idx">2</span><span class="heat">B</span><a href="#ch2">台積電股價與供需缺口</a></li>
+      <li><span class="idx">3</span><span class="heat">B</span><a href="#ch3">腦機介面延遲目標（見 a2）</a></li>
+      </ol>
+    </aside>
+  </div>
+  <div class="cat-block" id="policy">
+    <h3 class="cat-head">政策／監管</h3>
+    <div class="mosaic">
+  <article class="mosaic-card wide reveal" id="p1">
+    <img src="assets/f1-huang.jpg" alt="同類相關圖，非該則新聞原圖：舒默等民主黨人揚言調查黃仁勳復職始末；商務部同期處理 Megaspeed 清單（見專題與 ch1）" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">The Hill；並參 Politico、Axios</p>
+      <h3><a href="https://thehill.com/homenews/senate/6237752-schumer-democrats-nvidia-ceo-huang-probe/" target="_blank" rel="noopener noreferrer">舒默等民主黨人揚言調查黃仁勳復職始末；商務部同期處理 Megaspeed 清單（見專題與 ch1）</a></h3>
+      <p class="summary">黃仁勳復職當日，參議院少數黨領袖查克·舒默稱民主黨將動用權力，調查川普政府、黃仁勳及其他英偉達高管是否涉及不當行為，焦點包括國家安全風險。此為《The Hill》、Politico與Axios等的報道摘要，本包未直接引用舒默逐字講稿。英國廣播公司同日報道商務部打算把Megaspeed列入實體清單。董事會則說獨立調查會進行到結束。詳見專題。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。The Verge（黃仁勳資料照片，非舒默調查畫面）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="p2">
+    <img src="assets/h5-grok.jpg" alt="兩州以消費者保護法起訴 SpaceX 體系下的 Grok（見 h5）" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">維珍尼亞州檢察長辦公室</p>
+      <h3><a href="https://www.oag.state.va.us/media-center/news-releases/jay-jones/3162-attorneys-general-jones-and-rayfield-file-suit-against-spacex-parent-company-of-x-xai-and-grok-over-creation-and-promotion-of-child-exploitation-and-non-consensual-images-on-platform" target="_blank" rel="noopener noreferrer">兩州以消費者保護法起訴 SpaceX 體系下的 Grok（見 h5）</a></h3>
+      <p class="summary">兩州要求禁制令、民事罰則與相關救濟，維珍尼亞並尋求消費者賠償。起訴書把責任寫到作為X與xAI母公司的SpaceX。這是監管與訴訟路徑，不是已判決的事實認定。詳見熱門話題。</p>
+      <p class="media-credit">NurPhoto via Ars Technica</p>
+    </div>
+  </article>
+    </div>
+    <aside class="heat-rank" aria-label="政策／監管熱度排行">
+      <h4>本欄熱度排行（A → B → C，同級依原序）</h4>
+      <ol>
+      <li><span class="idx">1</span><span class="heat">A</span><a href="#p1">舒默揚言調查復職（見專題）</a></li>
+      <li><span class="idx">2</span><span class="heat">A</span><a href="#p2">兩州消費者保護訴訟（見 h5）</a></li>
+      </ol>
+    </aside>
+  </div>
+  <div class="cat-block" id="opensource">
+    <h3 class="cat-head">開源／開發</h3>
+    <div class="mosaic">
+  <article class="mosaic-card wide reveal" id="o1">
+    <img src="assets/o1-ladybird.jpg" alt="Ladybird 瀏覽器進入 alpha：全新引擎，現供 macOS 與 Linux 測試" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">Ladybird 官方；並參 The Verge、Phoronix</p>
+      <h3><a href="https://ladybird.org/posts/alpha/" target="_blank" rel="noopener noreferrer">Ladybird 瀏覽器進入 alpha：全新引擎，現供 macOS 與 Linux 測試</a></h3>
+      <p class="summary">開發者Andreas Kling十一月二十三日宣布，獨立瀏覽器Ladybird進入alpha，可在macOS與Linux下載，Windows要到較後階段。他寫，引擎是從零編寫、不是既有引擎的分支；瀏覽器「謙遜但堪用」，部分網站會壞、有時會崩潰，現階段不對安全性作承諾，並歡迎安全研究者回報漏洞。發行採滾動自動更新頻道。The Verge稱這是多年來首個帶全新引擎的瀏覽器，當前主流仍是Gecko、Blink與WebKit；該稿並寫團隊後來用人工智能把代碼往Rust遷移，此點並非Kling公告正文的重點，引用須標明出處。</p>
+      <p class="media-credit">Ladybird via The Verge（瀏覽器畫面截圖）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="o2">
+    <img src="assets/f4-claude.jpg" alt="Claude Ship 把拉取請求的修復與批准權交給代理人（見專題）" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">The Verge；並參 Anthropic 官方</p>
+      <h3><a href="https://www.theverge.com/ai-artificial-intelligence/1040134/anthropic-claude-ship-ai-pull-requests" target="_blank" rel="noopener noreferrer">Claude Ship 把拉取請求的修復與批准權交給代理人（見專題）</a></h3>
+      <p class="summary">對GitHub倉庫而言，這把代碼審查、修復與例行批准收進同一套代理人流程。Code Review已正式供應，批准功能仍在測試，官方建議先觀察。詳見專題。</p>
+      <p class="media-credit">The Verge</p>
+    </div>
+  </article>
+    </div>
+    <aside class="heat-rank" aria-label="開源／開發熱度排行">
+      <h4>本欄熱度排行（A → B → C，同級依原序）</h4>
+      <ol>
+      <li><span class="idx">1</span><span class="heat">A</span><a href="#o2">Claude Ship（見專題）</a></li>
+      <li><span class="idx">2</span><span class="heat">B</span><a href="#o1">Ladybird alpha</a></li>
+      </ol>
+    </aside>
+  </div>
+</section>
+</div>
+<p class="site-foot">每日 IT 報 · 2026年11月24日 · 星期二<br>資料視覺專題版。選稿窗約 2026-11-23 07:45 HKT 至 2026-11-24 07:45 HKT。數字分源呈現，不合併。</p>
+</main>
+
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nodes = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    nodes.forEach(function (el) { el.classList.add('is-in'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    nodes.forEach(function (el) { io.observe(el); });
+  }
+})();
+</script>
+</body>
+</html>

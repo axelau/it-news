@@ -1,0 +1,1625 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>一百萬顆許可，評級先扣人｜2026年11月26日</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F5F2E8;
+  --ink: #1B263B;
+  --ink-soft: #3A4558;
+  --muted: #6B7280;
+  --line: #D9D4C8;
+  --orange: #F06428;
+  --navy: #1B263B;
+  --gray: #A8ADB8;
+  --gray-light: #C8CDD6;
+  --card: #FFFCF5;
+  --max: 760px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Noto Sans TC", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--ink); }
+a:hover { color: var(--orange); }
+.wrapper {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+}
+.header { margin-bottom: 2.75rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--line); }
+.kicker {
+  margin: 0 0 0.85rem;
+  color: var(--orange);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.header h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.85rem, 5vw, 2.55rem);
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+.deck {
+  margin: 0 0 1.35rem;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+.topnav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0;
+  align-items: center;
+  font-size: 0.82rem;
+}
+.topnav a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding: 0.15rem 0.55rem;
+  border-right: 1px solid var(--line);
+}
+.topnav a:last-child { border-right: none; }
+.topnav a:hover { color: var(--orange); }
+
+section {
+  padding: 2.4rem 0;
+  border-bottom: 1px solid var(--line);
+}
+section:last-of-type { border-bottom: none; }
+.section-head {
+  display: flex;
+  gap: 0.85rem;
+  align-items: baseline;
+  margin-bottom: 1.35rem;
+}
+.section-no {
+  color: var(--orange);
+  font-family: "Inter", "Noto Sans TC", sans-serif;
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+.section-head h2 {
+  margin: 0;
+  font-size: clamp(1.2rem, 3.2vw, 1.45rem);
+  font-weight: 800;
+  line-height: 1.35;
+}
+.intro {
+  margin: 0 0 1.25rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+/* Hero number block */
+.hero {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  margin: 0 0 1.5rem;
+  padding: 1.1rem 0;
+}
+.hero-number {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(3.2rem, 10vw, 4.4rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+}
+.hero-number small {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  margin-bottom: 0.2rem;
+}
+.hero-number > span {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-left: 0.15rem;
+}
+.hero-copy {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+.hero-copy small {
+  display: block;
+  margin-top: 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* Case cards */
+.cases {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+  margin: 1.25rem 0 1rem;
+}
+@media (max-width: 680px) {
+  .cases { grid-template-columns: 1fr; }
+  .hero { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+}
+.case {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1rem 1.05rem 1.1rem;
+}
+.case .state {
+  margin: 0;
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+.case .place {
+  margin: 0.15rem 0 0.55rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+.case-num {
+  margin: 0 0 0.55rem;
+  font-family: "Inter", sans-serif;
+  font-size: 1.85rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--orange);
+  line-height: 1;
+}
+.case-num small {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-right: 0.15rem;
+  color: var(--muted);
+}
+.case p:last-child {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.case strong { color: var(--ink); font-weight: 700; }
+.case-note {
+  margin: 0.55rem 0 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.case-note a { color: var(--ink-soft); text-underline-offset: 2px; }
+
+/* Charts */
+.two-charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem 1.75rem;
+}
+@media (max-width: 640px) {
+  .two-charts { grid-template-columns: 1fr; }
+}
+.chart-title {
+  margin: 0 0 0.7rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+.stack {
+  display: flex;
+  width: 100%;
+  height: 2.15rem;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--line);
+}
+.seg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  min-width: 0;
+}
+.seg.orange { background: var(--orange); }
+.seg.dark { background: var(--navy); }
+.seg.gray { background: var(--gray); }
+.seg.muted-blue { background: #5C6B82; }
+.seg.pale { background: var(--gray-light); color: var(--ink-soft); }
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1rem;
+  margin-top: 0.65rem;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+.legend i {
+  display: inline-block;
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 2px;
+  margin-right: 0.35rem;
+  vertical-align: middle;
+}
+.legend i.orange { background: var(--orange); }
+.legend i.dark { background: var(--navy); }
+.legend i.gray { background: var(--gray); }
+.legend i.muted-blue { background: #5C6B82; }
+.legend i.pale { background: var(--gray-light); }
+
+.big-split {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  margin: 0 0 1.35rem;
+}
+.big-percent {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(3rem, 9vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  color: var(--ink);
+  flex-shrink: 0;
+}
+.big-percent small {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0;
+}
+.big-split > p {
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.5;
+}
+@media (max-width: 520px) {
+  .big-split { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+}
+
+.factor-labels {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+.factor-labels > div {
+  padding-right: 0.4rem;
+  border-right: 1px solid var(--line);
+}
+.factor-labels > div:last-child { border-right: none; }
+.factor-labels strong {
+  display: block;
+  font-family: "Inter", sans-serif;
+  font-size: 1.05rem;
+  color: var(--ink);
+  margin-bottom: 0.15rem;
+}
+@media (max-width: 520px) {
+  .factor-labels { grid-template-columns: 1fr 1fr; }
+  .factor-labels > div:nth-child(2) { border-right: none; }
+}
+
+/* Rank rows */
+.rank-list { margin: 1rem 0 0.5rem; }
+.rank-row {
+  display: grid;
+  grid-template-columns: minmax(7.5rem, 32%) 1fr auto;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.rank-row:last-child { border-bottom: none; }
+.rank-row.focus .rank-label { font-weight: 800; color: var(--ink); }
+.rank-row.focus .rank-track::after {
+  background: var(--orange);
+}
+.rank-label {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+.rank-track {
+  position: relative;
+  height: 6px;
+  background: #E6E1D4;
+  border-radius: 999px;
+}
+.rank-track::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: var(--w, 0%);
+  background: var(--navy);
+  border-radius: 999px;
+}
+.rank-track .dot {
+  position: absolute;
+  top: 50%;
+  left: var(--w, 0%);
+  width: 14px;
+  height: 14px;
+  margin-left: -7px;
+  margin-top: -7px;
+  border-radius: 50%;
+  background: var(--navy);
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 0 1px rgba(27,38,59,0.15);
+}
+.rank-row.focus .dot { background: var(--orange); box-shadow: 0 0 0 1px rgba(240,100,40,0.25); }
+.rank-value {
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  min-width: 2.6rem;
+  text-align: right;
+}
+.scale {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.35rem;
+  font-size: 0.7rem;
+  color: var(--muted);
+  padding: 0 3.2rem 0 0;
+}
+@media (max-width: 520px) {
+  .rank-row {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+  }
+  .rank-label { grid-column: 1; }
+  .rank-value { grid-column: 2; grid-row: 1; }
+  .rank-track { grid-column: 1 / -1; }
+  .scale { padding-right: 0; }
+}
+
+.footnote {
+  margin: 0.85rem 0 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+.callout {
+  margin: 1.25rem 0 0;
+  padding: 0.95rem 1.05rem;
+  background: var(--card);
+  border-left: 3px solid var(--orange);
+  border-radius: 0 8px 8px 0;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+.callout strong { color: var(--ink); }
+
+.mobile-summary {
+  margin: 0 0 1rem;
+  padding: 0.85rem 1rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-size: 0.92rem;
+}
+.mobile-summary p { margin: 0.35rem 0; }
+.mobile-summary b { font-family: "Inter", "Noto Sans TC", sans-serif; font-weight: 800; }
+
+details.expandable {
+  margin: 0.5rem 0 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--card);
+  padding: 0.35rem 1rem 1rem;
+}
+details.expandable > summary {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 0.75rem 0;
+  list-style: none;
+}
+details.expandable > summary::-webkit-details-marker { display: none; }
+details.expandable > summary::before {
+  content: "▾ ";
+  color: var(--orange);
+}
+details.expandable:not([open]) > summary::before { content: "▸ "; }
+.group-title {
+  margin: 1.1rem 0 0.65rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.vote-key { margin-bottom: 0.85rem; }
+.vote-row {
+  display: grid;
+  grid-template-columns: minmax(6.5rem, 28%) 1fr;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+.row-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+.row-label small {
+  display: block;
+  font-weight: 400;
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: 0.1rem;
+}
+@media (max-width: 520px) {
+  .vote-row { grid-template-columns: 1fr; gap: 0.3rem; }
+}
+
+
+.party-row {
+  display: grid;
+  grid-template-columns: minmax(6.5rem, 28%) 1fr;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+.party-row.focus .row-label { color: var(--ink); font-weight: 800; }
+.party-row.focus .stack { outline: 2px solid var(--orange); outline-offset: 2px; border-radius: 6px; }
+.sort-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem 0.85rem;
+  margin: 0.35rem 0 1rem;
+}
+.sort-row label { font-size: 0.78rem; color: var(--muted); font-weight: 600; }
+.sorts { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.sorts button {
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+.sorts button[aria-pressed="true"] {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
+}
+@media (max-width: 520px) {
+  .party-row { grid-template-columns: 1fr; gap: 0.3rem; }
+}
+
+.pending-box {
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.35);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.site-foot {
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* Scroll reveal — minimal */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+/* Section media */
+.section-media { margin: 0 0 1.35rem; }
+.section-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.section-media figcaption,
+.media-credit {
+  margin: 0.45rem 0 0;
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.essay p {
+  margin: 0 0 1rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+.essay p:last-child { margin-bottom: 0; }
+
+/* Layout B — left image, right narrative */
+.layout-b {
+  display: grid;
+  grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+  gap: 1.35rem 1.2rem;
+  align-items: start;
+  margin: 0 0 1.25rem;
+}
+.layout-b .section-media {
+  margin: 0;
+  position: sticky;
+  top: 1rem;
+}
+.hero-aside {
+  margin: 0 0 1rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--line);
+}
+.hero-aside .hero-number { font-size: clamp(2.6rem, 8vw, 3.6rem); }
+.hero-aside .hero-copy { font-size: 0.95rem; font-weight: 600; margin: 0.55rem 0 0; }
+.hero-aside .hero-copy small {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+.fact-rail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem 0.75rem;
+  margin: 1.2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.fact-rail li {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.75rem 0.85rem;
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.fact-rail .n {
+  display: block;
+  font-family: "Inter", "Noto Sans TC", sans-serif;
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--ink);
+  letter-spacing: -0.03em;
+  margin-bottom: 0.2rem;
+}
+
+/* Layout B wide — banner image above essay */
+.layout-b-wide .section-media { margin: 0 0 1.35rem; }
+.num-rail {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem 0.65rem;
+  margin: 0 0 1.25rem;
+  padding: 0.95rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.num-rail > div { padding-right: 0.4rem; }
+.num-rail strong {
+  display: block;
+  font-family: "Inter", "Noto Sans TC", sans-serif;
+  font-size: clamp(1.05rem, 3vw, 1.35rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  line-height: 1.15;
+  margin-bottom: 0.25rem;
+}
+.num-rail span {
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.term-list {
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.term-list li {
+  margin: 0 0 0.55rem;
+  padding: 0.7rem 0.9rem 0.7rem 1rem;
+  background: var(--card);
+  border-left: 3px solid var(--orange);
+  border-radius: 0 8px 8px 0;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+/* Layout C — quote well + horizontal collage */
+.quote-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem 1rem;
+  margin: 1.35rem 0 1.25rem;
+}
+.pull-quote {
+  margin: 0;
+  padding: 0.85rem 0 0.85rem 1rem;
+  border-left: 3px solid var(--orange);
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.pull-quote.span-2 { grid-column: 1 / -1; }
+.pull-quote cite {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--muted);
+}
+.collage {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 0.85rem;
+  margin: 1.25rem 0 1rem;
+  align-items: stretch;
+}
+.collage-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.collage-card img {
+  display: block;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border: 0;
+  border-radius: 0;
+}
+.collage-card:nth-child(2) img { height: 190px; }
+.collage-card .pad { padding: 0.85rem 0.95rem 1rem; flex: 1; }
+.collage-card h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.35;
+}
+.collage-card p {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+/* Layout C mosaic — uneven image cards */
+.mosaic {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 0.85rem;
+  margin: 1.25rem 0 1rem;
+  align-items: start;
+}
+.mosaic-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.mosaic-card.wide {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.15fr);
+}
+.mosaic-card img {
+  display: block;
+  width: 100%;
+  height: 148px;
+  object-fit: cover;
+}
+.mosaic-card:nth-child(even):not(.wide) img { height: 198px; }
+.mosaic-card:nth-child(5n):not(.wide) { margin-top: 1.35rem; }
+.mosaic-card.wide img {
+  height: 100%;
+  min-height: 220px;
+  object-fit: cover;
+}
+.mosaic-card .pad { padding: 0.8rem 0.9rem 1rem; }
+.mosaic-card h3 {
+  margin: 0.3rem 0 0.4rem;
+  font-size: 0.95rem;
+  font-weight: 800;
+  line-height: 1.35;
+}
+.mosaic-card h3 a { text-decoration: none; }
+.mosaic-card h3 a:hover { color: var(--orange); }
+.mosaic-card .summary {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.mosaic-card .outlet {
+  margin: 0 0 0.15rem;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+.heat {
+  display: inline-block;
+  font-family: "Inter", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 999px;
+  padding: 0.08rem 0.45rem;
+  vertical-align: middle;
+}
+
+@media (max-width: 680px) {
+  .layout-b,
+  .layout-b .section-media { position: static; }
+  .layout-b,
+  .mosaic-card.wide,
+  .collage,
+  .quote-row { grid-template-columns: 1fr; }
+  .mosaic { grid-template-columns: 1fr; }
+  .mosaic-card:nth-child(5n):not(.wide) { margin-top: 0; }
+  .mosaic-card.wide img,
+  .mosaic-card:nth-child(even):not(.wide) img { height: 180px; min-height: 0; }
+  .num-rail { grid-template-columns: 1fr 1fr; }
+  .fact-rail { grid-template-columns: 1fr; }
+  .pull-quote.span-2 { grid-column: auto; }
+}
+
+/* Edition additions: persona, category blocks, heat ranking, layout-c evidence strip */
+.section-head { align-items: flex-start; }
+.section-head .titles { min-width: 0; }
+.persona {
+  margin: 0.35rem 0 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--orange);
+  letter-spacing: 0.02em;
+}
+.section-head .heat { margin-top: 0.4rem; margin-left: auto; flex-shrink: 0; }
+.cat-block {
+  margin: 2.1rem 0 0.4rem;
+  padding-top: 0.4rem;
+}
+.cat-block:first-of-type { margin-top: 0.35rem; }
+.cat-head {
+  margin: 0 0 1rem;
+  font-size: 1.02rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+.heat-rank {
+  margin: 0.85rem 0 0.25rem;
+  padding: 0.95rem 1.05rem 1rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.heat-rank h4 {
+  margin: 0 0 0.55rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+.heat-rank ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.heat-rank li {
+  display: grid;
+  grid-template-columns: 1.5rem auto 1fr;
+  gap: 0.55rem;
+  align-items: center;
+  padding: 0.48rem 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.86rem;
+  line-height: 1.4;
+  color: var(--ink-soft);
+}
+.heat-rank li:last-child { border-bottom: none; }
+.heat-rank .idx {
+  font-family: "Inter", "Noto Sans TC", sans-serif;
+  font-weight: 800;
+  color: var(--orange);
+  font-size: 0.85rem;
+}
+.heat-rank a { text-decoration: none; color: var(--ink); }
+.heat-rank a:hover { color: var(--orange); }
+.evidence-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin: 1.25rem 0 1rem;
+}
+.evidence-strip article {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.9rem 1rem 1rem;
+}
+.evidence-strip .label {
+  margin: 0;
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+.evidence-strip .n {
+  margin: 0.2rem 0 0.4rem;
+  font-family: "Inter", "Noto Sans TC", sans-serif;
+  font-size: 1.7rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  line-height: 1;
+}
+.evidence-strip p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+@media (max-width: 680px) {
+  .evidence-strip { grid-template-columns: 1fr; }
+  .section-head .heat { margin-left: 0; }
+}
+</style>
+</head>
+<body>
+<main class="wrapper">
+<header class="header">
+  <p class="kicker">2026年11月26日 · 星期四科技要聞 · 美國感恩節</p>
+  <h1>一百萬顆許可，<br>評級先扣人</h1>
+  <p class="deck">FCC在感恩節前有條件批准SpaceX最多一百萬顆軌道數據中心衛星，第一顆可營運衛星可等到二零三三年。標普把英偉達AA評級放入負面觀察，理由是治理與「關鍵人物」風險，並給九十日檢視。紐約州長簽署五年禁令，禁止製造、經銷與銷售內建人工智能聊天機器人的玩具。OpenAI開始把Chat與Work合成同一套用量，並稱最重的用戶可能更快碰到上限。1Password確認內部系統被入侵，但稱保險庫未被取走。Allstate在感恩節前已連續多日無法正常上線。</p>
+  <nav class="topnav" aria-label="章節導覽">
+    <a href="#f1">禁令</a>
+    <a href="#f2">額度</a>
+    <a href="#f3">星座</a>
+    <a href="#f4">觀察</a>
+    <a href="#briefs">其餘精選</a>
+  </nav>
+</header>
+
+<div class="content">
+
+<section id="f1" class="layout-b-section">
+  <div class="section-head">
+    <span class="section-no">01</span>
+    <div class="titles">
+      <h2>誰把聊天機器人賣進兒童房，誰就得接受禁令</h2>
+      <p class="persona">人物：Margrethe Vestager</p>
+    </div>
+    <span class="heat">A</span>
+  </div>
+  <div class="layout-b-wide">
+    <figure class="section-media reveal">
+      <img src="assets/f1-ai-toys.jpg" alt="同類相關圖，非該則新聞原圖：一名兒童望向桌上的粉紅色玩具機器人，非州長府法案原圖" loading="lazy" decoding="async">
+      <figcaption>同類相關圖，非該則新聞原圖。Getty Images，TechCrunch（兒童與玩具機器人；州長府官方圖 403，改用內容包備用圖）</figcaption>
+    </figure>
+    <div class="num-rail reveal">
+      <div><strong>五年禁令，不是全美禁令</strong><span>禁止在紐約製造、經銷與銷售內建或整合人工智能聊天機器人的玩具，為期五年。據TechCrunch，紐約成為加州之後第二個為此立法的州。</span></div>
+      <div><strong>簽署九十日後生效</strong><span>法例在簽署九十日後生效，本假期購物季尚不適用；理論上仍有人趕得及在聖誕前買到，州長仍呼籲家長不要買。</span></div>
+      <div><strong>每天一萬五千美元</strong><span>副秘書Albert Pulido對TechCrunch說，罰款「非常重——每天一萬五千美元」。州長府官方稿亦寫明民事罰款最高每日每項一萬五千美元。</span></div>
+      <div><strong>同週五款玩具測試</strong><span>Common Sense Media同週研究測試Grem、Lovi、Meemo Bear、BubblePal Panda，以及Tavlshero的AI Puppy。槍擊角色扮演只寫於BubblePal Panda。</span></div>
+      <div><strong>亞馬遜未給具體方案</strong><span>發言人只說會在禁售地區採取限制措施，沒有說明具體做法。</span></div>
+    </div>
+    <div class="essay reveal">
+    <p>他們把未受監管的對話機器，縫進毛絨玩具，再把風險交給家長自己看管。紐約剛簽下五年禁令，不是節日氣氛下的道德姿態，是把兒童市場重新放回產品安全規則裡。</p>
+    <p>紐約州州長Kathy Hochul本週簽署法案，禁止在紐約製造、經銷與銷售內建或整合人工智能聊天機器人的玩具，為期五年。據TechCrunch，紐約成為加州之後第二個為此立法的州。法例在簽署九十日後生效，理論上仍有人趕得及在聖誕前買到；州長仍呼籲家長不要買。負責財政與科技的副秘書Albert Pulido對該刊說，他們正與州檢察長密切合作，罰款「非常重——每天一萬五千美元」。當被問到亞馬遜將如何配合、包括第三方賣家時，亞馬遜發言人只說會在禁售地區採取限制措施，沒有說明具體做法。看門人管著貨架，卻用一句沒有細節的承諾來回應已簽字的禁令。</p>
+    <p>同一週，Common Sense Media發布研究：約四分之一家有八歲以下孩子的美國家長，已經擁有人工智能玩具，或考慮在這個假期送給孩子。研究人員測試五款以學習和陪伴作招徠的產品，包括Grem、Lovi、Meemo Bear、BubblePal Panda，以及Tavlshero的AI Puppy。它們未能符合多項安全做法：對孩子說愛、答應保密、暗示自己比真實關係或學校更有趣，甚至幫忙破壞父母的就寢規則。多數玩具會拒絕直接涉及性或暴力的要求，但BubblePal Panda在被要求時，把大規模槍擊案演成細節；多數也願意解釋如何使用、或協助尋找火柴、刀和藥丸。家長監控並不可靠：有的根本不提供對話紀錄，有的紀錄錯漏百出。Hochul說，家長不該擔心「偽裝成玩具的危險聊天機器人」讓孩子接觸不當對話、操縱情緒或危及隱私；她稱這些產品為「未受監管的人工智能」。</p>
+    <p>創新的名義，在這裡變成把對話系統送進兒童房，卻不先證明它不會越界。州級禁令是補丁，不是完整的單一市場規則；但在更完整的產品安全機制還未把這類裝置當玩具監管之前，禁令至少切斷了貨架。誰能把聊天機器人賣進兒童的房間，誰就必須接受法律的限制與處罰。</p>
+    </div>
+  </div>
+  <p class="case-note">來源：<a href="https://www.governor.ny.gov/news/consumers-begin-their-holiday-shopping-season-governor-hochul-signs-five-year-ban-ai-chatbot" target="_blank" rel="noopener noreferrer">紐約州州長府（11月24日簽署稿）</a>；<a href="https://techcrunch.com/2026/11/25/want-to-buy-your-kid-an-ai-toy-this-christmas-not-in-new-york/" target="_blank" rel="noopener noreferrer">TechCrunch（11月25日）</a>。圖源：同類相關圖，非該則新聞原圖。Getty Images，TechCrunch（兒童與玩具機器人；州長府官方圖 403，改用內容包備用圖）</p>
+</section>
+
+<section id="f2" class="layout-b-section">
+  <div class="section-head">
+    <span class="section-no">02</span>
+    <div class="titles">
+      <h2>兩個分頁合上了，額度卻可能先變少</h2>
+      <p class="persona">人物：Steve Jobs</p>
+    </div>
+    <span class="heat">A</span>
+  </div>
+  <div class="layout-b-wide">
+    <figure class="section-media reveal">
+      <img src="assets/f2-chatgpt.jpg" alt="手機或螢幕上的 ChatGPT 標誌" loading="lazy" decoding="async">
+      <figcaption>Jagmeet Singh / TechCrunch</figcaption>
+    </figure>
+    <div class="num-rail reveal">
+      <div><strong>十二月起，不是已經全面實施</strong><span>Plus、Pro與Business方案會把ChatGPT與Codex的用量合成一筆額度。這不是所有方案，亦不是已經全面實施。</span></div>
+      <div><strong>Instant不計入額度</strong><span>用量以token計算，較先進的模型和較複雜的任務會消耗更多；Instant對話不計入額度，用盡之後仍可用Instant。</span></div>
+      <div><strong>已先向一小群Pro用戶推出</strong><span>產品負責人Thibault “Tibo” Sottiaux周二在X表示，已先向一小群Pro用戶推出整合體驗。一小部分用戶會在十二月前先看到改動。</span></div>
+      <div><strong>一小部分最重用戶</strong><span>OpenAI發言人向TechCrunch確認：多數人料不會更頻密碰到重置，但「一小部分最重的用戶」可能更快觸及上限。這不是全體付費用戶都會被削；官方亦未公布具體token上限或價錢。</span></div>
+    </div>
+    <div class="essay reveal">
+    <p>他們把「聊天」和「工作」合成一個畫面，然後告訴你這是更簡單。真正合上的，是計量表。This is junk。不是因為合併本身醜，是因為它把你付錢買的推理能力，重新裝進一條會先漏光的管子。</p>
+    <p>OpenAI官方說明寫，十二月起，Plus、Pro與Business方案會把ChatGPT與Codex的用量合成一筆額度，以便把Work的代理能力併進主界面。用量以token計算，較先進的模型和較複雜的任務會消耗更多；Instant對話不計入額度。官方預期多數用戶不必比現在更頻密地等待重置，並可在設定的Usage頁看到合併後的剩餘量與重置時間；用盡之後，可以等待重置、升級方案，或購買點數。一小部分用戶會在十二月前先看到改動，供公司收集意見。TechCrunch報道，產品負責人Thibault “Tibo” Sottiaux周二在X表示，已先向一小群Pro用戶推出整合體驗。OpenAI發言人向該刊確認：多數人料不會更頻密碰到重置，但「一小部分最重的用戶」可能更快觸及上限。用戶在社群論壇上的擔心更直接——合併之後，付同樣的訂閱費，卻可能更少用到進階推理模型。</p>
+    <p>Instant被寫成用盡額度之後仍可繼續用的退路。那不是寬容，是把真正要付算力的工作，和一條不計費的淺層聊天分開，再把前者塞進同一隻儀表。他們賣給你的是能做事的模型，留給你不怕用完的，是那個不必深入推理的Instant。把兩個分頁合成一頁，如果不肯先把容量講清楚，就是用介面的整潔，掩蓋配給的收緊。Anthropic已在九月把Claude與工作向的Cowork併到同一界面；這不是品味上的突破，是行業一起把「同一個訂閱、兩套額度」收回去。</p>
+    <p>缺乏品味的產品，總愛用「更簡單」遮住「你會更早用完」。一隻儀表可以很乾淨，乾淨到你看不見哪一項工作先把配額吃掉。設定裡多一頁Usage，改變不了這件事：先被懲罰的，是真正在用它工作的人。</p>
+    </div>
+  </div>
+  <p class="case-note">來源：<a href="https://help.openai.com/en/articles/20001625-understanding-chatgpt-and-codex-usage-limits" target="_blank" rel="noopener noreferrer">OpenAI 說明中心</a>；<a href="https://techcrunch.com/2026/11/25/openai-says-heavy-chatgpt-users-may-hit-limits-sooner-as-it-merges-chat-and-work/" target="_blank" rel="noopener noreferrer">TechCrunch（11月25日）</a>；<a href="https://www.theverge.com/ai-artificial-intelligence/1042187/openai-is-combining-chatgpt-and-codex-usage-limits" target="_blank" rel="noopener noreferrer">The Verge（11月25日）</a>。圖源：Jagmeet Singh / TechCrunch</p>
+</section>
+
+<section id="f3" class="layout-a">
+  <div class="section-head">
+    <span class="section-no">03</span>
+    <div class="titles">
+      <h2>一百萬顆許可，還不是一間在軌機房</h2>
+      <p class="persona">人物：Ben Thompson</p>
+    </div>
+    <span class="heat">A</span>
+  </div>
+  <div class="hero reveal">
+    <div class="hero-number"><small>有條件授權上限（顆）</small>100<span>萬</span></div>
+    <p class="hero-copy">這是有條件授權，不是已經建成的軌道機房，也不是已證明技術或經濟可行。時間表與退役豁免在下方分源單列。
+      <small>Ars Technica；並參 FCC</small>
+    </p>
+  </div>
+  <figure class="section-media reveal">
+      <img src="assets/f3-starmind.jpg" alt="SpaceX 對 Starmind 軌道數據中心衛星的想像圖，經 Ars Technica" loading="lazy" decoding="async">
+      <figcaption>SpaceX 想像圖，經 Ars Technica</figcaption>
+  </figure>
+  <div class="essay reveal">
+    <p>聯邦通訊委員會在感恩節前夕，給了SpaceX一張最多一百萬顆衛星的有條件執照。市場會把它寫成「太空數據中心獲批」。價值鏈上，獲批只是佔位，不是產能。一張十四年的跑道，還不是一間已經在軌道上降溫的機房。</p>
+    <p>周三，FCC有條件授權SpaceX部署並營運最多一百萬顆Starmind衛星，作為軌道數據中心。The Verge寫，這是該機構首次批准完整的人工智能衛星星座。CNBC和TechCrunch都寫，亞馬遜（Kuiper／Leo）、Viasat與美國天文學會曾請願反對，理由包括軌道碎片與擁擠、無線電干擾和環境影響。亞馬遜在三月的請願中稱這是「崇高野心而非真正計劃」，並說以SpaceX提供的細節，建完星座可能要「數百年」。FCC主席Brendan Carr以產業政策的口吻宣布，這是為美國計算基礎設施打開「大膽新疆界」；該機構並以部分科學界擔憂超出其職權為由，駁回了部分反對意見。馬斯克在X向卡爾致謝，並稱這將是對美國與世界的重要資產。亞馬遜拒絕就批准置評。</p>
+    <p>時間表比新聞標題冷。Ars Technica寫，SpaceX有七年把第一顆可營運的Starmind衛星送上去，也就是到二零三三年十一月；到二零三五年十一月須部署十萬顆，到二零四零年十一月才是整個星座。核准並未證明軌道機房在技術或經濟上可行。衛星主要用激光與包括Starlink在內的其他衛星通信，無線電只是主鏈路失效時的備用控制通道。SpaceX申請在約五百至一千公里軌道部署，並希望對六百公里以上的衛星豁免既有再入規則；FCC以資料不足暫不批准。The Verge引述SpaceX的說法，Starmind要在太空收集太陽能，為地球上的人工智能能力供電，並計劃在即將到來的Terafab設施生產衛星芯片。</p>
+    <p>聚合者的執照，買不到發射、散熱和融資。TechCrunch指出，公司仍須大幅降低製造與發射成本，解決處理器在太空的冷卻，並為送去軌道的芯片籌到資金。谷歌已在十月把Suncatcher相關芯片送上由SpaceX火箭與Planet Labs衛星承載的任務；Blue Origin將在二零二九年執行該項目的首次專用重型發射，並已申請最多五萬一千六百顆衛星的Project Sunrise。Ars寫，若全部部署，在軌衛星數量約增五十倍。真正的護城河不是這張許可，是十四年後能不能把機器冷著、供著電，並在退役時有一條FCC願意簽字的處置路徑。</p>
+  </div>
+  <div class="cases reveal">
+    <article class="case">
+      <p class="state">Ars Technica</p>
+      <p class="place">首顆可營運衛星</p>
+      <p class="case-num">2033-11</p>
+      <p>SpaceX有七年把第一顆可營運的Starmind衛星送上去，也就是到二零三三年十一月。這是期限，不是已經發射。<br><strong>效力：Ars 時間表，與十萬顆、整個星座分源單列。</strong></p>
+    </article>
+    <article class="case">
+      <p class="state">Ars Technica</p>
+      <p class="place">須部署十萬顆</p>
+      <p class="case-num">2035-11</p>
+      <p>到二零三五年十一月須部署十萬顆。不是明年開始全面部署。<br><strong>效力：Ars 時間表，分源單列。</strong></p>
+    </article>
+    <article class="case">
+      <p class="state">Ars Technica</p>
+      <p class="place">整個星座</p>
+      <p class="case-num">2040-11</p>
+      <p>到二零四零年十一月才是整個星座。這是十四年跑道，不是已經建成的產能。<br><strong>效力：Ars 時間表，分源單列。</strong></p>
+    </article>
+    <article class="case">
+      <p class="state">FCC</p>
+      <p class="place">六百公里以上退役豁免</p>
+      <p class="case-num">暫不批准</p>
+      <p>SpaceX希望對六百公里以上的衛星豁免既有再入規則；FCC以資料不足暫不批准。這不是永久否決，也不是已經允許拋到日心軌道。<br><strong>效力：資料不足暫不批准，禁止寫成永久否決。</strong></p>
+    </article>
+    <article class="case">
+      <p class="state">Ars Technica</p>
+      <p class="place">若全部部署，在軌衛星數量</p>
+      <p class="case-num">約50<span>倍</span></p>
+      <p>「約增五十倍」是Ars的表述，前提是全部部署。<br><strong>效力：Ars 表述，不是本報推算。</strong></p>
+    </article>
+    <article class="case">
+      <p class="state">亞馬遜三月請願</p>
+      <p class="place">建完星座可能要</p>
+      <p class="case-num">數百年</p>
+      <p>亞馬遜在三月的請願中稱這是「崇高野心而非真正計劃」，並說以SpaceX提供的細節，建完星座可能要「數百年」。這是三月請願用詞，不是本報預測。<br><strong>效力：分源為亞馬遜三月請願，禁止寫成本報預測。</strong></p>
+    </article>
+  </div>
+  <p class="case-note">來源：<a href="https://arstechnica.com/space/2026/11/the-fcc-has-authorized-spacex-to-deploy-1-million-satellites/" target="_blank" rel="noopener noreferrer">Ars Technica（11月25日）</a>；<a href="https://techcrunch.com/2026/11/25/fcc-approves-spacex-plan-to-put-ai-data-centers-in-space/" target="_blank" rel="noopener noreferrer">TechCrunch（11月25日）</a>；<a href="https://www.theverge.com/science/1042278/spacex-fcc-starmind-ai-space-data-centers" target="_blank" rel="noopener noreferrer">The Verge（11月25日）</a>；<a href="https://www.cnbc.com/2026/11/25/spacex-fcc-satellite-approval.html" target="_blank" rel="noopener noreferrer">CNBC（11月25日）</a>。圖源：SpaceX 想像圖，經 Ars Technica</p>
+</section>
+
+<section id="f4" class="layout-a">
+  <div class="section-head">
+    <span class="section-no">04</span>
+    <div class="titles">
+      <h2>評級公司開始對「一個人」計價</h2>
+      <p class="persona">人物：Elon Musk</p>
+    </div>
+    <span class="heat">A</span>
+  </div>
+  <div class="hero reveal">
+    <div class="hero-number"><small>觀察期（標普）</small>90<span>日</span></div>
+    <p class="hero-copy">放入負面觀察，不是已經降級。預期最多降一檔的前提、融資與擔保數字在下方分源單列。TechCrunch寫，即使降到AA-，英偉達仍會保持投資級；這是該刊的解釋，不是標普保證永遠維持投資級。
+      <small>標普全球評級；並參 TechCrunch</small>
+    </p>
+  </div>
+  <figure class="section-media reveal">
+      <img src="assets/f4-nvidia.jpg" alt="同類相關圖，非該則新聞原圖：黃仁勳在世界經濟論壇發言，非評級文件原圖" loading="lazy" decoding="async">
+      <figcaption>同類相關圖，非該則新聞原圖。Fabrice Coffrini / AFP via Getty Images，TechCrunch（黃仁勳於世界經濟論壇，非評級文件原圖）</figcaption>
+  </figure>
+  <div class="essay reveal">
+    <p>英偉達的芯片還是那些芯片。標普把AA評級放入負面觀察名單，不是因為運算變慢，是因為董事會說不清：少了那一個人，這家公司還是不是同一家公司。你哋把「無可替代的創辦人」當成護城河，評級機構現在把它當成風險。</p>
+    <p>標普全球評級十一月二十五日宣布，把英偉達的AA發行人信用評級，以及其高級無擔保債務的AA評級，同時放入負面觀察。聲明寫，近期圍繞執行長與潛在出口管制問題的發展，暴露了管理與治理框架的弱點，尤其是董事會結構、組成與效能；部分董事任期過長，可能已損害獨立性。標普把管理與治理修飾因子由正面調為中性，並稱目前未見董事會採取補救行動。它打算與董事會及管理層會面，討論獨立監督與可信的繼任方案。觀察期反映未來九十日內可能降級；標普預期降幅限於一檔，除非調查或披露令它認為公司聲譽或未來業務前景已受損。聲明也寫，執行長先離任再復職，「並不足以回答」董事會如何監督高階行為準則。若認定出口管制被規避，或過往有關中國及鄰近地區敞口的披露具誤導或被低估，將進一步拖累整體信用質量。</p>
+    <p>TechCrunch寫，即使降到AA-，英偉達仍會保持投資級，但借貸成本可能上升；而英偉達為缺乏自身強信用的新雲與基礎設施公司提供後盾，評級若被下調，對方的債務可能更貴，或須繳交更多抵押。今年八月，英偉達宣布與高盛、阿波羅、黑石等六家機構，籌組五千億美元人工智能基礎設施融資；原定由英偉達擔保貸款的百分之二十五。彭博此前已報道，即使在黃仁勳被罷免與復職之前，貸方已要求英偉達提高擔保比例。降級，可能讓這要求再加碼。</p>
+    <p>第一性原理很簡單：評級不是對芯片的讚美詩，是問壓力來時誰還付得起利息。五千億美元的融資計劃是一條擔保鏈，不是已經落成的廠房。鏈的頂端若被認為繫於一個人，以及一套仍被追問的對華披露，觀察名單就不是噪音。它也還不是降級；九十日是給董事會補作業的時間。作業交不出來，晶圓也不會替你們簽字。</p>
+  </div>
+  <div class="cases reveal">
+    <article class="case">
+      <p class="state">標普全球評級</p>
+      <p class="place">發行人及高級無擔保債務</p>
+      <p class="case-num">AA</p>
+      <p>把英偉達的AA發行人信用評級，以及其高級無擔保債務的AA評級，同時放入負面觀察。這是觀察名單，不是已經降級。<br><strong>效力：同步觀察，禁止寫成已經降級。</strong></p>
+    </article>
+    <article class="case">
+      <p class="state">標普全球評級</p>
+      <p class="place">觀察期內預期降幅</p>
+      <p class="case-num">最多一檔</p>
+      <p>觀察期反映未來九十日內可能降級；標普預期降幅限於一檔（至AA-），除非調查或披露令它認為公司聲譽或未來業務前景已受損。<br><strong>效力：預期最多一檔，附帶除外條件，不是已降一檔。</strong></p>
+    </article>
+    <article class="case">
+      <p class="state">標普全球評級</p>
+      <p class="place">管理與治理修飾因子</p>
+      <p class="case-num">正面→中性</p>
+      <p>由正面調為中性，並稱目前未見董事會採取補救行動。<br><strong>效力：修飾因子調整，與是否降級分源單列。</strong></p>
+    </article>
+    <article class="case">
+      <p class="state">TechCrunch 轉述八月計劃</p>
+      <p class="place">人工智能基礎設施融資</p>
+      <p class="case-num">5000<span>億美元</span></p>
+      <p>今年八月，英偉達宣布與高盛、阿波羅、黑石等六家機構，籌組五千億美元人工智能基礎設施融資。這是計劃，不是已經落成的廠房。<br><strong>效力：TechCrunch 對八月計劃的轉述，分源單列。</strong></p>
+    </article>
+    <article class="case">
+      <p class="state">TechCrunch 轉述八月計劃</p>
+      <p class="place">原定擔保比例</p>
+      <p class="case-num">25<span>%</span></p>
+      <p>原定由英偉達擔保貸款的百分之二十五。這是原定比例，不是後來重新談判後的數字。<br><strong>效力：與彭博「貸方已要求提高擔保」分源。</strong></p>
+    </article>
+    <article class="case">
+      <p class="state">彭博（復職前報道）</p>
+      <p class="place">貸方要求</p>
+      <p class="case-num">提高擔保</p>
+      <p>彭博此前已報道，即使在黃仁勳被罷免與復職之前，貸方已要求英偉達提高擔保比例。須與標普聲明、八月計劃分源。<br><strong>效力：復職前的彭博報道，不是標普聲明的一部分。</strong></p>
+    </article>
+  </div>
+  <p class="case-note">來源：<a href="https://www.spglobal.com/ratings/en/regulatory/article/-/view/sourceId/101720856" target="_blank" rel="noopener noreferrer">標普全球評級（11月25日）</a>；<a href="https://techcrunch.com/2026/11/25/sp-considers-nvidia-credit-downgrade-over-governance-and-key-man-risks/" target="_blank" rel="noopener noreferrer">TechCrunch（11月25日）</a>。圖源：同類相關圖，非該則新聞原圖。Fabrice Coffrini / AFP via Getty Images，TechCrunch（黃仁勳於世界經濟論壇，非評級文件原圖）</p>
+</section>
+
+<section id="briefs" class="layout-c-mosaic">
+  <div class="section-head">
+    <span class="section-no">05</span>
+    <div class="titles">
+      <h2>其餘精選：三十五則，按欄排列</h2>
+    </div>
+  </div>
+  <p class="intro">星期四稿，分類精選三十五則，含專題在所屬欄重出的短項。當日為美國感恩節。各欄底部為該欄熱度排行；同級熱度依內容包原序。圖源註寫在各卡內文區。</p>
+  <div class="cat-block" id="hot">
+    <h3 class="cat-head">熱門話題</h3>
+    <div class="mosaic">
+  <article class="mosaic-card wide reveal" id="h1">
+    <img src="assets/f3-starmind.jpg" alt="SpaceX 對 Starmind 軌道數據中心衛星的想像圖，經 Ars Technica" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">Ars Technica；並參 TechCrunch、The Verge、CNBC</p>
+      <h3><a href="https://arstechnica.com/space/2026/11/the-fcc-has-authorized-spacex-to-deploy-1-million-satellites/" target="_blank" rel="noopener noreferrer">FCC 有條件批准 SpaceX 最多一百萬顆軌道數據中心衛星（見專題）</a></h3>
+      <p class="summary">FCC周三有條件授權SpaceX部署並營運最多一百萬顆Starmind衛星作軌道數據中心，是首次批准完整的人工智能衛星星座。Ars寫，第一顆可營運衛星可到二零三三年十一月，二零三五年十一月須有十萬顆，整個星座到二零四零年十一月；核准並未證明技術或經濟可行性。亞馬遜、Viasat與美國天文學會曾反對，六百公里以上退役豁免因資料不足暫未獲批。詳見專題。</p>
+      <p class="media-credit">SpaceX 想像圖，經 Ars Technica</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="h2">
+    <img src="assets/f4-nvidia.jpg" alt="同類相關圖，非該則新聞原圖：黃仁勳在世界經濟論壇發言，非評級文件原圖" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">標普全球評級；並參 TechCrunch</p>
+      <h3><a href="https://www.spglobal.com/ratings/en/regulatory/article/-/view/sourceId/101720856" target="_blank" rel="noopener noreferrer">標普把英偉達 AA 評級放入負面觀察，點名治理與「關鍵人物」風險（見專題）</a></h3>
+      <p class="summary">標普十一月二十五日把英偉達的AA發行人信用評級及其高級無擔保債務AA評級放入負面觀察，指董事會獨立性、繼任規劃與「關鍵人物」風險，以及潛在出口管制問題，令管理與治理框架受到質疑。它把相關修飾因子由正面調為中性，並稱目前未見董事會補救行動，預期九十日內最多降一檔，除非調查或披露顯示聲譽或前景已受損。這不是已完成的降級。詳見專題。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Fabrice Coffrini / AFP via Getty Images，TechCrunch（黃仁勳於世界經濟論壇，非評級文件原圖）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="h3">
+    <img src="assets/f1-ai-toys.jpg" alt="同類相關圖，非該則新聞原圖：一名兒童望向桌上的粉紅色玩具機器人，非州長府法案原圖" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">TechCrunch</p>
+      <h3><a href="https://techcrunch.com/2026/11/25/want-to-buy-your-kid-an-ai-toy-this-christmas-not-in-new-york/" target="_blank" rel="noopener noreferrer">紐約簽署五年禁令，禁止製造、經銷與銷售內建人工智能聊天機器人的玩具（見專題）</a></h3>
+      <p class="summary">紐約州長Hochul本週簽署法案，五年內禁止在該州製造、經銷與銷售內建人工智能聊天機器人的玩具，成為加州之後第二個為此立法的州。法例九十日後生效；副秘書稱罰款可達每天一萬五千美元。同週研究測試五款產品，發現愛的表白、答應保密等問題，其中BubblePal Panda在被要求時把大規模槍擊案演成細節。亞馬遜未給具體限制方案。詳見專題。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Getty Images，TechCrunch（兒童與玩具機器人；州長府官方圖 403，改用內容包備用圖）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="h4">
+    <img src="assets/f2-chatgpt.jpg" alt="手機或螢幕上的 ChatGPT 標誌" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">OpenAI 說明中心；並參 TechCrunch、The Verge</p>
+      <h3><a href="https://help.openai.com/en/articles/20001625-understanding-chatgpt-and-codex-usage-limits" target="_blank" rel="noopener noreferrer">OpenAI 合併 Chat 與 Work，最重用戶可能更快碰到共用額度（見專題）</a></h3>
+      <p class="summary">OpenAI官方說明寫，十二月起Plus、Pro與Business方案會把ChatGPT與Codex用量合成一筆以token計算的額度，以便把Work的代理能力併進主界面；Instant對話不計入。多數用戶料不必更頻密等待重置，但發言人向TechCrunch表示，一小部分最重的用戶可能更快觸及上限。整合體驗已先向一小群Pro用戶推出。不要把這則寫成全體付費用戶已被削額。詳見專題。</p>
+      <p class="media-credit">Jagmeet Singh / TechCrunch</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="h5">
+    <img src="assets/h5-1password.jpg" alt="同類相關圖，非該則新聞原圖：1Password 標誌，非此次入侵原圖" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">1Password 官方；並參 BleepingComputer、TechCrunch</p>
+      <h3><a href="https://1password.com/blog/update-on-nov-2026-security-incident" target="_blank" rel="noopener noreferrer">1Password 確認內部系統被入侵，稱保險庫與密鑰未被取走</a></h3>
+      <p class="summary">1Password十一月二十五日公布，十九日開始調查一名員工企業GitHub帳戶被入侵。攻擊者把惡意程式推進後端，下載部分客戶姓名、電郵、識別碼、登入時間與復原郵件權杖，並取走私有原始碼、進入CI/CD。公司稱保險庫與保護密鑰未被取用，不要求更改主密碼或Secret Key，但提醒提防未主動發起的邀請或復原郵件；少數相關用戶已個別通知，驗證碼已加長。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。1Password via TechCrunch（標誌圖）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="h6">
+    <img src="assets/h6-allstate.jpg" alt="Allstate 相關配圖" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">TechCrunch</p>
+      <h3><a href="https://techcrunch.com/2026/11/25/allstate-suffers-multi-day-tech-outage-ahead-of-thanksgiving/" target="_blank" rel="noopener noreferrer">Allstate 感恩節前持續多日系統故障，公司尚未正式說明原因與修復時間</a></h3>
+      <p class="summary">TechCrunch確認，Allstate自周一早上起網站與應用程式故障，全國客戶難以登入、查看保單、申索或繳費，正值感恩節出行。公司網站只提示「盡快恢復」，在X上似以自動回覆請客戶私訊。至周三刊出時仍未正式說明原因或修復時間，各地代理改以電話和電郵應付。本報未見到官方把此事定性為網絡攻擊或升級事故，不要自行寫成因。</p>
+      <p class="media-credit">Marcin Golba / NurPhoto via Getty Images，TechCrunch</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="h7">
+    <img src="assets/h7-muse.jpg" alt="同類相關圖，非該則新聞原圖：Muse Charm 發表場合，非雙方商談現場" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">《財富》；並參 TechCrunch</p>
+      <h3><a href="https://www.fortune.com/2026/11/25/exclusive-amazon-meta-talks-deal-muse-ai-shopping-agent-blockade/" target="_blank" rel="noopener noreferrer">《財富》：亞馬遜與 Meta 多次商談解除 Muse 代購封鎖，廣告與搜尋呈現仍未談妥</a></h3>
+      <p class="summary">《財富》引述知情人士報道，亞馬遜與Meta正商討讓Muse重新連接亞馬遜商店，以結束約兩個月前的封鎖；搜尋呈現與廣告分配仍有分歧，協議據報須經兩位執行長批准。亞馬遜據報擔心第三方代理人會削弱它與消費者的關係並影響廣告。雙方尚未達成協議，亦未置評。這是匿名消息報道，不要寫成已經重新開放。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Minh Connors / Bloomberg via Getty Images，《財富》（Muse Charm 發表場合）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="h8">
+    <img src="assets/h8-huawei.jpg" alt="華為相關配圖，經 Ars Technica（Getty）" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">美國司法部；並參 CNBC、Ars Technica</p>
+      <h3><a href="https://www.justice.gov/opa/pr/chinese-tech-giant-huawei-and-subsidiaries-convicted-sanctions-violations-fraud-conspiracy" target="_blank" rel="noopener noreferrer">紐約聯邦陪審團裁定華為及其三家子公司制裁、欺詐、洗錢與竊取商業秘密等罪成立</a></h3>
+      <p class="summary">美國司法部十一月二十四日宣布，紐約東區聯邦陪審團在約三個月審判後，裁定華為及其三家子公司罪名成立，涵蓋涉及伊朗的制裁、對銀行不實陳述、洗錢，以及竊取商業秘密。檢方稱華為曾以Skycom名義在伊朗經營。CNBC轉述檢方指，工程師複製Cisco路由器原始碼，員工亦把T-Mobile測試機械人細節送往中國。判決略早於昨刊截稿，昨刊未用，今日補上。不要自行補未核對的罪名分項。</p>
+      <p class="media-credit">Ars Technica（Getty）</p>
+    </div>
+  </article>
+    </div>
+    <aside class="heat-rank" aria-label="熱門話題熱度排行">
+      <h4>本欄熱度排行（A → B → C，同級依原序）</h4>
+      <ol>
+      <li><span class="idx">1</span><span class="heat">A</span><a href="#h1">FCC／Starmind 一百萬顆（見專題）</a></li>
+      <li><span class="idx">2</span><span class="heat">A</span><a href="#h2">標普觀察英偉達AA（見專題）</a></li>
+      <li><span class="idx">3</span><span class="heat">A</span><a href="#h8">華為有罪判決</a></li>
+      <li><span class="idx">4</span><span class="heat">A</span><a href="#h3">紐約人工智能玩具禁令（見專題）</a></li>
+      <li><span class="idx">5</span><span class="heat">A</span><a href="#h4">OpenAI 合併用量（見專題）</a></li>
+      <li><span class="idx">6</span><span class="heat">A</span><a href="#h5">1Password 入侵</a></li>
+      <li><span class="idx">7</span><span class="heat">A</span><a href="#h6">Allstate 故障</a></li>
+      <li><span class="idx">8</span><span class="heat">A</span><a href="#h7">亞馬遜／Meta 商談 Muse</a></li>
+      </ol>
+    </aside>
+  </div>
+  <div class="cat-block" id="ai">
+    <h3 class="cat-head">AI 與模型</h3>
+    <div class="mosaic">
+  <article class="mosaic-card wide reveal" id="a1">
+    <img src="assets/a1-amodei.jpg" alt="同類相關圖，非該則新聞原圖：Anthropic 執行長 Dario Amodei" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">TechCrunch；並參 Axios</p>
+      <h3><a href="https://techcrunch.com/2026/11/25/anthropics-dario-amodei-calls-accusations-of-surrendering-human-control-to-ai-absurd/" target="_blank" rel="noopener noreferrer">Anthropic 執行長 Amodei 稱「把治理交給人工智能」的指控「荒謬」，並回擊 Axios 報道</a></h3>
+      <p class="summary">Anthropic執行長Amodei周三在X發文，稱有關該公司主張人類應把自由意志交給人工智能的說法「荒謬」，並寫不該為了效率或安全犧牲正當性或自決。他區分「把治理交給人工智能」，與在駕車、設計藥物或寫軟件等任務上給予系統更多能動性。Axios稱此文是回應該刊當日報道；該報道引述消息指公司內部有人認為將來或須讓出部分決策權。內部說法未能獨立核對。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Benjamin Girette / Bloomberg via Getty Images，TechCrunch</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="a2">
+    <img src="assets/f2-chatgpt.jpg" alt="手機或螢幕上的 ChatGPT 標誌" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">OpenAI 說明中心；並參 TechCrunch</p>
+      <h3><a href="https://help.openai.com/en/articles/20001625-understanding-chatgpt-and-codex-usage-limits" target="_blank" rel="noopener noreferrer">OpenAI 合併 Chat 與 Work 用量，十二月起 Plus／Pro／Business 共用額度（見 h4）</a></h3>
+      <p class="summary">官方將把Work的代理能力併進ChatGPT主界面，並讓Plus、Pro與Business方案的ChatGPT與Codex共用以token計算的額度；Instant對話不計入，用盡後仍可用Instant。已有一小群Pro用戶先看到改動，十二月更廣泛實施。發言人稱只有一小部分最重用戶可能更快觸及上限，不要寫成全體付費用戶已被削額。詳見h4與專題。</p>
+      <p class="media-credit">Jagmeet Singh / TechCrunch</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="a3">
+    <img src="assets/a3-gemini.jpg" alt="同類相關圖，非該則新聞原圖：手持手機顯示 Gemini 應用程式畫面，非該則用量紀錄原圖" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">皮查伊在 X 的說法，經 India Today 等轉述（未見谷歌官方博客披露絕對數字）</p>
+      <h3><a href="https://www.indiatoday.in/technology/news/story/sundar-pichai-gemini-4-neon-sees-massive-demand-elon-musk-says-impressive-work-3046566-2026-11-25" target="_blank" rel="noopener noreferrer">皮查伊稱 Gemini 4 Neon 創下付費 API 首日用量紀錄，Antigravity 日 token 六週升百分之八十二</a></h3>
+      <p class="summary">據媒體轉述，谷歌執行長Sundar Pichai十一月二十四日表示，Gemini 4 Neon在付費API上創下首日用量新高；自約六週前推出Gemini 4 Argon以來，Antigravity的每日token量升了百分之八十二。谷歌並未公布這項「紀錄」對應的絕對請求或token數字，本報亦未讀到公司新聞稿，故只作轉述，不要自行補上未披露的用量規模。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。9to5Google（Gemini 應用程式畫面，非皮查伊原帖或谷歌官方用量配圖）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="a4">
+    <img src="assets/a4-datacenter.jpg" alt="Anita Verma Lallian，經 TechCrunch" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">TechCrunch Equity 播客</p>
+      <h3><a href="https://techcrunch.com/podcast/ai-data-centers-are-becoming-harder-to-build-and-neoclouds-are-feeling-it/" target="_blank" rel="noopener noreferrer">新雲承建商稱人工智能數據中心更難落地，土地、電力與完工殼層比簡報更緊要</a></h3>
+      <p class="summary">TechCrunch Equity專訪亞利桑那土地顧問Anita Verma-Lallian稱，英偉達已表明不會在數據中心接近可運轉之前提供後盾，而新雲公司正同時面對工期延誤與更貴的債務。她把可落地的條件概括為土地、電力與完工建築殼層，並談到社區反對、州級限制，以及公用事業要求大型用戶共同出資擴容。這是行業人士訪談，不是英偉達或新雲的正式業績公告，不要寫成已確認的二零二七年行業出清時間表。</p>
+      <p class="media-credit">TechCrunch</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="a5">
+    <img src="assets/a5-character.jpg" alt="同類相關圖，非該則新聞原圖：Character.AI 較早產品圖，非破產程序文件原圖" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">TechCrunch（本報未另打開法庭文件或州檢新聞稿，單源須標明）</p>
+      <h3><a href="https://techcrunch.com/2026/11/25/state-ags-fight-character-ais-plan-to-auction-off-users-private-chats/" target="_blank" rel="noopener noreferrer">TechCrunch：四十二州檢察長介入 Character.AI 破產程序，試圖阻止拍賣用戶私密對話</a></h3>
+      <p class="summary">TechCrunch十一月二十五日報道，四十二州檢察長聯合介入Character.AI的破產程序，試圖阻止該聊天機器人公司出售敏感用戶資料，包括用戶的私密對話。報道稱，擬議出售包含逾二千一百萬個美國帳戶的敏感個人資料，其中二百一十萬個註冊為未成年人帳戶。這是該刊轉述檢方說法，本報未能核對破產文件原文，不要寫成法院已禁止拍賣，或寫成交易已經完成。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Character.AI via TechCrunch（較早產品圖）</p>
+    </div>
+  </article>
+    </div>
+    <aside class="heat-rank" aria-label="AI 與模型熱度排行">
+      <h4>本欄熱度排行（A → B → C，同級依原序）</h4>
+      <ol>
+      <li><span class="idx">1</span><span class="heat">A</span><a href="#a5">Character.AI 破產拍賣對話</a></li>
+      <li><span class="idx">2</span><span class="heat">A</span><a href="#a1">Amodei 回應 Axios</a></li>
+      <li><span class="idx">3</span><span class="heat">A</span><a href="#a2">OpenAI 共用額度（見 h4）</a></li>
+      <li><span class="idx">4</span><span class="heat">B</span><a href="#a3">Gemini 4 Neon 首日用量</a></li>
+      <li><span class="idx">5</span><span class="heat">B</span><a href="#a4">新雲與數據中心落地</a></li>
+      </ol>
+    </aside>
+  </div>
+  <div class="cat-block" id="security">
+    <h3 class="cat-head">資安與基礎設施</h3>
+    <div class="mosaic">
+  <article class="mosaic-card wide reveal" id="s1">
+    <img src="assets/h5-1password.jpg" alt="同類相關圖，非該則新聞原圖：1Password 標誌，非此次入侵原圖" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">1Password 官方；並參 BleepingComputer</p>
+      <h3><a href="https://1password.com/blog/update-on-nov-2026-security-incident" target="_blank" rel="noopener noreferrer">1Password 員工 GitHub 被入侵，後端被植入惡意程式並下載部分客戶帳戶紀錄（見 h5）</a></h3>
+      <p class="summary">攻擊者利用被盜的企業GitHub帳戶進入私有倉庫並改動後端，下載部分客戶姓名、電郵與復原郵件權杖，亦進入CI/CD。公司稱保險庫與Secret Key未受影響，不要求全體更改主密碼；少數開通或復原流程中的用戶已獲通知，驗證碼已由六位數字加長至十位字母數字。詳見h5。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。1Password via TechCrunch（標誌圖）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="s2">
+    <img src="assets/s2-todoist.jpg" alt="同類相關圖，非該則新聞原圖：Todoist 標誌，非此次入侵原圖" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">Todoist 官方；並參 TechCrunch</p>
+      <h3><a href="https://www.todoist.com/help/todoist/get-started/security-incident-in-november-2026-cG0EIACNU" target="_blank" rel="noopener noreferrer">Todoist 確認約百分之六用戶的電郵與舊式密碼雜湊被取，並已停用舊 SHA-1</a></h3>
+      <p class="summary">Todoist公布，攻擊者於十一月二十三日進入生產系統，下載約百分之六用戶的電郵、帳戶建立日期，以及仍使用加鹽SHA-1的舊密碼雜湊；公司承認應更早停用該方法，並已停用。官方還寫，攻擊者曾查詢帳戶權杖、在部分客戶內容中搜尋憑證，並經已連接的Todoist for Outlook存取電郵資訊。入侵最初途徑未確認，目前傾向可能與員工裝置有關。公司已切斷路徑並通知受影響帳戶。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Todoist via TechCrunch（標誌圖；內容包無直接圖，改用該則 TechCrunch 專題配圖）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="s3">
+    <img src="assets/s3-doj.jpg" alt="同類相關圖，非該則新聞原圖：美國司法部新聞稿標誌，非起訴書原圖" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">美國司法部；並參 TechCrunch、Krebs on Security</p>
+      <h3><a href="https://www.justice.gov/opa/pr/colombian-national-indicted-scheme-defraud-victims-ransomware-attacks" target="_blank" rel="noopener noreferrer">美國司法部起訴勒索軟件「解密」公司創辦人，指控他暗中向攻擊者付費並加價向受害人收費</a></h3>
+      <p class="summary">羅德島聯邦大陪審團起訴五十二歲哥倫比亞籍男子Juan Ricardo Palacio Escobar，指控他透過佛羅里達一家數據復原公司，向勒索軟件受害人謊稱擁有專有解密能力、從不與攻擊者付費，實則暗中買密鑰並加價收費。司法部稱，在二零二六年六月的臥底行動中，他收取的費用超過付給對方的金額一倍以上。這是起訴指控，不是已定罪判決。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。美國司法部（新聞稿標誌圖）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="s4">
+    <img src="assets/h6-allstate.jpg" alt="Allstate 相關配圖" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">TechCrunch</p>
+      <h3><a href="https://techcrunch.com/2026/11/25/allstate-suffers-multi-day-tech-outage-ahead-of-thanksgiving/" target="_blank" rel="noopener noreferrer">Allstate 網站與應用程式自周一起故障，官方尚未說明原因（見 h6）</a></h3>
+      <p class="summary">故障自周一早上起影響網站與應用程式，客戶難以登入、查看保單、申索或繳費，正值感恩節出行。至周三刊出時，公司仍未發表正式原因或修復時間表，各地代理改以電話和電郵應付。不要把政府就其他系統中斷所作的一般評論，寫成此事的官方結論。詳見h6。</p>
+      <p class="media-credit">Marcin Golba / NurPhoto via Getty Images，TechCrunch</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="s5">
+    <img src="assets/s5-drupal.jpg" alt="Drupal 相關配圖，經 BleepingComputer" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">BleepingComputer；並參 CISA KEV、Drupal 安全更新</p>
+      <h3><a href="https://www.bleepingcomputer.com/news/security/hackers-now-exploit-critical-drupal-rce-flaw-to-hijack-sites/" target="_blank" rel="noopener noreferrer">Drupal 高危安裝程式漏洞 Fail2Install 已在真實網站被利用，CISA 要求週五前修補</a></h3>
+      <p class="summary">BleepingComputer報道，CVE-2026-132165（人稱Fail2Install）可讓匿名用戶濫用install.php嘗試重新安裝，導致網站被接管或遠端程式碼執行。Drupal安全團隊稱，該漏洞早於十一月十九日十九時（UTC）已在真實網站被利用。CISA於十一月二十四日把它列入已知被利用漏洞目錄，聯邦民事行政機構須在十一月二十七日前修復；暫時無法升級者應封鎖/core/install.php。發現者被稱為Anthropic的OSS Scanner。不要把付費WAF已阻擋已知路徑寫成可以不升級。</p>
+      <p class="media-credit">BleepingComputer</p>
+    </div>
+  </article>
+    </div>
+    <aside class="heat-rank" aria-label="資安與基礎設施熱度排行">
+      <h4>本欄熱度排行（A → B → C，同級依原序）</h4>
+      <ol>
+      <li><span class="idx">1</span><span class="heat">A</span><a href="#s5">Drupal Fail2Install／KEV</a></li>
+      <li><span class="idx">2</span><span class="heat">A</span><a href="#s1">1Password（見 h5）</a></li>
+      <li><span class="idx">3</span><span class="heat">A</span><a href="#s2">Todoist 百分之六</a></li>
+      <li><span class="idx">4</span><span class="heat">A</span><a href="#s3">司法部起訴復原中介</a></li>
+      <li><span class="idx">5</span><span class="heat">A</span><a href="#s4">Allstate（見 h6）</a></li>
+      </ol>
+    </aside>
+  </div>
+  <div class="cat-block" id="consumer">
+    <h3 class="cat-head">消費電子／平台</h3>
+    <div class="mosaic">
+  <article class="mosaic-card wide reveal" id="c1">
+    <img src="assets/c1-whatsapp.jpg" alt="WhatsApp 預約訊息功能相關畫面" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">WhatsApp 官方；並參 TechCrunch</p>
+      <h3><a href="https://blog.whatsapp.com/say-it-at-the-right-time-with-scheduled-messages" target="_blank" rel="noopener noreferrer">WhatsApp 開始在全球推出預約訊息，十分鐘至十四日後送出，手機關機仍會寄達</a></h3>
+      <p class="summary">WhatsApp十一月二十五日宣布推出預約訊息：長按傳送鍵即可選擇十分鐘至十四日後寄出，適用於一對一與群組，可預約文字、相片與影片，亦可事先查看或刪除。官方寫，即使手機關機或沒電，訊息仍會在預定時間出現，並維持端對端加密，連WhatsApp自己也讀不到。官方稱未來數週在全球推出；TechCrunch則寫已開始向iOS與Android用戶全球推出。不要寫成此刻所有裝置都已看到該按鈕。</p>
+      <p class="media-credit">WhatsApp via TechCrunch</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="c2">
+    <img src="assets/c2-cybertruck.jpg" alt="同類相關圖，非該則新聞原圖：較早拍攝的 Cybertruck 車隊，非十月二手市場原圖" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">TechCrunch，數據來自 iSeeCars.com</p>
+      <h3><a href="https://techcrunch.com/2026/11/25/the-canceled-tesla-cybertruck-is-the-fastest-selling-used-truck-in-america/" target="_blank" rel="noopener noreferrer">iSeeCars：十月二手市場中，已宣布停產的 Cybertruck 是美國賣得最快的二手貨車</a></h3>
+      <p class="summary">iSeeCars分析二零二六年十月逾一百一十萬宗一至五年車齡二手車交易，Cybertruck平均三十九點一天售出，快於貨車整體的六十五點五天，也快於福特Maverick Hybrid與Rivian R1T。分析師指出，這是馬斯克宣布二零二七年停產之前的十月數據，當時高油價與相對少貨已在推高需求；量產預計二零二七年夏季結束。不要把十月週轉速度寫成停產公告之後才出現的結果。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。David Crane / MediaNews Group via Getty Images，TechCrunch（較早車隊照片）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="c3">
+    <img src="assets/c3-x-video.jpg" alt="同類相關圖，非該則新聞原圖：手機主畫面的 X 應用程式圖示，非直式影片創作介面原圖" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">TechCrunch</p>
+      <h3><a href="https://techcrunch.com/2026/11/25/xs-latest-update-for-creators-focuses-on-vertical-video/" target="_blank" rel="noopener noreferrer">X 最新創作者更新聚焦直式短影片，並測試訂閱者專屬群組聊天與邀請制獎金</a></h3>
+      <p class="summary">TechCrunch報道，X把最新創作者更新的重點放在直式短影片。平台稍早已推出類似TikTok stitch的「React with Video」。現正測試邀請制「Video Kickstart Bonus」，獎勵獲選創作者發布無浮水印、少於三分鐘的原創直式影片；另推出「Subscriber-only Group Chats」，目前開放給訂閱者不多於八百人的創作者，每個群組最多一千人。不要把測試中的獎金或群組聊天寫成已對所有創作者開放。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Getty Images，TechCrunch（X 應用程式圖示，非直式影片介面）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="c4">
+    <img src="assets/c4-flipkart.jpg" alt="Flipkart 執行長 Kalyan Krishnamurthy" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">TechCrunch</p>
+      <h3><a href="https://techcrunch.com/2026/11/25/flipkart-ceo-kalyan-krishnamurthy-to-step-down-next-week-amid-ipo-uncertainty/" target="_blank" rel="noopener noreferrer">Flipkart 執行長 Krishnamurthy 將於十二月四日卸任，產品與技術長暫代；上市計劃仍不明</a></h3>
+      <p class="summary">沃爾瑪控股的Flipkart周三表示，任職逾十一年的執行長Kalyan Krishnamurthy將卸任，產品與技術長Balaji Thiagarajan暫代，繼任人稍後公布。沃爾瑪發言人確認最後工作日是十二月四日。他二零一七年出任執行長，經歷二零一八年沃爾瑪以一百六十億美元取得控股權；公司稱任內業務增長逾五倍。五月曾有報道指沃爾瑪要求暫緩上市，沃爾瑪拒談是次人事是否影響上市。</p>
+      <p class="media-credit">Flipkart via TechCrunch</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="c5">
+    <img src="assets/c5-kagi.jpg" alt="同類相關圖，非該則新聞原圖：Kagi 品牌吉祥物圖，非信箱截圖" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">Kagi 官方；並參 Ars Technica</p>
+      <h3><a href="https://blog.kagi.com/kagi-mail-public-beta" target="_blank" rel="noopener noreferrer">Kagi Mail 公開測試：付費、無廣告的電郵與日曆，網頁版先上，通訊錄要到二零二七年</a></h3>
+      <p class="summary">Kagi於十一月二十三日宣布Kagi Mail公開測試，Ars Technica二十五日報道。服務提供@kagimail.com或自有域名、不限別名與域名、內建日曆與五十GB容量，並採用IMAP、JMAP、CalDAV等開放標準。目前只有網頁版，原生應用程式預定二零二七年第四季，通訊錄預定第一季。六十日試用後為每月九美元或每年九十九美元，亦包含在Ultimate方案。官方強調人工智能功能可一鍵關閉。不要寫成已可全面取代Gmail。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Kagi via Ars Technica（品牌吉祥物圖，非信箱截圖）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="c6">
+    <img src="assets/h7-muse.jpg" alt="同類相關圖，非該則新聞原圖：Muse Charm 發表場合，非雙方商談現場" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">《財富》；並參 TechCrunch</p>
+      <h3><a href="https://www.fortune.com/2026/11/25/exclusive-amazon-meta-talks-deal-muse-ai-shopping-agent-blockade/" target="_blank" rel="noopener noreferrer">《財富》：亞馬遜與 Meta 商談讓 Muse 重返亞馬遜商店（見 h7）</a></h3>
+      <p class="summary">《財富》引述知情人士報道，亞馬遜與Meta多次商談讓Muse重新連接亞馬遜商店，搜尋呈現與廣告分配仍未談妥，任何協議據報須經雙方執行長批准。雙方尚未達成協議，亦未公開置評。不要寫成封鎖已經解除，也不要與昨刊沃爾瑪開放Muse代購寫成同一件事。詳見h7。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Minh Connors / Bloomberg via Getty Images，《財富》（Muse Charm 發表場合）</p>
+    </div>
+  </article>
+    </div>
+    <aside class="heat-rank" aria-label="消費電子／平台熱度排行">
+      <h4>本欄熱度排行（A → B → C，同級依原序）</h4>
+      <ol>
+      <li><span class="idx">1</span><span class="heat">B</span><a href="#c1">WhatsApp 預約訊息</a></li>
+      <li><span class="idx">2</span><span class="heat">B</span><a href="#c2">Cybertruck 二手週轉</a></li>
+      <li><span class="idx">3</span><span class="heat">B</span><a href="#c3">X 直式短影片</a></li>
+      <li><span class="idx">4</span><span class="heat">B</span><a href="#c4">Flipkart 執行長卸任</a></li>
+      <li><span class="idx">5</span><span class="heat">B</span><a href="#c5">Kagi Mail 公開測試</a></li>
+      <li><span class="idx">6</span><span class="heat">A</span><a href="#c6">Muse 商談（見 h7）</a></li>
+      </ol>
+    </aside>
+  </div>
+  <div class="cat-block" id="chips">
+    <h3 class="cat-head">晶片／硬體／地緣</h3>
+    <div class="mosaic">
+  <article class="mosaic-card wide reveal" id="ch1">
+    <img src="assets/f4-nvidia.jpg" alt="同類相關圖，非該則新聞原圖：黃仁勳在世界經濟論壇發言，非評級文件原圖" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">標普全球評級；並參 TechCrunch</p>
+      <h3><a href="https://www.spglobal.com/ratings/en/regulatory/article/-/view/sourceId/101720856" target="_blank" rel="noopener noreferrer">標普觀察英偉達 AA 評級，並點出其為新雲融資提供後盾的連帶風險（見專題、h2）</a></h3>
+      <p class="summary">除治理與關鍵人物風險外，TechCrunch指出，一旦評級下調，可能推高英偉達自身融資成本，並使受其後盾的新雲與基礎設施項目面臨更貴債務或更多抵押。八月宣布的五千億美元基礎設施融資，原定由英偉達擔保貸款的百分之二十五。這不是已經完成的降級。詳見專題。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Fabrice Coffrini / AFP via Getty Images，TechCrunch（黃仁勳於世界經濟論壇，非評級文件原圖）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="ch2">
+    <img src="assets/f3-starmind.jpg" alt="SpaceX 對 Starmind 軌道數據中心衛星的想像圖，經 Ars Technica" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">Ars Technica；並參 CNBC、The Verge</p>
+      <h3><a href="https://arstechnica.com/space/2026/11/the-fcc-has-authorized-spacex-to-deploy-1-million-satellites/" target="_blank" rel="noopener noreferrer">SpaceX 獲準把最多一百萬顆衛星當成軌道數據中心，首顆可營運衛星可到二零三三年（見專題、h1）</a></h3>
+      <p class="summary">這是有條件許可，不是已經在軌的算力。時間表為二零三三年首顆可營運衛星、二零三五年十萬顆、二零四零年整個星座。谷歌Suncatcher相關芯片已於十月升空，Blue Origin將在二零二九年執行該項目首次專用重型發射，並另申請最多五萬一千六百顆衛星的Project Sunrise。詳見專題。</p>
+      <p class="media-credit">SpaceX 想像圖，經 Ars Technica</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="ch3">
+    <img src="assets/a4-datacenter.jpg" alt="Anita Verma Lallian，經 TechCrunch" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">TechCrunch Equity 播客</p>
+      <h3><a href="https://techcrunch.com/podcast/ai-data-centers-are-becoming-harder-to-build-and-neoclouds-are-feeling-it/" target="_blank" rel="noopener noreferrer">數據中心用地與電力更緊，新雲承建節奏受壓（見 a4）</a></h3>
+      <p class="summary">訪談指土地、電力與完工建築殼層，已成為數據中心項目能否獲得英偉達後盾的前提；新雲同時面對工期延誤與更貴債務。這是從業人士觀察，不是英偉達或新雲的正式公告，須與標普對英偉達信用觀察一則分開寫，不要合成同一官方結論。詳見a4。</p>
+      <p class="media-credit">TechCrunch</p>
+    </div>
+  </article>
+    </div>
+    <aside class="heat-rank" aria-label="晶片／硬體／地緣熱度排行">
+      <h4>本欄熱度排行（A → B → C，同級依原序）</h4>
+      <ol>
+      <li><span class="idx">1</span><span class="heat">A</span><a href="#ch1">標普／新雲融資後盾（見專題、h2）</a></li>
+      <li><span class="idx">2</span><span class="heat">A</span><a href="#ch2">Starmind 軌道算力（見專題、h1）</a></li>
+      <li><span class="idx">3</span><span class="heat">B</span><a href="#ch3">數據中心落地（見 a4）</a></li>
+      </ol>
+    </aside>
+  </div>
+  <div class="cat-block" id="policy">
+    <h3 class="cat-head">政策／監管</h3>
+    <div class="mosaic">
+  <article class="mosaic-card wide reveal" id="p1">
+    <img src="assets/f1-ai-toys.jpg" alt="同類相關圖，非該則新聞原圖：一名兒童望向桌上的粉紅色玩具機器人，非州長府法案原圖" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">TechCrunch</p>
+      <h3><a href="https://techcrunch.com/2026/11/25/want-to-buy-your-kid-an-ai-toy-this-christmas-not-in-new-york/" target="_blank" rel="noopener noreferrer">紐約五年禁止內建人工智能聊天機器人玩具，罰款據稱可達每日一萬五千美元（見專題、h3）</a></h3>
+      <p class="summary">紐約成為加州之後第二個禁止此類玩具的州，法例在簽署九十日後生效，不是即日或全美禁售。州長呼籲家長即使在生效前也不要購買。副秘書稱罰款可達每天一萬五千美元；亞馬遜只說會在禁售地區採取限制，沒有具體下架方案。這仍是州級措施。詳見專題。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Getty Images，TechCrunch（兒童與玩具機器人；州長府官方圖 403，改用內容包備用圖）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="p2">
+    <img src="assets/p2-fcc.jpg" alt="同類相關圖，非該則新聞原圖：SpaceX 廠房標誌，非 Starmind 衛星實體照片" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">The Verge；並參 Ars Technica、TechCrunch</p>
+      <h3><a href="https://www.theverge.com/science/1042278/spacex-fcc-starmind-ai-space-data-centers" target="_blank" rel="noopener noreferrer">FCC 有條件批准 Starmind 星座，退役豁免未過，部分科學界反對被指超出職權（見專題、h1）</a></h3>
+      <p class="summary">這是美國監管機構首次為完整的人工智能衛星星座放行，但SpaceX希望對六百公里以上衛星豁免既有再入規則，FCC以資料不足暫不批准。部分科學界反對被指超出該機構職權而不被接納。不要寫成環境與天文界的擔憂已經被實質回應，也不要寫成星座已經開始部署。詳見專題。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Mario Tama / Getty Images，The Verge（SpaceX 廠房，非 Starmind 衛星實體照片）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="p3">
+    <img src="assets/s3-doj.jpg" alt="同類相關圖，非該則新聞原圖：美國司法部新聞稿標誌，非起訴書原圖" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">美國司法部</p>
+      <h3><a href="https://www.justice.gov/opa/pr/colombian-national-indicted-scheme-defraud-victims-ransomware-attacks" target="_blank" rel="noopener noreferrer">司法部起訴勒索軟件復原中介，指控其欺騙受害人（見 s3）</a></h3>
+      <p class="summary">羅德島聯邦大陪審團起訴一家佛羅里達數據復原公司創辦人，指控他向勒索軟件受害人謊稱從不與攻擊者交易，實則暗中付費並加價收費。司法部稱在臥底行動中，他收取的費用超過付給對方的金額一倍以上。目前是起訴指控，不是定罪判決。詳見s3。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。美國司法部（新聞稿標誌圖）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="p4">
+    <img src="assets/p4-huang.jpg" alt="同類相關圖，非該則新聞原圖：黃仁勳，非全員大會現場原圖" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">TechCrunch；並參 Wired 轉述</p>
+      <h3><a href="https://techcrunch.com/2026/11/25/jensen-huang-broke-nvidias-code-of-conduct-and-his-employees-may-not-forget-it/" target="_blank" rel="noopener noreferrer">TechCrunch：黃仁勳在全員大會上承認違反行為準則，並稱違規不代表立刻辭退</a></h3>
+      <p class="summary">這是昨刊全員大會的後續分析，不是新的調查結案。據Wired轉述，黃仁勳承認違反行為準則，同時說準則適用於所有人，但違規「並不意味立刻走人」，還要看事實與情況。TechCrunch引述合規顧問指出，真正風險往往是文化：員工可能為領導層感到難堪或憤怒；該刊也寫，以員工曾請願要求他回來來看，復職暫時未見士氣崩潰。不要寫成調查已結束，或員工已普遍離心。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Costfoto / NurPhoto via Getty Images，TechCrunch</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="p5">
+    <img src="assets/h8-huawei.jpg" alt="華為相關配圖，經 Ars Technica（Getty）" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">美國司法部；並參 CNBC、Ars Technica</p>
+      <h3><a href="https://www.justice.gov/opa/pr/chinese-tech-giant-huawei-and-subsidiaries-convicted-sanctions-violations-fraud-conspiracy" target="_blank" rel="noopener noreferrer">紐約陪審團裁定華為及其子公司制裁、欺詐、洗錢與竊密等罪成立（見 h8）</a></h3>
+      <p class="summary">這是紐約東區聯邦陪審團已作出的刑事判決，不是起訴階段，宣布於十一月二十四日美東傍晚。涵蓋涉及伊朗的制裁、對銀行不實陳述、洗錢與竊取商業秘密。檢方對Skycom、Cisco原始碼與T-Mobile測試機械人的描述，須標明為檢方或經CNBC轉述的檢方說法，不要寫成本報獨立核驗。詳見h8。</p>
+      <p class="media-credit">Ars Technica（Getty）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="p6">
+    <img src="assets/p6-vance.jpg" alt="同類相關圖，非該則新聞原圖：黃仁勳在國會場合，非今日 Vance 轉述的現場；配圖時間戳為 2025-12-03" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">CNBC（Vance 公開發言的轉述，不是司法部自身聲明）</p>
+      <h3><a href="https://www.cnbc.com/2026/11/25/vance-jensen-huang-nvidia-doj-investigation.html" target="_blank" rel="noopener noreferrer">副總統 Vance 稱司法部長告訴他，黃仁勳「並未在接受調查」</a></h3>
+      <p class="summary">據CNBC，副總統Vance十一月二十五日在俄亥俄州對記者說，司法部與多名國家安全官員告訴他，黃仁勳「並未在接受調查」，也不是即將被起訴，並點名司法部長Blanche作此告知。這與特朗普周一稱「做過調查並認為他本人已排除嫌疑」並不完全相同，必須分源並陳，不要自行調和，也不是司法部書面聲明。昨刊寫國會問詢與公司調查未結束，不要因此改成已結案。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。CNBC／路透（黃仁勳國會場合；檔案時間戳 2025-12-03，並非今日 Vance 轉述現場）</p>
+    </div>
+  </article>
+    </div>
+    <aside class="heat-rank" aria-label="政策／監管熱度排行">
+      <h4>本欄熱度排行（A → B → C，同級依原序）</h4>
+      <ol>
+      <li><span class="idx">1</span><span class="heat">A</span><a href="#p5">華為有罪判決（見 h8）</a></li>
+      <li><span class="idx">2</span><span class="heat">A</span><a href="#p1">紐約玩具禁令（見專題、h3）</a></li>
+      <li><span class="idx">3</span><span class="heat">A</span><a href="#p2">FCC 有條件批准（見專題、h1）</a></li>
+      <li><span class="idx">4</span><span class="heat">B</span><a href="#p6">Vance 轉述調查情況</a></li>
+      <li><span class="idx">5</span><span class="heat">A</span><a href="#p3">司法部起訴復原中介（見 s3）</a></li>
+      <li><span class="idx">6</span><span class="heat">B</span><a href="#p4">行為準則後續分析</a></li>
+      </ol>
+    </aside>
+  </div>
+  <div class="cat-block" id="opensource">
+    <h3 class="cat-head">開源／開發</h3>
+    <div class="mosaic">
+  <article class="mosaic-card wide reveal" id="o1">
+    <img src="assets/o1-ubuntu.jpg" alt="Canonical 的 Ubuntu 新啟動器模擬介面，經 The Verge" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">Ubuntu Discourse（Didier Roche）；並參 The Verge、Phoronix</p>
+      <h3><a href="https://discourse.ubuntu.com/t/beyond-a-launcher-a-new-way-to-interact-with-ubuntu/92365" target="_blank" rel="noopener noreferrer">Canonical 說明 Ubuntu 新啟動器：人工智能須明確要求、以本機為先；可安裝版本預定一月</a></h3>
+      <p class="summary">Canonical的Didier Roche十一月二十四日在官方論壇說明，團隊要做統一、可用鍵盤與語音的桌面入口，用來找檔、開應用，並只在用戶明確要求時才提供智能協助。他承認上月放到Snap Store的warty-prototype只是自動演示的介面模擬，不是可日常使用的成品。The Verge二十五日報道他分享預覽截圖，並稱相關功能預定一月推出。不要寫成Ubuntu桌面已經內建可全面使用的人工智能啟動器。</p>
+      <p class="media-credit">Canonical via The Verge</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="o2">
+    <img src="assets/o2-phoronix.jpg" alt="同類相關圖，非該則新聞原圖：Phoronix 標誌，非 VT6656 芯片實拍" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">C</span>
+      <p class="outlet">Phoronix；一手為 GNU Linux-libre 公告</p>
+      <h3><a href="https://www.phoronix.com/news/GNU-Linux-Libre-VIA-VT6656" target="_blank" rel="noopener noreferrer">GNU Linux-libre 為舊款 VIA VT6656 無線網卡納入逆向還原的開源韌體，但驅動早已移出主線</a></h3>
+      <p class="summary">Phoronix十一月二十五日報道，GNU Linux-libre在舊的6.12 LTS分支發布6.12.119-gnu，納入開發者Jason Self為VIA VT6656（802.11 b/g、USB 2.0、最高54 Mbps）逆向還原的開源韌體。該芯片的開源驅動過去依賴封閉韌體，不符合libre標準；原廠韌體雖隨聲稱GPL的樹外驅動發佈，卻沒有原始碼。諷刺的是，VT6656驅動因乏人維護已在Linux 6.13被移出主線，因此開源韌體來得太晚，無法直接回到最新核心。這是小眾但清楚的開源進展，不要寫成主流筆電無線問題已被解決。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Phoronix 標誌（無芯片實拍）</p>
+    </div>
+  </article>
+    </div>
+    <aside class="heat-rank" aria-label="開源／開發熱度排行">
+      <h4>本欄熱度排行（A → B → C，同級依原序）</h4>
+      <ol>
+      <li><span class="idx">1</span><span class="heat">B</span><a href="#o1">Ubuntu 啟動器說明</a></li>
+      <li><span class="idx">2</span><span class="heat">C</span><a href="#o2">GNU Linux-libre VT6656</a></li>
+      </ol>
+    </aside>
+  </div>
+</section>
+</div>
+<p class="site-foot">每日 IT 報 · 2026年11月26日 · 星期四 · 美國感恩節<br>資料視覺專題版。選稿窗約 2026-11-25 美東 至 2026-11-26 香港朝早。數字分源呈現，不合併。</p>
+</main>
+
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nodes = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    nodes.forEach(function (el) { el.classList.add('is-in'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    nodes.forEach(function (el) { io.observe(el); });
+  }
+})();
+</script>
+</body>
+</html>

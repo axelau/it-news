@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>四國先停運，四萬億是或有｜2026年11月27日</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F5F2E8;
+  --ink: #1B263B;
+  --ink-soft: #3A4558;
+  --muted: #6B7280;
+  --line: #D9D4C8;
+  --orange: #F06428;
+  --navy: #1B263B;
+  --gray: #A8ADB8;
+  --gray-light: #C8CDD6;
+  --card: #FFFCF5;
+  --max: 760px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Noto Sans TC", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--ink); }
+a:hover { color: var(--orange); }
+.wrapper {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+}
+.header { margin-bottom: 2.75rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--line); }
+.kicker {
+  margin: 0 0 0.85rem;
+  color: var(--orange);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.header h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.85rem, 5vw, 2.55rem);
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+.deck {
+  margin: 0 0 1.35rem;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+.topnav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0;
+  align-items: center;
+  font-size: 0.82rem;
+}
+.topnav a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding: 0.15rem 0.55rem;
+  border-right: 1px solid var(--line);
+}
+.topnav a:last-child { border-right: none; }
+.topnav a:hover { color: var(--orange); }
+
+section {
+  padding: 2.4rem 0;
+  border-bottom: 1px solid var(--line);
+}
+section:last-of-type { border-bottom: none; }
+.section-head {
+  display: flex;
+  gap: 0.85rem;
+  align-items: baseline;
+  margin-bottom: 1.35rem;
+}
+.section-no {
+  color: var(--orange);
+  font-family: "Inter", "Noto Sans TC", sans-serif;
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+.section-head h2 {
+  margin: 0;
+  font-size: clamp(1.2rem, 3.2vw, 1.45rem);
+  font-weight: 800;
+  line-height: 1.35;
+}
+.intro {
+  margin: 0 0 1.25rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+/* Hero number block */
+.hero {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  margin: 0 0 1.5rem;
+  padding: 1.1rem 0;
+}
+.hero-number {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(3.2rem, 10vw, 4.4rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+}
+.hero-number small {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  margin-bottom: 0.2rem;
+}
+.hero-number > span {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-left: 0.15rem;
+}
+.hero-copy {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+.hero-copy small {
+  display: block;
+  margin-top: 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* Case cards */
+.cases {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+  margin: 1.25rem 0 1rem;
+}
+@media (max-width: 680px) {
+  .cases { grid-template-columns: 1fr; }
+  .hero { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+}
+.case {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1rem 1.05rem 1.1rem;
+}
+.case .state {
+  margin: 0;
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+.case .place {
+  margin: 0.15rem 0 0.55rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+.case-num {
+  margin: 0 0 0.55rem;
+  font-family: "Inter", sans-serif;
+  font-size: 1.85rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--orange);
+  line-height: 1;
+}
+.case-num small {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-right: 0.15rem;
+  color: var(--muted);
+}
+.case p:last-child {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.case strong { color: var(--ink); font-weight: 700; }
+.case-note {
+  margin: 0.55rem 0 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.case-note a { color: var(--ink-soft); text-underline-offset: 2px; }
+
+/* Charts */
+.two-charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem 1.75rem;
+}
+@media (max-width: 640px) {
+  .two-charts { grid-template-columns: 1fr; }
+}
+.chart-title {
+  margin: 0 0 0.7rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+.stack {
+  display: flex;
+  width: 100%;
+  height: 2.15rem;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--line);
+}
+.seg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  min-width: 0;
+}
+.seg.orange { background: var(--orange); }
+.seg.dark { background: var(--navy); }
+.seg.gray { background: var(--gray); }
+.seg.muted-blue { background: #5C6B82; }
+.seg.pale { background: var(--gray-light); color: var(--ink-soft); }
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1rem;
+  margin-top: 0.65rem;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+.legend i {
+  display: inline-block;
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 2px;
+  margin-right: 0.35rem;
+  vertical-align: middle;
+}
+.legend i.orange { background: var(--orange); }
+.legend i.dark { background: var(--navy); }
+.legend i.gray { background: var(--gray); }
+.legend i.muted-blue { background: #5C6B82; }
+.legend i.pale { background: var(--gray-light); }
+
+.big-split {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  margin: 0 0 1.35rem;
+}
+.big-percent {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(3rem, 9vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  color: var(--ink);
+  flex-shrink: 0;
+}
+.big-percent small {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0;
+}
+.big-split > p {
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.5;
+}
+@media (max-width: 520px) {
+  .big-split { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+}
+
+.factor-labels {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+.factor-labels > div {
+  padding-right: 0.4rem;
+  border-right: 1px solid var(--line);
+}
+.factor-labels > div:last-child { border-right: none; }
+.factor-labels strong {
+  display: block;
+  font-family: "Inter", sans-serif;
+  font-size: 1.05rem;
+  color: var(--ink);
+  margin-bottom: 0.15rem;
+}
+@media (max-width: 520px) {
+  .factor-labels { grid-template-columns: 1fr 1fr; }
+  .factor-labels > div:nth-child(2) { border-right: none; }
+}
+
+/* Rank rows */
+.rank-list { margin: 1rem 0 0.5rem; }
+.rank-row {
+  display: grid;
+  grid-template-columns: minmax(7.5rem, 32%) 1fr auto;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.rank-row:last-child { border-bottom: none; }
+.rank-row.focus .rank-label { font-weight: 800; color: var(--ink); }
+.rank-row.focus .rank-track::after {
+  background: var(--orange);
+}
+.rank-label {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+.rank-track {
+  position: relative;
+  height: 6px;
+  background: #E6E1D4;
+  border-radius: 999px;
+}
+.rank-track::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: var(--w, 0%);
+  background: var(--navy);
+  border-radius: 999px;
+}
+.rank-track .dot {
+  position: absolute;
+  top: 50%;
+  left: var(--w, 0%);
+  width: 14px;
+  height: 14px;
+  margin-left: -7px;
+  margin-top: -7px;
+  border-radius: 50%;
+  background: var(--navy);
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 0 1px rgba(27,38,59,0.15);
+}
+.rank-row.focus .dot { background: var(--orange); box-shadow: 0 0 0 1px rgba(240,100,40,0.25); }
+.rank-value {
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  min-width: 2.6rem;
+  text-align: right;
+}
+.scale {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.35rem;
+  font-size: 0.7rem;
+  color: var(--muted);
+  padding: 0 3.2rem 0 0;
+}
+@media (max-width: 520px) {
+  .rank-row {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+  }
+  .rank-label { grid-column: 1; }
+  .rank-value { grid-column: 2; grid-row: 1; }
+  .rank-track { grid-column: 1 / -1; }
+  .scale { padding-right: 0; }
+}
+
+.footnote {
+  margin: 0.85rem 0 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+.callout {
+  margin: 1.25rem 0 0;
+  padding: 0.95rem 1.05rem;
+  background: var(--card);
+  border-left: 3px solid var(--orange);
+  border-radius: 0 8px 8px 0;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+.callout strong { color: var(--ink); }
+
+.mobile-summary {
+  margin: 0 0 1rem;
+  padding: 0.85rem 1rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-size: 0.92rem;
+}
+.mobile-summary p { margin: 0.35rem 0; }
+.mobile-summary b { font-family: "Inter", "Noto Sans TC", sans-serif; font-weight: 800; }
+
+details.expandable {
+  margin: 0.5rem 0 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--card);
+  padding: 0.35rem 1rem 1rem;
+}
+details.expandable > summary {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 0.75rem 0;
+  list-style: none;
+}
+details.expandable > summary::-webkit-details-marker { display: none; }
+details.expandable > summary::before {
+  content: "▾ ";
+  color: var(--orange);
+}
+details.expandable:not([open]) > summary::before { content: "▸ "; }
+.group-title {
+  margin: 1.1rem 0 0.65rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.vote-key { margin-bottom: 0.85rem; }
+.vote-row {
+  display: grid;
+  grid-template-columns: minmax(6.5rem, 28%) 1fr;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+.row-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+.row-label small {
+  display: block;
+  font-weight: 400;
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: 0.1rem;
+}
+@media (max-width: 520px) {
+  .vote-row { grid-template-columns: 1fr; gap: 0.3rem; }
+}
+
+
+.party-row {
+  display: grid;
+  grid-template-columns: minmax(6.5rem, 28%) 1fr;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+.party-row.focus .row-label { color: var(--ink); font-weight: 800; }
+.party-row.focus .stack { outline: 2px solid var(--orange); outline-offset: 2px; border-radius: 6px; }
+.sort-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem 0.85rem;
+  margin: 0.35rem 0 1rem;
+}
+.sort-row label { font-size: 0.78rem; color: var(--muted); font-weight: 600; }
+.sorts { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.sorts button {
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+.sorts button[aria-pressed="true"] {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
+}
+@media (max-width: 520px) {
+  .party-row { grid-template-columns: 1fr; gap: 0.3rem; }
+}
+
+.pending-box {
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.35);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.site-foot {
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* Scroll reveal — minimal */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+/* Section media */
+.section-media { margin: 0 0 1.35rem; }
+.section-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.section-media figcaption,
+.media-credit {
+  margin: 0.45rem 0 0;
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.essay p {
+  margin: 0 0 1rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+.essay p:last-child { margin-bottom: 0; }
+
+/* Layout B — left image, right narrative */
+.layout-b {
+  display: grid;
+  grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+  gap: 1.35rem 1.2rem;
+  align-items: start;
+  margin: 0 0 1.25rem;
+}
+.layout-b .section-media {
+  margin: 0;
+  position: sticky;
+  top: 1rem;
+}
+.hero-aside {
+  margin: 0 0 1rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--line);
+}
+.hero-aside .hero-number { font-size: clamp(2.6rem, 8vw, 3.6rem); }
+.hero-aside .hero-copy { font-size: 0.95rem; font-weight: 600; margin: 0.55rem 0 0; }
+.hero-aside .hero-copy small {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+.fact-rail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem 0.75rem;
+  margin: 1.2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.fact-rail li {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.75rem 0.85rem;
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.fact-rail .n {
+  display: block;
+  font-family: "Inter", "Noto Sans TC", sans-serif;
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--ink);
+  letter-spacing: -0.03em;
+  margin-bottom: 0.2rem;
+}
+
+/* Layout B wide — banner image above essay */
+.layout-b-wide .section-media { margin: 0 0 1.35rem; }
+.num-rail {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem 0.65rem;
+  margin: 0 0 1.25rem;
+  padding: 0.95rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.num-rail > div { padding-right: 0.4rem; }
+.num-rail strong {
+  display: block;
+  font-family: "Inter", "Noto Sans TC", sans-serif;
+  font-size: clamp(1.05rem, 3vw, 1.35rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  line-height: 1.15;
+  margin-bottom: 0.25rem;
+}
+.num-rail span {
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.term-list {
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.term-list li {
+  margin: 0 0 0.55rem;
+  padding: 0.7rem 0.9rem 0.7rem 1rem;
+  background: var(--card);
+  border-left: 3px solid var(--orange);
+  border-radius: 0 8px 8px 0;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+/* Layout C — quote well + horizontal collage */
+.quote-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem 1rem;
+  margin: 1.35rem 0 1.25rem;
+}
+.pull-quote {
+  margin: 0;
+  padding: 0.85rem 0 0.85rem 1rem;
+  border-left: 3px solid var(--orange);
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.pull-quote.span-2 { grid-column: 1 / -1; }
+.pull-quote cite {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--muted);
+}
+.collage {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 0.85rem;
+  margin: 1.25rem 0 1rem;
+  align-items: stretch;
+}
+.collage-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.collage-card img {
+  display: block;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border: 0;
+  border-radius: 0;
+}
+.collage-card:nth-child(2) img { height: 190px; }
+.collage-card .pad { padding: 0.85rem 0.95rem 1rem; flex: 1; }
+.collage-card h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.35;
+}
+.collage-card p {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+/* Layout C mosaic — uneven image cards */
+.mosaic {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 0.85rem;
+  margin: 1.25rem 0 1rem;
+  align-items: start;
+}
+.mosaic-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.mosaic-card.wide {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.15fr);
+}
+.mosaic-card img {
+  display: block;
+  width: 100%;
+  height: 148px;
+  object-fit: cover;
+}
+.mosaic-card:nth-child(even):not(.wide) img { height: 198px; }
+.mosaic-card:nth-child(5n):not(.wide) { margin-top: 1.35rem; }
+.mosaic-card.wide img {
+  height: 100%;
+  min-height: 220px;
+  object-fit: cover;
+}
+.mosaic-card .pad { padding: 0.8rem 0.9rem 1rem; }
+.mosaic-card h3 {
+  margin: 0.3rem 0 0.4rem;
+  font-size: 0.95rem;
+  font-weight: 800;
+  line-height: 1.35;
+}
+.mosaic-card h3 a { text-decoration: none; }
+.mosaic-card h3 a:hover { color: var(--orange); }
+.mosaic-card .summary {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.mosaic-card .outlet {
+  margin: 0 0 0.15rem;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+.heat {
+  display: inline-block;
+  font-family: "Inter", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 999px;
+  padding: 0.08rem 0.45rem;
+  vertical-align: middle;
+}
+
+@media (max-width: 680px) {
+  .layout-b,
+  .layout-b .section-media { position: static; }
+  .layout-b,
+  .mosaic-card.wide,
+  .collage,
+  .quote-row { grid-template-columns: 1fr; }
+  .mosaic { grid-template-columns: 1fr; }
+  .mosaic-card:nth-child(5n):not(.wide) { margin-top: 0; }
+  .mosaic-card.wide img,
+  .mosaic-card:nth-child(even):not(.wide) img { height: 180px; min-height: 0; }
+  .num-rail { grid-template-columns: 1fr 1fr; }
+  .fact-rail { grid-template-columns: 1fr; }
+  .pull-quote.span-2 { grid-column: auto; }
+}
+
+/* Edition additions: persona, category blocks, heat ranking, layout-c evidence strip */
+.section-head { align-items: flex-start; }
+.section-head .titles { min-width: 0; }
+.persona {
+  margin: 0.35rem 0 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--orange);
+  letter-spacing: 0.02em;
+}
+.section-head .heat { margin-top: 0.4rem; margin-left: auto; flex-shrink: 0; }
+.cat-block {
+  margin: 2.1rem 0 0.4rem;
+  padding-top: 0.4rem;
+}
+.cat-block:first-of-type { margin-top: 0.35rem; }
+.cat-head {
+  margin: 0 0 1rem;
+  font-size: 1.02rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+.heat-rank {
+  margin: 0.85rem 0 0.25rem;
+  padding: 0.95rem 1.05rem 1rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.heat-rank h4 {
+  margin: 0 0 0.55rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+.heat-rank ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.heat-rank li {
+  display: grid;
+  grid-template-columns: 1.5rem auto 1fr;
+  gap: 0.55rem;
+  align-items: center;
+  padding: 0.48rem 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.86rem;
+  line-height: 1.4;
+  color: var(--ink-soft);
+}
+.heat-rank li:last-child { border-bottom: none; }
+.heat-rank .idx {
+  font-family: "Inter", "Noto Sans TC", sans-serif;
+  font-weight: 800;
+  color: var(--orange);
+  font-size: 0.85rem;
+}
+.heat-rank a { text-decoration: none; color: var(--ink); }
+.heat-rank a:hover { color: var(--orange); }
+.evidence-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin: 1.25rem 0 1rem;
+}
+.evidence-strip article {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.9rem 1rem 1rem;
+}
+.evidence-strip .label {
+  margin: 0;
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+.evidence-strip .n {
+  margin: 0.2rem 0 0.4rem;
+  font-family: "Inter", "Noto Sans TC", sans-serif;
+  font-size: 1.7rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  line-height: 1;
+}
+.evidence-strip p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+@media (max-width: 680px) {
+  .evidence-strip { grid-template-columns: 1fr; }
+  .section-head .heat { margin-left: 0; }
+}
+</style>
+</head>
+<body>
+<main class="wrapper">
+<header class="header">
+  <p class="kicker">2026年11月27日 · 星期五科技要聞 · 美國黑色星期五</p>
+  <h1>四國先停運，<br>四萬億是或有</h1>
+  <p class="deck">英偉達感恩節被報道暫停向馬來西亞、新加坡、泰國和印尼出貨伺服器，以評估出口合規；這不是官方宣布的永久禁運。英倫銀行把超大規模業者的總潛在曝險估為略高於四萬億美元，包括債務與表外承諾，並非已經實現的虧損。Google計劃明年把許多Play商家的電話與地址向全球公開，蘋果則只在相關歐洲國家顯示。iPhone Duo的一個月使用評測承認：人臉解鎖仍不是Face ID，部分Google應用還留着黑邊。</p>
+  <nav class="topnav" aria-label="章節導覽">
+    <a href="#f1">停運</a>
+    <a href="#f2">或有負債</a>
+    <a href="#f3">門牌</a>
+    <a href="#f4">摺疊</a>
+    <a href="#briefs">其餘精選</a>
+  </nav>
+</header>
+
+<div class="content">
+
+<section id="f1" class="layout-a">
+  <div class="section-head">
+    <span class="section-no">01</span>
+    <div class="titles">
+      <h2>先讓創辦人回來，再叫四國的貨先停</h2>
+      <p class="persona">人物：Kara Swisher</p>
+    </div>
+    <span class="heat">A</span>
+  </div>
+  <div class="hero reveal">
+    <div class="hero-number"><small>被報道暫停出貨的國家</small>4<span>國</span></div>
+    <p class="hero-copy">這是《金融時報》與《華爾街日報》的報道，不是英偉達官方聲明，也不是已宣布的永久禁運。停運名單只有馬來西亞、新加坡、泰國和印尼。
+      <small>TechCrunch；並參 The Verge、Data Center Dynamics</small>
+    </p>
+  </div>
+  <figure class="section-media reveal">
+      <img src="assets/f1-nvidia-mgx.jpg" alt="同類相關圖，非該則新聞原圖：英偉達 MGX 伺服器平台，非東南亞倉庫現場" loading="lazy" decoding="async">
+      <figcaption>同類相關圖，非該則新聞原圖。Data Center Dynamics（英偉達 MGX 平台，非東南亞倉庫現場）</figcaption>
+  </figure>
+  <div class="essay reveal">
+    <p>他們剛讓創辦人復職，並對外說這對國家安全沒有風險。感恩節當天，英偉達卻要代工廠先把四個國家的伺服器停下來。這不是發表會上的自信，是執照與股價保衛戰裡，一塊來不及圓滿的公關補丁。</p>
+    <p>據《金融時報》與《華爾街日報》報道，英偉達已要求代工夥伴，包括戴爾與超微（Super Micro），暫停向馬來西亞、新加坡、泰國和印尼出貨伺服器，期間未定，以便評估區域夥伴是否符合美國出口規定。兩份報道指向同一條被堵住的路：中國公司一直從這些國家的數據中心遠端取用英偉達晶片。據Data Center Dynamics轉述，商務部十一月十六日規則要求，向印尼、馬來西亞、新加坡、泰國或巴西出口先進半導體須取得許可，並限制以第三國機房遠端使用先進晶片。巴西在規則裡，卻不在這次停運名單上。可見這不是條文自動執行，是公司自己劃的緊急界線。《華爾街日報》引述進步研究所估算，這類海外遠端機房約供應中國人工智能算力的百分之二十四。你們不是不知道這條路，是路被收窄以後，才叫代工廠停車。</p>
+    <p>停運的同時，責任歸屬仍然模糊。據該刊轉述《金融時報》，英偉達新加坡子公司在二零二五年入賬一千零四十億美元營收。CBS新聞十一月二十五日的調查寫，至少兩家加州公司以美國身分取得優先或最高層級合作夥伴資格，但實際由中資控制：RiCloud AI的母公司是總部在深圳、於香港上市的裕興科技；Aivres前身是浪潮在加州的子公司，中國母公司被列入黑名單後才改名，Aivres本身不在名單上。美國政府並未指控這兩家公司違法。CBS並轉述《紐約時報》兩個月前的貿易紀錄分析：Aivres在二零二四年四月至二零二六年二月，至少出口五十六億美元先進技術到東南亞，其中約三十億美元為含Blackwell的電腦。這些數字不是本報的獨立核對，卻仍未被公司當眾畫清終點。</p>
+    <p>參議員沃倫本週仍說，英偉達與董事會還欠國會關於出口管制合規的答案。停運可以是補課，也可以是把問題從新聞週期裡先搬走。哪一種，要看他們能不能說出晶片的終點，而不是再發一份「沒有國安風險」的聲明。</p>
+  </div>
+  <div class="cases reveal">
+    <article class="case">
+      <p class="state">《金融時報》、《華爾街日報》</p>
+      <p class="place">被報道暫停出貨的國家</p>
+      <p class="case-num">4<span>國</span></p>
+      <p>馬來西亞、新加坡、泰國和印尼。期間未定，以便評估出口合規。這是兩報報道，不是英偉達官方聲明，也不是已宣布的永久禁運。<br><strong>效力：停運名單不含巴西。巴西只在商務部規則的須許可目的地，不在這次停運名單。</strong></p>
+    </article>
+    <article class="case">
+      <p class="state">進步研究所，經《華爾街日報》再經 TechCrunch 轉述</p>
+      <p class="place">海外遠端機房約佔中國人工智能算力</p>
+      <p class="case-num">24<span>%</span></p>
+      <p>這類海外遠端機房約供應中國人工智能算力的百分之二十四。<br><strong>效力：進步研究所估算，須保留轉述鏈，不是本報統計。</strong></p>
+    </article>
+    <article class="case">
+      <p class="state">Data Center Dynamics 轉述《金融時報》</p>
+      <p class="place">英偉達新加坡子公司二零二五年營收</p>
+      <p class="case-num">1040<span>億美元</span></p>
+      <p>據該刊轉述《金融時報》，英偉達新加坡子公司在二零二五年入賬一千零四十億美元營收。<br><strong>效力：DCD 轉述《金融時報》對二零二五年公司賬目的數字。</strong></p>
+    </article>
+    <article class="case">
+      <p class="state">CBS 轉述《紐約時報》兩個月前分析</p>
+      <p class="place">Aivres 約兩年出口至東南亞</p>
+      <p class="case-num">56<span>億美元</span></p>
+      <p>其中約三十億美元為含Blackwell的電腦。美國政府並未指控RiCloud／Aivres違法；Aivres本身不在黑名單。<br><strong>效力：CBS 轉述《紐約時報》貿易紀錄分析，不是本報或 CBS 的獨立統計。</strong></p>
+    </article>
+  </div>
+  <p class="case-note">來源：<a href="https://techcrunch.com/2026/11/26/nvidia-hits-pause-on-chip-shipments-to-southeast-asia/" target="_blank" rel="noopener noreferrer">TechCrunch（11月26日，轉述《華爾街日報》）</a>；<a href="https://www.theverge.com/ai-artificial-intelligence/1043079/now-nvidias-stopped-sending-chips-to-southeast-asia-too" target="_blank" rel="noopener noreferrer">The Verge（11月26日，轉述《金融時報》）</a>；<a href="https://www.datacenterdynamics.com/en/news/nvidia-halts-server-shipments-to-malaysia-singapore-thailand-and-indonesia-in-wake-of-new-dept-of-commerce-export-rule-report/" target="_blank" rel="noopener noreferrer">Data Center Dynamics（11月26日）</a>；<a href="https://www.cbsnews.com/news/nvidia-china-ai-chips-computing-sales/" target="_blank" rel="noopener noreferrer">CBS News 調查（11月25日傍晚）</a>。圖源：同類相關圖，非該則新聞原圖。Data Center Dynamics（英偉達 MGX 平台，非東南亞倉庫現場）</p>
+</section>
+
+<section id="f2" class="layout-a">
+  <div class="section-head">
+    <span class="section-no">02</span>
+    <div class="titles">
+      <h2>四萬億不是虧掉的錢，是還沒被壓力拆開的網</h2>
+      <p class="persona">人物：Elon Musk</p>
+    </div>
+    <span class="heat">A</span>
+  </div>
+  <div class="hero reveal">
+    <div class="hero-number"><small>總潛在曝險（美元，略高於）</small>4<span>萬億</span></div>
+    <p class="hero-copy">這是略高於四萬億美元的總潛在曝險，包括債務與表外承諾，不是已經實現的虧損，也不是央行宣布泡沫爆破。英國金融體系目前仍具韌性。
+      <small>英國央行《金融穩定報告》</small>
+    </p>
+  </div>
+  <figure class="section-media reveal">
+      <img src="assets/f2-hamina.jpg" alt="同類相關圖，非該則新聞原圖：芬蘭 Hamina 數據中心，非英倫銀行報告原圖" loading="lazy" decoding="async">
+      <figcaption>同類相關圖，非該則新聞原圖。Google，經 The Next Web（芬蘭 Hamina 數據中心，非英倫銀行報告原圖）</figcaption>
+  </figure>
+  <div class="essay reveal">
+    <p>英倫銀行沒有宣布泡沫爆破。它只是把一張逾四萬億美元的或有負債表，放到陽光下。你們把租約、採購承諾、擔保和循環出資叫做「投資」，物理世界仍然只認已經接上電、已經賺到錢的那一部分。</p>
+    <p>英國央行金融政策委員會十一月二十六日發布《金融穩定報告》。報告寫，人工智能投資支撐了全球增長，但其融資擴張的形式「日益複雜、循環且不透明」，正在加深全球金融體系的相互連接，使一處壓力更容易傳到另一處。該行內部估算，大型雲端與資料中心業者（hyperscalers）的總潛在曝險——包括債務與資產負債表外的合約承諾——略高於四萬億美元。這不是已經實現的虧損，是壓力情景下可能變得沉重的義務。報告並寫，這些業者、數據中心商與其他人工智能基礎設施公司的借款幾乎是二零二五年的兩倍；超大規模業者二零二六年的債券發行料將超過三千零五十億美元，約佔全球投資級發行的百分之八，整個生態系今年的總發行規模已超過包括英國在內的許多單一主權國家。</p>
+    <p>第一性原理很簡單：循環出資不是市場，是迴路。報告指出，人工智能供應鏈愈來愈依賴少數大型雲端業者與晶片設計商的股權投資或合約承諾，包括租約、採購協議、後盾與擔保；在某些情況下，這些大公司同時是投資者、客戶與供應商。資產負債表外的安排，使外界更難判斷未來負債是否還得起。報告引用分析師估算，二零二六年至二零二八年約七千億美元的數據中心資本開支可能由私人信貸融資；摩根大通更廣義估計，約一點四萬億美元的預期人工智能資本開支可能由替代資本負擔。股票估值在近期下跌之後，以若干指標衡量仍然偏高，並且嵌入了對未來盈利的強烈預期。</p>
+    <p>英國金融體系目前仍具韌性，跨市場蔓延迄今有限。這句話不是替你們背書。它只是說：迴路還沒斷。若對未來收入的預期被下修，尤其是貨幣化路徑仍不清楚時，這些融資承諾就可能吃緊。四萬億美元首先是一張互相擔保的網，不是已經併網發電的機房。</p>
+  </div>
+  <div class="cases reveal">
+    <article class="case">
+      <p class="state">英國央行《金融穩定報告》</p>
+      <p class="place">大型雲端與資料中心業者總潛在曝險</p>
+      <p class="case-num">略高於4<span>萬億美元</span></p>
+      <p>包括債務與資產負債表外的合約承諾。這不是已經實現的虧損，是壓力情景下可能變得沉重的義務。英倫銀行沒有宣布泡沫爆破。<br><strong>效力：官方內部估算，禁止寫成已實現虧損或泡沫已爆破。</strong></p>
+    </article>
+    <article class="case">
+      <p class="state">英國央行《金融穩定報告》</p>
+      <p class="place">超大規模業者二零二六年債券發行</p>
+      <p class="case-num">逾3050<span>億美元</span></p>
+      <p>約佔全球投資級發行的百分之八。整個生態系今年的總發行規模已超過包括英國在內的許多單一主權國家。<br><strong>效力：報告預估，百分之八是佔全球投資級發行的比例。</strong></p>
+    </article>
+    <article class="case">
+      <p class="state">報告引用分析師估算</p>
+      <p class="place">二零二六至二零二八年數據中心資本開支</p>
+      <p class="case-num">約7000<span>億美元</span></p>
+      <p>可能由私人信貸融資。<br><strong>效力：報告引用的分析師估算，須保留「引用／估算」。</strong></p>
+    </article>
+    <article class="case">
+      <p class="state">報告引用摩根大通更廣義估計</p>
+      <p class="place">預期人工智能資本開支</p>
+      <p class="case-num">約1.4<span>萬億美元</span></p>
+      <p>可能由替代資本負擔。<br><strong>效力：報告引用的估算，不是本報推算。</strong></p>
+    </article>
+    <article class="case">
+      <p class="state">英國央行《金融穩定報告》</p>
+      <p class="place">英國金融體系</p>
+      <p class="case-num">目前仍具韌性</p>
+      <p>跨市場蔓延迄今有限。這不是替業者背書，只是說迴路還沒斷。<br><strong>效力：官方表述，不可刪。</strong></p>
+    </article>
+  </div>
+  <p class="case-note">來源：<a href="https://www.bankofengland.co.uk/financial-stability-report/2026/november-2026" target="_blank" rel="noopener noreferrer">英國央行 Financial Stability Report（2026年11月26日）</a>；<a href="https://thenextweb.com/news/ai-financing-bank-of-england-financial-stability-hyperscaler-bonds" target="_blank" rel="noopener noreferrer">The Next Web（11月26日）</a>。圖源：同類相關圖，非該則新聞原圖。Google，經 The Next Web（芬蘭 Hamina 數據中心，非英倫銀行報告原圖）</p>
+</section>
+
+<section id="f3" class="layout-b-section">
+  <div class="section-head">
+    <span class="section-no">03</span>
+    <div class="titles">
+      <h2>歐洲要問責，Google 卻把住家地址掛到全球</h2>
+      <p class="persona">人物：Edward Snowden</p>
+    </div>
+    <span class="heat">A</span>
+  </div>
+  <div class="layout-b-wide">
+    <figure class="section-media reveal">
+      <img src="assets/f3-android.jpg" alt="Android 示意圖，Alex Castro / The Verge" loading="lazy" decoding="async">
+      <figcaption>Alex Castro / The Verge</figcaption>
+    </figure>
+    <div class="num-rail reveal">
+      <div><strong>二月一日前申報</strong><span>開發者須在二零二七年二月一日前申報自己是否屬於英國與歐洲法律下的「商家」。不是已經開始公示。</span></div>
+      <div><strong>三月一日起公開</strong><span>一旦自我申報為商家，聯絡資料將於三月一日起向全球公開，包括電話與地址。公開範圍是全球，不是只限歐洲。</span></div>
+      <div><strong>不是所有開發者</strong><span>若只是愛好、非商業用途，或不在英國或歐洲上架，則可豁免。不要寫成適用於所有開發者。</span></div>
+      <div><strong>付款檔案不接受郵政信箱</strong><span>Google不接受用郵政信箱作為開發者付款檔案地址。蘋果只在相關歐洲國家顯示，並允許提供有證明的郵政信箱。</span></div>
+    </div>
+    <div class="essay reveal">
+    <p>歐洲要的是可被問責的商店。Google 給的，是把獨立開發者的電話和地址，掛到全世界的商品頁上。沒有免費的合規午餐。便利的代價，是把住家門牌寫進一座新的公共名錄。</p>
+    <p>據The Verge，Google宣布，許多在Play商店上架的獨立開發者，明年起必須公開電話號碼與地址。這項政策旨在符合歐盟《數碼服務法》，但Google說，聯絡資料會向全球公開。開發者須在二零二七年二月一日前申報自己是否屬於英國與歐洲法律下的「商家」；Google的概括標準是，若應用程式帶來收入，尤其是經常性或高額收入，便屬此列。若只是愛好、非商業用途，或不在英國或歐洲上架，則可豁免。一旦自我申報為商家，聯絡資料將於三月一日起公開，包括電話與地址。Google不接受用郵政信箱作為開發者付款檔案地址，意味許多沒有辦公室的獨立開發者，要么把住家地址掛上網，要么花錢找註冊代理人或其他商務地址服務。有獨立開發者對The Elec說，自己正考慮只為合規而租用私人辦公室。The Verge已向Google追問，為何不准公開郵政信箱、又為何把資料公開到全球，截至刊出時尚未得到回覆。</p>
+    <p>同一套歐洲規則，蘋果的做法不同。據該刊，蘋果只會在相關歐洲國家顯示開發者地址，而不是向全世界公開；它也允許開發者提供郵政信箱，只要向蘋果提交能把信箱與常用地址對上的收據或賬單。規則要的是可被聯絡、可被問責，不是把一名在卧室寫程式的人的門牌，做成全球可搜的名錄。Google選擇把執行範圍撐到最大，又把「不准郵政信箱」寫進付款檔案，等於把合規成本從平台搬到最沒有法人盾牌的那一側。</p>
+    <p>這就是權力不對等：一座全球商店可以說自己只是在執行法律，卻在法律沒有要求全球公示、也沒有禁止郵政信箱的地方，另外加一道門。開發者若想繼續賣軟體，就得交出可被騷擾、可被定位的個人資料；若不想交，就得付費隱身，或退出英國與歐洲。監視不一定看起來像監聽器，有時只是一張被強制公開的名片。</p>
+    </div>
+  </div>
+  <p class="case-note">來源：<a href="https://www.theverge.com/tech/1043228/android-play-store-google-developer-address-eu" target="_blank" rel="noopener noreferrer">The Verge（11月26日）</a>；<a href="https://support.google.com/googleplay/android-developer/answer/17594752" target="_blank" rel="noopener noreferrer">Google Play 開發者說明（商家身分申報）</a>。圖源：Alex Castro / The Verge</p>
+</section>
+
+<section id="f4" class="layout-b-section">
+  <div class="section-head">
+    <span class="section-no">04</span>
+    <div class="titles">
+      <h2>先拿掉 Face ID，再讚你已經習慣</h2>
+      <p class="persona">人物：Steve Jobs</p>
+    </div>
+    <span class="heat">B</span>
+  </div>
+  <div class="layout-b-wide">
+    <figure class="section-media reveal">
+      <img src="assets/f4-iphone-duo.jpg" alt="iPhone Duo，Ming Yeung / Getty Images，經 TechCrunch" loading="lazy" decoding="async">
+      <figcaption>Ming Yeung / Getty Images，經 TechCrunch</figcaption>
+    </figure>
+    <div class="num-rail reveal">
+      <div><strong>人臉解鎖不是 Face ID</strong><span>蘋果最近更新的人臉解鎖並不是Face ID。這是一個月使用評測，不是新品發表。</span></div>
+      <div><strong>Gmail／Drive 仍有黑邊</strong><span>評測寫，多數應用已去掉側邊黑帶；「明顯的例外」是 Gmail、Drive 等關鍵 Google 應用。</span></div>
+      <div><strong>「約兩千美元」是口語</strong><span>這是評測裡的口語，不要寫成官方標價。適配應用逾二十萬款，是評測引述蘋果十一月中的說法。</span></div>
+    </div>
+    <div class="essay reveal">
+    <p>他們把摺疊當成新的品味，然後讓你重新習慣沒有 Face ID 的解鎖，和一組還在留黑邊的 Google 應用。This is junk。不是因為摺疊螢幕本身愚蠢，是因為他們先拿掉你原本認為「高階」的東西，再把「你已學會適應」寫成產品勝利。</p>
+    <p>Sarah Perez 在 TechCrunch 寫下使用 iPhone Duo 接近一個月的體驗。她承認，當初擔心的取捨，對她來說已沒有預期中那麼重要：多數應用已經為摺疊優化，她重新熟悉了 Touch ID，而且多數日子並不懷念 Pro Max 的相機。她仍會想念長焦鏡頭，仍渴望 Face ID——儘管沒有先前那麼強烈，因為蘋果在最近一次更新推出了人臉解鎖，而那並不是 Face ID。一句已經把問題說完了：補上的是「能用臉打開」，不是原來那套被當成高階標誌的方案。中段還有更直接的破綻。她寫，十一月中蘋果稱已有超過二十萬款 Duo 適配應用，她日常使用的多數應用也已去掉早期測試者痛恨的側邊黑帶；「明顯的例外」是 Gmail、Drive 等關鍵 Google 應用。一台要人重新組織使用習慣的新形態電話，在郵件和雲端檔案上仍留着黑邊，這不是生態系成熟，是作業沒做完。</p>
+    <p>這篇評測真正花力氣描寫的，是並排多工、把電話折成小書架看書、不必再用 PopSocket，以及手機殼、掛繩、吊飾把 Duo 變成可以炫耀的配件。這些可以是有趣的使用方式，但它們救不了被拿掉的鏡頭，也解釋不了為何「人臉解鎖」仍要特地聲明不是 Face ID。把一部約兩千美元的電話寫成你不會帶去沙灘的東西，已經說明它有多嬌貴；再用殼與吊飾填滿選擇，只是把尚未完成的硬體，包裝成可以個性化的時尚物件。</p>
+    <p>品味不是讓人適應殘缺。品味是在換形態的時候，先把解鎖、相機和日常應用做完，而不是先出一款會改變習慣的機器，再等用戶寫下「規格不再是重點」。規格本來就不該是重點。重點是：打開它的時候，不必先原諒它。</p>
+    </div>
+  </div>
+  <p class="case-note">來源：<a href="https://techcrunch.com/2026/11/26/a-month-with-the-iphone-duo-has-changed-how-i-use-my-phone/" target="_blank" rel="noopener noreferrer">TechCrunch（Sarah Perez，11月26日）</a>。圖源：Ming Yeung / Getty Images，經 TechCrunch</p>
+</section>
+
+<section id="briefs" class="layout-c-mosaic">
+  <div class="section-head">
+    <span class="section-no">05</span>
+    <div class="titles">
+      <h2>其餘精選：三十一則，按欄排列</h2>
+    </div>
+  </div>
+  <p class="intro">星期五稿，分類精選三十一則，含專題在所屬欄重出的短項。當日為美國黑色星期五。各欄底部為該欄熱度排行；同級熱度依內容包原序。圖源註寫在各卡內文區。</p>
+  <div class="cat-block" id="hot">
+    <h3 class="cat-head">熱門話題</h3>
+    <div class="mosaic">
+  <article class="mosaic-card wide reveal" id="h1">
+    <img src="assets/f1-nvidia-mgx.jpg" alt="同類相關圖，非該則新聞原圖：英偉達 MGX 伺服器平台，非東南亞倉庫現場" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">TechCrunch；並參 The Verge、Data Center Dynamics、《金融時報》、《華爾街日報》</p>
+      <h3><a href="https://techcrunch.com/2026/11/26/nvidia-hits-pause-on-chip-shipments-to-southeast-asia/" target="_blank" rel="noopener noreferrer">英偉達被報道暫停向東南亞四國出貨伺服器，以評估出口合規（見專題）</a></h3>
+      <p class="summary">《金融時報》與《華爾街日報》報道，英偉達已要求戴爾、超微等代工夥伴，暫停向馬來西亞、新加坡、泰國和印尼出貨伺服器，期間未定，以便評估出口合規。背景是中國公司從這些國家的數據中心遠端取用晶片。商務部本月規則亦覆蓋巴西，但巴西不在停運名單。這不是官方宣布的永久禁運。詳見專題。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Data Center Dynamics（英偉達 MGX 平台，非東南亞倉庫現場）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="h2">
+    <img src="assets/f2-hamina.jpg" alt="同類相關圖，非該則新聞原圖：芬蘭 Hamina 數據中心，非英倫銀行報告原圖" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">英國央行；並參 The Next Web、Bloomberg</p>
+      <h3><a href="https://www.bankofengland.co.uk/financial-stability-report/2026/november-2026" target="_blank" rel="noopener noreferrer">英倫銀行：超大規模業者總潛在曝險略高於四萬億美元，融資「複雜、循環且不透明」（見專題）</a></h3>
+      <p class="summary">英國央行十一月二十六日報告寫，人工智能投資支撐增長，但其融資形式日益複雜、循環且不透明。該行估算，大型雲端與資料中心業者的總潛在曝險——包括債務與表外合約承諾——略高於四萬億美元；這不是已實現虧損。今年債券發行料逾三千零五十億美元，約佔全球投資級發行百分之八。英國金融體系目前仍具韌性。詳見專題。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Google，經 The Next Web（芬蘭 Hamina 數據中心，非英倫銀行報告原圖）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="h3">
+    <img src="assets/h3-cbs.jpg" alt="同類相關圖，非該則新聞原圖：經 CBS News 的 Getty 配圖，非公司辦公樓原圖" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">CBS News</p>
+      <h3><a href="https://www.cbsnews.com/news/nvidia-china-ai-chips-computing-sales/" target="_blank" rel="noopener noreferrer">CBS：至少兩家加州公司以美國身分取得英偉達高階夥伴資格，實際由中資控制</a></h3>
+      <p class="summary">CBS十一月二十五日調查寫，「首選夥伴」RiCloud AI的母公司是深圳、在香港上市的裕興科技；「精英」夥伴Aivres前身是浪潮加州子公司，母公司被列入黑名單後才改名，Aivres本身不在名單上。美國政府並未指控它們違法。CBS並轉述《紐約時報》兩個月前分析：Aivres在約兩年間至少出口五十六億美元先進技術到東南亞，其中約三十億美元為含Blackwell的電腦。不要寫成已定罪，或把轉述當成CBS獨立統計。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Getty Images，經 CBS News（非公司辦公樓原圖）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="h4">
+    <img src="assets/h4-x.jpg" alt="X 平台示意圖，The Verge" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">The Verge；並參 TechCrunch</p>
+      <h3><a href="https://www.theverge.com/news/1043078/x-parental-controls-features" target="_blank" rel="noopener noreferrer">X 推出首套青少年家長監護功能，預設保護模式，但不能讀取私訊</a></h3>
+      <p class="summary">X於感恩節推出面向十三至十七歲帳戶的首套家長監護。父母可設定時長上限、審批追蹤者、限制推薦與私訊對象，並看見青少年與誰聊天，但不能閱讀私訊或瀏覽紀錄，也不能代為發文。雙方須同意才生效；一名家長最多管理五個帳戶。預設為保護模式，不顯示敏感內容、不投放定向廣告。俄勒岡與弗吉尼亞剛就Grok深度偽造起訴SpaceX。這不是庭外和解方案。</p>
+      <p class="media-credit">The Verge</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="h5">
+    <img src="assets/f3-android.jpg" alt="Android 示意圖，Alex Castro / The Verge" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">The Verge</p>
+      <h3><a href="https://www.theverge.com/tech/1043228/android-play-store-google-developer-address-eu" target="_blank" rel="noopener noreferrer">Google Play 明年起向全球公開許多商家開發者的電話與地址（見專題）</a></h3>
+      <p class="summary">為符合歐盟《數碼服務法》，Google要求許多獨立開發者在二零二七年二月一日前申報是否為「商家」，三月一日起向全球公開電話與地址。付款檔案不接受郵政信箱。蘋果面對同一套規則，只在相關歐洲國家顯示地址，並允許提供能證明對應關係的郵政信箱。不要寫成所有開發者，也不要寫成已經開始公示。詳見專題。</p>
+      <p class="media-credit">Alex Castro / The Verge</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="h6">
+    <img src="assets/f4-iphone-duo.jpg" alt="iPhone Duo，Ming Yeung / Getty Images，經 TechCrunch" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">TechCrunch</p>
+      <h3><a href="https://techcrunch.com/2026/11/26/a-month-with-the-iphone-duo-has-changed-how-i-use-my-phone/" target="_blank" rel="noopener noreferrer">iPhone Duo 一個月使用評測：人臉解鎖仍不是 Face ID，部分 Google 應用還留黑邊（見專題）</a></h3>
+      <p class="summary">Sarah Perez在TechCrunch寫下使用iPhone Duo接近一個月的體驗，認為摺疊形態改變了她的使用習慣，當初擔心的取捨影響比預期小，但仍想念長焦鏡頭，並渴望Face ID。蘋果最近更新的人臉解鎖並不是Face ID。她引述蘋果十一月中的說法，適配應用已逾二十萬款，惟Gmail、Drive等關鍵Google應用仍留側邊黑帶。「約兩千美元」是文中口語，不要寫成官方標價。詳見專題。</p>
+      <p class="media-credit">Ming Yeung / Getty Images，經 TechCrunch</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="h7">
+    <img src="assets/h7-fcc-abc.jpg" alt="FCC 主席 Brendan Carr（左）與迪士尼行政總裁 Josh D&#x27;Amaro（右），NPR 該則配圖" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">美聯社；並參 CNBC、NPR</p>
+      <h3><a href="https://apnews.com/article/fcc-abc-ruling-editorial-content-f04f6b2b1a17fc10f2da11e4fd83a9df" target="_blank" rel="noopener noreferrer">法官發出初步禁制令，禁止 FCC 在八家 ABC 自有電視台的提前換照程序中採取進一步行動</a></h3>
+      <p class="summary">據美聯社與CNBC，哥倫比亞特區聯邦地區法院法官Loren L. AliKhan於十一月二十五日發出初步禁制令，禁止聯邦通訊委員會在八家ABC自有電視台的提前換照程序中採取進一步行動，包括發出聽證指定令。八家電台為WABC、KABC、WLS、WPVI、KTRK、KGO、WTVD與KFSN。ABC指程序對編輯方針造成寒蟬效應；報道稱法官認為ABC很可能證明，此舉是對受保護編輯言論的報復。這是初步禁制令，不是最終判決，也不等於八張執照已被永久保住。</p>
+      <p class="media-credit">Heather Diehl / Thibault Camus / Pool / AFP via Getty Images，經 NPR（該則新聞配圖）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="h8">
+    <img src="assets/h8-anthropic.jpg" alt="Anthropic 著作權和解相關配圖，Authors Guild" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">The Verge；並參 Authors Guild</p>
+      <h3><a href="https://www.theverge.com/ai-artificial-intelligence/1043087/anthropic-has-started-paying-out-its-copyright-settlement-to-authors" target="_blank" rel="noopener noreferrer">Anthropic 著作權和解開始首期付款，無爭議申索先獲約七成</a></h3>
+      <p class="summary">據Authors Guild，Bartz訴Anthropic和解的首期款項於十一月二十三日起的一週內發放。入口網站顯示為無爭議的申索，現時先支付每件作品約百分之七十，即二千二百零三點五六美元；其餘約三成須待Anthropic在上市後三十日內向和解基金補足款項後再發。有爭議的申索會較遲處理。The Verge寫，這筆十五億美元和解的全額，平均每本書約三千美元，其中一部分要到明年才到。不要寫成所有作者已收齊全款。</p>
+      <p class="media-credit">Authors Guild</p>
+    </div>
+  </article>
+    </div>
+    <aside class="heat-rank" aria-label="熱門話題熱度排行">
+      <h4>本欄熱度排行（A → B → C，同級依原序）</h4>
+      <ol>
+      <li><span class="idx">1</span><span class="heat">A</span><a href="#h1">英偉達暫停東南亞四國伺服器出貨（見專題）</a></li>
+      <li><span class="idx">2</span><span class="heat">A</span><a href="#h2">英倫銀行四萬億潛在曝險（見專題）</a></li>
+      <li><span class="idx">3</span><span class="heat">A</span><a href="#h3">CBS 中資控制的加州高階夥伴</a></li>
+      <li><span class="idx">4</span><span class="heat">A</span><a href="#h7">法官暫禁 FCC 提前審 ABC 換照</a></li>
+      <li><span class="idx">5</span><span class="heat">A</span><a href="#h5">Google Play 全球公開商家地址（見專題）</a></li>
+      <li><span class="idx">6</span><span class="heat">A</span><a href="#h4">X 首套家長監護</a></li>
+      <li><span class="idx">7</span><span class="heat">A</span><a href="#h8">Anthropic 和解首期付款</a></li>
+      <li><span class="idx">8</span><span class="heat">B</span><a href="#h6">iPhone Duo 一個月評測（見專題）</a></li>
+      </ol>
+    </aside>
+  </div>
+  <div class="cat-block" id="ai">
+    <h3 class="cat-head">AI 與模型</h3>
+    <div class="mosaic">
+  <article class="mosaic-card wide reveal" id="a1">
+    <img src="assets/a1-reuters.jpg" alt="Moonshot 標誌示意圖，Dado Ruvic / Reuters" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">路透（Yahoo Finance轉載）</p>
+      <h3><a href="https://finance.yahoo.com/news/exclusive-us-chip-curbs-distillation-071923947.html" target="_blank" rel="noopener noreferrer">路透：美國晶片限制與防蒸餾措施，可能推遲中國實驗室的旗艦模型</a></h3>
+      <p class="summary">路透引述知情人士寫，智譜原計劃本月推出約三兆參數的旗艦模型GLM-5.5，但已落後，新的海外算力限制可能把發布推入二零二七年第一季或更晚；該公司周一先推出GLM-5.4。月之暗面若失去海外算力，內部預期重大版本間隔可能由六個月拉長至一年或以上，Kimi K4或延至二零二七年中。兩家公司未立即回應。這是匿名消息，不要寫成官方時間表，或把蒸餾指控當成已證實方法。</p>
+      <p class="media-credit">Dado Ruvic / Reuters（Moonshot 標誌示意圖）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="a2">
+    <img src="assets/h8-anthropic.jpg" alt="Anthropic 著作權和解相關配圖，Authors Guild" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">Authors Guild；並參 The Verge</p>
+      <h3><a href="https://authorsguild.org/news/anthropic-settlement-update-check-your-claim-by-november-20/" target="_blank" rel="noopener noreferrer">Anthropic 著作權和解開始首期付款（見 h8）</a></h3>
+      <p class="summary">美國作家協會確認，無爭議申索於十一月二十三日起的一週內，先收到每件作品約百分之七十，即二千二百零三點五六美元；其餘須待公司在上市後三十日內向和解基金補足款項。有爭議申索會稍後處理。不要與昨刊Anthropic股價或Marlowe種子輪混寫成同一件事，也不要寫成全額已到位。詳見h8。</p>
+      <p class="media-credit">Authors Guild</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="a3">
+    <img src="assets/a3-muse.jpg" alt="Meta 相關配圖，Smith Collection / Getty Images，經 WIRED" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">WIRED</p>
+      <h3><a href="https://www.wired.com/story/meta-refused-to-share-muse-for-testing-uk-financial-watchdog-complains/" target="_blank" rel="noopener noreferrer">Meta 拒絕與英國金融行為監管局在沙盒中聯合測試 Muse</a></h3>
+      <p class="summary">據WIRED，英國金融行為監管局創新主管Colin Payne表示，該局上週建議與Meta在沙盒中聯合測試Muse，但被拒絕。Muse已於十一月二十四日在英國推出。Payne關注代理如何代用戶付款，並說Meta上月才告知計劃。Meta發言人稱已與適當監管機構建設性接觸。北美自九月以來已有逾一千萬用戶開通。不要寫成Meta已被裁定違法。</p>
+      <p class="media-credit">Smith Collection / Getty Images，經 WIRED</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="a4">
+    <img src="assets/f2-hamina.jpg" alt="同類相關圖，非該則新聞原圖：芬蘭 Hamina 數據中心，非英倫銀行報告原圖" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">英國央行</p>
+      <h3><a href="https://www.bankofengland.co.uk/financial-stability-report/2026/november-2026" target="_blank" rel="noopener noreferrer">英倫銀行警告人工智能融資加深系統互聯，並點名代理與開源權重模型的網絡風險（見專題、h2）</a></h3>
+      <p class="summary">除四萬億美元潛在曝險外，報告還寫，前沿人工智能能力自七月以來繼續增強，尤其是代理與開源權重模型；近期事件顯示，對齊並控制單一代理與多代理動態仍然困難，網絡與營運風險對金融穩定更為突出。報告並以近期Google Cloud與微軟故障為例，說明單一供應商中斷可同時打擊許多機構。這些是官方風險判斷，不是已經發生的系統性危機。詳見專題。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Google，經 The Next Web（芬蘭 Hamina 數據中心，非英倫銀行報告原圖）</p>
+    </div>
+  </article>
+    </div>
+    <aside class="heat-rank" aria-label="AI 與模型熱度排行">
+      <h4>本欄熱度排行（A → B → C，同級依原序）</h4>
+      <ol>
+      <li><span class="idx">1</span><span class="heat">A</span><a href="#a1">路透：中國旗艦模型可能延期</a></li>
+      <li><span class="idx">2</span><span class="heat">A</span><a href="#a3">Meta 拒絕 FCA 沙盒聯測 Muse</a></li>
+      <li><span class="idx">3</span><span class="heat">A</span><a href="#a2">Anthropic 和解首期</a></li>
+      <li><span class="idx">4</span><span class="heat">A</span><a href="#a4">英倫銀行點名代理與開源權重風險</a></li>
+      </ol>
+    </aside>
+  </div>
+  <div class="cat-block" id="security">
+    <h3 class="cat-head">資安與基礎設施</h3>
+    <div class="mosaic">
+  <article class="mosaic-card wide reveal" id="s1">
+    <img src="assets/s1-allstate.jpg" alt="Allstate 故障相關配圖，WGCU / NPR" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">WGCU（NPR 成員台）；並參 TechCrunch 昨稿</p>
+      <h3><a href="https://www.wgcu.org/science-tech/2026-11-26/allstate-technical-issues-continuing-company-says-no-late-fees-or-lost-coverage-will-ensue" target="_blank" rel="noopener noreferrer">Allstate 故障延續至感恩節當日，公司稱付款延誤不會產生滯納金或失去保單</a></h3>
+      <p class="summary">Allstate自十一月二十三日周一早上起的系統故障，至二十六日周四上午仍未恢復，影響網站、應用程式、登入、電話、電郵與支付。公司仍未說明原因與修復時間。WGCU引述聲明：部分通道受限，但公司仍可受理與理賠；若中斷影響付款，不會因此失去保障或被收滯納金。聲明裡「四十八小時」是公司用語，不要寫成故障只持續兩天。這是昨刊後續，不是新的獨立事故。</p>
+      <p class="media-credit">WGCU / NPR</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="s2">
+    <img src="assets/s2-cisco.jpg" alt="Cisco 相關配圖，BleepingComputer" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">BleepingComputer；並參 Cisco、CISA</p>
+      <h3><a href="https://www.bleepingcomputer.com/news/security/cisa-flags-critical-cisco-expressway-rce-flaw-as-actively-exploited/" target="_blank" rel="noopener noreferrer">CISA 將 Cisco Expressway 高危遠端程式碼執行漏洞列入已知被利用目錄</a></h3>
+      <p class="summary">美國網絡安全及基礎設施安全局已將Cisco Expressway集群漏洞CVE-2026-76466列入已知被利用目錄，並要求聯邦民用行政機構在三日内修補。漏洞源於硬編碼憑證與證書驗證不足，未認證攻擊者可以root執行指令。Cisco十月發補丁時，其PSIRT稱未發現實際利用；CISA其後改為「已被利用」。Censys當時觀察到近一萬四千九百個暴露在網上的主機。請用完整CVE編號，不要寫成發補丁當日已確認攻擊。</p>
+      <p class="media-credit">BleepingComputer</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="s3">
+    <img src="assets/s3-drupal.jpg" alt="同類相關圖，非該則新聞原圖：Drupal 相關配圖，BleepingComputer" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">BleepingComputer；並參 Drupal.org、CISA</p>
+      <h3><a href="https://www.bleepingcomputer.com/news/security/hackers-now-exploit-critical-drupal-rce-flaw-to-hijack-sites/" target="_blank" rel="noopener noreferrer">Drupal Fail2Install 的 CISA 聯邦修補限期是今天（昨刊後續）</a></h3>
+      <p class="summary">昨刊已報道Drupal安裝程式高危漏洞（CVE-2026-132165等）自十一月十九日起已有真實利用，CISA於二十四日列入已知被利用目錄，聯邦機構限期為十一月二十七日，即今日。暫時無法升級的網站應封鎖／core／install.php。不要把Drupal Steward WAF寫成所有網站的充分防護，也不要在未有新公報前宣稱攻擊已經停止。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。BleepingComputer（原則配圖 404，改用同站 Drupal 題圖）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="s4">
+    <img src="assets/f2-hamina.jpg" alt="同類相關圖，非該則新聞原圖：芬蘭 Hamina 數據中心，非英倫銀行報告原圖" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">英國央行</p>
+      <h3><a href="https://www.bankofengland.co.uk/financial-stability-report/2026/november-2026" target="_blank" rel="noopener noreferrer">英倫銀行把代理與開源權重模型的失控，列為更突出的金融網絡風險（見 a4、專題）</a></h3>
+      <p class="summary">十一月《金融穩定報告》把前沿人工智能代理、開源權重模型，以及對單一雲端供應商的依賴，寫進金融穩定的營運風險章節，並以近期Google Cloud與微軟故障為例，說明一家供應商中斷可同時打擊許多機構。這是官方風險提示，不是某一宗新的針對銀行的攻擊聲明，也不要寫成英國金融體系已經失穩。詳見a4。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Google，經 The Next Web（芬蘭 Hamina 數據中心，非英倫銀行報告原圖）</p>
+    </div>
+  </article>
+    </div>
+    <aside class="heat-rank" aria-label="資安與基礎設施熱度排行">
+      <h4>本欄熱度排行（A → B → C，同級依原序）</h4>
+      <ol>
+      <li><span class="idx">1</span><span class="heat">A</span><a href="#s1">Allstate 故障延續並承諾不收滯納金</a></li>
+      <li><span class="idx">2</span><span class="heat">A</span><a href="#s2">Cisco Expressway 已列入 KEV</a></li>
+      <li><span class="idx">3</span><span class="heat">A</span><a href="#s3">Drupal 聯邦修補限期今日</a></li>
+      <li><span class="idx">4</span><span class="heat">B</span><a href="#s4">英倫銀行把代理失控列入網絡風險</a></li>
+      </ol>
+    </aside>
+  </div>
+  <div class="cat-block" id="consumer">
+    <h3 class="cat-head">消費電子／平台</h3>
+    <div class="mosaic">
+  <article class="mosaic-card wide reveal" id="c1">
+    <img src="assets/c1-x-graffiti.jpg" alt="X 相關配圖，TechCrunch" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">TechCrunch；並參 The Verge</p>
+      <h3><a href="https://techcrunch.com/2026/11/26/x-finally-gets-parental-controls-after-20-years/" target="_blank" rel="noopener noreferrer">X 推出首套青少年家長監護，父母可見通訊對象但不能讀取私訊（見 h4）</a></h3>
+      <p class="summary">功能面向十三至十七歲帳戶，預設保護模式；家長與青少年須雙方同意。TechCrunch引述二零二四年研究，近三分之一Alpha世代兒童擁有X帳戶，並指出平台長期存在色情、不實訊息與濫用材料，以及Grok被指生成性化兒童與女性圖像的爭議。不要把這項功能寫成已解決那些問題。詳見h4。</p>
+      <p class="media-credit">TechCrunch</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="c2">
+    <img src="assets/c2-camera.jpg" alt="同類相關圖，非該則新聞原圖：攝影機示意圖，非該兩款 Onn 機身原圖" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">The Verge</p>
+      <h3><a href="https://www.theverge.com/tech/1042938/google-home-familiar-faces-onn-cameras" target="_blank" rel="noopener noreferrer">Google Familiar Faces 擴至沃爾瑪三十五美元 Onn 戶外攝影機，須訂閱付費方案</a></h3>
+      <p class="summary">The Verge報道，Google Home更新讓沃爾瑪旗下三十五美元的Onn Outdoor Camera Plug-In，以及七十七美元的Onn Floodlight Camera Hardwired，也可使用Familiar Faces熟人臉孔辨識，但仍須訂閱Google Home Premium。這兩款攝影機與有線第二代Nest Cam Outdoor，還新增可在觀看即時畫面時遠端啟動或停止三十秒警報的控制。本文只依據The Verge已寫明的功能與售價，不要自行補上生物特徵儲存在雲端或本機的結論。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Alex Castro / The Verge（非該兩款 Onn 機身原圖）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="c3">
+    <img src="assets/f4-iphone-duo.jpg" alt="iPhone Duo，Ming Yeung / Getty Images，經 TechCrunch" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">TechCrunch</p>
+      <h3><a href="https://techcrunch.com/2026/11/26/a-month-with-the-iphone-duo-has-changed-how-i-use-my-phone/" target="_blank" rel="noopener noreferrer">iPhone Duo 一個月評測：形態改變習慣，但 Face ID 與部分應用仍未補完（見專題、h6）</a></h3>
+      <p class="summary">這篇一個月使用評測認為，並排多工、把電話折成小書架閱讀，以及較易單手持握，是摺疊形態的主要收穫，亦花了不少篇幅寫手機殼、掛繩與吊飾帶來的個人化。必須保留的限度是：人臉解鎖仍然不是Face ID，Gmail與Drive等關鍵Google應用仍留黑邊。「約兩千美元」只是文中口語。詳見專題。</p>
+      <p class="media-credit">Ming Yeung / Getty Images，經 TechCrunch</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="c4">
+    <img src="assets/c4-rockstar.jpg" alt="同類相關圖，非該則新聞原圖：Rockstar 遊戲畫面，非投票現場" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">The Verge；並參 Bloomberg</p>
+      <h3><a href="https://www.theverge.com/games/1043169/rockstar-games-union-vote-iwgb" target="_blank" rel="noopener noreferrer">Rockstar 英國員工投票否決工會承認協議，約七成五反對</a></h3>
+      <p class="summary">The Verge報道，GTA VI開發商Rockstar英國員工就IWGB正式承認協議投票，約百分之七十五反對、百分之二十五贊成，投票期為十一月十二日至二十六日，覆蓋遊戲發行。未通過則公司沒有正式會見工會代表的義務。IWGB稱會繼續組織。去年被解僱的三十一名會員案仍待就業審裁處判決。發行主管Jennifer Kolbe對彭博表示，結果反映團隊支持繼續直接溝通。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Rockstar Games，經 The Verge（遊戲畫面，非投票現場）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="c5">
+    <img src="assets/a3-muse.jpg" alt="Meta 相關配圖，Smith Collection / Getty Images，經 WIRED" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">WIRED</p>
+      <h3><a href="https://www.wired.com/story/meta-refused-to-share-muse-for-testing-uk-financial-watchdog-complains/" target="_blank" rel="noopener noreferrer">Meta 在英國推出 Muse 前，拒絕與金融監管機構做沙盒聯合測試（見 a3）</a></h3>
+      <p class="summary">Muse已於十一月二十四日在英國上線，金融行為監管局原希望先在沙盒觀察它如何與顧客互動，尤其是如何付款，但聯合測試建議被拒。競爭和市場管理局已要求Meta修改英國條款，寫明須以合理技能與審慎提供服務，並稱若有疑慮將採取行動。不要與昨刊沃爾瑪或亞馬遜Muse商談寫成同一協議。詳見a3。</p>
+      <p class="media-credit">Smith Collection / Getty Images，經 WIRED</p>
+    </div>
+  </article>
+    </div>
+    <aside class="heat-rank" aria-label="消費電子／平台熱度排行">
+      <h4>本欄熱度排行（A → B → C，同級依原序）</h4>
+      <ol>
+      <li><span class="idx">1</span><span class="heat">A</span><a href="#c1">X 家長監護（見 h4）</a></li>
+      <li><span class="idx">2</span><span class="heat">A</span><a href="#c5">Muse 英國上線與監管聯測被拒</a></li>
+      <li><span class="idx">3</span><span class="heat">B</span><a href="#c2">Familiar Faces 擴至 Onn 攝影機</a></li>
+      <li><span class="idx">4</span><span class="heat">B</span><a href="#c4">Rockstar 工會承認投票被否決</a></li>
+      <li><span class="idx">5</span><span class="heat">B</span><a href="#c3">iPhone Duo 評測（見專題）</a></li>
+      </ol>
+    </aside>
+  </div>
+  <div class="cat-block" id="chips">
+    <h3 class="cat-head">晶片／硬體／地緣</h3>
+    <div class="mosaic">
+  <article class="mosaic-card wide reveal" id="ch1">
+    <img src="assets/f1-nvidia-mgx.jpg" alt="同類相關圖，非該則新聞原圖：英偉達 MGX 伺服器平台，非東南亞倉庫現場" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">Data Center Dynamics；並參 TechCrunch、The Verge</p>
+      <h3><a href="https://www.datacenterdynamics.com/en/news/nvidia-halts-server-shipments-to-malaysia-singapore-thailand-and-indonesia-in-wake-of-new-dept-of-commerce-export-rule-report/" target="_blank" rel="noopener noreferrer">英偉達暫停對馬來西亞、新加坡、泰國、印尼出貨伺服器（見專題、h1）</a></h3>
+      <p class="summary">DCD轉述《金融時報》：停運或屬暫時，為配合商務部本月十六日過渡最終規則。該規則亦將巴西列為須許可目的地，並限制遠端取用先進晶片。英偉達新加坡子公司二零二五年入賬一千零四十億美元，一年增百分之七十二，部分台灣與中國相關營收亦經新加坡入賬。不要把巴西寫進停運名單。詳見專題。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Data Center Dynamics（英偉達 MGX 平台，非東南亞倉庫現場）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="ch2">
+    <img src="assets/h3-cbs.jpg" alt="同類相關圖，非該則新聞原圖：經 CBS News 的 Getty 配圖，非公司辦公樓原圖" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">CBS News</p>
+      <h3><a href="https://www.cbsnews.com/news/nvidia-china-ai-chips-computing-sales/" target="_blank" rel="noopener noreferrer">CBS 調查英偉達在美高階夥伴的中資所有權，並轉述《紐約時報》東南亞出口數字（見 h3）</a></h3>
+      <p class="summary">除RiCloud與Aivres外，CBS還寫英偉達去年對華銷售近二百億美元，並在前年十一月改以客戶總部而非賬單地點披露區域銷售，使二零二四年另有七十九億美元被歸入中國總部客戶。公司年報寫，最終客戶與出貨地點可能不同於客戶總部。參議員Warren本週表示，英偉達與董事會仍欠國會關於出口管制合規的答案。詳見h3與專題。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Getty Images，經 CBS News（非公司辦公樓原圖）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="ch3">
+    <img src="assets/ch3-huawei.jpg" alt="同類相關圖，非該則新聞原圖：華為招牌，非晶片原圖" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">The Next Web（轉述 Bloomberg）</p>
+      <h3><a href="https://thenextweb.com/news/huawei-hbm-ai-memory-samsung-sk-hynix-isscc" target="_blank" rel="noopener noreferrer">彭博：華為擬在明年二月會議上提出高頻寬記憶體設計，接腳密度據稱為韓廠量產晶片的兩倍</a></h3>
+      <p class="summary">據The Next Web轉述彭博，華為將於二零二七年二月在三藩市一場會議上發表高頻寬記憶體設計，論文標題顯示其資料接腳密度為三星與SK海力士目前量產晶片的兩倍。目前不清楚該設計距離量產有多近；企業常在會議上發表構想而非成品。華為未即時回應彭博。不要寫成華為已能量產、出貨，或已取代韓廠。中國記憶體廠CXMT亦據報開始生產HBM，但良率偏低，同屬轉述。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Vong Vathanak / Unsplash，經 The Next Web（華為招牌，非晶片原圖）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="ch4">
+    <img src="assets/a1-reuters.jpg" alt="Moonshot 標誌示意圖，Dado Ruvic / Reuters" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">路透</p>
+      <h3><a href="https://finance.yahoo.com/news/exclusive-us-chip-curbs-distillation-071923947.html" target="_blank" rel="noopener noreferrer">路透：海外算力許可與防蒸餾，可能拉長中國實驗室的發布周期（見 a1）</a></h3>
+      <p class="summary">商務部本月規則限制中國公司經海外數據中心大量取用先進美國晶片。知情人士稱，月之暗面特別依賴租用海外算力，國內產能無法補足缺口，並已加緊在歐洲尋租，也計劃接觸中國晶片廠。Anthropic九月曾稱觀察到近兩億次與克勞德的對話，懷疑與阿里巴巴、月之暗面和智譜等蒸餾行動有關；月之暗面此前否認Kimi K3靠蒸餾。詳見a1。</p>
+      <p class="media-credit">Dado Ruvic / Reuters（Moonshot 標誌示意圖）</p>
+    </div>
+  </article>
+    </div>
+    <aside class="heat-rank" aria-label="晶片／硬體／地緣熱度排行">
+      <h4>本欄熱度排行（A → B → C，同級依原序）</h4>
+      <ol>
+      <li><span class="idx">1</span><span class="heat">A</span><a href="#ch1">英偉達四國停運（見專題）</a></li>
+      <li><span class="idx">2</span><span class="heat">A</span><a href="#ch2">CBS／紐約時報轉述的夥伴與出口鏈</a></li>
+      <li><span class="idx">3</span><span class="heat">A</span><a href="#ch4">海外算力限制與防蒸餾</a></li>
+      <li><span class="idx">4</span><span class="heat">B</span><a href="#ch3">華為 HBM 設計論文</a></li>
+      </ol>
+    </aside>
+  </div>
+  <div class="cat-block" id="policy">
+    <h3 class="cat-head">政策／監管</h3>
+    <div class="mosaic">
+  <article class="mosaic-card wide reveal" id="p1">
+    <img src="assets/h7-fcc-abc.jpg" alt="FCC 主席 Brendan Carr（左）與迪士尼行政總裁 Josh D&#x27;Amaro（右），NPR 該則配圖" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">美聯社；並參 CNBC、NPR</p>
+      <h3><a href="https://apnews.com/article/fcc-abc-ruling-editorial-content-f04f6b2b1a17fc10f2da11e4fd83a9df" target="_blank" rel="noopener noreferrer">法官暫時禁止 FCC 推進八家 ABC 電視台的提前換照（見 h7）</a></h3>
+      <p class="summary">初步禁制令日期為十一月二十五日，法官為Loren L. AliKhan，適用於八家ABC自有電視台的提前換照程序，並禁止發出聽證指定令。八家呼號為WABC、KABC、WLS、WPVI、KTRK、KGO、WTVD與KFSN。不要寫成聯邦通訊委員會整體被關閉，或法官已對特朗普本人作出刑事或最終憲法判決。排版請用該則新聞原圖。詳見h7。</p>
+      <p class="media-credit">Heather Diehl / Thibault Camus / Pool / AFP via Getty Images，經 NPR（該則新聞配圖）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="p2">
+    <img src="assets/f3-android.jpg" alt="Android 示意圖，Alex Castro / The Verge" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">The Verge</p>
+      <h3><a href="https://www.theverge.com/tech/1043228/android-play-store-google-developer-address-eu" target="_blank" rel="noopener noreferrer">Google 以歐盟《數碼服務法》為由，將向全球公開Play商家聯絡資料（見專題、h5）</a></h3>
+      <p class="summary">開發者須在二零二七年二月一日前申報是否為「商家」，三月一日起向全球公開電話與地址。豁免範圍是愛好、非商業，或不在英國或歐洲上架。付款檔案不接受郵政信箱。蘋果只在相關歐洲國家顯示，並允許提供有證明的郵政信箱。不要寫成已經開始公示，或適用於所有開發者。詳見專題。</p>
+      <p class="media-credit">Alex Castro / The Verge</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="p3">
+    <img src="assets/a3-muse.jpg" alt="Meta 相關配圖，Smith Collection / Getty Images，經 WIRED" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">WIRED</p>
+      <h3><a href="https://www.wired.com/story/meta-refused-to-share-muse-for-testing-uk-financial-watchdog-complains/" target="_blank" rel="noopener noreferrer">英國金融、競爭與資料監管機構盯上 Muse 在英推出，Meta 拒絕沙盒聯測（見 a3）</a></h3>
+      <p class="summary">金融行為監管局希望先看代理如何付款；資訊專員辦公室強調用戶須理解並能控制Muse如何使用個人資料；競爭和市場管理局已要求修改英國條款，寫明須以合理技能與審慎提供服務，並稱若有疑慮將採取行動保護英國消費者。這是監管表態，不是已經開罰，也不要寫成英國已禁Muse。詳見a3。</p>
+      <p class="media-credit">Smith Collection / Getty Images，經 WIRED</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="p4">
+    <img src="assets/f1-nvidia-mgx.jpg" alt="同類相關圖，非該則新聞原圖：英偉達 MGX 伺服器平台，非東南亞倉庫現場" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">A</span>
+      <p class="outlet">Data Center Dynamics；並參路透</p>
+      <h3><a href="https://www.datacenterdynamics.com/en/news/nvidia-halts-server-shipments-to-malaysia-singapore-thailand-and-indonesia-in-wake-of-new-dept-of-commerce-export-rule-report/" target="_blank" rel="noopener noreferrer">商務部本月新規則把東南亞多國及巴西列為較高轉移風險目的地，並限制遠端取用（見專題、h1）</a></h3>
+      <p class="summary">據DCD，工業與安全局十一月十六日過渡最終規則，要求向印尼、馬來西亞、新加坡、泰國或巴西出口、再出口或境內轉移先進半導體須取得許可，理由是「轉移風險高於尋常」，並限制以第三國數據中心遠端使用先進晶片。路透寫，針對海外數據中心先進算力的許可要求於十一月十九日生效。這是規則本身，不等於已對所有目的地實施與英偉達四國停運相同的公司措施。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Data Center Dynamics（英偉達 MGX 平台，非東南亞倉庫現場）</p>
+    </div>
+  </article>
+    </div>
+    <aside class="heat-rank" aria-label="政策／監管熱度排行">
+      <h4>本欄熱度排行（A → B → C，同級依原序）</h4>
+      <ol>
+      <li><span class="idx">1</span><span class="heat">A</span><a href="#p1">法官暫禁 FCC 提前審 ABC 換照</a></li>
+      <li><span class="idx">2</span><span class="heat">A</span><a href="#p4">商務部東南亞與巴西許可規則</a></li>
+      <li><span class="idx">3</span><span class="heat">A</span><a href="#p2">Google Play 全球公示（見專題）</a></li>
+      <li><span class="idx">4</span><span class="heat">A</span><a href="#p3">英國監管盯 Muse</a></li>
+      </ol>
+    </aside>
+  </div>
+  <div class="cat-block" id="opensource">
+    <h3 class="cat-head">開源／開發</h3>
+    <div class="mosaic">
+  <article class="mosaic-card wide reveal" id="o1">
+    <img src="assets/o1-phoronix.jpg" alt="同類相關圖，非該則新聞原圖：Phoronix 標誌，非核心原始碼原圖" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">B</span>
+      <p class="outlet">Phoronix</p>
+      <h3><a href="https://www.phoronix.com/news/Linux-AI-Agent-Skills-Ready" target="_blank" rel="noopener noreferrer">Linux 開發者打算在 7.5 合併窗口向主線提交 AI agent skills，尚未合併</a></h3>
+      <p class="summary">Phoronix十一月二十六日報道，長期支援分支共同維護者、英偉達的Sasha Levin打算在十二月下旬開啟的Linux 7.5合併窗口，向Linus Torvalds提交一套樹內文件，指導人工智能代理處理核心流程。內容包括為修補尋找Fixes標籤、穩定分支標籤、查找相同缺陷的其他實例、撰寫提交說明與KUnit測試。他已要求把agents分支從linux-next移除，因為準備直接向上游提交。這還不是已合入主線，不要寫成Linux 7.5已經包含這些技能，或Torvalds已經接受。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。Phoronix 標誌（非核心原始碼原圖）</p>
+    </div>
+  </article>
+  <article class="mosaic-card reveal" id="o2">
+    <img src="assets/o2-iacr.jpg" alt="同類相關圖，非該則新聞原圖：IACR ePrint 標誌，非碰撞證據" loading="lazy" decoding="async">
+    <div class="pad">
+      <span class="heat">C</span>
+      <p class="outlet">IACR ePrint；經 r/programming 討論</p>
+      <h3><a href="https://eprint.iacr.org/2026/2913" target="_blank" rel="noopener noreferrer">密碼學預印本稱在 SHA-256 的三十八步縮減版本找到碰撞，並非完整演算法被破解</a></h3>
+      <p class="summary">r/programming熱門帖指向IACR電子預印本2026／2913，稱研究人員在SHA-256的三十八步縮減回合變體上找到碰撞。完整SHA-256使用六十四步，縮減版本上的碰撞並不等於廣泛使用的完整雜湊已被破解，也不應寫成「SHA-256已死」。本報未獨立覆核論文實驗，只記錄預印本主張與討論熱度，細節以論文原文為準。</p>
+      <p class="media-credit">同類相關圖，非該則新聞原圖。IACR ePrint 標誌（論文頁原配圖路徑 404，改用電子預印本官方標誌，非碰撞證據）</p>
+    </div>
+  </article>
+    </div>
+    <aside class="heat-rank" aria-label="開源／開發熱度排行">
+      <h4>本欄熱度排行（A → B → C，同級依原序）</h4>
+      <ol>
+      <li><span class="idx">1</span><span class="heat">B</span><a href="#o1">Linux 7.5 擬提交 AI agent skills</a></li>
+      <li><span class="idx">2</span><span class="heat">C</span><a href="#o2">SHA-256 三十八步縮減版本碰撞預印本</a></li>
+      </ol>
+    </aside>
+  </div>
+</section>
+
+</div>
+<p class="site-foot">每日 IT 報 · 2026年11月27日 · 星期五 · 美國黑色星期五<br>資料視覺專題版。選稿窗約 2026-11-26 美東 至 2026-11-27 香港朝早。數字分源呈現，不合併。</p>
+</main>
+
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nodes = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    nodes.forEach(function (el) { el.classList.add('is-in'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    nodes.forEach(function (el) { io.observe(el); });
+  }
+})();
+</script>
+</body>
+</html>
